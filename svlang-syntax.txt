@@ -1,11 +1,9 @@
 #
-# void er et objekt som int og string
 # # er kommentarstreng
+# void er et objekt som int og string
 # indent-drevet?
 # pln er println som tar inn liste som automatisk settes sammen. Altså ikke noe a + ", " + b syntaks.
-# := er en ny konstant (variabler finnes ikke)
 # = er en ny konstant
-# = er re-assignment
 # metode(a b) eller (metode a b) hmm... hva skal brukes
 # lazy kaller ikke assignment før man bruker variabel/konstanten, men kun første gang
 # main er inngangsport for eksekverbare filer
