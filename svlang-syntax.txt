@@ -1,0 +1,66 @@
+#
+# void er et objekt som int og string
+# # er kommentarstreng
+# indent-drevet?
+# pln er println som tar inn liste som automatisk settes sammen. Altså ikke noe a + ", " + b syntaks.
+# := er en ny konstant (variabler finnes ikke)
+# = er en ny konstant
+# = er re-assignment
+# metode(a b) eller (metode a b) hmm... hva skal brukes
+# lazy kaller ikke assignment før man bruker variabel/konstanten, men kun første gang
+# main er inngangsport for eksekverbare filer
+# kode organiseres i underliggende mapper?
+# using statements?
+# typesystem gjennom interfacer kun? så ducktyping?
+#
+
+using system # pln, error, string, int osv
+
+fun main
+	a = 'a2'
+	b = 'b'
+	
+	d = metode(a b)
+	
+	lazy c = metode(a b)
+	
+	if a = '2'
+		indent(a 3)
+
+fun metode (a:string b:string)
+	pln(a ' -> ' b)
+
+fun indent:string (a:string b:int) with sjekking
+	pln(a)
+	logikk()
+	if b = 3
+		øh(b sendes)
+		
+fun logikk
+	jalla()
+	
+fun øh:void (tall:int enMetode:fun)
+	println(tall)
+	enMetode(tall)
+
+fun sendes:void (tall:int)
+	println(tall)
+
+aspect combo sjekking
+	sjekkparams
+	sjekkreturn
+	dobbeltsjekk
+	
+aspect pre sjekkparams (a:string b:int)
+	if a = 'b'
+		error('oida..')
+	if b = 2
+		error('hei og hå')
+
+aspect post sjekkreturn (returnoe:string)
+	if returnoe = 'habba'
+		error('babba')
+
+aspect post dobbeltsjekk(returnoe:string)
+	if returnoe = 'noe annet'
+		pln('Hmm mulig problem')
