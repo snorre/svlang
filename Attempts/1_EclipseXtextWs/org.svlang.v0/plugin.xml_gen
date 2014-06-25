@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.svlang.org/v0/V0" 
+       class = "org.svlang.v0.v0.V0Package"
+       genModel = "model/generated/V0.genmodel" /> 
+	
+  </extension>
+
+
+
+</plugin>

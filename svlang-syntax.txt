@@ -14,7 +14,7 @@
 
 using system # pln, error, string, int osv
 
-fun main
+main
 	a = 'a2'
 	b = 'b'
 	

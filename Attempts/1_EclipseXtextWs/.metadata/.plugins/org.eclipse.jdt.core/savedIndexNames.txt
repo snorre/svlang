@@ -1,0 +1,4 @@
+INDEX VERSION 1.126+/Users/snorre/Utvikling/Prosjekter_Egne/EclipseXtextWs/.metadata/.plugins/org.eclipse.jdt.core
+959307740.index
+1123093496.index
+2616413359.index

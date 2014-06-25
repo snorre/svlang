@@ -1,0 +1,47 @@
+grammar org.svlang.v0.V0 with org.eclipse.xtext.common.Terminals
+
+generate v0 "http://www.svlang.org/v0/V0"
+
+Domainmodel:
+	(elements += Element)*
+;
+
+AbstractElement:
+	Main | Codeline
+;
+
+Element:
+	Main | Fun
+;
+
+Main:
+	'main {' 
+		{Main} (lines += Codeline)* 
+	'}'
+;
+
+Fun:
+	'fun {'
+		{Fun} (lines += Codeline)*
+	'}'
+;
+
+Codeline:
+	Assignment
+;
+
+Assignment:
+	name=ID ' = ' value=Primitive
+;
+
+Primitive:
+	INT | STRING
+;
+
+Parameters:
+	INT | STRING | ID
+;
+
+FunCall:
+	name=ID'('
+;
