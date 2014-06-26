@@ -95,13 +95,22 @@ public interface V0Package extends EPackage
   int ROOT_ELEMENT = 1;
 
   /**
-   * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
+   * The feature id for the '<em><b>Main</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ROOT_ELEMENT__EXPRESSIONS = 0;
+  int ROOT_ELEMENT__MAIN = 0;
+
+  /**
+   * The feature id for the '<em><b>Funs</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ROOT_ELEMENT__FUNS = 1;
 
   /**
    * The number of structural features of the '<em>Root Element</em>' class.
@@ -110,7 +119,7 @@ public interface V0Package extends EPackage
    * @generated
    * @ordered
    */
-  int ROOT_ELEMENT_FEATURE_COUNT = 1;
+  int ROOT_ELEMENT_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.svlang.v0.v0.impl.MainImpl <em>Main</em>}' class.
@@ -129,7 +138,7 @@ public interface V0Package extends EPackage
    * @generated
    * @ordered
    */
-  int MAIN__EXPRESSIONS = ROOT_ELEMENT__EXPRESSIONS;
+  int MAIN__EXPRESSIONS = 0;
 
   /**
    * The number of structural features of the '<em>Main</em>' class.
@@ -138,7 +147,7 @@ public interface V0Package extends EPackage
    * @generated
    * @ordered
    */
-  int MAIN_FEATURE_COUNT = ROOT_ELEMENT_FEATURE_COUNT + 0;
+  int MAIN_FEATURE_COUNT = 1;
 
   /**
    * The meta object id for the '{@link org.svlang.v0.v0.impl.FunImpl <em>Fun</em>}' class.
@@ -151,31 +160,22 @@ public interface V0Package extends EPackage
   int FUN = 3;
 
   /**
-   * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUN__EXPRESSIONS = ROOT_ELEMENT__EXPRESSIONS;
-
-  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUN__NAME = ROOT_ELEMENT_FEATURE_COUNT + 0;
+  int FUN__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Ret Type</b></em>' attribute.
+   * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUN__RET_TYPE = ROOT_ELEMENT_FEATURE_COUNT + 1;
+  int FUN__EXPRESSIONS = 1;
 
   /**
    * The number of structural features of the '<em>Fun</em>' class.
@@ -184,7 +184,7 @@ public interface V0Package extends EPackage
    * @generated
    * @ordered
    */
-  int FUN_FEATURE_COUNT = ROOT_ELEMENT_FEATURE_COUNT + 2;
+  int FUN_FEATURE_COUNT = 2;
 
   /**
    * The meta object id for the '{@link org.svlang.v0.v0.impl.ExpressionImpl <em>Expression</em>}' class.
@@ -225,7 +225,7 @@ public interface V0Package extends EPackage
   int ASSIGNMENT__NAME = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * The feature id for the '<em><b>Value</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -262,60 +262,41 @@ public interface V0Package extends EPackage
   int FUN_CALL__NAME = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUN_CALL__PARAMETERS = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
    * The number of structural features of the '<em>Fun Call</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUN_CALL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+  int FUN_CALL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.svlang.v0.v0.impl.ReturnImpl <em>Return</em>}' class.
+   * The meta object id for the '{@link org.svlang.v0.v0.impl.PrintlnImpl <em>Println</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.svlang.v0.v0.impl.ReturnImpl
-   * @see org.svlang.v0.v0.impl.V0PackageImpl#getReturn()
+   * @see org.svlang.v0.v0.impl.PrintlnImpl
+   * @see org.svlang.v0.v0.impl.V0PackageImpl#getPrintln()
    * @generated
    */
-  int RETURN = 8;
+  int PRINTLN = 7;
 
   /**
-   * The number of structural features of the '<em>Return</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int RETURN_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The meta object id for the '{@link org.svlang.v0.v0.impl.PassableImpl <em>Passable</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.svlang.v0.v0.impl.PassableImpl
-   * @see org.svlang.v0.v0.impl.V0PackageImpl#getPassable()
-   * @generated
-   */
-  int PASSABLE = 7;
-
-  /**
-   * The number of structural features of the '<em>Passable</em>' class.
+   * The feature id for the '<em><b>Values</b></em>' attribute list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PASSABLE_FEATURE_COUNT = RETURN_FEATURE_COUNT + 0;
+  int PRINTLN__VALUES = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Println</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PRINTLN_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
 
   /**
@@ -350,15 +331,26 @@ public interface V0Package extends EPackage
   EClass getRootElement();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.svlang.v0.v0.RootElement#getExpressions <em>Expressions</em>}'.
+   * Returns the meta object for the containment reference '{@link org.svlang.v0.v0.RootElement#getMain <em>Main</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Expressions</em>'.
-   * @see org.svlang.v0.v0.RootElement#getExpressions()
+   * @return the meta object for the containment reference '<em>Main</em>'.
+   * @see org.svlang.v0.v0.RootElement#getMain()
    * @see #getRootElement()
    * @generated
    */
-  EReference getRootElement_Expressions();
+  EReference getRootElement_Main();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.svlang.v0.v0.RootElement#getFuns <em>Funs</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Funs</em>'.
+   * @see org.svlang.v0.v0.RootElement#getFuns()
+   * @see #getRootElement()
+   * @generated
+   */
+  EReference getRootElement_Funs();
 
   /**
    * Returns the meta object for class '{@link org.svlang.v0.v0.Main <em>Main</em>}'.
@@ -369,6 +361,17 @@ public interface V0Package extends EPackage
    * @generated
    */
   EClass getMain();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.svlang.v0.v0.Main#getExpressions <em>Expressions</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Expressions</em>'.
+   * @see org.svlang.v0.v0.Main#getExpressions()
+   * @see #getMain()
+   * @generated
+   */
+  EReference getMain_Expressions();
 
   /**
    * Returns the meta object for class '{@link org.svlang.v0.v0.Fun <em>Fun</em>}'.
@@ -392,15 +395,15 @@ public interface V0Package extends EPackage
   EAttribute getFun_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link org.svlang.v0.v0.Fun#getRetType <em>Ret Type</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.svlang.v0.v0.Fun#getExpressions <em>Expressions</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Ret Type</em>'.
-   * @see org.svlang.v0.v0.Fun#getRetType()
+   * @return the meta object for the containment reference list '<em>Expressions</em>'.
+   * @see org.svlang.v0.v0.Fun#getExpressions()
    * @see #getFun()
    * @generated
    */
-  EAttribute getFun_RetType();
+  EReference getFun_Expressions();
 
   /**
    * Returns the meta object for class '{@link org.svlang.v0.v0.Expression <em>Expression</em>}'.
@@ -434,15 +437,15 @@ public interface V0Package extends EPackage
   EAttribute getAssignment_Name();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.svlang.v0.v0.Assignment#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link org.svlang.v0.v0.Assignment#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Value</em>'.
+   * @return the meta object for the attribute '<em>Value</em>'.
    * @see org.svlang.v0.v0.Assignment#getValue()
    * @see #getAssignment()
    * @generated
    */
-  EReference getAssignment_Value();
+  EAttribute getAssignment_Value();
 
   /**
    * Returns the meta object for class '{@link org.svlang.v0.v0.FunCall <em>Fun Call</em>}'.
@@ -466,35 +469,25 @@ public interface V0Package extends EPackage
   EAttribute getFunCall_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.svlang.v0.v0.FunCall#getParameters <em>Parameters</em>}'.
+   * Returns the meta object for class '{@link org.svlang.v0.v0.Println <em>Println</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Parameters</em>'.
-   * @see org.svlang.v0.v0.FunCall#getParameters()
-   * @see #getFunCall()
+   * @return the meta object for class '<em>Println</em>'.
+   * @see org.svlang.v0.v0.Println
    * @generated
    */
-  EReference getFunCall_Parameters();
+  EClass getPrintln();
 
   /**
-   * Returns the meta object for class '{@link org.svlang.v0.v0.Passable <em>Passable</em>}'.
+   * Returns the meta object for the attribute list '{@link org.svlang.v0.v0.Println#getValues <em>Values</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Passable</em>'.
-   * @see org.svlang.v0.v0.Passable
+   * @return the meta object for the attribute list '<em>Values</em>'.
+   * @see org.svlang.v0.v0.Println#getValues()
+   * @see #getPrintln()
    * @generated
    */
-  EClass getPassable();
-
-  /**
-   * Returns the meta object for class '{@link org.svlang.v0.v0.Return <em>Return</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Return</em>'.
-   * @see org.svlang.v0.v0.Return
-   * @generated
-   */
-  EClass getReturn();
+  EAttribute getPrintln_Values();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -548,12 +541,20 @@ public interface V0Package extends EPackage
     EClass ROOT_ELEMENT = eINSTANCE.getRootElement();
 
     /**
-     * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Main</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ROOT_ELEMENT__EXPRESSIONS = eINSTANCE.getRootElement_Expressions();
+    EReference ROOT_ELEMENT__MAIN = eINSTANCE.getRootElement_Main();
+
+    /**
+     * The meta object literal for the '<em><b>Funs</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ROOT_ELEMENT__FUNS = eINSTANCE.getRootElement_Funs();
 
     /**
      * The meta object literal for the '{@link org.svlang.v0.v0.impl.MainImpl <em>Main</em>}' class.
@@ -564,6 +565,14 @@ public interface V0Package extends EPackage
      * @generated
      */
     EClass MAIN = eINSTANCE.getMain();
+
+    /**
+     * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MAIN__EXPRESSIONS = eINSTANCE.getMain_Expressions();
 
     /**
      * The meta object literal for the '{@link org.svlang.v0.v0.impl.FunImpl <em>Fun</em>}' class.
@@ -584,12 +593,12 @@ public interface V0Package extends EPackage
     EAttribute FUN__NAME = eINSTANCE.getFun_Name();
 
     /**
-     * The meta object literal for the '<em><b>Ret Type</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FUN__RET_TYPE = eINSTANCE.getFun_RetType();
+    EReference FUN__EXPRESSIONS = eINSTANCE.getFun_Expressions();
 
     /**
      * The meta object literal for the '{@link org.svlang.v0.v0.impl.ExpressionImpl <em>Expression</em>}' class.
@@ -620,12 +629,12 @@ public interface V0Package extends EPackage
     EAttribute ASSIGNMENT__NAME = eINSTANCE.getAssignment_Name();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ASSIGNMENT__VALUE = eINSTANCE.getAssignment_Value();
+    EAttribute ASSIGNMENT__VALUE = eINSTANCE.getAssignment_Value();
 
     /**
      * The meta object literal for the '{@link org.svlang.v0.v0.impl.FunCallImpl <em>Fun Call</em>}' class.
@@ -646,32 +655,22 @@ public interface V0Package extends EPackage
     EAttribute FUN_CALL__NAME = eINSTANCE.getFunCall_Name();
 
     /**
-     * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
+     * The meta object literal for the '{@link org.svlang.v0.v0.impl.PrintlnImpl <em>Println</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see org.svlang.v0.v0.impl.PrintlnImpl
+     * @see org.svlang.v0.v0.impl.V0PackageImpl#getPrintln()
      * @generated
      */
-    EReference FUN_CALL__PARAMETERS = eINSTANCE.getFunCall_Parameters();
+    EClass PRINTLN = eINSTANCE.getPrintln();
 
     /**
-     * The meta object literal for the '{@link org.svlang.v0.v0.impl.PassableImpl <em>Passable</em>}' class.
+     * The meta object literal for the '<em><b>Values</b></em>' attribute list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.svlang.v0.v0.impl.PassableImpl
-     * @see org.svlang.v0.v0.impl.V0PackageImpl#getPassable()
      * @generated
      */
-    EClass PASSABLE = eINSTANCE.getPassable();
-
-    /**
-     * The meta object literal for the '{@link org.svlang.v0.v0.impl.ReturnImpl <em>Return</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.svlang.v0.v0.impl.ReturnImpl
-     * @see org.svlang.v0.v0.impl.V0PackageImpl#getReturn()
-     * @generated
-     */
-    EClass RETURN = eINSTANCE.getReturn();
+    EAttribute PRINTLN__VALUES = eINSTANCE.getPrintln_Values();
 
   }
 

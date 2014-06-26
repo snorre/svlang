@@ -1,0 +1,11 @@
+public class All {
+	
+	public static void main(String[] args) {
+		final int a = abc;
+		jalla();
+	} 
+	public static void jalla() {
+		final int b = hei;
+		System.out.println("noe mere");
+	}
+}

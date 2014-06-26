@@ -11,23 +11,26 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference V0.ecore#//Domainmodel/elements"/>
     </genClasses>
     <genClasses ecoreClass="V0.ecore#//RootElement">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference V0.ecore#//RootElement/expressions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference V0.ecore#//RootElement/main"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference V0.ecore#//RootElement/funs"/>
     </genClasses>
-    <genClasses ecoreClass="V0.ecore#//Main"/>
+    <genClasses ecoreClass="V0.ecore#//Main">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference V0.ecore#//Main/expressions"/>
+    </genClasses>
     <genClasses ecoreClass="V0.ecore#//Fun">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute V0.ecore#//Fun/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute V0.ecore#//Fun/retType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference V0.ecore#//Fun/expressions"/>
     </genClasses>
     <genClasses ecoreClass="V0.ecore#//Expression"/>
     <genClasses ecoreClass="V0.ecore#//Assignment">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute V0.ecore#//Assignment/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference V0.ecore#//Assignment/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute V0.ecore#//Assignment/value"/>
     </genClasses>
     <genClasses ecoreClass="V0.ecore#//FunCall">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute V0.ecore#//FunCall/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference V0.ecore#//FunCall/parameters"/>
     </genClasses>
-    <genClasses ecoreClass="V0.ecore#//Passable"/>
-    <genClasses ecoreClass="V0.ecore#//Return"/>
+    <genClasses ecoreClass="V0.ecore#//Println">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute V0.ecore#//Println/values"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

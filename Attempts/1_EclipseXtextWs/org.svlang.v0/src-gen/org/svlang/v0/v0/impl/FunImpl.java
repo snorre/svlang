@@ -2,12 +2,23 @@
  */
 package org.svlang.v0.v0.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
+
+import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
+
+import org.svlang.v0.v0.Expression;
 import org.svlang.v0.v0.Fun;
 import org.svlang.v0.v0.V0Package;
 
@@ -19,13 +30,13 @@ import org.svlang.v0.v0.V0Package;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.svlang.v0.v0.impl.FunImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.svlang.v0.v0.impl.FunImpl#getRetType <em>Ret Type</em>}</li>
+ *   <li>{@link org.svlang.v0.v0.impl.FunImpl#getExpressions <em>Expressions</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class FunImpl extends RootElementImpl implements Fun
+public class FunImpl extends MinimalEObjectImpl.Container implements Fun
 {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -48,24 +59,14 @@ public class FunImpl extends RootElementImpl implements Fun
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getRetType() <em>Ret Type</em>}' attribute.
+   * The cached value of the '{@link #getExpressions() <em>Expressions</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRetType()
+   * @see #getExpressions()
    * @generated
    * @ordered
    */
-  protected static final String RET_TYPE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getRetType() <em>Ret Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRetType()
-   * @generated
-   * @ordered
-   */
-  protected String retType = RET_TYPE_EDEFAULT;
+  protected EList<Expression> expressions;
 
   /**
    * <!-- begin-user-doc -->
@@ -116,9 +117,13 @@ public class FunImpl extends RootElementImpl implements Fun
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getRetType()
+  public EList<Expression> getExpressions()
   {
-    return retType;
+    if (expressions == null)
+    {
+      expressions = new EObjectContainmentEList<Expression>(Expression.class, this, V0Package.FUN__EXPRESSIONS);
+    }
+    return expressions;
   }
 
   /**
@@ -126,12 +131,15 @@ public class FunImpl extends RootElementImpl implements Fun
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRetType(String newRetType)
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    String oldRetType = retType;
-    retType = newRetType;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, V0Package.FUN__RET_TYPE, oldRetType, retType));
+    switch (featureID)
+    {
+      case V0Package.FUN__EXPRESSIONS:
+        return ((InternalEList<?>)getExpressions()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -146,8 +154,8 @@ public class FunImpl extends RootElementImpl implements Fun
     {
       case V0Package.FUN__NAME:
         return getName();
-      case V0Package.FUN__RET_TYPE:
-        return getRetType();
+      case V0Package.FUN__EXPRESSIONS:
+        return getExpressions();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -157,6 +165,7 @@ public class FunImpl extends RootElementImpl implements Fun
    * <!-- end-user-doc -->
    * @generated
    */
+  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
@@ -165,8 +174,9 @@ public class FunImpl extends RootElementImpl implements Fun
       case V0Package.FUN__NAME:
         setName((String)newValue);
         return;
-      case V0Package.FUN__RET_TYPE:
-        setRetType((String)newValue);
+      case V0Package.FUN__EXPRESSIONS:
+        getExpressions().clear();
+        getExpressions().addAll((Collection<? extends Expression>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -185,8 +195,8 @@ public class FunImpl extends RootElementImpl implements Fun
       case V0Package.FUN__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case V0Package.FUN__RET_TYPE:
-        setRetType(RET_TYPE_EDEFAULT);
+      case V0Package.FUN__EXPRESSIONS:
+        getExpressions().clear();
         return;
     }
     super.eUnset(featureID);
@@ -204,8 +214,8 @@ public class FunImpl extends RootElementImpl implements Fun
     {
       case V0Package.FUN__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case V0Package.FUN__RET_TYPE:
-        return RET_TYPE_EDEFAULT == null ? retType != null : !RET_TYPE_EDEFAULT.equals(retType);
+      case V0Package.FUN__EXPRESSIONS:
+        return expressions != null && !expressions.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -223,8 +233,6 @@ public class FunImpl extends RootElementImpl implements Fun
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
-    result.append(", retType: ");
-    result.append(retType);
     result.append(')');
     return result.toString();
   }

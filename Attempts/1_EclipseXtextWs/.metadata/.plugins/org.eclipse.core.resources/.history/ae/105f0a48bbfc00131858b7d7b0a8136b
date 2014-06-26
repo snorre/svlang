@@ -1,0 +1,36 @@
+grammar org.svlang.v0.V0 with org.eclipse.xtext.common.Terminals
+
+generate v0 "http://www.svlang.org/v0/V0"
+
+Domainmodel:
+	(elements += RootElement)*
+;
+
+RootElement:
+	(main = Main)
+	(funs += Fun)*
+;
+
+Main:
+	'main {'
+		(expressions += Expression)*
+	'}'
+;
+
+Fun:
+	'fun ' name=ID ' {'
+		(expressions += Expression)*
+	'}'
+;
+
+Expression:
+	Assignment | FunCall
+;
+
+Assignment:
+	name = ID ' = ' value = INT
+;
+
+FunCall:
+	name=ID '()'
+;

@@ -37,24 +37,23 @@ public class V0Parser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
-					put(grammarAccess.getRootElementAccess().getAlternatives(), "rule__RootElement__Alternatives");
 					put(grammarAccess.getExpressionAccess().getAlternatives(), "rule__Expression__Alternatives");
-					put(grammarAccess.getPassableAccess().getAlternatives(), "rule__Passable__Alternatives");
-					put(grammarAccess.getConstantsAccess().getAlternatives(), "rule__Constants__Alternatives");
+					put(grammarAccess.getRootElementAccess().getGroup(), "rule__RootElement__Group__0");
 					put(grammarAccess.getMainAccess().getGroup(), "rule__Main__Group__0");
 					put(grammarAccess.getFunAccess().getGroup(), "rule__Fun__Group__0");
 					put(grammarAccess.getAssignmentAccess().getGroup(), "rule__Assignment__Group__0");
 					put(grammarAccess.getFunCallAccess().getGroup(), "rule__FunCall__Group__0");
-					put(grammarAccess.getReturnAccess().getGroup(), "rule__Return__Group__0");
+					put(grammarAccess.getPrintlnAccess().getGroup(), "rule__Println__Group__0");
 					put(grammarAccess.getDomainmodelAccess().getElementsAssignment(), "rule__Domainmodel__ElementsAssignment");
-					put(grammarAccess.getMainAccess().getExpressionsAssignment_2(), "rule__Main__ExpressionsAssignment_2");
+					put(grammarAccess.getRootElementAccess().getMainAssignment_0(), "rule__RootElement__MainAssignment_0");
+					put(grammarAccess.getRootElementAccess().getFunsAssignment_1(), "rule__RootElement__FunsAssignment_1");
+					put(grammarAccess.getMainAccess().getExpressionsAssignment_1(), "rule__Main__ExpressionsAssignment_1");
 					put(grammarAccess.getFunAccess().getNameAssignment_1(), "rule__Fun__NameAssignment_1");
-					put(grammarAccess.getFunAccess().getRetTypeAssignment_3(), "rule__Fun__RetTypeAssignment_3");
-					put(grammarAccess.getFunAccess().getExpressionsAssignment_5(), "rule__Fun__ExpressionsAssignment_5");
+					put(grammarAccess.getFunAccess().getExpressionsAssignment_3(), "rule__Fun__ExpressionsAssignment_3");
 					put(grammarAccess.getAssignmentAccess().getNameAssignment_0(), "rule__Assignment__NameAssignment_0");
 					put(grammarAccess.getAssignmentAccess().getValueAssignment_2(), "rule__Assignment__ValueAssignment_2");
 					put(grammarAccess.getFunCallAccess().getNameAssignment_0(), "rule__FunCall__NameAssignment_0");
-					put(grammarAccess.getFunCallAccess().getParametersAssignment_2(), "rule__FunCall__ParametersAssignment_2");
+					put(grammarAccess.getPrintlnAccess().getValuesAssignment_1(), "rule__Println__ValuesAssignment_1");
 				}
 			};
 		}

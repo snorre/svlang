@@ -90,7 +90,6 @@ public class V0Switch<T> extends Switch<T>
       {
         Main main = (Main)theEObject;
         T result = caseMain(main);
-        if (result == null) result = caseRootElement(main);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -98,7 +97,6 @@ public class V0Switch<T> extends Switch<T>
       {
         Fun fun = (Fun)theEObject;
         T result = caseFun(fun);
-        if (result == null) result = caseRootElement(fun);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -121,26 +119,15 @@ public class V0Switch<T> extends Switch<T>
       {
         FunCall funCall = (FunCall)theEObject;
         T result = caseFunCall(funCall);
-        if (result == null) result = casePassable(funCall);
-        if (result == null) result = caseReturn(funCall);
         if (result == null) result = caseExpression(funCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case V0Package.PASSABLE:
+      case V0Package.PRINTLN:
       {
-        Passable passable = (Passable)theEObject;
-        T result = casePassable(passable);
-        if (result == null) result = caseReturn(passable);
-        if (result == null) result = caseExpression(passable);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case V0Package.RETURN:
-      {
-        Return return_ = (Return)theEObject;
-        T result = caseReturn(return_);
-        if (result == null) result = caseExpression(return_);
+        Println println = (Println)theEObject;
+        T result = casePrintln(println);
+        if (result == null) result = caseExpression(println);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -261,33 +248,17 @@ public class V0Switch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Passable</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Println</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Passable</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Println</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePassable(Passable object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Return</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Return</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseReturn(Return object)
+  public T casePrintln(Println object)
   {
     return null;
   }

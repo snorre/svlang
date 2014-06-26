@@ -1,0 +1,7 @@
+main {
+	
+}
+
+fun jalla:void {
+	a = 1
+}

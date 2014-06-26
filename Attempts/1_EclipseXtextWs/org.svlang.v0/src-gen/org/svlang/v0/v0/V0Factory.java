@@ -86,22 +86,13 @@ public interface V0Factory extends EFactory
   FunCall createFunCall();
 
   /**
-   * Returns a new object of class '<em>Passable</em>'.
+   * Returns a new object of class '<em>Println</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Passable</em>'.
+   * @return a new object of class '<em>Println</em>'.
    * @generated
    */
-  Passable createPassable();
-
-  /**
-   * Returns a new object of class '<em>Return</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Return</em>'.
-   * @generated
-   */
-  Return createReturn();
+  Println createPrintln();
 
   /**
    * Returns the package supported by this factory.

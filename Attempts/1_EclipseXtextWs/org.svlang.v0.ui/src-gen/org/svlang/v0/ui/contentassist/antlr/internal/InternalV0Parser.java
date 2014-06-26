@@ -22,11 +22,10 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalV0Parser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'main {'", "'}'", "'fun '", "':'", "' {'", "' = '", "'('", "')'", "'return '"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'main {'", "'}'", "'fun '", "' {'", "' = '", "'()'", "'pln('", "')'"
     };
-    public static final int T__19=19;
     public static final int RULE_ID=4;
-    public static final int RULE_STRING=6;
+    public static final int RULE_STRING=5;
     public static final int T__16=16;
     public static final int T__15=15;
     public static final int T__18=18;
@@ -36,7 +35,7 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
     public static final int T__14=14;
     public static final int T__13=13;
     public static final int RULE_ANY_OTHER=10;
-    public static final int RULE_INT=5;
+    public static final int RULE_INT=6;
     public static final int RULE_WS=9;
     public static final int RULE_SL_COMMENT=8;
     public static final int EOF=-1;
@@ -129,7 +128,7 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
                 int alt1=2;
                 int LA1_0 = input.LA(1);
 
-                if ( (LA1_0==11||LA1_0==13) ) {
+                if ( (LA1_0==11) ) {
                     alt1=1;
                 }
 
@@ -205,31 +204,31 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "ruleRootElement"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:97:1: ruleRootElement : ( ( rule__RootElement__Alternatives ) ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:97:1: ruleRootElement : ( ( rule__RootElement__Group__0 ) ) ;
     public final void ruleRootElement() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:101:2: ( ( ( rule__RootElement__Alternatives ) ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:102:1: ( ( rule__RootElement__Alternatives ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:101:2: ( ( ( rule__RootElement__Group__0 ) ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:102:1: ( ( rule__RootElement__Group__0 ) )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:102:1: ( ( rule__RootElement__Alternatives ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:103:1: ( rule__RootElement__Alternatives )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:102:1: ( ( rule__RootElement__Group__0 ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:103:1: ( rule__RootElement__Group__0 )
             {
-             before(grammarAccess.getRootElementAccess().getAlternatives()); 
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:104:1: ( rule__RootElement__Alternatives )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:104:2: rule__RootElement__Alternatives
+             before(grammarAccess.getRootElementAccess().getGroup()); 
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:104:1: ( rule__RootElement__Group__0 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:104:2: rule__RootElement__Group__0
             {
-            pushFollow(FOLLOW_rule__RootElement__Alternatives_in_ruleRootElement155);
-            rule__RootElement__Alternatives();
+            pushFollow(FOLLOW_rule__RootElement__Group__0_in_ruleRootElement155);
+            rule__RootElement__Group__0();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getRootElementAccess().getAlternatives()); 
+             after(grammarAccess.getRootElementAccess().getGroup()); 
 
             }
 
@@ -636,21 +635,21 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "ruleFunCall"
 
 
-    // $ANTLR start "entryRulePassable"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:256:1: entryRulePassable : rulePassable EOF ;
-    public final void entryRulePassable() throws RecognitionException {
+    // $ANTLR start "entryRulePrintln"
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:256:1: entryRulePrintln : rulePrintln EOF ;
+    public final void entryRulePrintln() throws RecognitionException {
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:257:1: ( rulePassable EOF )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:258:1: rulePassable EOF
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:257:1: ( rulePrintln EOF )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:258:1: rulePrintln EOF
             {
-             before(grammarAccess.getPassableRule()); 
-            pushFollow(FOLLOW_rulePassable_in_entryRulePassable482);
-            rulePassable();
+             before(grammarAccess.getPrintlnRule()); 
+            pushFollow(FOLLOW_rulePrintln_in_entryRulePrintln482);
+            rulePrintln();
 
             state._fsp--;
 
-             after(grammarAccess.getPassableRule()); 
-            match(input,EOF,FOLLOW_EOF_in_entryRulePassable489); 
+             after(grammarAccess.getPrintlnRule()); 
+            match(input,EOF,FOLLOW_EOF_in_entryRulePrintln489); 
 
             }
 
@@ -663,35 +662,35 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "entryRulePassable"
+    // $ANTLR end "entryRulePrintln"
 
 
-    // $ANTLR start "rulePassable"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:265:1: rulePassable : ( ( rule__Passable__Alternatives ) ) ;
-    public final void rulePassable() throws RecognitionException {
+    // $ANTLR start "rulePrintln"
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:265:1: rulePrintln : ( ( rule__Println__Group__0 ) ) ;
+    public final void rulePrintln() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:269:2: ( ( ( rule__Passable__Alternatives ) ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:270:1: ( ( rule__Passable__Alternatives ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:269:2: ( ( ( rule__Println__Group__0 ) ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:270:1: ( ( rule__Println__Group__0 ) )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:270:1: ( ( rule__Passable__Alternatives ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:271:1: ( rule__Passable__Alternatives )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:270:1: ( ( rule__Println__Group__0 ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:271:1: ( rule__Println__Group__0 )
             {
-             before(grammarAccess.getPassableAccess().getAlternatives()); 
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:272:1: ( rule__Passable__Alternatives )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:272:2: rule__Passable__Alternatives
+             before(grammarAccess.getPrintlnAccess().getGroup()); 
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:272:1: ( rule__Println__Group__0 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:272:2: rule__Println__Group__0
             {
-            pushFollow(FOLLOW_rule__Passable__Alternatives_in_rulePassable515);
-            rule__Passable__Alternatives();
+            pushFollow(FOLLOW_rule__Println__Group__0_in_rulePrintln515);
+            rule__Println__Group__0();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getPassableAccess().getAlternatives()); 
+             after(grammarAccess.getPrintlnAccess().getGroup()); 
 
             }
 
@@ -710,179 +709,38 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rulePassable"
+    // $ANTLR end "rulePrintln"
 
 
-    // $ANTLR start "entryRuleConstants"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:284:1: entryRuleConstants : ruleConstants EOF ;
-    public final void entryRuleConstants() throws RecognitionException {
-        try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:285:1: ( ruleConstants EOF )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:286:1: ruleConstants EOF
-            {
-             before(grammarAccess.getConstantsRule()); 
-            pushFollow(FOLLOW_ruleConstants_in_entryRuleConstants542);
-            ruleConstants();
-
-            state._fsp--;
-
-             after(grammarAccess.getConstantsRule()); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleConstants549); 
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return ;
-    }
-    // $ANTLR end "entryRuleConstants"
-
-
-    // $ANTLR start "ruleConstants"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:293:1: ruleConstants : ( ( rule__Constants__Alternatives ) ) ;
-    public final void ruleConstants() throws RecognitionException {
+    // $ANTLR start "rule__Expression__Alternatives"
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:284:1: rule__Expression__Alternatives : ( ( ruleAssignment ) | ( ruleFunCall ) | ( rulePrintln ) );
+    public final void rule__Expression__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:297:2: ( ( ( rule__Constants__Alternatives ) ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:298:1: ( ( rule__Constants__Alternatives ) )
-            {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:298:1: ( ( rule__Constants__Alternatives ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:299:1: ( rule__Constants__Alternatives )
-            {
-             before(grammarAccess.getConstantsAccess().getAlternatives()); 
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:300:1: ( rule__Constants__Alternatives )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:300:2: rule__Constants__Alternatives
-            {
-            pushFollow(FOLLOW_rule__Constants__Alternatives_in_ruleConstants575);
-            rule__Constants__Alternatives();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getConstantsAccess().getAlternatives()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "ruleConstants"
-
-
-    // $ANTLR start "entryRuleReturn"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:312:1: entryRuleReturn : ruleReturn EOF ;
-    public final void entryRuleReturn() throws RecognitionException {
-        try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:313:1: ( ruleReturn EOF )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:314:1: ruleReturn EOF
-            {
-             before(grammarAccess.getReturnRule()); 
-            pushFollow(FOLLOW_ruleReturn_in_entryRuleReturn602);
-            ruleReturn();
-
-            state._fsp--;
-
-             after(grammarAccess.getReturnRule()); 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleReturn609); 
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-        }
-        return ;
-    }
-    // $ANTLR end "entryRuleReturn"
-
-
-    // $ANTLR start "ruleReturn"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:321:1: ruleReturn : ( ( rule__Return__Group__0 ) ) ;
-    public final void ruleReturn() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:325:2: ( ( ( rule__Return__Group__0 ) ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:326:1: ( ( rule__Return__Group__0 ) )
-            {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:326:1: ( ( rule__Return__Group__0 ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:327:1: ( rule__Return__Group__0 )
-            {
-             before(grammarAccess.getReturnAccess().getGroup()); 
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:328:1: ( rule__Return__Group__0 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:328:2: rule__Return__Group__0
-            {
-            pushFollow(FOLLOW_rule__Return__Group__0_in_ruleReturn635);
-            rule__Return__Group__0();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getReturnAccess().getGroup()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "ruleReturn"
-
-
-    // $ANTLR start "rule__RootElement__Alternatives"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:340:1: rule__RootElement__Alternatives : ( ( ruleMain ) | ( ruleFun ) );
-    public final void rule__RootElement__Alternatives() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:344:1: ( ( ruleMain ) | ( ruleFun ) )
-            int alt2=2;
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:288:1: ( ( ruleAssignment ) | ( ruleFunCall ) | ( rulePrintln ) )
+            int alt2=3;
             int LA2_0 = input.LA(1);
 
-            if ( (LA2_0==11) ) {
-                alt2=1;
+            if ( (LA2_0==RULE_ID) ) {
+                int LA2_1 = input.LA(2);
+
+                if ( (LA2_1==16) ) {
+                    alt2=2;
+                }
+                else if ( (LA2_1==15) ) {
+                    alt2=1;
+                }
+                else {
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 2, 1, input);
+
+                    throw nvae;
+                }
             }
-            else if ( (LA2_0==13) ) {
-                alt2=2;
+            else if ( (LA2_0==17) ) {
+                alt2=3;
             }
             else {
                 NoViableAltException nvae =
@@ -892,105 +750,13 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
             }
             switch (alt2) {
                 case 1 :
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:345:1: ( ruleMain )
+                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:289:1: ( ruleAssignment )
                     {
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:345:1: ( ruleMain )
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:346:1: ruleMain
-                    {
-                     before(grammarAccess.getRootElementAccess().getMainParserRuleCall_0()); 
-                    pushFollow(FOLLOW_ruleMain_in_rule__RootElement__Alternatives671);
-                    ruleMain();
-
-                    state._fsp--;
-
-                     after(grammarAccess.getRootElementAccess().getMainParserRuleCall_0()); 
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:351:6: ( ruleFun )
-                    {
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:351:6: ( ruleFun )
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:352:1: ruleFun
-                    {
-                     before(grammarAccess.getRootElementAccess().getFunParserRuleCall_1()); 
-                    pushFollow(FOLLOW_ruleFun_in_rule__RootElement__Alternatives688);
-                    ruleFun();
-
-                    state._fsp--;
-
-                     after(grammarAccess.getRootElementAccess().getFunParserRuleCall_1()); 
-
-                    }
-
-
-                    }
-                    break;
-
-            }
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__RootElement__Alternatives"
-
-
-    // $ANTLR start "rule__Expression__Alternatives"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:362:1: rule__Expression__Alternatives : ( ( ruleAssignment ) | ( ruleFunCall ) | ( ruleReturn ) );
-    public final void rule__Expression__Alternatives() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:366:1: ( ( ruleAssignment ) | ( ruleFunCall ) | ( ruleReturn ) )
-            int alt3=3;
-            int LA3_0 = input.LA(1);
-
-            if ( (LA3_0==RULE_ID) ) {
-                int LA3_1 = input.LA(2);
-
-                if ( (LA3_1==16) ) {
-                    alt3=1;
-                }
-                else if ( (LA3_1==17) ) {
-                    alt3=2;
-                }
-                else {
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 3, 1, input);
-
-                    throw nvae;
-                }
-            }
-            else if ( (LA3_0==19) ) {
-                alt3=3;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 3, 0, input);
-
-                throw nvae;
-            }
-            switch (alt3) {
-                case 1 :
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:367:1: ( ruleAssignment )
-                    {
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:367:1: ( ruleAssignment )
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:368:1: ruleAssignment
+                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:289:1: ( ruleAssignment )
+                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:290:1: ruleAssignment
                     {
                      before(grammarAccess.getExpressionAccess().getAssignmentParserRuleCall_0()); 
-                    pushFollow(FOLLOW_ruleAssignment_in_rule__Expression__Alternatives720);
+                    pushFollow(FOLLOW_ruleAssignment_in_rule__Expression__Alternatives551);
                     ruleAssignment();
 
                     state._fsp--;
@@ -1003,13 +769,13 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 2 :
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:373:6: ( ruleFunCall )
+                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:295:6: ( ruleFunCall )
                     {
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:373:6: ( ruleFunCall )
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:374:1: ruleFunCall
+                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:295:6: ( ruleFunCall )
+                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:296:1: ruleFunCall
                     {
                      before(grammarAccess.getExpressionAccess().getFunCallParserRuleCall_1()); 
-                    pushFollow(FOLLOW_ruleFunCall_in_rule__Expression__Alternatives737);
+                    pushFollow(FOLLOW_ruleFunCall_in_rule__Expression__Alternatives568);
                     ruleFunCall();
 
                     state._fsp--;
@@ -1022,18 +788,18 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
                     }
                     break;
                 case 3 :
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:379:6: ( ruleReturn )
+                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:301:6: ( rulePrintln )
                     {
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:379:6: ( ruleReturn )
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:380:1: ruleReturn
+                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:301:6: ( rulePrintln )
+                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:302:1: rulePrintln
                     {
-                     before(grammarAccess.getExpressionAccess().getReturnParserRuleCall_2()); 
-                    pushFollow(FOLLOW_ruleReturn_in_rule__Expression__Alternatives754);
-                    ruleReturn();
+                     before(grammarAccess.getExpressionAccess().getPrintlnParserRuleCall_2()); 
+                    pushFollow(FOLLOW_rulePrintln_in_rule__Expression__Alternatives585);
+                    rulePrintln();
 
                     state._fsp--;
 
-                     after(grammarAccess.getExpressionAccess().getReturnParserRuleCall_2()); 
+                     after(grammarAccess.getExpressionAccess().getPrintlnParserRuleCall_2()); 
 
                     }
 
@@ -1057,98 +823,29 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Expression__Alternatives"
 
 
-    // $ANTLR start "rule__Passable__Alternatives"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:390:1: rule__Passable__Alternatives : ( ( ruleConstants ) | ( RULE_ID ) | ( ruleFunCall ) );
-    public final void rule__Passable__Alternatives() throws RecognitionException {
+    // $ANTLR start "rule__RootElement__Group__0"
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:314:1: rule__RootElement__Group__0 : rule__RootElement__Group__0__Impl rule__RootElement__Group__1 ;
+    public final void rule__RootElement__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:394:1: ( ( ruleConstants ) | ( RULE_ID ) | ( ruleFunCall ) )
-            int alt4=3;
-            int LA4_0 = input.LA(1);
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:318:1: ( rule__RootElement__Group__0__Impl rule__RootElement__Group__1 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:319:2: rule__RootElement__Group__0__Impl rule__RootElement__Group__1
+            {
+            pushFollow(FOLLOW_rule__RootElement__Group__0__Impl_in_rule__RootElement__Group__0615);
+            rule__RootElement__Group__0__Impl();
 
-            if ( ((LA4_0>=RULE_INT && LA4_0<=RULE_STRING)) ) {
-                alt4=1;
-            }
-            else if ( (LA4_0==RULE_ID) ) {
-                int LA4_2 = input.LA(2);
+            state._fsp--;
 
-                if ( (LA4_2==17) ) {
-                    alt4=3;
-                }
-                else if ( (LA4_2==EOF||(LA4_2>=RULE_ID && LA4_2<=RULE_STRING)||LA4_2==12||(LA4_2>=18 && LA4_2<=19)) ) {
-                    alt4=2;
-                }
-                else {
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 4, 2, input);
+            pushFollow(FOLLOW_rule__RootElement__Group__1_in_rule__RootElement__Group__0618);
+            rule__RootElement__Group__1();
 
-                    throw nvae;
-                }
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 4, 0, input);
+            state._fsp--;
 
-                throw nvae;
-            }
-            switch (alt4) {
-                case 1 :
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:395:1: ( ruleConstants )
-                    {
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:395:1: ( ruleConstants )
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:396:1: ruleConstants
-                    {
-                     before(grammarAccess.getPassableAccess().getConstantsParserRuleCall_0()); 
-                    pushFollow(FOLLOW_ruleConstants_in_rule__Passable__Alternatives786);
-                    ruleConstants();
-
-                    state._fsp--;
-
-                     after(grammarAccess.getPassableAccess().getConstantsParserRuleCall_0()); 
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:401:6: ( RULE_ID )
-                    {
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:401:6: ( RULE_ID )
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:402:1: RULE_ID
-                    {
-                     before(grammarAccess.getPassableAccess().getIDTerminalRuleCall_1()); 
-                    match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Passable__Alternatives803); 
-                     after(grammarAccess.getPassableAccess().getIDTerminalRuleCall_1()); 
-
-                    }
-
-
-                    }
-                    break;
-                case 3 :
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:407:6: ( ruleFunCall )
-                    {
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:407:6: ( ruleFunCall )
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:408:1: ruleFunCall
-                    {
-                     before(grammarAccess.getPassableAccess().getFunCallParserRuleCall_2()); 
-                    pushFollow(FOLLOW_ruleFunCall_in_rule__Passable__Alternatives820);
-                    ruleFunCall();
-
-                    state._fsp--;
-
-                     after(grammarAccess.getPassableAccess().getFunCallParserRuleCall_2()); 
-
-                    }
-
-
-                    }
-                    break;
 
             }
+
         }
         catch (RecognitionException re) {
             reportError(re);
@@ -1161,65 +858,41 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Passable__Alternatives"
+    // $ANTLR end "rule__RootElement__Group__0"
 
 
-    // $ANTLR start "rule__Constants__Alternatives"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:418:1: rule__Constants__Alternatives : ( ( RULE_INT ) | ( RULE_STRING ) );
-    public final void rule__Constants__Alternatives() throws RecognitionException {
+    // $ANTLR start "rule__RootElement__Group__0__Impl"
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:326:1: rule__RootElement__Group__0__Impl : ( ( rule__RootElement__MainAssignment_0 ) ) ;
+    public final void rule__RootElement__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:422:1: ( ( RULE_INT ) | ( RULE_STRING ) )
-            int alt5=2;
-            int LA5_0 = input.LA(1);
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:330:1: ( ( ( rule__RootElement__MainAssignment_0 ) ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:331:1: ( ( rule__RootElement__MainAssignment_0 ) )
+            {
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:331:1: ( ( rule__RootElement__MainAssignment_0 ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:332:1: ( rule__RootElement__MainAssignment_0 )
+            {
+             before(grammarAccess.getRootElementAccess().getMainAssignment_0()); 
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:333:1: ( rule__RootElement__MainAssignment_0 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:333:2: rule__RootElement__MainAssignment_0
+            {
+            pushFollow(FOLLOW_rule__RootElement__MainAssignment_0_in_rule__RootElement__Group__0__Impl645);
+            rule__RootElement__MainAssignment_0();
 
-            if ( (LA5_0==RULE_INT) ) {
-                alt5=1;
-            }
-            else if ( (LA5_0==RULE_STRING) ) {
-                alt5=2;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 5, 0, input);
+            state._fsp--;
 
-                throw nvae;
-            }
-            switch (alt5) {
-                case 1 :
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:423:1: ( RULE_INT )
-                    {
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:423:1: ( RULE_INT )
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:424:1: RULE_INT
-                    {
-                     before(grammarAccess.getConstantsAccess().getINTTerminalRuleCall_0()); 
-                    match(input,RULE_INT,FOLLOW_RULE_INT_in_rule__Constants__Alternatives852); 
-                     after(grammarAccess.getConstantsAccess().getINTTerminalRuleCall_0()); 
-
-                    }
-
-
-                    }
-                    break;
-                case 2 :
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:429:6: ( RULE_STRING )
-                    {
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:429:6: ( RULE_STRING )
-                    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:430:1: RULE_STRING
-                    {
-                     before(grammarAccess.getConstantsAccess().getSTRINGTerminalRuleCall_1()); 
-                    match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Constants__Alternatives869); 
-                     after(grammarAccess.getConstantsAccess().getSTRINGTerminalRuleCall_1()); 
-
-                    }
-
-
-                    }
-                    break;
 
             }
+
+             after(grammarAccess.getRootElementAccess().getMainAssignment_0()); 
+
+            }
+
+
+            }
+
         }
         catch (RecognitionException re) {
             reportError(re);
@@ -1232,25 +905,123 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Constants__Alternatives"
+    // $ANTLR end "rule__RootElement__Group__0__Impl"
+
+
+    // $ANTLR start "rule__RootElement__Group__1"
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:343:1: rule__RootElement__Group__1 : rule__RootElement__Group__1__Impl ;
+    public final void rule__RootElement__Group__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:347:1: ( rule__RootElement__Group__1__Impl )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:348:2: rule__RootElement__Group__1__Impl
+            {
+            pushFollow(FOLLOW_rule__RootElement__Group__1__Impl_in_rule__RootElement__Group__1675);
+            rule__RootElement__Group__1__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__RootElement__Group__1"
+
+
+    // $ANTLR start "rule__RootElement__Group__1__Impl"
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:354:1: rule__RootElement__Group__1__Impl : ( ( rule__RootElement__FunsAssignment_1 )* ) ;
+    public final void rule__RootElement__Group__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:358:1: ( ( ( rule__RootElement__FunsAssignment_1 )* ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:359:1: ( ( rule__RootElement__FunsAssignment_1 )* )
+            {
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:359:1: ( ( rule__RootElement__FunsAssignment_1 )* )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:360:1: ( rule__RootElement__FunsAssignment_1 )*
+            {
+             before(grammarAccess.getRootElementAccess().getFunsAssignment_1()); 
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:361:1: ( rule__RootElement__FunsAssignment_1 )*
+            loop3:
+            do {
+                int alt3=2;
+                int LA3_0 = input.LA(1);
+
+                if ( (LA3_0==13) ) {
+                    alt3=1;
+                }
+
+
+                switch (alt3) {
+            	case 1 :
+            	    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:361:2: rule__RootElement__FunsAssignment_1
+            	    {
+            	    pushFollow(FOLLOW_rule__RootElement__FunsAssignment_1_in_rule__RootElement__Group__1__Impl702);
+            	    rule__RootElement__FunsAssignment_1();
+
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop3;
+                }
+            } while (true);
+
+             after(grammarAccess.getRootElementAccess().getFunsAssignment_1()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__RootElement__Group__1__Impl"
 
 
     // $ANTLR start "rule__Main__Group__0"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:442:1: rule__Main__Group__0 : rule__Main__Group__0__Impl rule__Main__Group__1 ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:375:1: rule__Main__Group__0 : rule__Main__Group__0__Impl rule__Main__Group__1 ;
     public final void rule__Main__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:446:1: ( rule__Main__Group__0__Impl rule__Main__Group__1 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:447:2: rule__Main__Group__0__Impl rule__Main__Group__1
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:379:1: ( rule__Main__Group__0__Impl rule__Main__Group__1 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:380:2: rule__Main__Group__0__Impl rule__Main__Group__1
             {
-            pushFollow(FOLLOW_rule__Main__Group__0__Impl_in_rule__Main__Group__0899);
+            pushFollow(FOLLOW_rule__Main__Group__0__Impl_in_rule__Main__Group__0737);
             rule__Main__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Main__Group__1_in_rule__Main__Group__0902);
+            pushFollow(FOLLOW_rule__Main__Group__1_in_rule__Main__Group__0740);
             rule__Main__Group__1();
 
             state._fsp--;
@@ -1274,20 +1045,20 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Main__Group__0__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:454:1: rule__Main__Group__0__Impl : ( 'main {' ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:387:1: rule__Main__Group__0__Impl : ( 'main {' ) ;
     public final void rule__Main__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:458:1: ( ( 'main {' ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:459:1: ( 'main {' )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:391:1: ( ( 'main {' ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:392:1: ( 'main {' )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:459:1: ( 'main {' )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:460:1: 'main {'
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:392:1: ( 'main {' )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:393:1: 'main {'
             {
              before(grammarAccess.getMainAccess().getMainKeyword_0()); 
-            match(input,11,FOLLOW_11_in_rule__Main__Group__0__Impl930); 
+            match(input,11,FOLLOW_11_in_rule__Main__Group__0__Impl768); 
              after(grammarAccess.getMainAccess().getMainKeyword_0()); 
 
             }
@@ -1311,21 +1082,21 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Main__Group__1"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:473:1: rule__Main__Group__1 : rule__Main__Group__1__Impl rule__Main__Group__2 ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:406:1: rule__Main__Group__1 : rule__Main__Group__1__Impl rule__Main__Group__2 ;
     public final void rule__Main__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:477:1: ( rule__Main__Group__1__Impl rule__Main__Group__2 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:478:2: rule__Main__Group__1__Impl rule__Main__Group__2
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:410:1: ( rule__Main__Group__1__Impl rule__Main__Group__2 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:411:2: rule__Main__Group__1__Impl rule__Main__Group__2
             {
-            pushFollow(FOLLOW_rule__Main__Group__1__Impl_in_rule__Main__Group__1961);
+            pushFollow(FOLLOW_rule__Main__Group__1__Impl_in_rule__Main__Group__1799);
             rule__Main__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Main__Group__2_in_rule__Main__Group__1964);
+            pushFollow(FOLLOW_rule__Main__Group__2_in_rule__Main__Group__1802);
             rule__Main__Group__2();
 
             state._fsp--;
@@ -1349,31 +1120,59 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Main__Group__1__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:485:1: rule__Main__Group__1__Impl : ( () ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:418:1: rule__Main__Group__1__Impl : ( ( rule__Main__ExpressionsAssignment_1 )* ) ;
     public final void rule__Main__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:489:1: ( ( () ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:490:1: ( () )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:422:1: ( ( ( rule__Main__ExpressionsAssignment_1 )* ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:423:1: ( ( rule__Main__ExpressionsAssignment_1 )* )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:490:1: ( () )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:491:1: ()
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:423:1: ( ( rule__Main__ExpressionsAssignment_1 )* )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:424:1: ( rule__Main__ExpressionsAssignment_1 )*
             {
-             before(grammarAccess.getMainAccess().getMainAction_1()); 
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:492:1: ()
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:494:1: 
-            {
+             before(grammarAccess.getMainAccess().getExpressionsAssignment_1()); 
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:425:1: ( rule__Main__ExpressionsAssignment_1 )*
+            loop4:
+            do {
+                int alt4=2;
+                int LA4_0 = input.LA(1);
+
+                if ( (LA4_0==RULE_ID||LA4_0==17) ) {
+                    alt4=1;
+                }
+
+
+                switch (alt4) {
+            	case 1 :
+            	    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:425:2: rule__Main__ExpressionsAssignment_1
+            	    {
+            	    pushFollow(FOLLOW_rule__Main__ExpressionsAssignment_1_in_rule__Main__Group__1__Impl829);
+            	    rule__Main__ExpressionsAssignment_1();
+
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop4;
+                }
+            } while (true);
+
+             after(grammarAccess.getMainAccess().getExpressionsAssignment_1()); 
+
             }
 
-             after(grammarAccess.getMainAccess().getMainAction_1()); 
 
             }
 
-
-            }
-
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
         }
         finally {
 
@@ -1386,22 +1185,17 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Main__Group__2"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:504:1: rule__Main__Group__2 : rule__Main__Group__2__Impl rule__Main__Group__3 ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:435:1: rule__Main__Group__2 : rule__Main__Group__2__Impl ;
     public final void rule__Main__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:508:1: ( rule__Main__Group__2__Impl rule__Main__Group__3 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:509:2: rule__Main__Group__2__Impl rule__Main__Group__3
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:439:1: ( rule__Main__Group__2__Impl )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:440:2: rule__Main__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__Main__Group__2__Impl_in_rule__Main__Group__21022);
+            pushFollow(FOLLOW_rule__Main__Group__2__Impl_in_rule__Main__Group__2860);
             rule__Main__Group__2__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_rule__Main__Group__3_in_rule__Main__Group__21025);
-            rule__Main__Group__3();
 
             state._fsp--;
 
@@ -1424,49 +1218,21 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Main__Group__2__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:516:1: rule__Main__Group__2__Impl : ( ( rule__Main__ExpressionsAssignment_2 )* ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:446:1: rule__Main__Group__2__Impl : ( '}' ) ;
     public final void rule__Main__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:520:1: ( ( ( rule__Main__ExpressionsAssignment_2 )* ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:521:1: ( ( rule__Main__ExpressionsAssignment_2 )* )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:450:1: ( ( '}' ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:451:1: ( '}' )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:521:1: ( ( rule__Main__ExpressionsAssignment_2 )* )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:522:1: ( rule__Main__ExpressionsAssignment_2 )*
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:451:1: ( '}' )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:452:1: '}'
             {
-             before(grammarAccess.getMainAccess().getExpressionsAssignment_2()); 
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:523:1: ( rule__Main__ExpressionsAssignment_2 )*
-            loop6:
-            do {
-                int alt6=2;
-                int LA6_0 = input.LA(1);
-
-                if ( (LA6_0==RULE_ID||LA6_0==19) ) {
-                    alt6=1;
-                }
-
-
-                switch (alt6) {
-            	case 1 :
-            	    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:523:2: rule__Main__ExpressionsAssignment_2
-            	    {
-            	    pushFollow(FOLLOW_rule__Main__ExpressionsAssignment_2_in_rule__Main__Group__2__Impl1052);
-            	    rule__Main__ExpressionsAssignment_2();
-
-            	    state._fsp--;
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop6;
-                }
-            } while (true);
-
-             after(grammarAccess.getMainAccess().getExpressionsAssignment_2()); 
+             before(grammarAccess.getMainAccess().getRightCurlyBracketKeyword_2()); 
+            match(input,12,FOLLOW_12_in_rule__Main__Group__2__Impl888); 
+             after(grammarAccess.getMainAccess().getRightCurlyBracketKeyword_2()); 
 
             }
 
@@ -1488,92 +1254,22 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Main__Group__2__Impl"
 
 
-    // $ANTLR start "rule__Main__Group__3"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:533:1: rule__Main__Group__3 : rule__Main__Group__3__Impl ;
-    public final void rule__Main__Group__3() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:537:1: ( rule__Main__Group__3__Impl )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:538:2: rule__Main__Group__3__Impl
-            {
-            pushFollow(FOLLOW_rule__Main__Group__3__Impl_in_rule__Main__Group__31083);
-            rule__Main__Group__3__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Main__Group__3"
-
-
-    // $ANTLR start "rule__Main__Group__3__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:544:1: rule__Main__Group__3__Impl : ( '}' ) ;
-    public final void rule__Main__Group__3__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:548:1: ( ( '}' ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:549:1: ( '}' )
-            {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:549:1: ( '}' )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:550:1: '}'
-            {
-             before(grammarAccess.getMainAccess().getRightCurlyBracketKeyword_3()); 
-            match(input,12,FOLLOW_12_in_rule__Main__Group__3__Impl1111); 
-             after(grammarAccess.getMainAccess().getRightCurlyBracketKeyword_3()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Main__Group__3__Impl"
-
-
     // $ANTLR start "rule__Fun__Group__0"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:571:1: rule__Fun__Group__0 : rule__Fun__Group__0__Impl rule__Fun__Group__1 ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:471:1: rule__Fun__Group__0 : rule__Fun__Group__0__Impl rule__Fun__Group__1 ;
     public final void rule__Fun__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:575:1: ( rule__Fun__Group__0__Impl rule__Fun__Group__1 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:576:2: rule__Fun__Group__0__Impl rule__Fun__Group__1
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:475:1: ( rule__Fun__Group__0__Impl rule__Fun__Group__1 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:476:2: rule__Fun__Group__0__Impl rule__Fun__Group__1
             {
-            pushFollow(FOLLOW_rule__Fun__Group__0__Impl_in_rule__Fun__Group__01150);
+            pushFollow(FOLLOW_rule__Fun__Group__0__Impl_in_rule__Fun__Group__0925);
             rule__Fun__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Fun__Group__1_in_rule__Fun__Group__01153);
+            pushFollow(FOLLOW_rule__Fun__Group__1_in_rule__Fun__Group__0928);
             rule__Fun__Group__1();
 
             state._fsp--;
@@ -1597,20 +1293,20 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Fun__Group__0__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:583:1: rule__Fun__Group__0__Impl : ( 'fun ' ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:483:1: rule__Fun__Group__0__Impl : ( 'fun ' ) ;
     public final void rule__Fun__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:587:1: ( ( 'fun ' ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:588:1: ( 'fun ' )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:487:1: ( ( 'fun ' ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:488:1: ( 'fun ' )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:588:1: ( 'fun ' )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:589:1: 'fun '
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:488:1: ( 'fun ' )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:489:1: 'fun '
             {
              before(grammarAccess.getFunAccess().getFunKeyword_0()); 
-            match(input,13,FOLLOW_13_in_rule__Fun__Group__0__Impl1181); 
+            match(input,13,FOLLOW_13_in_rule__Fun__Group__0__Impl956); 
              after(grammarAccess.getFunAccess().getFunKeyword_0()); 
 
             }
@@ -1634,21 +1330,21 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Fun__Group__1"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:602:1: rule__Fun__Group__1 : rule__Fun__Group__1__Impl rule__Fun__Group__2 ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:502:1: rule__Fun__Group__1 : rule__Fun__Group__1__Impl rule__Fun__Group__2 ;
     public final void rule__Fun__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:606:1: ( rule__Fun__Group__1__Impl rule__Fun__Group__2 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:607:2: rule__Fun__Group__1__Impl rule__Fun__Group__2
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:506:1: ( rule__Fun__Group__1__Impl rule__Fun__Group__2 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:507:2: rule__Fun__Group__1__Impl rule__Fun__Group__2
             {
-            pushFollow(FOLLOW_rule__Fun__Group__1__Impl_in_rule__Fun__Group__11212);
+            pushFollow(FOLLOW_rule__Fun__Group__1__Impl_in_rule__Fun__Group__1987);
             rule__Fun__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Fun__Group__2_in_rule__Fun__Group__11215);
+            pushFollow(FOLLOW_rule__Fun__Group__2_in_rule__Fun__Group__1990);
             rule__Fun__Group__2();
 
             state._fsp--;
@@ -1672,23 +1368,23 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Fun__Group__1__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:614:1: rule__Fun__Group__1__Impl : ( ( rule__Fun__NameAssignment_1 ) ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:514:1: rule__Fun__Group__1__Impl : ( ( rule__Fun__NameAssignment_1 ) ) ;
     public final void rule__Fun__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:618:1: ( ( ( rule__Fun__NameAssignment_1 ) ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:619:1: ( ( rule__Fun__NameAssignment_1 ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:518:1: ( ( ( rule__Fun__NameAssignment_1 ) ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:519:1: ( ( rule__Fun__NameAssignment_1 ) )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:619:1: ( ( rule__Fun__NameAssignment_1 ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:620:1: ( rule__Fun__NameAssignment_1 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:519:1: ( ( rule__Fun__NameAssignment_1 ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:520:1: ( rule__Fun__NameAssignment_1 )
             {
              before(grammarAccess.getFunAccess().getNameAssignment_1()); 
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:621:1: ( rule__Fun__NameAssignment_1 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:621:2: rule__Fun__NameAssignment_1
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:521:1: ( rule__Fun__NameAssignment_1 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:521:2: rule__Fun__NameAssignment_1
             {
-            pushFollow(FOLLOW_rule__Fun__NameAssignment_1_in_rule__Fun__Group__1__Impl1242);
+            pushFollow(FOLLOW_rule__Fun__NameAssignment_1_in_rule__Fun__Group__1__Impl1017);
             rule__Fun__NameAssignment_1();
 
             state._fsp--;
@@ -1719,21 +1415,21 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Fun__Group__2"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:631:1: rule__Fun__Group__2 : rule__Fun__Group__2__Impl rule__Fun__Group__3 ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:531:1: rule__Fun__Group__2 : rule__Fun__Group__2__Impl rule__Fun__Group__3 ;
     public final void rule__Fun__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:635:1: ( rule__Fun__Group__2__Impl rule__Fun__Group__3 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:636:2: rule__Fun__Group__2__Impl rule__Fun__Group__3
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:535:1: ( rule__Fun__Group__2__Impl rule__Fun__Group__3 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:536:2: rule__Fun__Group__2__Impl rule__Fun__Group__3
             {
-            pushFollow(FOLLOW_rule__Fun__Group__2__Impl_in_rule__Fun__Group__21272);
+            pushFollow(FOLLOW_rule__Fun__Group__2__Impl_in_rule__Fun__Group__21047);
             rule__Fun__Group__2__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Fun__Group__3_in_rule__Fun__Group__21275);
+            pushFollow(FOLLOW_rule__Fun__Group__3_in_rule__Fun__Group__21050);
             rule__Fun__Group__3();
 
             state._fsp--;
@@ -1757,21 +1453,21 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Fun__Group__2__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:643:1: rule__Fun__Group__2__Impl : ( ':' ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:543:1: rule__Fun__Group__2__Impl : ( ' {' ) ;
     public final void rule__Fun__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:647:1: ( ( ':' ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:648:1: ( ':' )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:547:1: ( ( ' {' ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:548:1: ( ' {' )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:648:1: ( ':' )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:649:1: ':'
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:548:1: ( ' {' )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:549:1: ' {'
             {
-             before(grammarAccess.getFunAccess().getColonKeyword_2()); 
-            match(input,14,FOLLOW_14_in_rule__Fun__Group__2__Impl1303); 
-             after(grammarAccess.getFunAccess().getColonKeyword_2()); 
+             before(grammarAccess.getFunAccess().getSpaceLeftCurlyBracketKeyword_2()); 
+            match(input,14,FOLLOW_14_in_rule__Fun__Group__2__Impl1078); 
+             after(grammarAccess.getFunAccess().getSpaceLeftCurlyBracketKeyword_2()); 
 
             }
 
@@ -1794,21 +1490,21 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Fun__Group__3"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:662:1: rule__Fun__Group__3 : rule__Fun__Group__3__Impl rule__Fun__Group__4 ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:562:1: rule__Fun__Group__3 : rule__Fun__Group__3__Impl rule__Fun__Group__4 ;
     public final void rule__Fun__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:666:1: ( rule__Fun__Group__3__Impl rule__Fun__Group__4 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:667:2: rule__Fun__Group__3__Impl rule__Fun__Group__4
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:566:1: ( rule__Fun__Group__3__Impl rule__Fun__Group__4 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:567:2: rule__Fun__Group__3__Impl rule__Fun__Group__4
             {
-            pushFollow(FOLLOW_rule__Fun__Group__3__Impl_in_rule__Fun__Group__31334);
+            pushFollow(FOLLOW_rule__Fun__Group__3__Impl_in_rule__Fun__Group__31109);
             rule__Fun__Group__3__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Fun__Group__4_in_rule__Fun__Group__31337);
+            pushFollow(FOLLOW_rule__Fun__Group__4_in_rule__Fun__Group__31112);
             rule__Fun__Group__4();
 
             state._fsp--;
@@ -1832,31 +1528,49 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Fun__Group__3__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:674:1: rule__Fun__Group__3__Impl : ( ( rule__Fun__RetTypeAssignment_3 ) ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:574:1: rule__Fun__Group__3__Impl : ( ( rule__Fun__ExpressionsAssignment_3 )* ) ;
     public final void rule__Fun__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:678:1: ( ( ( rule__Fun__RetTypeAssignment_3 ) ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:679:1: ( ( rule__Fun__RetTypeAssignment_3 ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:578:1: ( ( ( rule__Fun__ExpressionsAssignment_3 )* ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:579:1: ( ( rule__Fun__ExpressionsAssignment_3 )* )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:679:1: ( ( rule__Fun__RetTypeAssignment_3 ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:680:1: ( rule__Fun__RetTypeAssignment_3 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:579:1: ( ( rule__Fun__ExpressionsAssignment_3 )* )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:580:1: ( rule__Fun__ExpressionsAssignment_3 )*
             {
-             before(grammarAccess.getFunAccess().getRetTypeAssignment_3()); 
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:681:1: ( rule__Fun__RetTypeAssignment_3 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:681:2: rule__Fun__RetTypeAssignment_3
-            {
-            pushFollow(FOLLOW_rule__Fun__RetTypeAssignment_3_in_rule__Fun__Group__3__Impl1364);
-            rule__Fun__RetTypeAssignment_3();
+             before(grammarAccess.getFunAccess().getExpressionsAssignment_3()); 
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:581:1: ( rule__Fun__ExpressionsAssignment_3 )*
+            loop5:
+            do {
+                int alt5=2;
+                int LA5_0 = input.LA(1);
 
-            state._fsp--;
+                if ( (LA5_0==RULE_ID||LA5_0==17) ) {
+                    alt5=1;
+                }
 
 
-            }
+                switch (alt5) {
+            	case 1 :
+            	    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:581:2: rule__Fun__ExpressionsAssignment_3
+            	    {
+            	    pushFollow(FOLLOW_rule__Fun__ExpressionsAssignment_3_in_rule__Fun__Group__3__Impl1139);
+            	    rule__Fun__ExpressionsAssignment_3();
 
-             after(grammarAccess.getFunAccess().getRetTypeAssignment_3()); 
+            	    state._fsp--;
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop5;
+                }
+            } while (true);
+
+             after(grammarAccess.getFunAccess().getExpressionsAssignment_3()); 
 
             }
 
@@ -1879,22 +1593,17 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Fun__Group__4"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:691:1: rule__Fun__Group__4 : rule__Fun__Group__4__Impl rule__Fun__Group__5 ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:591:1: rule__Fun__Group__4 : rule__Fun__Group__4__Impl ;
     public final void rule__Fun__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:695:1: ( rule__Fun__Group__4__Impl rule__Fun__Group__5 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:696:2: rule__Fun__Group__4__Impl rule__Fun__Group__5
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:595:1: ( rule__Fun__Group__4__Impl )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:596:2: rule__Fun__Group__4__Impl
             {
-            pushFollow(FOLLOW_rule__Fun__Group__4__Impl_in_rule__Fun__Group__41394);
+            pushFollow(FOLLOW_rule__Fun__Group__4__Impl_in_rule__Fun__Group__41170);
             rule__Fun__Group__4__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_rule__Fun__Group__5_in_rule__Fun__Group__41397);
-            rule__Fun__Group__5();
 
             state._fsp--;
 
@@ -1917,21 +1626,21 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Fun__Group__4__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:703:1: rule__Fun__Group__4__Impl : ( ' {' ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:602:1: rule__Fun__Group__4__Impl : ( '}' ) ;
     public final void rule__Fun__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:707:1: ( ( ' {' ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:708:1: ( ' {' )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:606:1: ( ( '}' ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:607:1: ( '}' )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:708:1: ( ' {' )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:709:1: ' {'
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:607:1: ( '}' )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:608:1: '}'
             {
-             before(grammarAccess.getFunAccess().getSpaceLeftCurlyBracketKeyword_4()); 
-            match(input,15,FOLLOW_15_in_rule__Fun__Group__4__Impl1425); 
-             after(grammarAccess.getFunAccess().getSpaceLeftCurlyBracketKeyword_4()); 
+             before(grammarAccess.getFunAccess().getRightCurlyBracketKeyword_4()); 
+            match(input,12,FOLLOW_12_in_rule__Fun__Group__4__Impl1198); 
+             after(grammarAccess.getFunAccess().getRightCurlyBracketKeyword_4()); 
 
             }
 
@@ -1953,195 +1662,22 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Fun__Group__4__Impl"
 
 
-    // $ANTLR start "rule__Fun__Group__5"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:722:1: rule__Fun__Group__5 : rule__Fun__Group__5__Impl rule__Fun__Group__6 ;
-    public final void rule__Fun__Group__5() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:726:1: ( rule__Fun__Group__5__Impl rule__Fun__Group__6 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:727:2: rule__Fun__Group__5__Impl rule__Fun__Group__6
-            {
-            pushFollow(FOLLOW_rule__Fun__Group__5__Impl_in_rule__Fun__Group__51456);
-            rule__Fun__Group__5__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_rule__Fun__Group__6_in_rule__Fun__Group__51459);
-            rule__Fun__Group__6();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Fun__Group__5"
-
-
-    // $ANTLR start "rule__Fun__Group__5__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:734:1: rule__Fun__Group__5__Impl : ( ( rule__Fun__ExpressionsAssignment_5 )* ) ;
-    public final void rule__Fun__Group__5__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:738:1: ( ( ( rule__Fun__ExpressionsAssignment_5 )* ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:739:1: ( ( rule__Fun__ExpressionsAssignment_5 )* )
-            {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:739:1: ( ( rule__Fun__ExpressionsAssignment_5 )* )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:740:1: ( rule__Fun__ExpressionsAssignment_5 )*
-            {
-             before(grammarAccess.getFunAccess().getExpressionsAssignment_5()); 
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:741:1: ( rule__Fun__ExpressionsAssignment_5 )*
-            loop7:
-            do {
-                int alt7=2;
-                int LA7_0 = input.LA(1);
-
-                if ( (LA7_0==RULE_ID||LA7_0==19) ) {
-                    alt7=1;
-                }
-
-
-                switch (alt7) {
-            	case 1 :
-            	    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:741:2: rule__Fun__ExpressionsAssignment_5
-            	    {
-            	    pushFollow(FOLLOW_rule__Fun__ExpressionsAssignment_5_in_rule__Fun__Group__5__Impl1486);
-            	    rule__Fun__ExpressionsAssignment_5();
-
-            	    state._fsp--;
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    break loop7;
-                }
-            } while (true);
-
-             after(grammarAccess.getFunAccess().getExpressionsAssignment_5()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Fun__Group__5__Impl"
-
-
-    // $ANTLR start "rule__Fun__Group__6"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:751:1: rule__Fun__Group__6 : rule__Fun__Group__6__Impl ;
-    public final void rule__Fun__Group__6() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:755:1: ( rule__Fun__Group__6__Impl )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:756:2: rule__Fun__Group__6__Impl
-            {
-            pushFollow(FOLLOW_rule__Fun__Group__6__Impl_in_rule__Fun__Group__61517);
-            rule__Fun__Group__6__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Fun__Group__6"
-
-
-    // $ANTLR start "rule__Fun__Group__6__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:762:1: rule__Fun__Group__6__Impl : ( '}' ) ;
-    public final void rule__Fun__Group__6__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:766:1: ( ( '}' ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:767:1: ( '}' )
-            {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:767:1: ( '}' )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:768:1: '}'
-            {
-             before(grammarAccess.getFunAccess().getRightCurlyBracketKeyword_6()); 
-            match(input,12,FOLLOW_12_in_rule__Fun__Group__6__Impl1545); 
-             after(grammarAccess.getFunAccess().getRightCurlyBracketKeyword_6()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Fun__Group__6__Impl"
-
-
     // $ANTLR start "rule__Assignment__Group__0"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:795:1: rule__Assignment__Group__0 : rule__Assignment__Group__0__Impl rule__Assignment__Group__1 ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:631:1: rule__Assignment__Group__0 : rule__Assignment__Group__0__Impl rule__Assignment__Group__1 ;
     public final void rule__Assignment__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:799:1: ( rule__Assignment__Group__0__Impl rule__Assignment__Group__1 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:800:2: rule__Assignment__Group__0__Impl rule__Assignment__Group__1
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:635:1: ( rule__Assignment__Group__0__Impl rule__Assignment__Group__1 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:636:2: rule__Assignment__Group__0__Impl rule__Assignment__Group__1
             {
-            pushFollow(FOLLOW_rule__Assignment__Group__0__Impl_in_rule__Assignment__Group__01590);
+            pushFollow(FOLLOW_rule__Assignment__Group__0__Impl_in_rule__Assignment__Group__01239);
             rule__Assignment__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Assignment__Group__1_in_rule__Assignment__Group__01593);
+            pushFollow(FOLLOW_rule__Assignment__Group__1_in_rule__Assignment__Group__01242);
             rule__Assignment__Group__1();
 
             state._fsp--;
@@ -2165,23 +1701,23 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Assignment__Group__0__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:807:1: rule__Assignment__Group__0__Impl : ( ( rule__Assignment__NameAssignment_0 ) ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:643:1: rule__Assignment__Group__0__Impl : ( ( rule__Assignment__NameAssignment_0 ) ) ;
     public final void rule__Assignment__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:811:1: ( ( ( rule__Assignment__NameAssignment_0 ) ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:812:1: ( ( rule__Assignment__NameAssignment_0 ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:647:1: ( ( ( rule__Assignment__NameAssignment_0 ) ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:648:1: ( ( rule__Assignment__NameAssignment_0 ) )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:812:1: ( ( rule__Assignment__NameAssignment_0 ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:813:1: ( rule__Assignment__NameAssignment_0 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:648:1: ( ( rule__Assignment__NameAssignment_0 ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:649:1: ( rule__Assignment__NameAssignment_0 )
             {
              before(grammarAccess.getAssignmentAccess().getNameAssignment_0()); 
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:814:1: ( rule__Assignment__NameAssignment_0 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:814:2: rule__Assignment__NameAssignment_0
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:650:1: ( rule__Assignment__NameAssignment_0 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:650:2: rule__Assignment__NameAssignment_0
             {
-            pushFollow(FOLLOW_rule__Assignment__NameAssignment_0_in_rule__Assignment__Group__0__Impl1620);
+            pushFollow(FOLLOW_rule__Assignment__NameAssignment_0_in_rule__Assignment__Group__0__Impl1269);
             rule__Assignment__NameAssignment_0();
 
             state._fsp--;
@@ -2212,21 +1748,21 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Assignment__Group__1"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:824:1: rule__Assignment__Group__1 : rule__Assignment__Group__1__Impl rule__Assignment__Group__2 ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:660:1: rule__Assignment__Group__1 : rule__Assignment__Group__1__Impl rule__Assignment__Group__2 ;
     public final void rule__Assignment__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:828:1: ( rule__Assignment__Group__1__Impl rule__Assignment__Group__2 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:829:2: rule__Assignment__Group__1__Impl rule__Assignment__Group__2
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:664:1: ( rule__Assignment__Group__1__Impl rule__Assignment__Group__2 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:665:2: rule__Assignment__Group__1__Impl rule__Assignment__Group__2
             {
-            pushFollow(FOLLOW_rule__Assignment__Group__1__Impl_in_rule__Assignment__Group__11650);
+            pushFollow(FOLLOW_rule__Assignment__Group__1__Impl_in_rule__Assignment__Group__11299);
             rule__Assignment__Group__1__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__Assignment__Group__2_in_rule__Assignment__Group__11653);
+            pushFollow(FOLLOW_rule__Assignment__Group__2_in_rule__Assignment__Group__11302);
             rule__Assignment__Group__2();
 
             state._fsp--;
@@ -2250,20 +1786,20 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Assignment__Group__1__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:836:1: rule__Assignment__Group__1__Impl : ( ' = ' ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:672:1: rule__Assignment__Group__1__Impl : ( ' = ' ) ;
     public final void rule__Assignment__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:840:1: ( ( ' = ' ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:841:1: ( ' = ' )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:676:1: ( ( ' = ' ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:677:1: ( ' = ' )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:841:1: ( ' = ' )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:842:1: ' = '
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:677:1: ( ' = ' )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:678:1: ' = '
             {
              before(grammarAccess.getAssignmentAccess().getSpaceEqualsSignSpaceKeyword_1()); 
-            match(input,16,FOLLOW_16_in_rule__Assignment__Group__1__Impl1681); 
+            match(input,15,FOLLOW_15_in_rule__Assignment__Group__1__Impl1330); 
              after(grammarAccess.getAssignmentAccess().getSpaceEqualsSignSpaceKeyword_1()); 
 
             }
@@ -2287,16 +1823,16 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Assignment__Group__2"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:855:1: rule__Assignment__Group__2 : rule__Assignment__Group__2__Impl ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:691:1: rule__Assignment__Group__2 : rule__Assignment__Group__2__Impl ;
     public final void rule__Assignment__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:859:1: ( rule__Assignment__Group__2__Impl )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:860:2: rule__Assignment__Group__2__Impl
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:695:1: ( rule__Assignment__Group__2__Impl )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:696:2: rule__Assignment__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__Assignment__Group__2__Impl_in_rule__Assignment__Group__21712);
+            pushFollow(FOLLOW_rule__Assignment__Group__2__Impl_in_rule__Assignment__Group__21361);
             rule__Assignment__Group__2__Impl();
 
             state._fsp--;
@@ -2320,23 +1856,23 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Assignment__Group__2__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:866:1: rule__Assignment__Group__2__Impl : ( ( rule__Assignment__ValueAssignment_2 ) ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:702:1: rule__Assignment__Group__2__Impl : ( ( rule__Assignment__ValueAssignment_2 ) ) ;
     public final void rule__Assignment__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:870:1: ( ( ( rule__Assignment__ValueAssignment_2 ) ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:871:1: ( ( rule__Assignment__ValueAssignment_2 ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:706:1: ( ( ( rule__Assignment__ValueAssignment_2 ) ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:707:1: ( ( rule__Assignment__ValueAssignment_2 ) )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:871:1: ( ( rule__Assignment__ValueAssignment_2 ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:872:1: ( rule__Assignment__ValueAssignment_2 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:707:1: ( ( rule__Assignment__ValueAssignment_2 ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:708:1: ( rule__Assignment__ValueAssignment_2 )
             {
              before(grammarAccess.getAssignmentAccess().getValueAssignment_2()); 
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:873:1: ( rule__Assignment__ValueAssignment_2 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:873:2: rule__Assignment__ValueAssignment_2
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:709:1: ( rule__Assignment__ValueAssignment_2 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:709:2: rule__Assignment__ValueAssignment_2
             {
-            pushFollow(FOLLOW_rule__Assignment__ValueAssignment_2_in_rule__Assignment__Group__2__Impl1739);
+            pushFollow(FOLLOW_rule__Assignment__ValueAssignment_2_in_rule__Assignment__Group__2__Impl1388);
             rule__Assignment__ValueAssignment_2();
 
             state._fsp--;
@@ -2367,21 +1903,21 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunCall__Group__0"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:889:1: rule__FunCall__Group__0 : rule__FunCall__Group__0__Impl rule__FunCall__Group__1 ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:725:1: rule__FunCall__Group__0 : rule__FunCall__Group__0__Impl rule__FunCall__Group__1 ;
     public final void rule__FunCall__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:893:1: ( rule__FunCall__Group__0__Impl rule__FunCall__Group__1 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:894:2: rule__FunCall__Group__0__Impl rule__FunCall__Group__1
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:729:1: ( rule__FunCall__Group__0__Impl rule__FunCall__Group__1 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:730:2: rule__FunCall__Group__0__Impl rule__FunCall__Group__1
             {
-            pushFollow(FOLLOW_rule__FunCall__Group__0__Impl_in_rule__FunCall__Group__01775);
+            pushFollow(FOLLOW_rule__FunCall__Group__0__Impl_in_rule__FunCall__Group__01424);
             rule__FunCall__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__FunCall__Group__1_in_rule__FunCall__Group__01778);
+            pushFollow(FOLLOW_rule__FunCall__Group__1_in_rule__FunCall__Group__01427);
             rule__FunCall__Group__1();
 
             state._fsp--;
@@ -2405,23 +1941,23 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunCall__Group__0__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:901:1: rule__FunCall__Group__0__Impl : ( ( rule__FunCall__NameAssignment_0 ) ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:737:1: rule__FunCall__Group__0__Impl : ( ( rule__FunCall__NameAssignment_0 ) ) ;
     public final void rule__FunCall__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:905:1: ( ( ( rule__FunCall__NameAssignment_0 ) ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:906:1: ( ( rule__FunCall__NameAssignment_0 ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:741:1: ( ( ( rule__FunCall__NameAssignment_0 ) ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:742:1: ( ( rule__FunCall__NameAssignment_0 ) )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:906:1: ( ( rule__FunCall__NameAssignment_0 ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:907:1: ( rule__FunCall__NameAssignment_0 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:742:1: ( ( rule__FunCall__NameAssignment_0 ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:743:1: ( rule__FunCall__NameAssignment_0 )
             {
              before(grammarAccess.getFunCallAccess().getNameAssignment_0()); 
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:908:1: ( rule__FunCall__NameAssignment_0 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:908:2: rule__FunCall__NameAssignment_0
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:744:1: ( rule__FunCall__NameAssignment_0 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:744:2: rule__FunCall__NameAssignment_0
             {
-            pushFollow(FOLLOW_rule__FunCall__NameAssignment_0_in_rule__FunCall__Group__0__Impl1805);
+            pushFollow(FOLLOW_rule__FunCall__NameAssignment_0_in_rule__FunCall__Group__0__Impl1454);
             rule__FunCall__NameAssignment_0();
 
             state._fsp--;
@@ -2452,22 +1988,17 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunCall__Group__1"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:918:1: rule__FunCall__Group__1 : rule__FunCall__Group__1__Impl rule__FunCall__Group__2 ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:754:1: rule__FunCall__Group__1 : rule__FunCall__Group__1__Impl ;
     public final void rule__FunCall__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:922:1: ( rule__FunCall__Group__1__Impl rule__FunCall__Group__2 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:923:2: rule__FunCall__Group__1__Impl rule__FunCall__Group__2
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:758:1: ( rule__FunCall__Group__1__Impl )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:759:2: rule__FunCall__Group__1__Impl
             {
-            pushFollow(FOLLOW_rule__FunCall__Group__1__Impl_in_rule__FunCall__Group__11835);
+            pushFollow(FOLLOW_rule__FunCall__Group__1__Impl_in_rule__FunCall__Group__11484);
             rule__FunCall__Group__1__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_rule__FunCall__Group__2_in_rule__FunCall__Group__11838);
-            rule__FunCall__Group__2();
 
             state._fsp--;
 
@@ -2490,21 +2021,21 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunCall__Group__1__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:930:1: rule__FunCall__Group__1__Impl : ( '(' ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:765:1: rule__FunCall__Group__1__Impl : ( '()' ) ;
     public final void rule__FunCall__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:934:1: ( ( '(' ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:935:1: ( '(' )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:769:1: ( ( '()' ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:770:1: ( '()' )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:935:1: ( '(' )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:936:1: '('
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:770:1: ( '()' )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:771:1: '()'
             {
-             before(grammarAccess.getFunCallAccess().getLeftParenthesisKeyword_1()); 
-            match(input,17,FOLLOW_17_in_rule__FunCall__Group__1__Impl1866); 
-             after(grammarAccess.getFunCallAccess().getLeftParenthesisKeyword_1()); 
+             before(grammarAccess.getFunCallAccess().getLeftParenthesisRightParenthesisKeyword_1()); 
+            match(input,16,FOLLOW_16_in_rule__FunCall__Group__1__Impl1512); 
+             after(grammarAccess.getFunCallAccess().getLeftParenthesisRightParenthesisKeyword_1()); 
 
             }
 
@@ -2526,23 +2057,23 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__FunCall__Group__1__Impl"
 
 
-    // $ANTLR start "rule__FunCall__Group__2"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:949:1: rule__FunCall__Group__2 : rule__FunCall__Group__2__Impl rule__FunCall__Group__3 ;
-    public final void rule__FunCall__Group__2() throws RecognitionException {
+    // $ANTLR start "rule__Println__Group__0"
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:788:1: rule__Println__Group__0 : rule__Println__Group__0__Impl rule__Println__Group__1 ;
+    public final void rule__Println__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:953:1: ( rule__FunCall__Group__2__Impl rule__FunCall__Group__3 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:954:2: rule__FunCall__Group__2__Impl rule__FunCall__Group__3
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:792:1: ( rule__Println__Group__0__Impl rule__Println__Group__1 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:793:2: rule__Println__Group__0__Impl rule__Println__Group__1
             {
-            pushFollow(FOLLOW_rule__FunCall__Group__2__Impl_in_rule__FunCall__Group__21897);
-            rule__FunCall__Group__2__Impl();
+            pushFollow(FOLLOW_rule__Println__Group__0__Impl_in_rule__Println__Group__01547);
+            rule__Println__Group__0__Impl();
 
             state._fsp--;
 
-            pushFollow(FOLLOW_rule__FunCall__Group__3_in_rule__FunCall__Group__21900);
-            rule__FunCall__Group__3();
+            pushFollow(FOLLOW_rule__Println__Group__1_in_rule__Println__Group__01550);
+            rule__Println__Group__1();
 
             state._fsp--;
 
@@ -2561,40 +2092,137 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__FunCall__Group__2"
+    // $ANTLR end "rule__Println__Group__0"
 
 
-    // $ANTLR start "rule__FunCall__Group__2__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:961:1: rule__FunCall__Group__2__Impl : ( ( rule__FunCall__ParametersAssignment_2 )* ) ;
-    public final void rule__FunCall__Group__2__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Println__Group__0__Impl"
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:800:1: rule__Println__Group__0__Impl : ( 'pln(' ) ;
+    public final void rule__Println__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:965:1: ( ( ( rule__FunCall__ParametersAssignment_2 )* ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:966:1: ( ( rule__FunCall__ParametersAssignment_2 )* )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:804:1: ( ( 'pln(' ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:805:1: ( 'pln(' )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:966:1: ( ( rule__FunCall__ParametersAssignment_2 )* )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:967:1: ( rule__FunCall__ParametersAssignment_2 )*
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:805:1: ( 'pln(' )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:806:1: 'pln('
             {
-             before(grammarAccess.getFunCallAccess().getParametersAssignment_2()); 
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:968:1: ( rule__FunCall__ParametersAssignment_2 )*
-            loop8:
-            do {
-                int alt8=2;
-                int LA8_0 = input.LA(1);
+             before(grammarAccess.getPrintlnAccess().getPlnKeyword_0()); 
+            match(input,17,FOLLOW_17_in_rule__Println__Group__0__Impl1578); 
+             after(grammarAccess.getPrintlnAccess().getPlnKeyword_0()); 
 
-                if ( ((LA8_0>=RULE_ID && LA8_0<=RULE_STRING)) ) {
-                    alt8=1;
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Println__Group__0__Impl"
+
+
+    // $ANTLR start "rule__Println__Group__1"
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:819:1: rule__Println__Group__1 : rule__Println__Group__1__Impl rule__Println__Group__2 ;
+    public final void rule__Println__Group__1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:823:1: ( rule__Println__Group__1__Impl rule__Println__Group__2 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:824:2: rule__Println__Group__1__Impl rule__Println__Group__2
+            {
+            pushFollow(FOLLOW_rule__Println__Group__1__Impl_in_rule__Println__Group__11609);
+            rule__Println__Group__1__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_rule__Println__Group__2_in_rule__Println__Group__11612);
+            rule__Println__Group__2();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Println__Group__1"
+
+
+    // $ANTLR start "rule__Println__Group__1__Impl"
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:831:1: rule__Println__Group__1__Impl : ( ( ( rule__Println__ValuesAssignment_1 ) ) ( ( rule__Println__ValuesAssignment_1 )* ) ) ;
+    public final void rule__Println__Group__1__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:835:1: ( ( ( ( rule__Println__ValuesAssignment_1 ) ) ( ( rule__Println__ValuesAssignment_1 )* ) ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:836:1: ( ( ( rule__Println__ValuesAssignment_1 ) ) ( ( rule__Println__ValuesAssignment_1 )* ) )
+            {
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:836:1: ( ( ( rule__Println__ValuesAssignment_1 ) ) ( ( rule__Println__ValuesAssignment_1 )* ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:837:1: ( ( rule__Println__ValuesAssignment_1 ) ) ( ( rule__Println__ValuesAssignment_1 )* )
+            {
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:837:1: ( ( rule__Println__ValuesAssignment_1 ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:838:1: ( rule__Println__ValuesAssignment_1 )
+            {
+             before(grammarAccess.getPrintlnAccess().getValuesAssignment_1()); 
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:839:1: ( rule__Println__ValuesAssignment_1 )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:839:2: rule__Println__ValuesAssignment_1
+            {
+            pushFollow(FOLLOW_rule__Println__ValuesAssignment_1_in_rule__Println__Group__1__Impl1641);
+            rule__Println__ValuesAssignment_1();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getPrintlnAccess().getValuesAssignment_1()); 
+
+            }
+
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:842:1: ( ( rule__Println__ValuesAssignment_1 )* )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:843:1: ( rule__Println__ValuesAssignment_1 )*
+            {
+             before(grammarAccess.getPrintlnAccess().getValuesAssignment_1()); 
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:844:1: ( rule__Println__ValuesAssignment_1 )*
+            loop6:
+            do {
+                int alt6=2;
+                int LA6_0 = input.LA(1);
+
+                if ( (LA6_0==RULE_STRING) ) {
+                    alt6=1;
                 }
 
 
-                switch (alt8) {
+                switch (alt6) {
             	case 1 :
-            	    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:968:2: rule__FunCall__ParametersAssignment_2
+            	    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:844:2: rule__Println__ValuesAssignment_1
             	    {
-            	    pushFollow(FOLLOW_rule__FunCall__ParametersAssignment_2_in_rule__FunCall__Group__2__Impl1927);
-            	    rule__FunCall__ParametersAssignment_2();
+            	    pushFollow(FOLLOW_rule__Println__ValuesAssignment_1_in_rule__Println__Group__1__Impl1653);
+            	    rule__Println__ValuesAssignment_1();
 
             	    state._fsp--;
 
@@ -2603,11 +2231,14 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
             	    break;
 
             	default :
-            	    break loop8;
+            	    break loop6;
                 }
             } while (true);
 
-             after(grammarAccess.getFunCallAccess().getParametersAssignment_2()); 
+             after(grammarAccess.getPrintlnAccess().getValuesAssignment_1()); 
+
+            }
+
 
             }
 
@@ -2626,21 +2257,21 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__FunCall__Group__2__Impl"
+    // $ANTLR end "rule__Println__Group__1__Impl"
 
 
-    // $ANTLR start "rule__FunCall__Group__3"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:978:1: rule__FunCall__Group__3 : rule__FunCall__Group__3__Impl ;
-    public final void rule__FunCall__Group__3() throws RecognitionException {
+    // $ANTLR start "rule__Println__Group__2"
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:855:1: rule__Println__Group__2 : rule__Println__Group__2__Impl ;
+    public final void rule__Println__Group__2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:982:1: ( rule__FunCall__Group__3__Impl )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:983:2: rule__FunCall__Group__3__Impl
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:859:1: ( rule__Println__Group__2__Impl )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:860:2: rule__Println__Group__2__Impl
             {
-            pushFollow(FOLLOW_rule__FunCall__Group__3__Impl_in_rule__FunCall__Group__31958);
-            rule__FunCall__Group__3__Impl();
+            pushFollow(FOLLOW_rule__Println__Group__2__Impl_in_rule__Println__Group__21686);
+            rule__Println__Group__2__Impl();
 
             state._fsp--;
 
@@ -2659,25 +2290,25 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__FunCall__Group__3"
+    // $ANTLR end "rule__Println__Group__2"
 
 
-    // $ANTLR start "rule__FunCall__Group__3__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:989:1: rule__FunCall__Group__3__Impl : ( ')' ) ;
-    public final void rule__FunCall__Group__3__Impl() throws RecognitionException {
+    // $ANTLR start "rule__Println__Group__2__Impl"
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:866:1: rule__Println__Group__2__Impl : ( ')' ) ;
+    public final void rule__Println__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:993:1: ( ( ')' ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:994:1: ( ')' )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:870:1: ( ( ')' ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:871:1: ( ')' )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:994:1: ( ')' )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:995:1: ')'
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:871:1: ( ')' )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:872:1: ')'
             {
-             before(grammarAccess.getFunCallAccess().getRightParenthesisKeyword_3()); 
-            match(input,18,FOLLOW_18_in_rule__FunCall__Group__3__Impl1986); 
-             after(grammarAccess.getFunCallAccess().getRightParenthesisKeyword_3()); 
+             before(grammarAccess.getPrintlnAccess().getRightParenthesisKeyword_2()); 
+            match(input,18,FOLLOW_18_in_rule__Println__Group__2__Impl1714); 
+             after(grammarAccess.getPrintlnAccess().getRightParenthesisKeyword_2()); 
 
             }
 
@@ -2696,173 +2327,24 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__FunCall__Group__3__Impl"
-
-
-    // $ANTLR start "rule__Return__Group__0"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1016:1: rule__Return__Group__0 : rule__Return__Group__0__Impl rule__Return__Group__1 ;
-    public final void rule__Return__Group__0() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1020:1: ( rule__Return__Group__0__Impl rule__Return__Group__1 )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1021:2: rule__Return__Group__0__Impl rule__Return__Group__1
-            {
-            pushFollow(FOLLOW_rule__Return__Group__0__Impl_in_rule__Return__Group__02025);
-            rule__Return__Group__0__Impl();
-
-            state._fsp--;
-
-            pushFollow(FOLLOW_rule__Return__Group__1_in_rule__Return__Group__02028);
-            rule__Return__Group__1();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Return__Group__0"
-
-
-    // $ANTLR start "rule__Return__Group__0__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1028:1: rule__Return__Group__0__Impl : ( 'return ' ) ;
-    public final void rule__Return__Group__0__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1032:1: ( ( 'return ' ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1033:1: ( 'return ' )
-            {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1033:1: ( 'return ' )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1034:1: 'return '
-            {
-             before(grammarAccess.getReturnAccess().getReturnKeyword_0()); 
-            match(input,19,FOLLOW_19_in_rule__Return__Group__0__Impl2056); 
-             after(grammarAccess.getReturnAccess().getReturnKeyword_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Return__Group__0__Impl"
-
-
-    // $ANTLR start "rule__Return__Group__1"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1047:1: rule__Return__Group__1 : rule__Return__Group__1__Impl ;
-    public final void rule__Return__Group__1() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1051:1: ( rule__Return__Group__1__Impl )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1052:2: rule__Return__Group__1__Impl
-            {
-            pushFollow(FOLLOW_rule__Return__Group__1__Impl_in_rule__Return__Group__12087);
-            rule__Return__Group__1__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Return__Group__1"
-
-
-    // $ANTLR start "rule__Return__Group__1__Impl"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1058:1: rule__Return__Group__1__Impl : ( rulePassable ) ;
-    public final void rule__Return__Group__1__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1062:1: ( ( rulePassable ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1063:1: ( rulePassable )
-            {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1063:1: ( rulePassable )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1064:1: rulePassable
-            {
-             before(grammarAccess.getReturnAccess().getPassableParserRuleCall_1()); 
-            pushFollow(FOLLOW_rulePassable_in_rule__Return__Group__1__Impl2114);
-            rulePassable();
-
-            state._fsp--;
-
-             after(grammarAccess.getReturnAccess().getPassableParserRuleCall_1()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Return__Group__1__Impl"
+    // $ANTLR end "rule__Println__Group__2__Impl"
 
 
     // $ANTLR start "rule__Domainmodel__ElementsAssignment"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1080:1: rule__Domainmodel__ElementsAssignment : ( ruleRootElement ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:892:1: rule__Domainmodel__ElementsAssignment : ( ruleRootElement ) ;
     public final void rule__Domainmodel__ElementsAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1084:1: ( ( ruleRootElement ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1085:1: ( ruleRootElement )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:896:1: ( ( ruleRootElement ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:897:1: ( ruleRootElement )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1085:1: ( ruleRootElement )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1086:1: ruleRootElement
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:897:1: ( ruleRootElement )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:898:1: ruleRootElement
             {
              before(grammarAccess.getDomainmodelAccess().getElementsRootElementParserRuleCall_0()); 
-            pushFollow(FOLLOW_ruleRootElement_in_rule__Domainmodel__ElementsAssignment2152);
+            pushFollow(FOLLOW_ruleRootElement_in_rule__Domainmodel__ElementsAssignment1756);
             ruleRootElement();
 
             state._fsp--;
@@ -2889,26 +2371,26 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Domainmodel__ElementsAssignment"
 
 
-    // $ANTLR start "rule__Main__ExpressionsAssignment_2"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1095:1: rule__Main__ExpressionsAssignment_2 : ( ruleExpression ) ;
-    public final void rule__Main__ExpressionsAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__RootElement__MainAssignment_0"
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:907:1: rule__RootElement__MainAssignment_0 : ( ruleMain ) ;
+    public final void rule__RootElement__MainAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1099:1: ( ( ruleExpression ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1100:1: ( ruleExpression )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:911:1: ( ( ruleMain ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:912:1: ( ruleMain )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1100:1: ( ruleExpression )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1101:1: ruleExpression
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:912:1: ( ruleMain )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:913:1: ruleMain
             {
-             before(grammarAccess.getMainAccess().getExpressionsExpressionParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_ruleExpression_in_rule__Main__ExpressionsAssignment_22183);
-            ruleExpression();
+             before(grammarAccess.getRootElementAccess().getMainMainParserRuleCall_0_0()); 
+            pushFollow(FOLLOW_ruleMain_in_rule__RootElement__MainAssignment_01787);
+            ruleMain();
 
             state._fsp--;
 
-             after(grammarAccess.getMainAccess().getExpressionsExpressionParserRuleCall_2_0()); 
+             after(grammarAccess.getRootElementAccess().getMainMainParserRuleCall_0_0()); 
 
             }
 
@@ -2927,24 +2409,106 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Main__ExpressionsAssignment_2"
+    // $ANTLR end "rule__RootElement__MainAssignment_0"
+
+
+    // $ANTLR start "rule__RootElement__FunsAssignment_1"
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:922:1: rule__RootElement__FunsAssignment_1 : ( ruleFun ) ;
+    public final void rule__RootElement__FunsAssignment_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:926:1: ( ( ruleFun ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:927:1: ( ruleFun )
+            {
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:927:1: ( ruleFun )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:928:1: ruleFun
+            {
+             before(grammarAccess.getRootElementAccess().getFunsFunParserRuleCall_1_0()); 
+            pushFollow(FOLLOW_ruleFun_in_rule__RootElement__FunsAssignment_11818);
+            ruleFun();
+
+            state._fsp--;
+
+             after(grammarAccess.getRootElementAccess().getFunsFunParserRuleCall_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__RootElement__FunsAssignment_1"
+
+
+    // $ANTLR start "rule__Main__ExpressionsAssignment_1"
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:937:1: rule__Main__ExpressionsAssignment_1 : ( ruleExpression ) ;
+    public final void rule__Main__ExpressionsAssignment_1() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+            
+        try {
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:941:1: ( ( ruleExpression ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:942:1: ( ruleExpression )
+            {
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:942:1: ( ruleExpression )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:943:1: ruleExpression
+            {
+             before(grammarAccess.getMainAccess().getExpressionsExpressionParserRuleCall_1_0()); 
+            pushFollow(FOLLOW_ruleExpression_in_rule__Main__ExpressionsAssignment_11849);
+            ruleExpression();
+
+            state._fsp--;
+
+             after(grammarAccess.getMainAccess().getExpressionsExpressionParserRuleCall_1_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Main__ExpressionsAssignment_1"
 
 
     // $ANTLR start "rule__Fun__NameAssignment_1"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1110:1: rule__Fun__NameAssignment_1 : ( RULE_ID ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:952:1: rule__Fun__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Fun__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1114:1: ( ( RULE_ID ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1115:1: ( RULE_ID )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:956:1: ( ( RULE_ID ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:957:1: ( RULE_ID )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1115:1: ( RULE_ID )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1116:1: RULE_ID
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:957:1: ( RULE_ID )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:958:1: RULE_ID
             {
              before(grammarAccess.getFunAccess().getNameIDTerminalRuleCall_1_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Fun__NameAssignment_12214); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Fun__NameAssignment_11880); 
              after(grammarAccess.getFunAccess().getNameIDTerminalRuleCall_1_0()); 
 
             }
@@ -2967,63 +2531,26 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Fun__NameAssignment_1"
 
 
-    // $ANTLR start "rule__Fun__RetTypeAssignment_3"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1125:1: rule__Fun__RetTypeAssignment_3 : ( RULE_ID ) ;
-    public final void rule__Fun__RetTypeAssignment_3() throws RecognitionException {
+    // $ANTLR start "rule__Fun__ExpressionsAssignment_3"
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:967:1: rule__Fun__ExpressionsAssignment_3 : ( ruleExpression ) ;
+    public final void rule__Fun__ExpressionsAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1129:1: ( ( RULE_ID ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1130:1: ( RULE_ID )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:971:1: ( ( ruleExpression ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:972:1: ( ruleExpression )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1130:1: ( RULE_ID )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1131:1: RULE_ID
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:972:1: ( ruleExpression )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:973:1: ruleExpression
             {
-             before(grammarAccess.getFunAccess().getRetTypeIDTerminalRuleCall_3_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Fun__RetTypeAssignment_32245); 
-             after(grammarAccess.getFunAccess().getRetTypeIDTerminalRuleCall_3_0()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__Fun__RetTypeAssignment_3"
-
-
-    // $ANTLR start "rule__Fun__ExpressionsAssignment_5"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1140:1: rule__Fun__ExpressionsAssignment_5 : ( ruleExpression ) ;
-    public final void rule__Fun__ExpressionsAssignment_5() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-            
-        try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1144:1: ( ( ruleExpression ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1145:1: ( ruleExpression )
-            {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1145:1: ( ruleExpression )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1146:1: ruleExpression
-            {
-             before(grammarAccess.getFunAccess().getExpressionsExpressionParserRuleCall_5_0()); 
-            pushFollow(FOLLOW_ruleExpression_in_rule__Fun__ExpressionsAssignment_52276);
+             before(grammarAccess.getFunAccess().getExpressionsExpressionParserRuleCall_3_0()); 
+            pushFollow(FOLLOW_ruleExpression_in_rule__Fun__ExpressionsAssignment_31911);
             ruleExpression();
 
             state._fsp--;
 
-             after(grammarAccess.getFunAccess().getExpressionsExpressionParserRuleCall_5_0()); 
+             after(grammarAccess.getFunAccess().getExpressionsExpressionParserRuleCall_3_0()); 
 
             }
 
@@ -3042,24 +2569,24 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Fun__ExpressionsAssignment_5"
+    // $ANTLR end "rule__Fun__ExpressionsAssignment_3"
 
 
     // $ANTLR start "rule__Assignment__NameAssignment_0"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1155:1: rule__Assignment__NameAssignment_0 : ( RULE_ID ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:982:1: rule__Assignment__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__Assignment__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1159:1: ( ( RULE_ID ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1160:1: ( RULE_ID )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:986:1: ( ( RULE_ID ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:987:1: ( RULE_ID )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1160:1: ( RULE_ID )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1161:1: RULE_ID
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:987:1: ( RULE_ID )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:988:1: RULE_ID
             {
              before(grammarAccess.getAssignmentAccess().getNameIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Assignment__NameAssignment_02307); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__Assignment__NameAssignment_01942); 
              after(grammarAccess.getAssignmentAccess().getNameIDTerminalRuleCall_0_0()); 
 
             }
@@ -3083,25 +2610,21 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Assignment__ValueAssignment_2"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1170:1: rule__Assignment__ValueAssignment_2 : ( rulePassable ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:997:1: rule__Assignment__ValueAssignment_2 : ( RULE_STRING ) ;
     public final void rule__Assignment__ValueAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1174:1: ( ( rulePassable ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1175:1: ( rulePassable )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1001:1: ( ( RULE_STRING ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1002:1: ( RULE_STRING )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1175:1: ( rulePassable )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1176:1: rulePassable
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1002:1: ( RULE_STRING )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1003:1: RULE_STRING
             {
-             before(grammarAccess.getAssignmentAccess().getValuePassableParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_rulePassable_in_rule__Assignment__ValueAssignment_22338);
-            rulePassable();
-
-            state._fsp--;
-
-             after(grammarAccess.getAssignmentAccess().getValuePassableParserRuleCall_2_0()); 
+             before(grammarAccess.getAssignmentAccess().getValueSTRINGTerminalRuleCall_2_0()); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Assignment__ValueAssignment_21973); 
+             after(grammarAccess.getAssignmentAccess().getValueSTRINGTerminalRuleCall_2_0()); 
 
             }
 
@@ -3124,20 +2647,20 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__FunCall__NameAssignment_0"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1185:1: rule__FunCall__NameAssignment_0 : ( RULE_ID ) ;
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1012:1: rule__FunCall__NameAssignment_0 : ( RULE_ID ) ;
     public final void rule__FunCall__NameAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1189:1: ( ( RULE_ID ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1190:1: ( RULE_ID )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1016:1: ( ( RULE_ID ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1017:1: ( RULE_ID )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1190:1: ( RULE_ID )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1191:1: RULE_ID
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1017:1: ( RULE_ID )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1018:1: RULE_ID
             {
              before(grammarAccess.getFunCallAccess().getNameIDTerminalRuleCall_0_0()); 
-            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__FunCall__NameAssignment_02369); 
+            match(input,RULE_ID,FOLLOW_RULE_ID_in_rule__FunCall__NameAssignment_02004); 
              after(grammarAccess.getFunCallAccess().getNameIDTerminalRuleCall_0_0()); 
 
             }
@@ -3160,26 +2683,22 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__FunCall__NameAssignment_0"
 
 
-    // $ANTLR start "rule__FunCall__ParametersAssignment_2"
-    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1200:1: rule__FunCall__ParametersAssignment_2 : ( rulePassable ) ;
-    public final void rule__FunCall__ParametersAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__Println__ValuesAssignment_1"
+    // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1027:1: rule__Println__ValuesAssignment_1 : ( RULE_STRING ) ;
+    public final void rule__Println__ValuesAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
             
         try {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1204:1: ( ( rulePassable ) )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1205:1: ( rulePassable )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1031:1: ( ( RULE_STRING ) )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1032:1: ( RULE_STRING )
             {
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1205:1: ( rulePassable )
-            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1206:1: rulePassable
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1032:1: ( RULE_STRING )
+            // ../org.svlang.v0.ui/src-gen/org/svlang/v0/ui/contentassist/antlr/internal/InternalV0.g:1033:1: RULE_STRING
             {
-             before(grammarAccess.getFunCallAccess().getParametersPassableParserRuleCall_2_0()); 
-            pushFollow(FOLLOW_rulePassable_in_rule__FunCall__ParametersAssignment_22400);
-            rulePassable();
-
-            state._fsp--;
-
-             after(grammarAccess.getFunCallAccess().getParametersPassableParserRuleCall_2_0()); 
+             before(grammarAccess.getPrintlnAccess().getValuesSTRINGTerminalRuleCall_1_0()); 
+            match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rule__Println__ValuesAssignment_12035); 
+             after(grammarAccess.getPrintlnAccess().getValuesSTRINGTerminalRuleCall_1_0()); 
 
             }
 
@@ -3198,7 +2717,7 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__FunCall__ParametersAssignment_2"
+    // $ANTLR end "rule__Println__ValuesAssignment_1"
 
     // Delegated rules
 
@@ -3207,10 +2726,10 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
 
     public static final BitSet FOLLOW_ruleDomainmodel_in_entryRuleDomainmodel61 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleDomainmodel68 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Domainmodel__ElementsAssignment_in_ruleDomainmodel94 = new BitSet(new long[]{0x0000000000002802L});
+    public static final BitSet FOLLOW_rule__Domainmodel__ElementsAssignment_in_ruleDomainmodel94 = new BitSet(new long[]{0x0000000000000802L});
     public static final BitSet FOLLOW_ruleRootElement_in_entryRuleRootElement122 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleRootElement129 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__RootElement__Alternatives_in_ruleRootElement155 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RootElement__Group__0_in_ruleRootElement155 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleMain_in_entryRuleMain182 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleMain189 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__Main__Group__0_in_ruleMain215 = new BitSet(new long[]{0x0000000000000002L});
@@ -3226,87 +2745,70 @@ public class InternalV0Parser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_ruleFunCall_in_entryRuleFunCall422 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleFunCall429 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_rule__FunCall__Group__0_in_ruleFunCall455 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePassable_in_entryRulePassable482 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulePassable489 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Passable__Alternatives_in_rulePassable515 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstants_in_entryRuleConstants542 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleConstants549 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Constants__Alternatives_in_ruleConstants575 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleReturn_in_entryRuleReturn602 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleReturn609 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Return__Group__0_in_ruleReturn635 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleMain_in_rule__RootElement__Alternatives671 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFun_in_rule__RootElement__Alternatives688 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAssignment_in_rule__Expression__Alternatives720 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFunCall_in_rule__Expression__Alternatives737 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleReturn_in_rule__Expression__Alternatives754 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleConstants_in_rule__Passable__Alternatives786 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Passable__Alternatives803 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFunCall_in_rule__Passable__Alternatives820 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_INT_in_rule__Constants__Alternatives852 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rule__Constants__Alternatives869 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Main__Group__0__Impl_in_rule__Main__Group__0899 = new BitSet(new long[]{0x0000000000081010L});
-    public static final BitSet FOLLOW_rule__Main__Group__1_in_rule__Main__Group__0902 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_11_in_rule__Main__Group__0__Impl930 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Main__Group__1__Impl_in_rule__Main__Group__1961 = new BitSet(new long[]{0x0000000000081010L});
-    public static final BitSet FOLLOW_rule__Main__Group__2_in_rule__Main__Group__1964 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Main__Group__2__Impl_in_rule__Main__Group__21022 = new BitSet(new long[]{0x0000000000081010L});
-    public static final BitSet FOLLOW_rule__Main__Group__3_in_rule__Main__Group__21025 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Main__ExpressionsAssignment_2_in_rule__Main__Group__2__Impl1052 = new BitSet(new long[]{0x0000000000080012L});
-    public static final BitSet FOLLOW_rule__Main__Group__3__Impl_in_rule__Main__Group__31083 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_12_in_rule__Main__Group__3__Impl1111 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Fun__Group__0__Impl_in_rule__Fun__Group__01150 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Fun__Group__1_in_rule__Fun__Group__01153 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_13_in_rule__Fun__Group__0__Impl1181 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Fun__Group__1__Impl_in_rule__Fun__Group__11212 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_rule__Fun__Group__2_in_rule__Fun__Group__11215 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Fun__NameAssignment_1_in_rule__Fun__Group__1__Impl1242 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Fun__Group__2__Impl_in_rule__Fun__Group__21272 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_rule__Fun__Group__3_in_rule__Fun__Group__21275 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_rule__Fun__Group__2__Impl1303 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Fun__Group__3__Impl_in_rule__Fun__Group__31334 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_rule__Fun__Group__4_in_rule__Fun__Group__31337 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Fun__RetTypeAssignment_3_in_rule__Fun__Group__3__Impl1364 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Fun__Group__4__Impl_in_rule__Fun__Group__41394 = new BitSet(new long[]{0x0000000000081010L});
-    public static final BitSet FOLLOW_rule__Fun__Group__5_in_rule__Fun__Group__41397 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_rule__Fun__Group__4__Impl1425 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Fun__Group__5__Impl_in_rule__Fun__Group__51456 = new BitSet(new long[]{0x0000000000081010L});
-    public static final BitSet FOLLOW_rule__Fun__Group__6_in_rule__Fun__Group__51459 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Fun__ExpressionsAssignment_5_in_rule__Fun__Group__5__Impl1486 = new BitSet(new long[]{0x0000000000080012L});
-    public static final BitSet FOLLOW_rule__Fun__Group__6__Impl_in_rule__Fun__Group__61517 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_12_in_rule__Fun__Group__6__Impl1545 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Assignment__Group__0__Impl_in_rule__Assignment__Group__01590 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_rule__Assignment__Group__1_in_rule__Assignment__Group__01593 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Assignment__NameAssignment_0_in_rule__Assignment__Group__0__Impl1620 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Assignment__Group__1__Impl_in_rule__Assignment__Group__11650 = new BitSet(new long[]{0x0000000000000070L});
-    public static final BitSet FOLLOW_rule__Assignment__Group__2_in_rule__Assignment__Group__11653 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_rule__Assignment__Group__1__Impl1681 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Assignment__Group__2__Impl_in_rule__Assignment__Group__21712 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Assignment__ValueAssignment_2_in_rule__Assignment__Group__2__Impl1739 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunCall__Group__0__Impl_in_rule__FunCall__Group__01775 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_rule__FunCall__Group__1_in_rule__FunCall__Group__01778 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunCall__NameAssignment_0_in_rule__FunCall__Group__0__Impl1805 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunCall__Group__1__Impl_in_rule__FunCall__Group__11835 = new BitSet(new long[]{0x0000000000040070L});
-    public static final BitSet FOLLOW_rule__FunCall__Group__2_in_rule__FunCall__Group__11838 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_rule__FunCall__Group__1__Impl1866 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunCall__Group__2__Impl_in_rule__FunCall__Group__21897 = new BitSet(new long[]{0x0000000000040070L});
-    public static final BitSet FOLLOW_rule__FunCall__Group__3_in_rule__FunCall__Group__21900 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__FunCall__ParametersAssignment_2_in_rule__FunCall__Group__2__Impl1927 = new BitSet(new long[]{0x0000000000000072L});
-    public static final BitSet FOLLOW_rule__FunCall__Group__3__Impl_in_rule__FunCall__Group__31958 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_rule__FunCall__Group__3__Impl1986 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Return__Group__0__Impl_in_rule__Return__Group__02025 = new BitSet(new long[]{0x0000000000000070L});
-    public static final BitSet FOLLOW_rule__Return__Group__1_in_rule__Return__Group__02028 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_19_in_rule__Return__Group__0__Impl2056 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rule__Return__Group__1__Impl_in_rule__Return__Group__12087 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePassable_in_rule__Return__Group__1__Impl2114 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleRootElement_in_rule__Domainmodel__ElementsAssignment2152 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExpression_in_rule__Main__ExpressionsAssignment_22183 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Fun__NameAssignment_12214 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Fun__RetTypeAssignment_32245 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExpression_in_rule__Fun__ExpressionsAssignment_52276 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__Assignment__NameAssignment_02307 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePassable_in_rule__Assignment__ValueAssignment_22338 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_rule__FunCall__NameAssignment_02369 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePassable_in_rule__FunCall__ParametersAssignment_22400 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePrintln_in_entryRulePrintln482 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRulePrintln489 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Println__Group__0_in_rulePrintln515 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAssignment_in_rule__Expression__Alternatives551 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFunCall_in_rule__Expression__Alternatives568 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rulePrintln_in_rule__Expression__Alternatives585 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RootElement__Group__0__Impl_in_rule__RootElement__Group__0615 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_rule__RootElement__Group__1_in_rule__RootElement__Group__0618 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RootElement__MainAssignment_0_in_rule__RootElement__Group__0__Impl645 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RootElement__Group__1__Impl_in_rule__RootElement__Group__1675 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__RootElement__FunsAssignment_1_in_rule__RootElement__Group__1__Impl702 = new BitSet(new long[]{0x0000000000002002L});
+    public static final BitSet FOLLOW_rule__Main__Group__0__Impl_in_rule__Main__Group__0737 = new BitSet(new long[]{0x0000000000021010L});
+    public static final BitSet FOLLOW_rule__Main__Group__1_in_rule__Main__Group__0740 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_11_in_rule__Main__Group__0__Impl768 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Main__Group__1__Impl_in_rule__Main__Group__1799 = new BitSet(new long[]{0x0000000000021010L});
+    public static final BitSet FOLLOW_rule__Main__Group__2_in_rule__Main__Group__1802 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Main__ExpressionsAssignment_1_in_rule__Main__Group__1__Impl829 = new BitSet(new long[]{0x0000000000020012L});
+    public static final BitSet FOLLOW_rule__Main__Group__2__Impl_in_rule__Main__Group__2860 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_12_in_rule__Main__Group__2__Impl888 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Fun__Group__0__Impl_in_rule__Fun__Group__0925 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_rule__Fun__Group__1_in_rule__Fun__Group__0928 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_13_in_rule__Fun__Group__0__Impl956 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Fun__Group__1__Impl_in_rule__Fun__Group__1987 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_rule__Fun__Group__2_in_rule__Fun__Group__1990 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Fun__NameAssignment_1_in_rule__Fun__Group__1__Impl1017 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Fun__Group__2__Impl_in_rule__Fun__Group__21047 = new BitSet(new long[]{0x0000000000021010L});
+    public static final BitSet FOLLOW_rule__Fun__Group__3_in_rule__Fun__Group__21050 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_rule__Fun__Group__2__Impl1078 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Fun__Group__3__Impl_in_rule__Fun__Group__31109 = new BitSet(new long[]{0x0000000000021010L});
+    public static final BitSet FOLLOW_rule__Fun__Group__4_in_rule__Fun__Group__31112 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Fun__ExpressionsAssignment_3_in_rule__Fun__Group__3__Impl1139 = new BitSet(new long[]{0x0000000000020012L});
+    public static final BitSet FOLLOW_rule__Fun__Group__4__Impl_in_rule__Fun__Group__41170 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_12_in_rule__Fun__Group__4__Impl1198 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Assignment__Group__0__Impl_in_rule__Assignment__Group__01239 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_rule__Assignment__Group__1_in_rule__Assignment__Group__01242 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Assignment__NameAssignment_0_in_rule__Assignment__Group__0__Impl1269 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Assignment__Group__1__Impl_in_rule__Assignment__Group__11299 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__Assignment__Group__2_in_rule__Assignment__Group__11302 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_rule__Assignment__Group__1__Impl1330 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Assignment__Group__2__Impl_in_rule__Assignment__Group__21361 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Assignment__ValueAssignment_2_in_rule__Assignment__Group__2__Impl1388 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FunCall__Group__0__Impl_in_rule__FunCall__Group__01424 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_rule__FunCall__Group__1_in_rule__FunCall__Group__01427 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FunCall__NameAssignment_0_in_rule__FunCall__Group__0__Impl1454 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__FunCall__Group__1__Impl_in_rule__FunCall__Group__11484 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_rule__FunCall__Group__1__Impl1512 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Println__Group__0__Impl_in_rule__Println__Group__01547 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_rule__Println__Group__1_in_rule__Println__Group__01550 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_rule__Println__Group__0__Impl1578 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Println__Group__1__Impl_in_rule__Println__Group__11609 = new BitSet(new long[]{0x0000000000040000L});
+    public static final BitSet FOLLOW_rule__Println__Group__2_in_rule__Println__Group__11612 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_rule__Println__ValuesAssignment_1_in_rule__Println__Group__1__Impl1641 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_rule__Println__ValuesAssignment_1_in_rule__Println__Group__1__Impl1653 = new BitSet(new long[]{0x0000000000000022L});
+    public static final BitSet FOLLOW_rule__Println__Group__2__Impl_in_rule__Println__Group__21686 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_18_in_rule__Println__Group__2__Impl1714 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleRootElement_in_rule__Domainmodel__ElementsAssignment1756 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMain_in_rule__RootElement__MainAssignment_01787 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleFun_in_rule__RootElement__FunsAssignment_11818 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExpression_in_rule__Main__ExpressionsAssignment_11849 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Fun__NameAssignment_11880 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExpression_in_rule__Fun__ExpressionsAssignment_31911 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__Assignment__NameAssignment_01942 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Assignment__ValueAssignment_21973 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_rule__FunCall__NameAssignment_02004 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_rule__Println__ValuesAssignment_12035 = new BitSet(new long[]{0x0000000000000002L});
 
 }

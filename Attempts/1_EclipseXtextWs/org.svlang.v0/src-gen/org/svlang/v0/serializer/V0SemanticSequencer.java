@@ -19,6 +19,8 @@ import org.svlang.v0.v0.Domainmodel;
 import org.svlang.v0.v0.Fun;
 import org.svlang.v0.v0.FunCall;
 import org.svlang.v0.v0.Main;
+import org.svlang.v0.v0.Println;
+import org.svlang.v0.v0.RootElement;
 import org.svlang.v0.v0.V0Package;
 
 @SuppressWarnings("all")
@@ -43,25 +45,34 @@ public class V0SemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				}
 				else break;
 			case V0Package.FUN:
-				if(context == grammarAccess.getFunRule() ||
-				   context == grammarAccess.getRootElementRule()) {
+				if(context == grammarAccess.getFunRule()) {
 					sequence_Fun(context, (Fun) semanticObject); 
 					return; 
 				}
 				else break;
 			case V0Package.FUN_CALL:
 				if(context == grammarAccess.getExpressionRule() ||
-				   context == grammarAccess.getFunCallRule() ||
-				   context == grammarAccess.getPassableRule() ||
-				   context == grammarAccess.getReturnRule()) {
+				   context == grammarAccess.getFunCallRule()) {
 					sequence_FunCall(context, (FunCall) semanticObject); 
 					return; 
 				}
 				else break;
 			case V0Package.MAIN:
-				if(context == grammarAccess.getMainRule() ||
-				   context == grammarAccess.getRootElementRule()) {
+				if(context == grammarAccess.getMainRule()) {
 					sequence_Main(context, (Main) semanticObject); 
+					return; 
+				}
+				else break;
+			case V0Package.PRINTLN:
+				if(context == grammarAccess.getExpressionRule() ||
+				   context == grammarAccess.getPrintlnRule()) {
+					sequence_Println(context, (Println) semanticObject); 
+					return; 
+				}
+				else break;
+			case V0Package.ROOT_ELEMENT:
+				if(context == grammarAccess.getRootElementRule()) {
+					sequence_RootElement(context, (RootElement) semanticObject); 
 					return; 
 				}
 				else break;
@@ -71,7 +82,7 @@ public class V0SemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID value=Passable)
+	 *     (name=ID value=STRING)
 	 */
 	protected void sequence_Assignment(EObject context, Assignment semanticObject) {
 		if(errorAcceptor != null) {
@@ -83,7 +94,7 @@ public class V0SemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
 		feeder.accept(grammarAccess.getAssignmentAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getAssignmentAccess().getValuePassableParserRuleCall_2_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getAssignmentAccess().getValueSTRINGTerminalRuleCall_2_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	
@@ -99,16 +110,23 @@ public class V0SemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (name=ID parameters+=Passable*)
+	 *     name=ID
 	 */
 	protected void sequence_FunCall(EObject context, FunCall semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, V0Package.Literals.FUN_CALL__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, V0Package.Literals.FUN_CALL__NAME));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getFunCallAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	
 	/**
 	 * Constraint:
-	 *     (name=ID retType=ID expressions+=Expression*)
+	 *     (name=ID expressions+=Expression*)
 	 */
 	protected void sequence_Fun(EObject context, Fun semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -117,9 +135,27 @@ public class V0SemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     (expressions+=Expression*)
+	 *     expressions+=Expression*
 	 */
 	protected void sequence_Main(EObject context, Main semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     values+=STRING+
+	 */
+	protected void sequence_Println(EObject context, Println semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     (main=Main funs+=Fun*)
+	 */
+	protected void sequence_RootElement(EObject context, RootElement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 }

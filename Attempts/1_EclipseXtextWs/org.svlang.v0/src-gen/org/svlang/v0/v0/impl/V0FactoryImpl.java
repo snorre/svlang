@@ -71,8 +71,7 @@ public class V0FactoryImpl extends EFactoryImpl implements V0Factory
       case V0Package.EXPRESSION: return createExpression();
       case V0Package.ASSIGNMENT: return createAssignment();
       case V0Package.FUN_CALL: return createFunCall();
-      case V0Package.PASSABLE: return createPassable();
-      case V0Package.RETURN: return createReturn();
+      case V0Package.PRINTLN: return createPrintln();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -160,21 +159,10 @@ public class V0FactoryImpl extends EFactoryImpl implements V0Factory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Passable createPassable()
+  public Println createPrintln()
   {
-    PassableImpl passable = new PassableImpl();
-    return passable;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public Return createReturn()
-  {
-    ReturnImpl return_ = new ReturnImpl();
-    return return_;
+    PrintlnImpl println = new PrintlnImpl();
+    return println;
   }
 
   /**

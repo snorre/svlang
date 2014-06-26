@@ -2,7 +2,6 @@
  */
 package org.svlang.v0.v0;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,7 +12,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.svlang.v0.v0.FunCall#getName <em>Name</em>}</li>
- *   <li>{@link org.svlang.v0.v0.FunCall#getParameters <em>Parameters</em>}</li>
  * </ul>
  * </p>
  *
@@ -21,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface FunCall extends Expression, Passable
+public interface FunCall extends Expression
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
@@ -48,21 +46,5 @@ public interface FunCall extends Expression, Passable
    * @generated
    */
   void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.
-   * The list contents are of type {@link org.svlang.v0.v0.Passable}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Parameters</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Parameters</em>' containment reference list.
-   * @see org.svlang.v0.v0.V0Package#getFunCall_Parameters()
-   * @model containment="true"
-   * @generated
-   */
-  EList<Passable> getParameters();
 
 } // FunCall

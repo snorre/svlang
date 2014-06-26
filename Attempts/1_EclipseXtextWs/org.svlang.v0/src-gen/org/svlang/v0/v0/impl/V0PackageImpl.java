@@ -15,8 +15,7 @@ import org.svlang.v0.v0.Expression;
 import org.svlang.v0.v0.Fun;
 import org.svlang.v0.v0.FunCall;
 import org.svlang.v0.v0.Main;
-import org.svlang.v0.v0.Passable;
-import org.svlang.v0.v0.Return;
+import org.svlang.v0.v0.Println;
 import org.svlang.v0.v0.RootElement;
 import org.svlang.v0.v0.V0Factory;
 import org.svlang.v0.v0.V0Package;
@@ -83,14 +82,7 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass passableEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass returnEClass = null;
+  private EClass printlnEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -190,9 +182,19 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getRootElement_Expressions()
+  public EReference getRootElement_Main()
   {
     return (EReference)rootElementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getRootElement_Funs()
+  {
+    return (EReference)rootElementEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -203,6 +205,16 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
   public EClass getMain()
   {
     return mainEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getMain_Expressions()
+  {
+    return (EReference)mainEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -230,9 +242,9 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFun_RetType()
+  public EReference getFun_Expressions()
   {
-    return (EAttribute)funEClass.getEStructuralFeatures().get(1);
+    return (EReference)funEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -270,9 +282,9 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAssignment_Value()
+  public EAttribute getAssignment_Value()
   {
-    return (EReference)assignmentEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)assignmentEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -300,9 +312,9 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFunCall_Parameters()
+  public EClass getPrintln()
   {
-    return (EReference)funCallEClass.getEStructuralFeatures().get(1);
+    return printlnEClass;
   }
 
   /**
@@ -310,19 +322,9 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPassable()
+  public EAttribute getPrintln_Values()
   {
-    return passableEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EClass getReturn()
-  {
-    return returnEClass;
+    return (EAttribute)printlnEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -359,27 +361,27 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
     createEReference(domainmodelEClass, DOMAINMODEL__ELEMENTS);
 
     rootElementEClass = createEClass(ROOT_ELEMENT);
-    createEReference(rootElementEClass, ROOT_ELEMENT__EXPRESSIONS);
+    createEReference(rootElementEClass, ROOT_ELEMENT__MAIN);
+    createEReference(rootElementEClass, ROOT_ELEMENT__FUNS);
 
     mainEClass = createEClass(MAIN);
+    createEReference(mainEClass, MAIN__EXPRESSIONS);
 
     funEClass = createEClass(FUN);
     createEAttribute(funEClass, FUN__NAME);
-    createEAttribute(funEClass, FUN__RET_TYPE);
+    createEReference(funEClass, FUN__EXPRESSIONS);
 
     expressionEClass = createEClass(EXPRESSION);
 
     assignmentEClass = createEClass(ASSIGNMENT);
     createEAttribute(assignmentEClass, ASSIGNMENT__NAME);
-    createEReference(assignmentEClass, ASSIGNMENT__VALUE);
+    createEAttribute(assignmentEClass, ASSIGNMENT__VALUE);
 
     funCallEClass = createEClass(FUN_CALL);
     createEAttribute(funCallEClass, FUN_CALL__NAME);
-    createEReference(funCallEClass, FUN_CALL__PARAMETERS);
 
-    passableEClass = createEClass(PASSABLE);
-
-    returnEClass = createEClass(RETURN);
+    printlnEClass = createEClass(PRINTLN);
+    createEAttribute(printlnEClass, PRINTLN__VALUES);
   }
 
   /**
@@ -411,40 +413,36 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    mainEClass.getESuperTypes().add(this.getRootElement());
-    funEClass.getESuperTypes().add(this.getRootElement());
     assignmentEClass.getESuperTypes().add(this.getExpression());
     funCallEClass.getESuperTypes().add(this.getExpression());
-    funCallEClass.getESuperTypes().add(this.getPassable());
-    passableEClass.getESuperTypes().add(this.getReturn());
-    returnEClass.getESuperTypes().add(this.getExpression());
+    printlnEClass.getESuperTypes().add(this.getExpression());
 
     // Initialize classes and features; add operations and parameters
     initEClass(domainmodelEClass, Domainmodel.class, "Domainmodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getDomainmodel_Elements(), this.getRootElement(), null, "elements", null, 0, -1, Domainmodel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(rootElementEClass, RootElement.class, "RootElement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getRootElement_Expressions(), this.getExpression(), null, "expressions", null, 0, -1, RootElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRootElement_Main(), this.getMain(), null, "main", null, 0, 1, RootElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRootElement_Funs(), this.getFun(), null, "funs", null, 0, -1, RootElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(mainEClass, Main.class, "Main", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMain_Expressions(), this.getExpression(), null, "expressions", null, 0, -1, Main.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(funEClass, Fun.class, "Fun", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFun_Name(), ecorePackage.getEString(), "name", null, 0, 1, Fun.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getFun_RetType(), ecorePackage.getEString(), "retType", null, 0, 1, Fun.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFun_Expressions(), this.getExpression(), null, "expressions", null, 0, -1, Fun.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     initEClass(assignmentEClass, Assignment.class, "Assignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getAssignment_Name(), ecorePackage.getEString(), "name", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getAssignment_Value(), this.getPassable(), null, "value", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAssignment_Value(), ecorePackage.getEString(), "value", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(funCallEClass, FunCall.class, "FunCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFunCall_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunCall_Parameters(), this.getPassable(), null, "parameters", null, 0, -1, FunCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(passableEClass, Passable.class, "Passable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-    initEClass(returnEClass, Return.class, "Return", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEClass(printlnEClass, Println.class, "Println", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getPrintln_Values(), ecorePackage.getEString(), "values", null, 0, -1, Println.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

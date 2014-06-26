@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<map>
-	<bundle bundleID="744" localization="OSGI-INF/l10n/bundle" name="org.svlang.v0" project="org.svlang.v0" provider="My Company"/>
-	<bundle bundleID="745" localization="OSGI-INF/l10n/bundle" name="org.svlang.v0.tests" project="org.svlang.v0.tests" provider="My Company"/>
-	<bundle bundleID="746" class="org.svlang.v0.ui.internal.V0Activator" localization="OSGI-INF/l10n/bundle" name="org.svlang.v0.ui" project="org.svlang.v0.ui" provider="My Company"/>
-</map>

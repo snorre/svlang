@@ -110,14 +110,9 @@ public class V0AdapterFactory extends AdapterFactoryImpl
         return createFunCallAdapter();
       }
       @Override
-      public Adapter casePassable(Passable object)
+      public Adapter casePrintln(Println object)
       {
-        return createPassableAdapter();
-      }
-      @Override
-      public Adapter caseReturn(Return object)
-      {
-        return createReturnAdapter();
+        return createPrintlnAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -247,31 +242,16 @@ public class V0AdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.svlang.v0.v0.Passable <em>Passable</em>}'.
+   * Creates a new adapter for an object of class '{@link org.svlang.v0.v0.Println <em>Println</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.svlang.v0.v0.Passable
+   * @see org.svlang.v0.v0.Println
    * @generated
    */
-  public Adapter createPassableAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.svlang.v0.v0.Return <em>Return</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.svlang.v0.v0.Return
-   * @generated
-   */
-  public Adapter createReturnAdapter()
+  public Adapter createPrintlnAdapter()
   {
     return null;
   }

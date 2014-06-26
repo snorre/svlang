@@ -1,0 +1,9 @@
+public class All {
+	
+	public static void Main(String[] args) {
+		final int a = 2;
+				
+	} 
+	public static void jalla() {
+	}
+}

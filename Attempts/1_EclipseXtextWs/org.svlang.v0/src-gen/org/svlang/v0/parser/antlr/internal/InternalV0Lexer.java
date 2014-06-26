@@ -12,9 +12,8 @@ import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class InternalV0Lexer extends Lexer {
-    public static final int T__19=19;
     public static final int RULE_ID=4;
-    public static final int RULE_STRING=6;
+    public static final int RULE_STRING=5;
     public static final int T__16=16;
     public static final int T__15=15;
     public static final int T__18=18;
@@ -24,7 +23,7 @@ public class InternalV0Lexer extends Lexer {
     public static final int T__14=14;
     public static final int T__13=13;
     public static final int RULE_ANY_OTHER=10;
-    public static final int RULE_INT=5;
+    public static final int RULE_INT=6;
     public static final int RULE_WS=9;
     public static final int RULE_SL_COMMENT=8;
     public static final int EOF=-1;
@@ -110,10 +109,11 @@ public class InternalV0Lexer extends Lexer {
         try {
             int _type = T__14;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:14:7: ( ':' )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:14:9: ':'
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:14:7: ( ' {' )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:14:9: ' {'
             {
-            match(':'); 
+            match(" {"); 
+
 
             }
 
@@ -130,10 +130,10 @@ public class InternalV0Lexer extends Lexer {
         try {
             int _type = T__15;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:15:7: ( ' {' )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:15:9: ' {'
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:15:7: ( ' = ' )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:15:9: ' = '
             {
-            match(" {"); 
+            match(" = "); 
 
 
             }
@@ -151,10 +151,10 @@ public class InternalV0Lexer extends Lexer {
         try {
             int _type = T__16;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:16:7: ( ' = ' )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:16:9: ' = '
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:16:7: ( '()' )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:16:9: '()'
             {
-            match(" = "); 
+            match("()"); 
 
 
             }
@@ -172,10 +172,11 @@ public class InternalV0Lexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:17:7: ( '(' )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:17:9: '('
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:17:7: ( 'pln(' )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:17:9: 'pln('
             {
-            match('('); 
+            match("pln("); 
+
 
             }
 
@@ -207,36 +208,15 @@ public class InternalV0Lexer extends Lexer {
     }
     // $ANTLR end "T__18"
 
-    // $ANTLR start "T__19"
-    public final void mT__19() throws RecognitionException {
-        try {
-            int _type = T__19;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:19:7: ( 'return ' )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:19:9: 'return '
-            {
-            match("return "); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__19"
-
     // $ANTLR start "RULE_ID"
     public final void mRULE_ID() throws RecognitionException {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:579:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:579:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:479:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:479:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:579:11: ( '^' )?
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:479:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -245,7 +225,7 @@ public class InternalV0Lexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:579:11: '^'
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:479:11: '^'
                     {
                     match('^'); 
 
@@ -263,7 +243,7 @@ public class InternalV0Lexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:579:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:479:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -312,10 +292,10 @@ public class InternalV0Lexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:581:10: ( ( '0' .. '9' )+ )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:581:12: ( '0' .. '9' )+
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:481:10: ( ( '0' .. '9' )+ )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:481:12: ( '0' .. '9' )+
             {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:581:12: ( '0' .. '9' )+
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:481:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -329,7 +309,7 @@ public class InternalV0Lexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:581:13: '0' .. '9'
+            	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:481:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -361,10 +341,10 @@ public class InternalV0Lexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:583:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:583:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:483:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:483:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:583:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:483:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -382,10 +362,10 @@ public class InternalV0Lexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:583:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:483:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:583:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:483:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -401,7 +381,7 @@ public class InternalV0Lexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:583:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:483:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -417,7 +397,7 @@ public class InternalV0Lexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:583:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:483:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -442,10 +422,10 @@ public class InternalV0Lexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:583:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:483:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:583:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:483:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -461,7 +441,7 @@ public class InternalV0Lexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:583:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:483:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -477,7 +457,7 @@ public class InternalV0Lexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:583:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:483:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -520,12 +500,12 @@ public class InternalV0Lexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:585:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:585:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:485:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:485:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:585:24: ( options {greedy=false; } : . )*
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:485:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -550,7 +530,7 @@ public class InternalV0Lexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:585:52: .
+            	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:485:52: .
             	    {
             	    matchAny(); 
 
@@ -580,12 +560,12 @@ public class InternalV0Lexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:587:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:587:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:487:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:487:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:587:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:487:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -598,7 +578,7 @@ public class InternalV0Lexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:587:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:487:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -618,7 +598,7 @@ public class InternalV0Lexer extends Lexer {
                 }
             } while (true);
 
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:587:40: ( ( '\\r' )? '\\n' )?
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:487:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -627,9 +607,9 @@ public class InternalV0Lexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:587:41: ( '\\r' )? '\\n'
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:487:41: ( '\\r' )? '\\n'
                     {
-                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:587:41: ( '\\r' )?
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:487:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -638,7 +618,7 @@ public class InternalV0Lexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:587:41: '\\r'
+                            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:487:41: '\\r'
                             {
                             match('\r'); 
 
@@ -670,10 +650,10 @@ public class InternalV0Lexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:589:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:589:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:489:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:489:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:589:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:489:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -727,8 +707,8 @@ public class InternalV0Lexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:591:16: ( . )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:591:18: .
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:491:16: ( . )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:491:18: .
             {
             matchAny(); 
 
@@ -743,8 +723,8 @@ public class InternalV0Lexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt12=16;
+        // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt12=15;
         alt12 = dfa12.predict(input);
         switch (alt12) {
             case 1 :
@@ -804,56 +784,49 @@ public class InternalV0Lexer extends Lexer {
                 }
                 break;
             case 9 :
-                // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:1:58: T__19
-                {
-                mT__19(); 
-
-                }
-                break;
-            case 10 :
-                // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:1:64: RULE_ID
+                // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:1:58: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 11 :
-                // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:1:72: RULE_INT
+            case 10 :
+                // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:1:66: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 12 :
-                // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:1:81: RULE_STRING
+            case 11 :
+                // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:1:75: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 13 :
-                // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:1:93: RULE_ML_COMMENT
+            case 12 :
+                // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:1:87: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 14 :
-                // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:1:109: RULE_SL_COMMENT
+            case 13 :
+                // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:1:103: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 15 :
-                // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:1:125: RULE_WS
+            case 14 :
+                // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:1:119: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 16 :
-                // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:1:133: RULE_ANY_OTHER
+            case 15 :
+                // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:1:127: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -867,70 +840,63 @@ public class InternalV0Lexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\1\uffff\1\22\1\uffff\1\22\1\uffff\1\30\2\uffff\1\22\1\20\2\uffff"+
-        "\3\20\2\uffff\1\22\2\uffff\1\22\6\uffff\1\22\4\uffff\4\22\1\uffff"+
-        "\1\22\1\uffff\2\22\1\uffff";
+        "\1\uffff\1\21\1\uffff\1\21\1\26\1\17\1\21\1\uffff\1\17\2\uffff\3"+
+        "\17\2\uffff\1\21\2\uffff\1\21\4\uffff\1\21\5\uffff\4\21\3\uffff";
     static final String DFA12_eofS =
-        "\52\uffff";
+        "\45\uffff";
     static final String DFA12_minS =
-        "\1\0\1\141\1\uffff\1\165\1\uffff\1\75\2\uffff\1\145\1\101\2\uffff"+
-        "\2\0\1\52\2\uffff\1\151\2\uffff\1\156\6\uffff\1\164\4\uffff\1\156"+
-        "\1\40\1\165\1\40\1\uffff\1\162\1\uffff\1\156\1\40\1\uffff";
+        "\1\0\1\141\1\uffff\1\165\1\75\1\51\1\154\1\uffff\1\101\2\uffff\2"+
+        "\0\1\52\2\uffff\1\151\2\uffff\1\156\4\uffff\1\156\5\uffff\1\156"+
+        "\1\40\1\50\1\40\3\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\1\141\1\uffff\1\165\1\uffff\1\173\2\uffff\1\145\1\172\2"+
-        "\uffff\2\uffff\1\57\2\uffff\1\151\2\uffff\1\156\6\uffff\1\164\4"+
-        "\uffff\1\156\1\40\1\165\1\40\1\uffff\1\162\1\uffff\1\156\1\40\1"+
-        "\uffff";
+        "\1\uffff\1\141\1\uffff\1\165\1\173\1\51\1\154\1\uffff\1\172\2\uffff"+
+        "\2\uffff\1\57\2\uffff\1\151\2\uffff\1\156\4\uffff\1\156\5\uffff"+
+        "\1\156\1\40\1\50\1\40\3\uffff";
     static final String DFA12_acceptS =
-        "\2\uffff\1\2\1\uffff\1\4\1\uffff\1\7\1\10\2\uffff\1\12\1\13\3\uffff"+
-        "\1\17\1\20\1\uffff\1\12\1\2\1\uffff\1\4\1\5\1\6\1\17\1\7\1\10\1"+
-        "\uffff\1\13\1\14\1\15\1\16\4\uffff\1\3\1\uffff\1\1\2\uffff\1\11";
+        "\2\uffff\1\2\4\uffff\1\10\1\uffff\1\11\1\12\3\uffff\1\16\1\17\1"+
+        "\uffff\1\11\1\2\1\uffff\1\4\1\5\1\16\1\6\1\uffff\1\10\1\12\1\13"+
+        "\1\14\1\15\4\uffff\1\3\1\7\1\1";
     static final String DFA12_specialS =
-        "\1\2\13\uffff\1\1\1\0\34\uffff}>";
+        "\1\1\12\uffff\1\0\1\2\30\uffff}>";
     static final String[] DFA12_transitionS = {
-            "\11\20\2\17\2\20\1\17\22\20\1\5\1\20\1\14\4\20\1\15\1\6\1\7"+
-            "\5\20\1\16\12\13\1\4\6\20\32\12\3\20\1\11\1\12\1\20\5\12\1\3"+
-            "\6\12\1\1\4\12\1\10\10\12\2\20\1\2\uff82\20",
-            "\1\21",
+            "\11\17\2\16\2\17\1\16\22\17\1\4\1\17\1\13\4\17\1\14\1\5\1\7"+
+            "\5\17\1\15\12\12\7\17\32\11\3\17\1\10\1\11\1\17\5\11\1\3\6\11"+
+            "\1\1\2\11\1\6\12\11\2\17\1\2\uff82\17",
+            "\1\20",
             "",
-            "\1\24",
+            "\1\23",
+            "\1\25\75\uffff\1\24",
+            "\1\27",
+            "\1\30",
             "",
-            "\1\27\75\uffff\1\26",
+            "\32\21\4\uffff\1\21\1\uffff\32\21",
             "",
             "",
-            "\1\33",
-            "\32\22\4\uffff\1\22\1\uffff\32\22",
+            "\0\33",
+            "\0\33",
+            "\1\34\4\uffff\1\35",
             "",
             "",
-            "\0\35",
-            "\0\35",
-            "\1\36\4\uffff\1\37",
+            "\1\36",
+            "",
+            "",
+            "\1\37",
+            "",
+            "",
             "",
             "",
             "\1\40",
             "",
             "",
+            "",
+            "",
+            "",
             "\1\41",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\42",
-            "",
-            "",
-            "",
-            "",
             "\1\43",
             "\1\44",
-            "\1\45",
-            "\1\46",
             "",
-            "\1\47",
             "",
-            "\1\50",
-            "\1\51",
             ""
     };
 
@@ -964,33 +930,23 @@ public class InternalV0Lexer extends Lexer {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA12_13 = input.LA(1);
+                        int LA12_11 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_13>='\u0000' && LA12_13<='\uFFFF')) ) {s = 29;}
+                        if ( ((LA12_11>='\u0000' && LA12_11<='\uFFFF')) ) {s = 27;}
 
-                        else s = 16;
+                        else s = 15;
 
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA12_12 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_12>='\u0000' && LA12_12<='\uFFFF')) ) {s = 29;}
-
-                        else s = 16;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 2 : 
                         int LA12_0 = input.LA(1);
 
                         s = -1;
@@ -1000,31 +956,39 @@ public class InternalV0Lexer extends Lexer {
 
                         else if ( (LA12_0=='f') ) {s = 3;}
 
-                        else if ( (LA12_0==':') ) {s = 4;}
+                        else if ( (LA12_0==' ') ) {s = 4;}
 
-                        else if ( (LA12_0==' ') ) {s = 5;}
+                        else if ( (LA12_0=='(') ) {s = 5;}
 
-                        else if ( (LA12_0=='(') ) {s = 6;}
+                        else if ( (LA12_0=='p') ) {s = 6;}
 
                         else if ( (LA12_0==')') ) {s = 7;}
 
-                        else if ( (LA12_0=='r') ) {s = 8;}
+                        else if ( (LA12_0=='^') ) {s = 8;}
 
-                        else if ( (LA12_0=='^') ) {s = 9;}
+                        else if ( ((LA12_0>='A' && LA12_0<='Z')||LA12_0=='_'||(LA12_0>='a' && LA12_0<='e')||(LA12_0>='g' && LA12_0<='l')||(LA12_0>='n' && LA12_0<='o')||(LA12_0>='q' && LA12_0<='z')) ) {s = 9;}
 
-                        else if ( ((LA12_0>='A' && LA12_0<='Z')||LA12_0=='_'||(LA12_0>='a' && LA12_0<='e')||(LA12_0>='g' && LA12_0<='l')||(LA12_0>='n' && LA12_0<='q')||(LA12_0>='s' && LA12_0<='z')) ) {s = 10;}
+                        else if ( ((LA12_0>='0' && LA12_0<='9')) ) {s = 10;}
 
-                        else if ( ((LA12_0>='0' && LA12_0<='9')) ) {s = 11;}
+                        else if ( (LA12_0=='\"') ) {s = 11;}
 
-                        else if ( (LA12_0=='\"') ) {s = 12;}
+                        else if ( (LA12_0=='\'') ) {s = 12;}
 
-                        else if ( (LA12_0=='\'') ) {s = 13;}
+                        else if ( (LA12_0=='/') ) {s = 13;}
 
-                        else if ( (LA12_0=='/') ) {s = 14;}
+                        else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r') ) {s = 14;}
 
-                        else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r') ) {s = 15;}
+                        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='*' && LA12_0<='.')||(LA12_0>=':' && LA12_0<='@')||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||(LA12_0>='{' && LA12_0<='|')||(LA12_0>='~' && LA12_0<='\uFFFF')) ) {s = 15;}
 
-                        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='*' && LA12_0<='.')||(LA12_0>=';' && LA12_0<='@')||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||(LA12_0>='{' && LA12_0<='|')||(LA12_0>='~' && LA12_0<='\uFFFF')) ) {s = 16;}
+                        if ( s>=0 ) return s;
+                        break;
+                    case 2 : 
+                        int LA12_12 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_12>='\u0000' && LA12_12<='\uFFFF')) ) {s = 27;}
+
+                        else s = 15;
 
                         if ( s>=0 ) return s;
                         break;

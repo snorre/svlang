@@ -7,42 +7,34 @@ Domainmodel:
 ;
 
 RootElement:
-	Main | Fun
+	(main = Main)
+	(funs += Fun)*
 ;
 
 Main:
-	'main {' 
-		{Main} (expressions += Expression)* 
+	'main {'
+		(expressions += Expression)*
 	'}'
 ;
 
 Fun:
-	'fun ' name=ID ':' retType=ID ' {'
+	'fun ' name=ID ' {'
 		(expressions += Expression)*
 	'}'
 ;
 
 Expression:
-	Assignment | FunCall | Return
+	Assignment | FunCall | Println
 ;
 
 Assignment:
-	name = ID ' = ' value = Passable
+	name = ID ' = ' value = STRING
 ;
 
 FunCall:
-	name=ID '(' (parameters += Passable)* ')'
+	name=ID '()'
 ;
 
-Passable:
-	Constants | ID | FunCall
+Println:
+	'pln(' (values += STRING)+ ')'
 ;
-
-Constants:
-	INT | STRING
-;
-
-Return:
-	'return ' Passable
-;
-
