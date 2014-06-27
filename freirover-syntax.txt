@@ -1,0 +1,24 @@
+
+listener udp port 300 syncMessageToMotors
+timer 10hz syncMotorToHw
+
+model Motors(100ms) {
+	motorA:percent = 0 # standard 0
+	motorB:percent = 0
+	logtype:string = 'nothing'
+}
+
+fun syncMessageToMotors(data:byte[]) {
+	msg = protobuf.decode(data)
+	Motors.motorA = msg.motorA
+	Motors.motorB = msg.motorB
+	Motors.logtype = msg.logtype
+}
+
+fun syncMotorToHw() {
+	# synk til hw
+}
+
+a = Motors.motorA # henter aktiv verdi og default hvis modell ikke er oppdatert på 100ms.
+Motors.motorA = 1 # setter aktiv verdi sammen med tidsstempel
+
