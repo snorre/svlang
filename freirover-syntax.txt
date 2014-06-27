@@ -1,8 +1,8 @@
 
-listener udp port 300 syncMessageToMotors
-timer 10hz syncMotorToHw
+start listen udp port 300 syncMessageToMotors
+start timer 10hz syncMotorToHw
 
-model Motors(100ms) {
+model Motors(100ms) { # models are thread safe
 	motorA:percent = 0 # standard 0
 	motorB:percent = 0
 	logtype:string = 'nothing'
