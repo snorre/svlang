@@ -2,7 +2,7 @@
 start listen udp port 300 syncMessageToMotors
 start timer 10hz syncMotorToHw
 
-model Motors(100ms) { # models are thread safe
+model Motors lifespan 100ms { # models are thread safe
 	motorA:percent = 0 # standard 0
 	motorB:percent = 0
 	logtype:string = 'nothing'
@@ -21,4 +21,8 @@ fun syncMotorToHw() {
 
 a = Motors.motorA # henter aktiv verdi og default hvis modell ikke er oppdatert på 100ms.
 Motors.motorA = 1 # setter aktiv verdi sammen med tidsstempel
+
+############## EVT...
+
+flow from udp port 3000 with interpreter  to 
 
