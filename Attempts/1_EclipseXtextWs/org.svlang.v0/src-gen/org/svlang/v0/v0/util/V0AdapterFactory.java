@@ -100,9 +100,49 @@ public class V0AdapterFactory extends AdapterFactoryImpl
         return createExpressionAdapter();
       }
       @Override
+      public Adapter caseSymbol(Symbol object)
+      {
+        return createSymbolAdapter();
+      }
+      @Override
+      public Adapter caseAtomic(Atomic object)
+      {
+        return createAtomicAdapter();
+      }
+      @Override
+      public Adapter caseType(Type object)
+      {
+        return createTypeAdapter();
+      }
+      @Override
+      public Adapter caseMyIntType(MyIntType object)
+      {
+        return createMyIntTypeAdapter();
+      }
+      @Override
+      public Adapter caseMyStringType(MyStringType object)
+      {
+        return createMyStringTypeAdapter();
+      }
+      @Override
       public Adapter caseAssignment(Assignment object)
       {
         return createAssignmentAdapter();
+      }
+      @Override
+      public Adapter caseSymbolRef(SymbolRef object)
+      {
+        return createSymbolRefAdapter();
+      }
+      @Override
+      public Adapter caseNumberLiteral(NumberLiteral object)
+      {
+        return createNumberLiteralAdapter();
+      }
+      @Override
+      public Adapter caseStringLiteral(StringLiteral object)
+      {
+        return createStringLiteralAdapter();
       }
       @Override
       public Adapter caseFunCall(FunCall object)
@@ -110,9 +150,14 @@ public class V0AdapterFactory extends AdapterFactoryImpl
         return createFunCallAdapter();
       }
       @Override
-      public Adapter casePrintln(Println object)
+      public Adapter caseINT(INT object)
       {
-        return createPrintlnAdapter();
+        return createINTAdapter();
+      }
+      @Override
+      public Adapter caseSTRING(STRING object)
+      {
+        return createSTRINGAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -212,6 +257,81 @@ public class V0AdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.svlang.v0.v0.Symbol <em>Symbol</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.svlang.v0.v0.Symbol
+   * @generated
+   */
+  public Adapter createSymbolAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.svlang.v0.v0.Atomic <em>Atomic</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.svlang.v0.v0.Atomic
+   * @generated
+   */
+  public Adapter createAtomicAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.svlang.v0.v0.Type <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.svlang.v0.v0.Type
+   * @generated
+   */
+  public Adapter createTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.svlang.v0.v0.MyIntType <em>My Int Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.svlang.v0.v0.MyIntType
+   * @generated
+   */
+  public Adapter createMyIntTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.svlang.v0.v0.MyStringType <em>My String Type</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.svlang.v0.v0.MyStringType
+   * @generated
+   */
+  public Adapter createMyStringTypeAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.svlang.v0.v0.Assignment <em>Assignment</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -222,6 +342,51 @@ public class V0AdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createAssignmentAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.svlang.v0.v0.SymbolRef <em>Symbol Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.svlang.v0.v0.SymbolRef
+   * @generated
+   */
+  public Adapter createSymbolRefAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.svlang.v0.v0.NumberLiteral <em>Number Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.svlang.v0.v0.NumberLiteral
+   * @generated
+   */
+  public Adapter createNumberLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.svlang.v0.v0.StringLiteral <em>String Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.svlang.v0.v0.StringLiteral
+   * @generated
+   */
+  public Adapter createStringLiteralAdapter()
   {
     return null;
   }
@@ -242,16 +407,31 @@ public class V0AdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.svlang.v0.v0.Println <em>Println</em>}'.
+   * Creates a new adapter for an object of class '{@link org.svlang.v0.v0.INT <em>INT</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.svlang.v0.v0.Println
+   * @see org.svlang.v0.v0.INT
    * @generated
    */
-  public Adapter createPrintlnAdapter()
+  public Adapter createINTAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.svlang.v0.v0.STRING <em>STRING</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.svlang.v0.v0.STRING
+   * @generated
+   */
+  public Adapter createSTRINGAdapter()
   {
     return null;
   }

@@ -68,6 +68,51 @@ public interface V0Factory extends EFactory
   Expression createExpression();
 
   /**
+   * Returns a new object of class '<em>Symbol</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Symbol</em>'.
+   * @generated
+   */
+  Symbol createSymbol();
+
+  /**
+   * Returns a new object of class '<em>Atomic</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Atomic</em>'.
+   * @generated
+   */
+  Atomic createAtomic();
+
+  /**
+   * Returns a new object of class '<em>Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Type</em>'.
+   * @generated
+   */
+  Type createType();
+
+  /**
+   * Returns a new object of class '<em>My Int Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>My Int Type</em>'.
+   * @generated
+   */
+  MyIntType createMyIntType();
+
+  /**
+   * Returns a new object of class '<em>My String Type</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>My String Type</em>'.
+   * @generated
+   */
+  MyStringType createMyStringType();
+
+  /**
    * Returns a new object of class '<em>Assignment</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -75,6 +120,33 @@ public interface V0Factory extends EFactory
    * @generated
    */
   Assignment createAssignment();
+
+  /**
+   * Returns a new object of class '<em>Symbol Ref</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Symbol Ref</em>'.
+   * @generated
+   */
+  SymbolRef createSymbolRef();
+
+  /**
+   * Returns a new object of class '<em>Number Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Number Literal</em>'.
+   * @generated
+   */
+  NumberLiteral createNumberLiteral();
+
+  /**
+   * Returns a new object of class '<em>String Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Literal</em>'.
+   * @generated
+   */
+  StringLiteral createStringLiteral();
 
   /**
    * Returns a new object of class '<em>Fun Call</em>'.
@@ -86,13 +158,22 @@ public interface V0Factory extends EFactory
   FunCall createFunCall();
 
   /**
-   * Returns a new object of class '<em>Println</em>'.
+   * Returns a new object of class '<em>INT</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Println</em>'.
+   * @return a new object of class '<em>INT</em>'.
    * @generated
    */
-  Println createPrintln();
+  INT createINT();
+
+  /**
+   * Returns a new object of class '<em>STRING</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>STRING</em>'.
+   * @generated
+   */
+  STRING createSTRING();
 
   /**
    * Returns the package supported by this factory.

@@ -1,9 +1,11 @@
 main {
-	a = 'abc'
-	jalla()
+	int a = 123
+	string b = 'abc'
+	int c = b
+//	c = jalla()
 }
 
-fun jalla {
-	b = 'hei'
-	pln('noe' 'mere')
-}
+//fun jalla:int {
+//	b = 'hei'
+//	pln('noe' 'mere')
+//}

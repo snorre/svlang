@@ -69,9 +69,18 @@ public class V0FactoryImpl extends EFactoryImpl implements V0Factory
       case V0Package.MAIN: return createMain();
       case V0Package.FUN: return createFun();
       case V0Package.EXPRESSION: return createExpression();
+      case V0Package.SYMBOL: return createSymbol();
+      case V0Package.ATOMIC: return createAtomic();
+      case V0Package.TYPE: return createType();
+      case V0Package.MY_INT_TYPE: return createMyIntType();
+      case V0Package.MY_STRING_TYPE: return createMyStringType();
       case V0Package.ASSIGNMENT: return createAssignment();
+      case V0Package.SYMBOL_REF: return createSymbolRef();
+      case V0Package.NUMBER_LITERAL: return createNumberLiteral();
+      case V0Package.STRING_LITERAL: return createStringLiteral();
       case V0Package.FUN_CALL: return createFunCall();
-      case V0Package.PRINTLN: return createPrintln();
+      case V0Package.INT: return createINT();
+      case V0Package.STRING: return createSTRING();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -137,10 +146,98 @@ public class V0FactoryImpl extends EFactoryImpl implements V0Factory
    * <!-- end-user-doc -->
    * @generated
    */
+  public Symbol createSymbol()
+  {
+    SymbolImpl symbol = new SymbolImpl();
+    return symbol;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Atomic createAtomic()
+  {
+    AtomicImpl atomic = new AtomicImpl();
+    return atomic;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Type createType()
+  {
+    TypeImpl type = new TypeImpl();
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MyIntType createMyIntType()
+  {
+    MyIntTypeImpl myIntType = new MyIntTypeImpl();
+    return myIntType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public MyStringType createMyStringType()
+  {
+    MyStringTypeImpl myStringType = new MyStringTypeImpl();
+    return myStringType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Assignment createAssignment()
   {
     AssignmentImpl assignment = new AssignmentImpl();
     return assignment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public SymbolRef createSymbolRef()
+  {
+    SymbolRefImpl symbolRef = new SymbolRefImpl();
+    return symbolRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NumberLiteral createNumberLiteral()
+  {
+    NumberLiteralImpl numberLiteral = new NumberLiteralImpl();
+    return numberLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public StringLiteral createStringLiteral()
+  {
+    StringLiteralImpl stringLiteral = new StringLiteralImpl();
+    return stringLiteral;
   }
 
   /**
@@ -159,10 +256,21 @@ public class V0FactoryImpl extends EFactoryImpl implements V0Factory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Println createPrintln()
+  public INT createINT()
   {
-    PrintlnImpl println = new PrintlnImpl();
-    return println;
+    INTImpl int_ = new INTImpl();
+    return int_;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public STRING createSTRING()
+  {
+    STRINGImpl string = new STRINGImpl();
+    return string;
   }
 
   /**

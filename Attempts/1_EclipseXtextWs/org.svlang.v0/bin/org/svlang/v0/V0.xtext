@@ -13,28 +13,51 @@ RootElement:
 
 Main:
 	'main {'
-		(expressions += Expression)*
+		(expressions += Expression)+
 	'}'
 ;
 
 Fun:
-	'fun ' name=ID ' {'
+	{Fun}
+	'fun ' name=ID ':' returnType=[Type] ' {'
 		(expressions += Expression)*
 	'}'
 ;
 
 Expression:
-	Assignment | FunCall | Println
+	Assignment 
+//	| FunCall 
+//	| Println
 ;
 
-Assignment:
-	name = ID ' = ' value = STRING
+Assignment returns Symbol:
+	{Assignment} type=[Type] name=ID ' = ' value=Atomic
 ;
 
-FunCall:
-	name=ID '()'
+
+//Println:
+//	'pln(' (values += Type)+ ')'
+//;
+
+Atomic:
+	{SymbolRef} symbol=[Symbol] |
+	{NumberLiteral} value=INT |
+	{StringLiteral} value=STRING |
+	{FunCall} fun=[Fun]'()'
 ;
 
-Println:
-	'pln(' (values += STRING)+ ')'
+//FunCall returns Atomic:
+//	name=ID '(' (parameters += Atomic)* ')'
+//;
+
+Type:
+	MyIntType | MyStringType 
+;
+
+MyIntType:
+	{INT} 'int'
+;
+
+MyStringType :
+	{STRING} 'string'
 ;

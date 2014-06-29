@@ -19,18 +19,33 @@
     </genClasses>
     <genClasses ecoreClass="V0.ecore#//Fun">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute V0.ecore#//Fun/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference V0.ecore#//Fun/returnType"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference V0.ecore#//Fun/expressions"/>
     </genClasses>
     <genClasses ecoreClass="V0.ecore#//Expression"/>
+    <genClasses ecoreClass="V0.ecore#//Symbol"/>
+    <genClasses ecoreClass="V0.ecore#//Atomic"/>
+    <genClasses ecoreClass="V0.ecore#//Type"/>
+    <genClasses ecoreClass="V0.ecore#//MyIntType"/>
+    <genClasses ecoreClass="V0.ecore#//MyStringType"/>
     <genClasses ecoreClass="V0.ecore#//Assignment">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference V0.ecore#//Assignment/type"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute V0.ecore#//Assignment/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute V0.ecore#//Assignment/value"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference V0.ecore#//Assignment/value"/>
+    </genClasses>
+    <genClasses ecoreClass="V0.ecore#//SymbolRef">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference V0.ecore#//SymbolRef/symbol"/>
+    </genClasses>
+    <genClasses ecoreClass="V0.ecore#//NumberLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute V0.ecore#//NumberLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="V0.ecore#//StringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute V0.ecore#//StringLiteral/value"/>
     </genClasses>
     <genClasses ecoreClass="V0.ecore#//FunCall">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute V0.ecore#//FunCall/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference V0.ecore#//FunCall/fun"/>
     </genClasses>
-    <genClasses ecoreClass="V0.ecore#//Println">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute V0.ecore#//Println/values"/>
-    </genClasses>
+    <genClasses ecoreClass="V0.ecore#//INT"/>
+    <genClasses ecoreClass="V0.ecore#//STRING"/>
   </genPackages>
 </genmodel:GenModel>

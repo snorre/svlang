@@ -169,13 +169,22 @@ public interface V0Package extends EPackage
   int FUN__NAME = 0;
 
   /**
+   * The feature id for the '<em><b>Return Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUN__RETURN_TYPE = 1;
+
+  /**
    * The feature id for the '<em><b>Expressions</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUN__EXPRESSIONS = 1;
+  int FUN__EXPRESSIONS = 2;
 
   /**
    * The number of structural features of the '<em>Fun</em>' class.
@@ -184,7 +193,7 @@ public interface V0Package extends EPackage
    * @generated
    * @ordered
    */
-  int FUN_FEATURE_COUNT = 2;
+  int FUN_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.svlang.v0.v0.impl.ExpressionImpl <em>Expression</em>}' class.
@@ -206,6 +215,101 @@ public interface V0Package extends EPackage
   int EXPRESSION_FEATURE_COUNT = 0;
 
   /**
+   * The meta object id for the '{@link org.svlang.v0.v0.impl.SymbolImpl <em>Symbol</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.svlang.v0.v0.impl.SymbolImpl
+   * @see org.svlang.v0.v0.impl.V0PackageImpl#getSymbol()
+   * @generated
+   */
+  int SYMBOL = 5;
+
+  /**
+   * The number of structural features of the '<em>Symbol</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYMBOL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link org.svlang.v0.v0.impl.AtomicImpl <em>Atomic</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.svlang.v0.v0.impl.AtomicImpl
+   * @see org.svlang.v0.v0.impl.V0PackageImpl#getAtomic()
+   * @generated
+   */
+  int ATOMIC = 6;
+
+  /**
+   * The number of structural features of the '<em>Atomic</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATOMIC_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link org.svlang.v0.v0.impl.TypeImpl <em>Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.svlang.v0.v0.impl.TypeImpl
+   * @see org.svlang.v0.v0.impl.V0PackageImpl#getType()
+   * @generated
+   */
+  int TYPE = 7;
+
+  /**
+   * The number of structural features of the '<em>Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link org.svlang.v0.v0.impl.MyIntTypeImpl <em>My Int Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.svlang.v0.v0.impl.MyIntTypeImpl
+   * @see org.svlang.v0.v0.impl.V0PackageImpl#getMyIntType()
+   * @generated
+   */
+  int MY_INT_TYPE = 8;
+
+  /**
+   * The number of structural features of the '<em>My Int Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MY_INT_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link org.svlang.v0.v0.impl.MyStringTypeImpl <em>My String Type</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.svlang.v0.v0.impl.MyStringTypeImpl
+   * @see org.svlang.v0.v0.impl.V0PackageImpl#getMyStringType()
+   * @generated
+   */
+  int MY_STRING_TYPE = 9;
+
+  /**
+   * The number of structural features of the '<em>My String Type</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MY_STRING_TYPE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link org.svlang.v0.v0.impl.AssignmentImpl <em>Assignment</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -213,7 +317,16 @@ public interface V0Package extends EPackage
    * @see org.svlang.v0.v0.impl.V0PackageImpl#getAssignment()
    * @generated
    */
-  int ASSIGNMENT = 5;
+  int ASSIGNMENT = 10;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSIGNMENT__TYPE = SYMBOL_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -222,16 +335,16 @@ public interface V0Package extends EPackage
    * @generated
    * @ordered
    */
-  int ASSIGNMENT__NAME = EXPRESSION_FEATURE_COUNT + 0;
+  int ASSIGNMENT__NAME = SYMBOL_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * The feature id for the '<em><b>Value</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ASSIGNMENT__VALUE = EXPRESSION_FEATURE_COUNT + 1;
+  int ASSIGNMENT__VALUE = SYMBOL_FEATURE_COUNT + 2;
 
   /**
    * The number of structural features of the '<em>Assignment</em>' class.
@@ -240,7 +353,91 @@ public interface V0Package extends EPackage
    * @generated
    * @ordered
    */
-  int ASSIGNMENT_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+  int ASSIGNMENT_FEATURE_COUNT = SYMBOL_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link org.svlang.v0.v0.impl.SymbolRefImpl <em>Symbol Ref</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.svlang.v0.v0.impl.SymbolRefImpl
+   * @see org.svlang.v0.v0.impl.V0PackageImpl#getSymbolRef()
+   * @generated
+   */
+  int SYMBOL_REF = 11;
+
+  /**
+   * The feature id for the '<em><b>Symbol</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYMBOL_REF__SYMBOL = ATOMIC_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Symbol Ref</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SYMBOL_REF_FEATURE_COUNT = ATOMIC_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.svlang.v0.v0.impl.NumberLiteralImpl <em>Number Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.svlang.v0.v0.impl.NumberLiteralImpl
+   * @see org.svlang.v0.v0.impl.V0PackageImpl#getNumberLiteral()
+   * @generated
+   */
+  int NUMBER_LITERAL = 12;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUMBER_LITERAL__VALUE = ATOMIC_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Number Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NUMBER_LITERAL_FEATURE_COUNT = ATOMIC_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link org.svlang.v0.v0.impl.StringLiteralImpl <em>String Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.svlang.v0.v0.impl.StringLiteralImpl
+   * @see org.svlang.v0.v0.impl.V0PackageImpl#getStringLiteral()
+   * @generated
+   */
+  int STRING_LITERAL = 13;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__VALUE = ATOMIC_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>String Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL_FEATURE_COUNT = ATOMIC_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link org.svlang.v0.v0.impl.FunCallImpl <em>Fun Call</em>}' class.
@@ -250,16 +447,16 @@ public interface V0Package extends EPackage
    * @see org.svlang.v0.v0.impl.V0PackageImpl#getFunCall()
    * @generated
    */
-  int FUN_CALL = 6;
+  int FUN_CALL = 14;
 
   /**
-   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * The feature id for the '<em><b>Fun</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUN_CALL__NAME = EXPRESSION_FEATURE_COUNT + 0;
+  int FUN_CALL__FUN = ATOMIC_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Fun Call</em>' class.
@@ -268,35 +465,45 @@ public interface V0Package extends EPackage
    * @generated
    * @ordered
    */
-  int FUN_CALL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+  int FUN_CALL_FEATURE_COUNT = ATOMIC_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.svlang.v0.v0.impl.PrintlnImpl <em>Println</em>}' class.
+   * The meta object id for the '{@link org.svlang.v0.v0.impl.INTImpl <em>INT</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.svlang.v0.v0.impl.PrintlnImpl
-   * @see org.svlang.v0.v0.impl.V0PackageImpl#getPrintln()
+   * @see org.svlang.v0.v0.impl.INTImpl
+   * @see org.svlang.v0.v0.impl.V0PackageImpl#getINT()
    * @generated
    */
-  int PRINTLN = 7;
+  int INT = 15;
 
   /**
-   * The feature id for the '<em><b>Values</b></em>' attribute list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int PRINTLN__VALUES = EXPRESSION_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Println</em>' class.
+   * The number of structural features of the '<em>INT</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PRINTLN_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+  int INT_FEATURE_COUNT = MY_INT_TYPE_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link org.svlang.v0.v0.impl.STRINGImpl <em>STRING</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.svlang.v0.v0.impl.STRINGImpl
+   * @see org.svlang.v0.v0.impl.V0PackageImpl#getSTRING()
+   * @generated
+   */
+  int STRING = 16;
+
+  /**
+   * The number of structural features of the '<em>STRING</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_FEATURE_COUNT = MY_STRING_TYPE_FEATURE_COUNT + 0;
 
 
   /**
@@ -395,6 +602,17 @@ public interface V0Package extends EPackage
   EAttribute getFun_Name();
 
   /**
+   * Returns the meta object for the reference '{@link org.svlang.v0.v0.Fun#getReturnType <em>Return Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Return Type</em>'.
+   * @see org.svlang.v0.v0.Fun#getReturnType()
+   * @see #getFun()
+   * @generated
+   */
+  EReference getFun_ReturnType();
+
+  /**
    * Returns the meta object for the containment reference list '{@link org.svlang.v0.v0.Fun#getExpressions <em>Expressions</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -416,6 +634,56 @@ public interface V0Package extends EPackage
   EClass getExpression();
 
   /**
+   * Returns the meta object for class '{@link org.svlang.v0.v0.Symbol <em>Symbol</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Symbol</em>'.
+   * @see org.svlang.v0.v0.Symbol
+   * @generated
+   */
+  EClass getSymbol();
+
+  /**
+   * Returns the meta object for class '{@link org.svlang.v0.v0.Atomic <em>Atomic</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Atomic</em>'.
+   * @see org.svlang.v0.v0.Atomic
+   * @generated
+   */
+  EClass getAtomic();
+
+  /**
+   * Returns the meta object for class '{@link org.svlang.v0.v0.Type <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Type</em>'.
+   * @see org.svlang.v0.v0.Type
+   * @generated
+   */
+  EClass getType();
+
+  /**
+   * Returns the meta object for class '{@link org.svlang.v0.v0.MyIntType <em>My Int Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>My Int Type</em>'.
+   * @see org.svlang.v0.v0.MyIntType
+   * @generated
+   */
+  EClass getMyIntType();
+
+  /**
+   * Returns the meta object for class '{@link org.svlang.v0.v0.MyStringType <em>My String Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>My String Type</em>'.
+   * @see org.svlang.v0.v0.MyStringType
+   * @generated
+   */
+  EClass getMyStringType();
+
+  /**
    * Returns the meta object for class '{@link org.svlang.v0.v0.Assignment <em>Assignment</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -424,6 +692,17 @@ public interface V0Package extends EPackage
    * @generated
    */
   EClass getAssignment();
+
+  /**
+   * Returns the meta object for the reference '{@link org.svlang.v0.v0.Assignment#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Type</em>'.
+   * @see org.svlang.v0.v0.Assignment#getType()
+   * @see #getAssignment()
+   * @generated
+   */
+  EReference getAssignment_Type();
 
   /**
    * Returns the meta object for the attribute '{@link org.svlang.v0.v0.Assignment#getName <em>Name</em>}'.
@@ -437,15 +716,78 @@ public interface V0Package extends EPackage
   EAttribute getAssignment_Name();
 
   /**
-   * Returns the meta object for the attribute '{@link org.svlang.v0.v0.Assignment#getValue <em>Value</em>}'.
+   * Returns the meta object for the containment reference '{@link org.svlang.v0.v0.Assignment#getValue <em>Value</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Value</em>'.
+   * @return the meta object for the containment reference '<em>Value</em>'.
    * @see org.svlang.v0.v0.Assignment#getValue()
    * @see #getAssignment()
    * @generated
    */
-  EAttribute getAssignment_Value();
+  EReference getAssignment_Value();
+
+  /**
+   * Returns the meta object for class '{@link org.svlang.v0.v0.SymbolRef <em>Symbol Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Symbol Ref</em>'.
+   * @see org.svlang.v0.v0.SymbolRef
+   * @generated
+   */
+  EClass getSymbolRef();
+
+  /**
+   * Returns the meta object for the reference '{@link org.svlang.v0.v0.SymbolRef#getSymbol <em>Symbol</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Symbol</em>'.
+   * @see org.svlang.v0.v0.SymbolRef#getSymbol()
+   * @see #getSymbolRef()
+   * @generated
+   */
+  EReference getSymbolRef_Symbol();
+
+  /**
+   * Returns the meta object for class '{@link org.svlang.v0.v0.NumberLiteral <em>Number Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Number Literal</em>'.
+   * @see org.svlang.v0.v0.NumberLiteral
+   * @generated
+   */
+  EClass getNumberLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.svlang.v0.v0.NumberLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see org.svlang.v0.v0.NumberLiteral#getValue()
+   * @see #getNumberLiteral()
+   * @generated
+   */
+  EAttribute getNumberLiteral_Value();
+
+  /**
+   * Returns the meta object for class '{@link org.svlang.v0.v0.StringLiteral <em>String Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>String Literal</em>'.
+   * @see org.svlang.v0.v0.StringLiteral
+   * @generated
+   */
+  EClass getStringLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.svlang.v0.v0.StringLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see org.svlang.v0.v0.StringLiteral#getValue()
+   * @see #getStringLiteral()
+   * @generated
+   */
+  EAttribute getStringLiteral_Value();
 
   /**
    * Returns the meta object for class '{@link org.svlang.v0.v0.FunCall <em>Fun Call</em>}'.
@@ -458,36 +800,35 @@ public interface V0Package extends EPackage
   EClass getFunCall();
 
   /**
-   * Returns the meta object for the attribute '{@link org.svlang.v0.v0.FunCall#getName <em>Name</em>}'.
+   * Returns the meta object for the reference '{@link org.svlang.v0.v0.FunCall#getFun <em>Fun</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.svlang.v0.v0.FunCall#getName()
+   * @return the meta object for the reference '<em>Fun</em>'.
+   * @see org.svlang.v0.v0.FunCall#getFun()
    * @see #getFunCall()
    * @generated
    */
-  EAttribute getFunCall_Name();
+  EReference getFunCall_Fun();
 
   /**
-   * Returns the meta object for class '{@link org.svlang.v0.v0.Println <em>Println</em>}'.
+   * Returns the meta object for class '{@link org.svlang.v0.v0.INT <em>INT</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Println</em>'.
-   * @see org.svlang.v0.v0.Println
+   * @return the meta object for class '<em>INT</em>'.
+   * @see org.svlang.v0.v0.INT
    * @generated
    */
-  EClass getPrintln();
+  EClass getINT();
 
   /**
-   * Returns the meta object for the attribute list '{@link org.svlang.v0.v0.Println#getValues <em>Values</em>}'.
+   * Returns the meta object for class '{@link org.svlang.v0.v0.STRING <em>STRING</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute list '<em>Values</em>'.
-   * @see org.svlang.v0.v0.Println#getValues()
-   * @see #getPrintln()
+   * @return the meta object for class '<em>STRING</em>'.
+   * @see org.svlang.v0.v0.STRING
    * @generated
    */
-  EAttribute getPrintln_Values();
+  EClass getSTRING();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -593,6 +934,14 @@ public interface V0Package extends EPackage
     EAttribute FUN__NAME = eINSTANCE.getFun_Name();
 
     /**
+     * The meta object literal for the '<em><b>Return Type</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUN__RETURN_TYPE = eINSTANCE.getFun_ReturnType();
+
+    /**
      * The meta object literal for the '<em><b>Expressions</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -611,6 +960,56 @@ public interface V0Package extends EPackage
     EClass EXPRESSION = eINSTANCE.getExpression();
 
     /**
+     * The meta object literal for the '{@link org.svlang.v0.v0.impl.SymbolImpl <em>Symbol</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.svlang.v0.v0.impl.SymbolImpl
+     * @see org.svlang.v0.v0.impl.V0PackageImpl#getSymbol()
+     * @generated
+     */
+    EClass SYMBOL = eINSTANCE.getSymbol();
+
+    /**
+     * The meta object literal for the '{@link org.svlang.v0.v0.impl.AtomicImpl <em>Atomic</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.svlang.v0.v0.impl.AtomicImpl
+     * @see org.svlang.v0.v0.impl.V0PackageImpl#getAtomic()
+     * @generated
+     */
+    EClass ATOMIC = eINSTANCE.getAtomic();
+
+    /**
+     * The meta object literal for the '{@link org.svlang.v0.v0.impl.TypeImpl <em>Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.svlang.v0.v0.impl.TypeImpl
+     * @see org.svlang.v0.v0.impl.V0PackageImpl#getType()
+     * @generated
+     */
+    EClass TYPE = eINSTANCE.getType();
+
+    /**
+     * The meta object literal for the '{@link org.svlang.v0.v0.impl.MyIntTypeImpl <em>My Int Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.svlang.v0.v0.impl.MyIntTypeImpl
+     * @see org.svlang.v0.v0.impl.V0PackageImpl#getMyIntType()
+     * @generated
+     */
+    EClass MY_INT_TYPE = eINSTANCE.getMyIntType();
+
+    /**
+     * The meta object literal for the '{@link org.svlang.v0.v0.impl.MyStringTypeImpl <em>My String Type</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.svlang.v0.v0.impl.MyStringTypeImpl
+     * @see org.svlang.v0.v0.impl.V0PackageImpl#getMyStringType()
+     * @generated
+     */
+    EClass MY_STRING_TYPE = eINSTANCE.getMyStringType();
+
+    /**
      * The meta object literal for the '{@link org.svlang.v0.v0.impl.AssignmentImpl <em>Assignment</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -621,6 +1020,14 @@ public interface V0Package extends EPackage
     EClass ASSIGNMENT = eINSTANCE.getAssignment();
 
     /**
+     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSIGNMENT__TYPE = eINSTANCE.getAssignment_Type();
+
+    /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -629,12 +1036,66 @@ public interface V0Package extends EPackage
     EAttribute ASSIGNMENT__NAME = eINSTANCE.getAssignment_Name();
 
     /**
+     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ASSIGNMENT__VALUE = eINSTANCE.getAssignment_Value();
+
+    /**
+     * The meta object literal for the '{@link org.svlang.v0.v0.impl.SymbolRefImpl <em>Symbol Ref</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.svlang.v0.v0.impl.SymbolRefImpl
+     * @see org.svlang.v0.v0.impl.V0PackageImpl#getSymbolRef()
+     * @generated
+     */
+    EClass SYMBOL_REF = eINSTANCE.getSymbolRef();
+
+    /**
+     * The meta object literal for the '<em><b>Symbol</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SYMBOL_REF__SYMBOL = eINSTANCE.getSymbolRef_Symbol();
+
+    /**
+     * The meta object literal for the '{@link org.svlang.v0.v0.impl.NumberLiteralImpl <em>Number Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.svlang.v0.v0.impl.NumberLiteralImpl
+     * @see org.svlang.v0.v0.impl.V0PackageImpl#getNumberLiteral()
+     * @generated
+     */
+    EClass NUMBER_LITERAL = eINSTANCE.getNumberLiteral();
+
+    /**
      * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ASSIGNMENT__VALUE = eINSTANCE.getAssignment_Value();
+    EAttribute NUMBER_LITERAL__VALUE = eINSTANCE.getNumberLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link org.svlang.v0.v0.impl.StringLiteralImpl <em>String Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.svlang.v0.v0.impl.StringLiteralImpl
+     * @see org.svlang.v0.v0.impl.V0PackageImpl#getStringLiteral()
+     * @generated
+     */
+    EClass STRING_LITERAL = eINSTANCE.getStringLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRING_LITERAL__VALUE = eINSTANCE.getStringLiteral_Value();
 
     /**
      * The meta object literal for the '{@link org.svlang.v0.v0.impl.FunCallImpl <em>Fun Call</em>}' class.
@@ -647,30 +1108,32 @@ public interface V0Package extends EPackage
     EClass FUN_CALL = eINSTANCE.getFunCall();
 
     /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Fun</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute FUN_CALL__NAME = eINSTANCE.getFunCall_Name();
+    EReference FUN_CALL__FUN = eINSTANCE.getFunCall_Fun();
 
     /**
-     * The meta object literal for the '{@link org.svlang.v0.v0.impl.PrintlnImpl <em>Println</em>}' class.
+     * The meta object literal for the '{@link org.svlang.v0.v0.impl.INTImpl <em>INT</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.svlang.v0.v0.impl.PrintlnImpl
-     * @see org.svlang.v0.v0.impl.V0PackageImpl#getPrintln()
+     * @see org.svlang.v0.v0.impl.INTImpl
+     * @see org.svlang.v0.v0.impl.V0PackageImpl#getINT()
      * @generated
      */
-    EClass PRINTLN = eINSTANCE.getPrintln();
+    EClass INT = eINSTANCE.getINT();
 
     /**
-     * The meta object literal for the '<em><b>Values</b></em>' attribute list feature.
+     * The meta object literal for the '{@link org.svlang.v0.v0.impl.STRINGImpl <em>STRING</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
+     * @see org.svlang.v0.v0.impl.STRINGImpl
+     * @see org.svlang.v0.v0.impl.V0PackageImpl#getSTRING()
      * @generated
      */
-    EAttribute PRINTLN__VALUES = eINSTANCE.getPrintln_Values();
+    EClass STRING = eINSTANCE.getSTRING();
 
   }
 

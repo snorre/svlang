@@ -21,10 +21,11 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalV0Parser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'main {'", "'}'", "'fun '", "' {'", "' = '", "'()'", "'pln('", "')'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'main {'", "'}'", "'fun '", "':'", "' {'", "' = '", "'()'", "'int'", "'string'"
     };
+    public static final int T__19=19;
     public static final int RULE_ID=4;
-    public static final int RULE_STRING=5;
+    public static final int RULE_STRING=6;
     public static final int T__16=16;
     public static final int T__15=15;
     public static final int T__18=18;
@@ -34,7 +35,7 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
     public static final int T__14=14;
     public static final int T__13=13;
     public static final int RULE_ANY_OTHER=10;
-    public static final int RULE_INT=6;
+    public static final int RULE_INT=5;
     public static final int RULE_WS=9;
     public static final int RULE_SL_COMMENT=8;
     public static final int EOF=-1;
@@ -386,7 +387,7 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMain"
-    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:172:1: ruleMain returns [EObject current=null] : (otherlv_0= 'main {' ( (lv_expressions_1_0= ruleExpression ) )* otherlv_2= '}' ) ;
+    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:172:1: ruleMain returns [EObject current=null] : (otherlv_0= 'main {' ( (lv_expressions_1_0= ruleExpression ) )+ otherlv_2= '}' ) ;
     public final EObject ruleMain() throws RecognitionException {
         EObject current = null;
 
@@ -398,23 +399,24 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
          enterRule(); 
             
         try {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:175:28: ( (otherlv_0= 'main {' ( (lv_expressions_1_0= ruleExpression ) )* otherlv_2= '}' ) )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:176:1: (otherlv_0= 'main {' ( (lv_expressions_1_0= ruleExpression ) )* otherlv_2= '}' )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:175:28: ( (otherlv_0= 'main {' ( (lv_expressions_1_0= ruleExpression ) )+ otherlv_2= '}' ) )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:176:1: (otherlv_0= 'main {' ( (lv_expressions_1_0= ruleExpression ) )+ otherlv_2= '}' )
             {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:176:1: (otherlv_0= 'main {' ( (lv_expressions_1_0= ruleExpression ) )* otherlv_2= '}' )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:176:3: otherlv_0= 'main {' ( (lv_expressions_1_0= ruleExpression ) )* otherlv_2= '}'
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:176:1: (otherlv_0= 'main {' ( (lv_expressions_1_0= ruleExpression ) )+ otherlv_2= '}' )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:176:3: otherlv_0= 'main {' ( (lv_expressions_1_0= ruleExpression ) )+ otherlv_2= '}'
             {
             otherlv_0=(Token)match(input,11,FOLLOW_11_in_ruleMain327); 
 
                 	newLeafNode(otherlv_0, grammarAccess.getMainAccess().getMainKeyword_0());
                 
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:180:1: ( (lv_expressions_1_0= ruleExpression ) )*
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:180:1: ( (lv_expressions_1_0= ruleExpression ) )+
+            int cnt3=0;
             loop3:
             do {
                 int alt3=2;
                 int LA3_0 = input.LA(1);
 
-                if ( (LA3_0==RULE_ID||LA3_0==17) ) {
+                if ( (LA3_0==RULE_ID) ) {
                     alt3=1;
                 }
 
@@ -453,8 +455,12 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop3;
+            	    if ( cnt3 >= 1 ) break loop3;
+                        EarlyExitException eee =
+                            new EarlyExitException(3, input);
+                        throw eee;
                 }
+                cnt3++;
             } while (true);
 
             otherlv_2=(Token)match(input,12,FOLLOW_12_in_ruleMain361); 
@@ -518,39 +524,52 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFun"
-    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:219:1: ruleFun returns [EObject current=null] : (otherlv_0= 'fun ' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ' {' ( (lv_expressions_3_0= ruleExpression ) )* otherlv_4= '}' ) ;
+    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:219:1: ruleFun returns [EObject current=null] : ( () otherlv_1= 'fun ' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ':' ( (otherlv_4= RULE_ID ) ) otherlv_5= ' {' ( (lv_expressions_6_0= ruleExpression ) )* otherlv_7= '}' ) ;
     public final EObject ruleFun() throws RecognitionException {
         EObject current = null;
 
-        Token otherlv_0=null;
-        Token lv_name_1_0=null;
-        Token otherlv_2=null;
+        Token otherlv_1=null;
+        Token lv_name_2_0=null;
+        Token otherlv_3=null;
         Token otherlv_4=null;
-        EObject lv_expressions_3_0 = null;
+        Token otherlv_5=null;
+        Token otherlv_7=null;
+        EObject lv_expressions_6_0 = null;
 
 
          enterRule(); 
             
         try {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:222:28: ( (otherlv_0= 'fun ' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ' {' ( (lv_expressions_3_0= ruleExpression ) )* otherlv_4= '}' ) )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:223:1: (otherlv_0= 'fun ' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ' {' ( (lv_expressions_3_0= ruleExpression ) )* otherlv_4= '}' )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:222:28: ( ( () otherlv_1= 'fun ' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ':' ( (otherlv_4= RULE_ID ) ) otherlv_5= ' {' ( (lv_expressions_6_0= ruleExpression ) )* otherlv_7= '}' ) )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:223:1: ( () otherlv_1= 'fun ' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ':' ( (otherlv_4= RULE_ID ) ) otherlv_5= ' {' ( (lv_expressions_6_0= ruleExpression ) )* otherlv_7= '}' )
             {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:223:1: (otherlv_0= 'fun ' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ' {' ( (lv_expressions_3_0= ruleExpression ) )* otherlv_4= '}' )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:223:3: otherlv_0= 'fun ' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= ' {' ( (lv_expressions_3_0= ruleExpression ) )* otherlv_4= '}'
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:223:1: ( () otherlv_1= 'fun ' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ':' ( (otherlv_4= RULE_ID ) ) otherlv_5= ' {' ( (lv_expressions_6_0= ruleExpression ) )* otherlv_7= '}' )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:223:2: () otherlv_1= 'fun ' ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ':' ( (otherlv_4= RULE_ID ) ) otherlv_5= ' {' ( (lv_expressions_6_0= ruleExpression ) )* otherlv_7= '}'
             {
-            otherlv_0=(Token)match(input,13,FOLLOW_13_in_ruleFun444); 
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:223:2: ()
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:224:5: 
+            {
 
-                	newLeafNode(otherlv_0, grammarAccess.getFunAccess().getFunKeyword_0());
+                    current = forceCreateModelElement(
+                        grammarAccess.getFunAccess().getFunAction_0(),
+                        current);
                 
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:227:1: ( (lv_name_1_0= RULE_ID ) )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:228:1: (lv_name_1_0= RULE_ID )
-            {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:228:1: (lv_name_1_0= RULE_ID )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:229:3: lv_name_1_0= RULE_ID
-            {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFun461); 
 
-            			newLeafNode(lv_name_1_0, grammarAccess.getFunAccess().getNameIDTerminalRuleCall_1_0()); 
+            }
+
+            otherlv_1=(Token)match(input,13,FOLLOW_13_in_ruleFun453); 
+
+                	newLeafNode(otherlv_1, grammarAccess.getFunAccess().getFunKeyword_1());
+                
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:233:1: ( (lv_name_2_0= RULE_ID ) )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:234:1: (lv_name_2_0= RULE_ID )
+            {
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:234:1: (lv_name_2_0= RULE_ID )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:235:3: lv_name_2_0= RULE_ID
+            {
+            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFun470); 
+
+            			newLeafNode(lv_name_2_0, grammarAccess.getFunAccess().getNameIDTerminalRuleCall_2_0()); 
             		
 
             	        if (current==null) {
@@ -559,7 +578,7 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
                    		setWithLastConsumed(
                    			current, 
                    			"name",
-                    		lv_name_1_0, 
+                    		lv_name_2_0, 
                     		"ID");
             	    
 
@@ -568,33 +587,58 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,14,FOLLOW_14_in_ruleFun478); 
+            otherlv_3=(Token)match(input,14,FOLLOW_14_in_ruleFun487); 
 
-                	newLeafNode(otherlv_2, grammarAccess.getFunAccess().getSpaceLeftCurlyBracketKeyword_2());
+                	newLeafNode(otherlv_3, grammarAccess.getFunAccess().getColonKeyword_3());
                 
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:249:1: ( (lv_expressions_3_0= ruleExpression ) )*
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:255:1: ( (otherlv_4= RULE_ID ) )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:256:1: (otherlv_4= RULE_ID )
+            {
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:256:1: (otherlv_4= RULE_ID )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:257:3: otherlv_4= RULE_ID
+            {
+
+            			if (current==null) {
+            	            current = createModelElement(grammarAccess.getFunRule());
+            	        }
+                    
+            otherlv_4=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFun507); 
+
+            		newLeafNode(otherlv_4, grammarAccess.getFunAccess().getReturnTypeTypeCrossReference_4_0()); 
+            	
+
+            }
+
+
+            }
+
+            otherlv_5=(Token)match(input,15,FOLLOW_15_in_ruleFun519); 
+
+                	newLeafNode(otherlv_5, grammarAccess.getFunAccess().getSpaceLeftCurlyBracketKeyword_5());
+                
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:272:1: ( (lv_expressions_6_0= ruleExpression ) )*
             loop4:
             do {
                 int alt4=2;
                 int LA4_0 = input.LA(1);
 
-                if ( (LA4_0==RULE_ID||LA4_0==17) ) {
+                if ( (LA4_0==RULE_ID) ) {
                     alt4=1;
                 }
 
 
                 switch (alt4) {
             	case 1 :
-            	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:250:1: (lv_expressions_3_0= ruleExpression )
+            	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:273:1: (lv_expressions_6_0= ruleExpression )
             	    {
-            	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:250:1: (lv_expressions_3_0= ruleExpression )
-            	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:251:3: lv_expressions_3_0= ruleExpression
+            	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:273:1: (lv_expressions_6_0= ruleExpression )
+            	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:274:3: lv_expressions_6_0= ruleExpression
             	    {
             	     
-            	    	        newCompositeNode(grammarAccess.getFunAccess().getExpressionsExpressionParserRuleCall_3_0()); 
+            	    	        newCompositeNode(grammarAccess.getFunAccess().getExpressionsExpressionParserRuleCall_6_0()); 
             	    	    
-            	    pushFollow(FOLLOW_ruleExpression_in_ruleFun499);
-            	    lv_expressions_3_0=ruleExpression();
+            	    pushFollow(FOLLOW_ruleExpression_in_ruleFun540);
+            	    lv_expressions_6_0=ruleExpression();
 
             	    state._fsp--;
 
@@ -605,7 +649,7 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
             	           		add(
             	           			current, 
             	           			"expressions",
-            	            		lv_expressions_3_0, 
+            	            		lv_expressions_6_0, 
             	            		"Expression");
             	    	        afterParserOrEnumRuleCall();
             	    	    
@@ -621,9 +665,9 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            otherlv_4=(Token)match(input,12,FOLLOW_12_in_ruleFun512); 
+            otherlv_7=(Token)match(input,12,FOLLOW_12_in_ruleFun553); 
 
-                	newLeafNode(otherlv_4, grammarAccess.getFunAccess().getRightCurlyBracketKeyword_4());
+                	newLeafNode(otherlv_7, grammarAccess.getFunAccess().getRightCurlyBracketKeyword_7());
                 
 
             }
@@ -646,7 +690,7 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleExpression"
-    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:279:1: entryRuleExpression returns [EObject current=null] : iv_ruleExpression= ruleExpression EOF ;
+    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:302:1: entryRuleExpression returns [EObject current=null] : iv_ruleExpression= ruleExpression EOF ;
     public final EObject entryRuleExpression() throws RecognitionException {
         EObject current = null;
 
@@ -654,17 +698,17 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:280:2: (iv_ruleExpression= ruleExpression EOF )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:281:2: iv_ruleExpression= ruleExpression EOF
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:303:2: (iv_ruleExpression= ruleExpression EOF )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:304:2: iv_ruleExpression= ruleExpression EOF
             {
              newCompositeNode(grammarAccess.getExpressionRule()); 
-            pushFollow(FOLLOW_ruleExpression_in_entryRuleExpression548);
+            pushFollow(FOLLOW_ruleExpression_in_entryRuleExpression589);
             iv_ruleExpression=ruleExpression();
 
             state._fsp--;
 
              current =iv_ruleExpression; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleExpression558); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleExpression599); 
 
             }
 
@@ -682,110 +726,31 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExpression"
-    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:288:1: ruleExpression returns [EObject current=null] : (this_Assignment_0= ruleAssignment | this_FunCall_1= ruleFunCall | this_Println_2= rulePrintln ) ;
+    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:311:1: ruleExpression returns [EObject current=null] : this_Assignment_0= ruleAssignment ;
     public final EObject ruleExpression() throws RecognitionException {
         EObject current = null;
 
         EObject this_Assignment_0 = null;
 
-        EObject this_FunCall_1 = null;
-
-        EObject this_Println_2 = null;
-
 
          enterRule(); 
             
         try {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:291:28: ( (this_Assignment_0= ruleAssignment | this_FunCall_1= ruleFunCall | this_Println_2= rulePrintln ) )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:292:1: (this_Assignment_0= ruleAssignment | this_FunCall_1= ruleFunCall | this_Println_2= rulePrintln )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:314:28: (this_Assignment_0= ruleAssignment )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:316:5: this_Assignment_0= ruleAssignment
             {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:292:1: (this_Assignment_0= ruleAssignment | this_FunCall_1= ruleFunCall | this_Println_2= rulePrintln )
-            int alt5=3;
-            int LA5_0 = input.LA(1);
+             
+                    newCompositeNode(grammarAccess.getExpressionAccess().getAssignmentParserRuleCall()); 
+                
+            pushFollow(FOLLOW_ruleAssignment_in_ruleExpression645);
+            this_Assignment_0=ruleAssignment();
 
-            if ( (LA5_0==RULE_ID) ) {
-                int LA5_1 = input.LA(2);
+            state._fsp--;
 
-                if ( (LA5_1==15) ) {
-                    alt5=1;
-                }
-                else if ( (LA5_1==16) ) {
-                    alt5=2;
-                }
-                else {
-                    NoViableAltException nvae =
-                        new NoViableAltException("", 5, 1, input);
-
-                    throw nvae;
-                }
-            }
-            else if ( (LA5_0==17) ) {
-                alt5=3;
-            }
-            else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 5, 0, input);
-
-                throw nvae;
-            }
-            switch (alt5) {
-                case 1 :
-                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:293:5: this_Assignment_0= ruleAssignment
-                    {
-                     
-                            newCompositeNode(grammarAccess.getExpressionAccess().getAssignmentParserRuleCall_0()); 
-                        
-                    pushFollow(FOLLOW_ruleAssignment_in_ruleExpression605);
-                    this_Assignment_0=ruleAssignment();
-
-                    state._fsp--;
-
-                     
-                            current = this_Assignment_0; 
-                            afterParserOrEnumRuleCall();
-                        
-
-                    }
-                    break;
-                case 2 :
-                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:303:5: this_FunCall_1= ruleFunCall
-                    {
-                     
-                            newCompositeNode(grammarAccess.getExpressionAccess().getFunCallParserRuleCall_1()); 
-                        
-                    pushFollow(FOLLOW_ruleFunCall_in_ruleExpression632);
-                    this_FunCall_1=ruleFunCall();
-
-                    state._fsp--;
-
-                     
-                            current = this_FunCall_1; 
-                            afterParserOrEnumRuleCall();
-                        
-
-                    }
-                    break;
-                case 3 :
-                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:313:5: this_Println_2= rulePrintln
-                    {
-                     
-                            newCompositeNode(grammarAccess.getExpressionAccess().getPrintlnParserRuleCall_2()); 
-                        
-                    pushFollow(FOLLOW_rulePrintln_in_ruleExpression659);
-                    this_Println_2=rulePrintln();
-
-                    state._fsp--;
-
-                     
-                            current = this_Println_2; 
-                            afterParserOrEnumRuleCall();
-                        
-
-                    }
-                    break;
-
-            }
-
+             
+                    current = this_Assignment_0; 
+                    afterParserOrEnumRuleCall();
+                
 
             }
 
@@ -804,7 +769,7 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAssignment"
-    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:329:1: entryRuleAssignment returns [EObject current=null] : iv_ruleAssignment= ruleAssignment EOF ;
+    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:332:1: entryRuleAssignment returns [EObject current=null] : iv_ruleAssignment= ruleAssignment EOF ;
     public final EObject entryRuleAssignment() throws RecognitionException {
         EObject current = null;
 
@@ -812,17 +777,17 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
 
 
         try {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:330:2: (iv_ruleAssignment= ruleAssignment EOF )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:331:2: iv_ruleAssignment= ruleAssignment EOF
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:333:2: (iv_ruleAssignment= ruleAssignment EOF )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:334:2: iv_ruleAssignment= ruleAssignment EOF
             {
              newCompositeNode(grammarAccess.getAssignmentRule()); 
-            pushFollow(FOLLOW_ruleAssignment_in_entryRuleAssignment694);
+            pushFollow(FOLLOW_ruleAssignment_in_entryRuleAssignment679);
             iv_ruleAssignment=ruleAssignment();
 
             state._fsp--;
 
              current =iv_ruleAssignment; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleAssignment704); 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAssignment689); 
 
             }
 
@@ -840,32 +805,66 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAssignment"
-    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:338:1: ruleAssignment returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ' = ' ( (lv_value_2_0= RULE_STRING ) ) ) ;
+    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:341:1: ruleAssignment returns [EObject current=null] : ( () ( (otherlv_1= RULE_ID ) ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ' = ' ( (lv_value_4_0= ruleAtomic ) ) ) ;
     public final EObject ruleAssignment() throws RecognitionException {
         EObject current = null;
 
-        Token lv_name_0_0=null;
         Token otherlv_1=null;
-        Token lv_value_2_0=null;
+        Token lv_name_2_0=null;
+        Token otherlv_3=null;
+        EObject lv_value_4_0 = null;
+
 
          enterRule(); 
             
         try {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:341:28: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ' = ' ( (lv_value_2_0= RULE_STRING ) ) ) )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:342:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ' = ' ( (lv_value_2_0= RULE_STRING ) ) )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:344:28: ( ( () ( (otherlv_1= RULE_ID ) ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ' = ' ( (lv_value_4_0= ruleAtomic ) ) ) )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:345:1: ( () ( (otherlv_1= RULE_ID ) ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ' = ' ( (lv_value_4_0= ruleAtomic ) ) )
             {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:342:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ' = ' ( (lv_value_2_0= RULE_STRING ) ) )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:342:2: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ' = ' ( (lv_value_2_0= RULE_STRING ) )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:345:1: ( () ( (otherlv_1= RULE_ID ) ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ' = ' ( (lv_value_4_0= ruleAtomic ) ) )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:345:2: () ( (otherlv_1= RULE_ID ) ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= ' = ' ( (lv_value_4_0= ruleAtomic ) )
             {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:342:2: ( (lv_name_0_0= RULE_ID ) )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:343:1: (lv_name_0_0= RULE_ID )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:345:2: ()
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:346:5: 
             {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:343:1: (lv_name_0_0= RULE_ID )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:344:3: lv_name_0_0= RULE_ID
-            {
-            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAssignment746); 
 
-            			newLeafNode(lv_name_0_0, grammarAccess.getAssignmentAccess().getNameIDTerminalRuleCall_0_0()); 
+                    current = forceCreateModelElement(
+                        grammarAccess.getAssignmentAccess().getAssignmentAction_0(),
+                        current);
+                
+
+            }
+
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:351:2: ( (otherlv_1= RULE_ID ) )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:352:1: (otherlv_1= RULE_ID )
+            {
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:352:1: (otherlv_1= RULE_ID )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:353:3: otherlv_1= RULE_ID
+            {
+
+            			if (current==null) {
+            	            current = createModelElement(grammarAccess.getAssignmentRule());
+            	        }
+                    
+            otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAssignment743); 
+
+            		newLeafNode(otherlv_1, grammarAccess.getAssignmentAccess().getTypeTypeCrossReference_1_0()); 
+            	
+
+            }
+
+
+            }
+
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:364:2: ( (lv_name_2_0= RULE_ID ) )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:365:1: (lv_name_2_0= RULE_ID )
+            {
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:365:1: (lv_name_2_0= RULE_ID )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:366:3: lv_name_2_0= RULE_ID
+            {
+            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAssignment760); 
+
+            			newLeafNode(lv_name_2_0, grammarAccess.getAssignmentAccess().getNameIDTerminalRuleCall_2_0()); 
             		
 
             	        if (current==null) {
@@ -874,7 +873,7 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
                    		setWithLastConsumed(
                    			current, 
                    			"name",
-                    		lv_name_0_0, 
+                    		lv_name_2_0, 
                     		"ID");
             	    
 
@@ -883,29 +882,34 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,15,FOLLOW_15_in_ruleAssignment763); 
+            otherlv_3=(Token)match(input,16,FOLLOW_16_in_ruleAssignment777); 
 
-                	newLeafNode(otherlv_1, grammarAccess.getAssignmentAccess().getSpaceEqualsSignSpaceKeyword_1());
+                	newLeafNode(otherlv_3, grammarAccess.getAssignmentAccess().getSpaceEqualsSignSpaceKeyword_3());
                 
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:364:1: ( (lv_value_2_0= RULE_STRING ) )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:365:1: (lv_value_2_0= RULE_STRING )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:386:1: ( (lv_value_4_0= ruleAtomic ) )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:387:1: (lv_value_4_0= ruleAtomic )
             {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:365:1: (lv_value_2_0= RULE_STRING )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:366:3: lv_value_2_0= RULE_STRING
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:387:1: (lv_value_4_0= ruleAtomic )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:388:3: lv_value_4_0= ruleAtomic
             {
-            lv_value_2_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAssignment780); 
+             
+            	        newCompositeNode(grammarAccess.getAssignmentAccess().getValueAtomicParserRuleCall_4_0()); 
+            	    
+            pushFollow(FOLLOW_ruleAtomic_in_ruleAssignment798);
+            lv_value_4_0=ruleAtomic();
 
-            			newLeafNode(lv_value_2_0, grammarAccess.getAssignmentAccess().getValueSTRINGTerminalRuleCall_2_0()); 
-            		
+            state._fsp--;
+
 
             	        if (current==null) {
-            	            current = createModelElement(grammarAccess.getAssignmentRule());
+            	            current = createModelElementForParent(grammarAccess.getAssignmentRule());
             	        }
-                   		setWithLastConsumed(
+                   		set(
                    			current, 
                    			"value",
-                    		lv_value_2_0, 
-                    		"STRING");
+                    		lv_value_4_0, 
+                    		"Atomic");
+            	        afterParserOrEnumRuleCall();
             	    
 
             }
@@ -933,26 +937,26 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleAssignment"
 
 
-    // $ANTLR start "entryRuleFunCall"
-    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:390:1: entryRuleFunCall returns [EObject current=null] : iv_ruleFunCall= ruleFunCall EOF ;
-    public final EObject entryRuleFunCall() throws RecognitionException {
+    // $ANTLR start "entryRuleAtomic"
+    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:412:1: entryRuleAtomic returns [EObject current=null] : iv_ruleAtomic= ruleAtomic EOF ;
+    public final EObject entryRuleAtomic() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_ruleFunCall = null;
+        EObject iv_ruleAtomic = null;
 
 
         try {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:391:2: (iv_ruleFunCall= ruleFunCall EOF )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:392:2: iv_ruleFunCall= ruleFunCall EOF
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:413:2: (iv_ruleAtomic= ruleAtomic EOF )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:414:2: iv_ruleAtomic= ruleAtomic EOF
             {
-             newCompositeNode(grammarAccess.getFunCallRule()); 
-            pushFollow(FOLLOW_ruleFunCall_in_entryRuleFunCall821);
-            iv_ruleFunCall=ruleFunCall();
+             newCompositeNode(grammarAccess.getAtomicRule()); 
+            pushFollow(FOLLOW_ruleAtomic_in_entryRuleAtomic834);
+            iv_ruleAtomic=ruleAtomic();
 
             state._fsp--;
 
-             current =iv_ruleFunCall; 
-            match(input,EOF,FOLLOW_EOF_in_entryRuleFunCall831); 
+             current =iv_ruleAtomic; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleAtomic844); 
 
             }
 
@@ -966,55 +970,341 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRuleFunCall"
+    // $ANTLR end "entryRuleAtomic"
 
 
-    // $ANTLR start "ruleFunCall"
-    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:399:1: ruleFunCall returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '()' ) ;
-    public final EObject ruleFunCall() throws RecognitionException {
+    // $ANTLR start "ruleAtomic"
+    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:421:1: ruleAtomic returns [EObject current=null] : ( ( () ( (otherlv_1= RULE_ID ) ) ) | ( () ( (lv_value_3_0= RULE_INT ) ) ) | ( () ( (lv_value_5_0= RULE_STRING ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) otherlv_8= '()' ) ) ;
+    public final EObject ruleAtomic() throws RecognitionException {
         EObject current = null;
 
-        Token lv_name_0_0=null;
+        Token otherlv_1=null;
+        Token lv_value_3_0=null;
+        Token lv_value_5_0=null;
+        Token otherlv_7=null;
+        Token otherlv_8=null;
+
+         enterRule(); 
+            
+        try {
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:424:28: ( ( ( () ( (otherlv_1= RULE_ID ) ) ) | ( () ( (lv_value_3_0= RULE_INT ) ) ) | ( () ( (lv_value_5_0= RULE_STRING ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) otherlv_8= '()' ) ) )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:425:1: ( ( () ( (otherlv_1= RULE_ID ) ) ) | ( () ( (lv_value_3_0= RULE_INT ) ) ) | ( () ( (lv_value_5_0= RULE_STRING ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) otherlv_8= '()' ) )
+            {
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:425:1: ( ( () ( (otherlv_1= RULE_ID ) ) ) | ( () ( (lv_value_3_0= RULE_INT ) ) ) | ( () ( (lv_value_5_0= RULE_STRING ) ) ) | ( () ( (otherlv_7= RULE_ID ) ) otherlv_8= '()' ) )
+            int alt5=4;
+            switch ( input.LA(1) ) {
+            case RULE_ID:
+                {
+                int LA5_1 = input.LA(2);
+
+                if ( (LA5_1==EOF||LA5_1==RULE_ID||LA5_1==12) ) {
+                    alt5=1;
+                }
+                else if ( (LA5_1==17) ) {
+                    alt5=4;
+                }
+                else {
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 5, 1, input);
+
+                    throw nvae;
+                }
+                }
+                break;
+            case RULE_INT:
+                {
+                alt5=2;
+                }
+                break;
+            case RULE_STRING:
+                {
+                alt5=3;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 5, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt5) {
+                case 1 :
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:425:2: ( () ( (otherlv_1= RULE_ID ) ) )
+                    {
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:425:2: ( () ( (otherlv_1= RULE_ID ) ) )
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:425:3: () ( (otherlv_1= RULE_ID ) )
+                    {
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:425:3: ()
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:426:5: 
+                    {
+
+                            current = forceCreateModelElement(
+                                grammarAccess.getAtomicAccess().getSymbolRefAction_0_0(),
+                                current);
+                        
+
+                    }
+
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:431:2: ( (otherlv_1= RULE_ID ) )
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:432:1: (otherlv_1= RULE_ID )
+                    {
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:432:1: (otherlv_1= RULE_ID )
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:433:3: otherlv_1= RULE_ID
+                    {
+
+                    			if (current==null) {
+                    	            current = createModelElement(grammarAccess.getAtomicRule());
+                    	        }
+                            
+                    otherlv_1=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAtomic899); 
+
+                    		newLeafNode(otherlv_1, grammarAccess.getAtomicAccess().getSymbolSymbolCrossReference_0_1_0()); 
+                    	
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+                case 2 :
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:445:6: ( () ( (lv_value_3_0= RULE_INT ) ) )
+                    {
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:445:6: ( () ( (lv_value_3_0= RULE_INT ) ) )
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:445:7: () ( (lv_value_3_0= RULE_INT ) )
+                    {
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:445:7: ()
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:446:5: 
+                    {
+
+                            current = forceCreateModelElement(
+                                grammarAccess.getAtomicAccess().getNumberLiteralAction_1_0(),
+                                current);
+                        
+
+                    }
+
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:451:2: ( (lv_value_3_0= RULE_INT ) )
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:452:1: (lv_value_3_0= RULE_INT )
+                    {
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:452:1: (lv_value_3_0= RULE_INT )
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:453:3: lv_value_3_0= RULE_INT
+                    {
+                    lv_value_3_0=(Token)match(input,RULE_INT,FOLLOW_RULE_INT_in_ruleAtomic933); 
+
+                    			newLeafNode(lv_value_3_0, grammarAccess.getAtomicAccess().getValueINTTerminalRuleCall_1_1_0()); 
+                    		
+
+                    	        if (current==null) {
+                    	            current = createModelElement(grammarAccess.getAtomicRule());
+                    	        }
+                           		setWithLastConsumed(
+                           			current, 
+                           			"value",
+                            		lv_value_3_0, 
+                            		"INT");
+                    	    
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+                case 3 :
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:470:6: ( () ( (lv_value_5_0= RULE_STRING ) ) )
+                    {
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:470:6: ( () ( (lv_value_5_0= RULE_STRING ) ) )
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:470:7: () ( (lv_value_5_0= RULE_STRING ) )
+                    {
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:470:7: ()
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:471:5: 
+                    {
+
+                            current = forceCreateModelElement(
+                                grammarAccess.getAtomicAccess().getStringLiteralAction_2_0(),
+                                current);
+                        
+
+                    }
+
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:476:2: ( (lv_value_5_0= RULE_STRING ) )
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:477:1: (lv_value_5_0= RULE_STRING )
+                    {
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:477:1: (lv_value_5_0= RULE_STRING )
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:478:3: lv_value_5_0= RULE_STRING
+                    {
+                    lv_value_5_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_ruleAtomic972); 
+
+                    			newLeafNode(lv_value_5_0, grammarAccess.getAtomicAccess().getValueSTRINGTerminalRuleCall_2_1_0()); 
+                    		
+
+                    	        if (current==null) {
+                    	            current = createModelElement(grammarAccess.getAtomicRule());
+                    	        }
+                           		setWithLastConsumed(
+                           			current, 
+                           			"value",
+                            		lv_value_5_0, 
+                            		"STRING");
+                    	    
+
+                    }
+
+
+                    }
+
+
+                    }
+
+
+                    }
+                    break;
+                case 4 :
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:495:6: ( () ( (otherlv_7= RULE_ID ) ) otherlv_8= '()' )
+                    {
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:495:6: ( () ( (otherlv_7= RULE_ID ) ) otherlv_8= '()' )
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:495:7: () ( (otherlv_7= RULE_ID ) ) otherlv_8= '()'
+                    {
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:495:7: ()
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:496:5: 
+                    {
+
+                            current = forceCreateModelElement(
+                                grammarAccess.getAtomicAccess().getFunCallAction_3_0(),
+                                current);
+                        
+
+                    }
+
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:501:2: ( (otherlv_7= RULE_ID ) )
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:502:1: (otherlv_7= RULE_ID )
+                    {
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:502:1: (otherlv_7= RULE_ID )
+                    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:503:3: otherlv_7= RULE_ID
+                    {
+
+                    			if (current==null) {
+                    	            current = createModelElement(grammarAccess.getAtomicRule());
+                    	        }
+                            
+                    otherlv_7=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleAtomic1014); 
+
+                    		newLeafNode(otherlv_7, grammarAccess.getAtomicAccess().getFunFunCrossReference_3_1_0()); 
+                    	
+
+                    }
+
+
+                    }
+
+                    otherlv_8=(Token)match(input,17,FOLLOW_17_in_ruleAtomic1026); 
+
+                        	newLeafNode(otherlv_8, grammarAccess.getAtomicAccess().getLeftParenthesisRightParenthesisKeyword_3_2());
+                        
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+             leaveRule(); 
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleAtomic"
+
+
+    // $ANTLR start "entryRuleMyIntType"
+    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:528:1: entryRuleMyIntType returns [EObject current=null] : iv_ruleMyIntType= ruleMyIntType EOF ;
+    public final EObject entryRuleMyIntType() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleMyIntType = null;
+
+
+        try {
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:529:2: (iv_ruleMyIntType= ruleMyIntType EOF )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:530:2: iv_ruleMyIntType= ruleMyIntType EOF
+            {
+             newCompositeNode(grammarAccess.getMyIntTypeRule()); 
+            pushFollow(FOLLOW_ruleMyIntType_in_entryRuleMyIntType1065);
+            iv_ruleMyIntType=ruleMyIntType();
+
+            state._fsp--;
+
+             current =iv_ruleMyIntType; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleMyIntType1075); 
+
+            }
+
+        }
+         
+            catch (RecognitionException re) { 
+                recover(input,re); 
+                appendSkippedTokens();
+            } 
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleMyIntType"
+
+
+    // $ANTLR start "ruleMyIntType"
+    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:537:1: ruleMyIntType returns [EObject current=null] : ( () otherlv_1= 'int' ) ;
+    public final EObject ruleMyIntType() throws RecognitionException {
+        EObject current = null;
+
         Token otherlv_1=null;
 
          enterRule(); 
             
         try {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:402:28: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '()' ) )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:403:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '()' )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:540:28: ( ( () otherlv_1= 'int' ) )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:541:1: ( () otherlv_1= 'int' )
             {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:403:1: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '()' )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:403:2: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= '()'
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:541:1: ( () otherlv_1= 'int' )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:541:2: () otherlv_1= 'int'
             {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:403:2: ( (lv_name_0_0= RULE_ID ) )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:404:1: (lv_name_0_0= RULE_ID )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:541:2: ()
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:542:5: 
             {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:404:1: (lv_name_0_0= RULE_ID )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:405:3: lv_name_0_0= RULE_ID
-            {
-            lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_RULE_ID_in_ruleFunCall873); 
 
-            			newLeafNode(lv_name_0_0, grammarAccess.getFunCallAccess().getNameIDTerminalRuleCall_0_0()); 
-            		
-
-            	        if (current==null) {
-            	            current = createModelElement(grammarAccess.getFunCallRule());
-            	        }
-                   		setWithLastConsumed(
-                   			current, 
-                   			"name",
-                    		lv_name_0_0, 
-                    		"ID");
-            	    
+                    current = forceCreateModelElement(
+                        grammarAccess.getMyIntTypeAccess().getINTAction_0(),
+                        current);
+                
 
             }
 
+            otherlv_1=(Token)match(input,18,FOLLOW_18_in_ruleMyIntType1121); 
 
-            }
-
-            otherlv_1=(Token)match(input,16,FOLLOW_16_in_ruleFunCall890); 
-
-                	newLeafNode(otherlv_1, grammarAccess.getFunCallAccess().getLeftParenthesisRightParenthesisKeyword_1());
+                	newLeafNode(otherlv_1, grammarAccess.getMyIntTypeAccess().getIntKeyword_1());
                 
 
             }
@@ -1033,29 +1323,29 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "ruleFunCall"
+    // $ANTLR end "ruleMyIntType"
 
 
-    // $ANTLR start "entryRulePrintln"
-    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:433:1: entryRulePrintln returns [EObject current=null] : iv_rulePrintln= rulePrintln EOF ;
-    public final EObject entryRulePrintln() throws RecognitionException {
+    // $ANTLR start "entryRuleMyStringType"
+    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:559:1: entryRuleMyStringType returns [EObject current=null] : iv_ruleMyStringType= ruleMyStringType EOF ;
+    public final EObject entryRuleMyStringType() throws RecognitionException {
         EObject current = null;
 
-        EObject iv_rulePrintln = null;
+        EObject iv_ruleMyStringType = null;
 
 
         try {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:434:2: (iv_rulePrintln= rulePrintln EOF )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:435:2: iv_rulePrintln= rulePrintln EOF
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:560:2: (iv_ruleMyStringType= ruleMyStringType EOF )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:561:2: iv_ruleMyStringType= ruleMyStringType EOF
             {
-             newCompositeNode(grammarAccess.getPrintlnRule()); 
-            pushFollow(FOLLOW_rulePrintln_in_entryRulePrintln926);
-            iv_rulePrintln=rulePrintln();
+             newCompositeNode(grammarAccess.getMyStringTypeRule()); 
+            pushFollow(FOLLOW_ruleMyStringType_in_entryRuleMyStringType1157);
+            iv_ruleMyStringType=ruleMyStringType();
 
             state._fsp--;
 
-             current =iv_rulePrintln; 
-            match(input,EOF,FOLLOW_EOF_in_entryRulePrintln936); 
+             current =iv_ruleMyStringType; 
+            match(input,EOF,FOLLOW_EOF_in_entryRuleMyStringType1167); 
 
             }
 
@@ -1069,83 +1359,39 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "entryRulePrintln"
+    // $ANTLR end "entryRuleMyStringType"
 
 
-    // $ANTLR start "rulePrintln"
-    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:442:1: rulePrintln returns [EObject current=null] : (otherlv_0= 'pln(' ( (lv_values_1_0= RULE_STRING ) )+ otherlv_2= ')' ) ;
-    public final EObject rulePrintln() throws RecognitionException {
+    // $ANTLR start "ruleMyStringType"
+    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:568:1: ruleMyStringType returns [EObject current=null] : ( () otherlv_1= 'string' ) ;
+    public final EObject ruleMyStringType() throws RecognitionException {
         EObject current = null;
 
-        Token otherlv_0=null;
-        Token lv_values_1_0=null;
-        Token otherlv_2=null;
+        Token otherlv_1=null;
 
          enterRule(); 
             
         try {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:445:28: ( (otherlv_0= 'pln(' ( (lv_values_1_0= RULE_STRING ) )+ otherlv_2= ')' ) )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:446:1: (otherlv_0= 'pln(' ( (lv_values_1_0= RULE_STRING ) )+ otherlv_2= ')' )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:571:28: ( ( () otherlv_1= 'string' ) )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:572:1: ( () otherlv_1= 'string' )
             {
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:446:1: (otherlv_0= 'pln(' ( (lv_values_1_0= RULE_STRING ) )+ otherlv_2= ')' )
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:446:3: otherlv_0= 'pln(' ( (lv_values_1_0= RULE_STRING ) )+ otherlv_2= ')'
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:572:1: ( () otherlv_1= 'string' )
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:572:2: () otherlv_1= 'string'
             {
-            otherlv_0=(Token)match(input,17,FOLLOW_17_in_rulePrintln973); 
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:572:2: ()
+            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:573:5: 
+            {
 
-                	newLeafNode(otherlv_0, grammarAccess.getPrintlnAccess().getPlnKeyword_0());
+                    current = forceCreateModelElement(
+                        grammarAccess.getMyStringTypeAccess().getSTRINGAction_0(),
+                        current);
                 
-            // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:450:1: ( (lv_values_1_0= RULE_STRING ) )+
-            int cnt6=0;
-            loop6:
-            do {
-                int alt6=2;
-                int LA6_0 = input.LA(1);
 
-                if ( (LA6_0==RULE_STRING) ) {
-                    alt6=1;
-                }
+            }
 
+            otherlv_1=(Token)match(input,19,FOLLOW_19_in_ruleMyStringType1213); 
 
-                switch (alt6) {
-            	case 1 :
-            	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:451:1: (lv_values_1_0= RULE_STRING )
-            	    {
-            	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:451:1: (lv_values_1_0= RULE_STRING )
-            	    // ../org.svlang.v0/src-gen/org/svlang/v0/parser/antlr/internal/InternalV0.g:452:3: lv_values_1_0= RULE_STRING
-            	    {
-            	    lv_values_1_0=(Token)match(input,RULE_STRING,FOLLOW_RULE_STRING_in_rulePrintln990); 
-
-            	    			newLeafNode(lv_values_1_0, grammarAccess.getPrintlnAccess().getValuesSTRINGTerminalRuleCall_1_0()); 
-            	    		
-
-            	    	        if (current==null) {
-            	    	            current = createModelElement(grammarAccess.getPrintlnRule());
-            	    	        }
-            	           		addWithLastConsumed(
-            	           			current, 
-            	           			"values",
-            	            		lv_values_1_0, 
-            	            		"STRING");
-            	    	    
-
-            	    }
-
-
-            	    }
-            	    break;
-
-            	default :
-            	    if ( cnt6 >= 1 ) break loop6;
-                        EarlyExitException eee =
-                            new EarlyExitException(6, input);
-                        throw eee;
-                }
-                cnt6++;
-            } while (true);
-
-            otherlv_2=(Token)match(input,18,FOLLOW_18_in_rulePrintln1008); 
-
-                	newLeafNode(otherlv_2, grammarAccess.getPrintlnAccess().getRightParenthesisKeyword_2());
+                	newLeafNode(otherlv_1, grammarAccess.getMyStringTypeAccess().getStringKeyword_1());
                 
 
             }
@@ -1164,7 +1410,7 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
         }
         return current;
     }
-    // $ANTLR end "rulePrintln"
+    // $ANTLR end "ruleMyStringType"
 
     // Delegated rules
 
@@ -1180,34 +1426,39 @@ public class InternalV0Parser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_ruleFun_in_ruleRootElement243 = new BitSet(new long[]{0x0000000000002002L});
     public static final BitSet FOLLOW_ruleMain_in_entryRuleMain280 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleMain290 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_11_in_ruleMain327 = new BitSet(new long[]{0x0000000000021010L});
-    public static final BitSet FOLLOW_ruleExpression_in_ruleMain348 = new BitSet(new long[]{0x0000000000021010L});
+    public static final BitSet FOLLOW_11_in_ruleMain327 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ruleExpression_in_ruleMain348 = new BitSet(new long[]{0x0000000000001010L});
     public static final BitSet FOLLOW_12_in_ruleMain361 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ruleFun_in_entryRuleFun397 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_EOF_in_entryRuleFun407 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_13_in_ruleFun444 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFun461 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_ruleFun478 = new BitSet(new long[]{0x0000000000021010L});
-    public static final BitSet FOLLOW_ruleExpression_in_ruleFun499 = new BitSet(new long[]{0x0000000000021010L});
-    public static final BitSet FOLLOW_12_in_ruleFun512 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleExpression_in_entryRuleExpression548 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleExpression558 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAssignment_in_ruleExpression605 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFunCall_in_ruleExpression632 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePrintln_in_ruleExpression659 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleAssignment_in_entryRuleAssignment694 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleAssignment704 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleAssignment746 = new BitSet(new long[]{0x0000000000008000L});
-    public static final BitSet FOLLOW_15_in_ruleAssignment763 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_STRING_in_ruleAssignment780 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ruleFunCall_in_entryRuleFunCall821 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRuleFunCall831 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RULE_ID_in_ruleFunCall873 = new BitSet(new long[]{0x0000000000010000L});
-    public static final BitSet FOLLOW_16_in_ruleFunCall890 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_rulePrintln_in_entryRulePrintln926 = new BitSet(new long[]{0x0000000000000000L});
-    public static final BitSet FOLLOW_EOF_in_entryRulePrintln936 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_rulePrintln973 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_RULE_STRING_in_rulePrintln990 = new BitSet(new long[]{0x0000000000040020L});
-    public static final BitSet FOLLOW_18_in_rulePrintln1008 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_13_in_ruleFun453 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFun470 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_ruleFun487 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleFun507 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_15_in_ruleFun519 = new BitSet(new long[]{0x0000000000001010L});
+    public static final BitSet FOLLOW_ruleExpression_in_ruleFun540 = new BitSet(new long[]{0x0000000000001010L});
+    public static final BitSet FOLLOW_12_in_ruleFun553 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleExpression_in_entryRuleExpression589 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleExpression599 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAssignment_in_ruleExpression645 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAssignment_in_entryRuleAssignment679 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAssignment689 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleAssignment743 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleAssignment760 = new BitSet(new long[]{0x0000000000010000L});
+    public static final BitSet FOLLOW_16_in_ruleAssignment777 = new BitSet(new long[]{0x0000000000000070L});
+    public static final BitSet FOLLOW_ruleAtomic_in_ruleAssignment798 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleAtomic_in_entryRuleAtomic834 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleAtomic844 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleAtomic899 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_INT_in_ruleAtomic933 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_STRING_in_ruleAtomic972 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RULE_ID_in_ruleAtomic1014 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_17_in_ruleAtomic1026 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMyIntType_in_entryRuleMyIntType1065 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleMyIntType1075 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_18_in_ruleMyIntType1121 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ruleMyStringType_in_entryRuleMyStringType1157 = new BitSet(new long[]{0x0000000000000000L});
+    public static final BitSet FOLLOW_EOF_in_entryRuleMyStringType1167 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_ruleMyStringType1213 = new BitSet(new long[]{0x0000000000000002L});
 
 }

@@ -1,8 +1,5 @@
 INDEX VERSION 1.126+/Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/.metadata/.plugins/org.eclipse.jdt.core
 1118139248.index
 2123685343.index
-959307740.index
 1575744503.index
 3839748577.index
-1123093496.index
-2616413359.index

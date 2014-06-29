@@ -5,23 +5,14 @@ package org.svlang.v0.generator;
 
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.IFileSystemAccess;
 import org.eclipse.xtext.generator.IGenerator;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.xbase.lib.Extension;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
-import org.svlang.v0.v0.Assignment;
-import org.svlang.v0.v0.Expression;
-import org.svlang.v0.v0.Fun;
-import org.svlang.v0.v0.FunCall;
-import org.svlang.v0.v0.Main;
-import org.svlang.v0.v0.Println;
 import org.svlang.v0.v0.RootElement;
 
 /**
@@ -40,109 +31,6 @@ public class V0Generator implements IGenerator {
     Iterable<EObject> _iterable = IteratorExtensions.<EObject>toIterable(_allContents);
     Iterable<RootElement> _filter = Iterables.<RootElement>filter(_iterable, RootElement.class);
     for (final RootElement re : _filter) {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("public class All {");
-      _builder.newLine();
-      _builder.append("\t");
-      _builder.newLine();
-      _builder.append("\t");
-      Main _main = re.getMain();
-      CharSequence _compile = this.compile(_main);
-      _builder.append(_compile, "\t");
-      _builder.newLineIfNotEmpty();
-      {
-        EList<Fun> _funs = re.getFuns();
-        for(final Fun f : _funs) {
-          _builder.append("\t");
-          CharSequence _compile_1 = this.compile(f);
-          _builder.append(_compile_1, "\t");
-          _builder.newLineIfNotEmpty();
-        }
-      }
-      _builder.append("}");
-      _builder.newLine();
-      fsa.generateFile("All.java", _builder);
     }
-  }
-  
-  public CharSequence compile(final Main m) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public static void main(String[] args) {");
-    _builder.newLine();
-    {
-      EList<Expression> _expressions = m.getExpressions();
-      for(final Expression e : _expressions) {
-        _builder.append("\t");
-        CharSequence _compile = this.compile(e);
-        _builder.append(_compile, "\t");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    _builder.append("} ");
-    _builder.newLine();
-    return _builder;
-  }
-  
-  public CharSequence compile(final Fun f) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("public static void ");
-    String _name = f.getName();
-    _builder.append(_name, "");
-    _builder.append("() {");
-    _builder.newLineIfNotEmpty();
-    {
-      EList<Expression> _expressions = f.getExpressions();
-      for(final Expression e : _expressions) {
-        _builder.append("\t");
-        CharSequence _compile = this.compile(e);
-        _builder.append(_compile, "\t");
-        _builder.newLineIfNotEmpty();
-      }
-    }
-    _builder.append("}");
-    _builder.newLine();
-    return _builder;
-  }
-  
-  public CharSequence compile(final Expression e) {
-    CharSequence _switchResult = null;
-    boolean _matched = false;
-    if (!_matched) {
-      if (e instanceof Assignment) {
-        _matched=true;
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("final String ");
-        String _name = ((Assignment)e).getName();
-        _builder.append(_name, "");
-        _builder.append(" = \"");
-        String _value = ((Assignment)e).getValue();
-        _builder.append(_value, "");
-        _builder.append("\";");
-        _switchResult = _builder;
-      }
-    }
-    if (!_matched) {
-      if (e instanceof FunCall) {
-        _matched=true;
-        StringConcatenation _builder = new StringConcatenation();
-        String _name = ((FunCall)e).getName();
-        _builder.append(_name, "");
-        _builder.append("();");
-        _switchResult = _builder;
-      }
-    }
-    if (!_matched) {
-      if (e instanceof Println) {
-        _matched=true;
-        StringConcatenation _builder = new StringConcatenation();
-        _builder.append("System.out.println(\"");
-        EList<String> _values = ((Println)e).getValues();
-        String _join = IterableExtensions.join(_values, " ");
-        _builder.append(_join, "");
-        _builder.append("\");");
-        _switchResult = _builder;
-      }
-    }
-    return _switchResult;
   }
 }

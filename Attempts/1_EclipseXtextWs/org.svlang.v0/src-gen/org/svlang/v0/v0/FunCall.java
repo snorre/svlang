@@ -11,7 +11,7 @@ package org.svlang.v0.v0;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.svlang.v0.v0.FunCall#getName <em>Name</em>}</li>
+ *   <li>{@link org.svlang.v0.v0.FunCall#getFun <em>Fun</em>}</li>
  * </ul>
  * </p>
  *
@@ -19,32 +19,32 @@ package org.svlang.v0.v0;
  * @model
  * @generated
  */
-public interface FunCall extends Expression
+public interface FunCall extends Atomic
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Fun</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Name</em>' attribute isn't clear,
+   * If the meaning of the '<em>Fun</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see org.svlang.v0.v0.V0Package#getFunCall_Name()
+   * @return the value of the '<em>Fun</em>' reference.
+   * @see #setFun(Fun)
+   * @see org.svlang.v0.v0.V0Package#getFunCall_Fun()
    * @model
    * @generated
    */
-  String getName();
+  Fun getFun();
 
   /**
-   * Sets the value of the '{@link org.svlang.v0.v0.FunCall#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.svlang.v0.v0.FunCall#getFun <em>Fun</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
+   * @param value the new value of the '<em>Fun</em>' reference.
+   * @see #getFun()
    * @generated
    */
-  void setName(String value);
+  void setFun(Fun value);
 
 } // FunCall

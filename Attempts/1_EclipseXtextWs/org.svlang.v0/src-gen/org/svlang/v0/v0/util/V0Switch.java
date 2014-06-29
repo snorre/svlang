@@ -107,11 +107,74 @@ public class V0Switch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case V0Package.SYMBOL:
+      {
+        Symbol symbol = (Symbol)theEObject;
+        T result = caseSymbol(symbol);
+        if (result == null) result = caseExpression(symbol);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case V0Package.ATOMIC:
+      {
+        Atomic atomic = (Atomic)theEObject;
+        T result = caseAtomic(atomic);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case V0Package.TYPE:
+      {
+        Type type = (Type)theEObject;
+        T result = caseType(type);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case V0Package.MY_INT_TYPE:
+      {
+        MyIntType myIntType = (MyIntType)theEObject;
+        T result = caseMyIntType(myIntType);
+        if (result == null) result = caseType(myIntType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case V0Package.MY_STRING_TYPE:
+      {
+        MyStringType myStringType = (MyStringType)theEObject;
+        T result = caseMyStringType(myStringType);
+        if (result == null) result = caseType(myStringType);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case V0Package.ASSIGNMENT:
       {
         Assignment assignment = (Assignment)theEObject;
         T result = caseAssignment(assignment);
+        if (result == null) result = caseSymbol(assignment);
         if (result == null) result = caseExpression(assignment);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case V0Package.SYMBOL_REF:
+      {
+        SymbolRef symbolRef = (SymbolRef)theEObject;
+        T result = caseSymbolRef(symbolRef);
+        if (result == null) result = caseAtomic(symbolRef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case V0Package.NUMBER_LITERAL:
+      {
+        NumberLiteral numberLiteral = (NumberLiteral)theEObject;
+        T result = caseNumberLiteral(numberLiteral);
+        if (result == null) result = caseAtomic(numberLiteral);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case V0Package.STRING_LITERAL:
+      {
+        StringLiteral stringLiteral = (StringLiteral)theEObject;
+        T result = caseStringLiteral(stringLiteral);
+        if (result == null) result = caseAtomic(stringLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -119,15 +182,25 @@ public class V0Switch<T> extends Switch<T>
       {
         FunCall funCall = (FunCall)theEObject;
         T result = caseFunCall(funCall);
-        if (result == null) result = caseExpression(funCall);
+        if (result == null) result = caseAtomic(funCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case V0Package.PRINTLN:
+      case V0Package.INT:
       {
-        Println println = (Println)theEObject;
-        T result = casePrintln(println);
-        if (result == null) result = caseExpression(println);
+        INT int_ = (INT)theEObject;
+        T result = caseINT(int_);
+        if (result == null) result = caseMyIntType(int_);
+        if (result == null) result = caseType(int_);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case V0Package.STRING:
+      {
+        STRING string = (STRING)theEObject;
+        T result = caseSTRING(string);
+        if (result == null) result = caseMyStringType(string);
+        if (result == null) result = caseType(string);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -216,6 +289,86 @@ public class V0Switch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Symbol</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Symbol</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSymbol(Symbol object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Atomic</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Atomic</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAtomic(Atomic object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseType(Type object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>My Int Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>My Int Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMyIntType(MyIntType object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>My String Type</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>My String Type</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMyStringType(MyStringType object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Assignment</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -227,6 +380,54 @@ public class V0Switch<T> extends Switch<T>
    * @generated
    */
   public T caseAssignment(Assignment object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Symbol Ref</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Symbol Ref</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSymbolRef(SymbolRef object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Number Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Number Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNumberLiteral(NumberLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>String Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>String Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStringLiteral(StringLiteral object)
   {
     return null;
   }
@@ -248,17 +449,33 @@ public class V0Switch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Println</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>INT</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Println</em>'.
+   * @return the result of interpreting the object as an instance of '<em>INT</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePrintln(Println object)
+  public T caseINT(INT object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>STRING</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>STRING</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSTRING(STRING object)
   {
     return null;
   }

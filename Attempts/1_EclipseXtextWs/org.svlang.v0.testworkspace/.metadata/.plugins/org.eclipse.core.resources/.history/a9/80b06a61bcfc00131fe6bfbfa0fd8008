@@ -1,8 +1,0 @@
-main {
-	a = 1
-	jalla()
-}
-
-fun jallas {
-	b = 2
-}

@@ -11,11 +11,11 @@ import com.google.inject.Inject
 
 import org.svlang.v0.v0.RootElement
 import org.svlang.v0.v0.Main
-import org.svlang.v0.v0.Fun
+//import org.svlang.v0.v0.Fun
 import org.svlang.v0.v0.Expression
-import org.svlang.v0.v0.Assignment
-import org.svlang.v0.v0.FunCall
-import org.svlang.v0.v0.Println
+//import org.svlang.v0.v0.Assignment
+//import org.svlang.v0.v0.FunCall
+//import org.svlang.v0.v0.Println
 
 
 /**
@@ -29,49 +29,49 @@ class V0Generator implements IGenerator {
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		for (re: resource.allContents.toIterable.filter(RootElement)) {
-			fsa.generateFile("All.java",
-				'''
-				public class All {
-					
-					«re.main.compile»
-					«FOR f : re.funs»
-						«f.compile»
-					«ENDFOR»
-				}
-				'''
-			)
+//			fsa.generateFile("All.java",
+//				'''
+//				public class All {
+//					
+//					«re.main.compile»
+//					«FOR f : re.funs»
+//						«f.compile»
+//					«ENDFOR»
+//				}
+//				'''
+//			)
 		}
 	}
 	
-	def compile(Main m) '''
-	public static void main(String[] args) {
-		«FOR e : m.expressions»
-			«e.compile»
-	  	«ENDFOR»
-	} 
-	'''
-	
-	def compile(Fun f) '''
-	public static void «f.name»() {
-		«FOR e : f.expressions»
-			«e.compile»
-	  	«ENDFOR»
-	}
-	'''
-	
-	def compile(Expression e) {
-		switch e {
-			Assignment : {
-				'''final String «e.name» = "«e.value»";'''
-			}
-			
-			FunCall : {
-				'''«e.name»();'''
-			}
-			
-			Println : {
-				'''System.out.println("«e.values.join(" ")»");'''
-			}
-		}
-	}
+//	def compile(Main m) '''
+//	public static void main(String[] args) {
+//		«FOR e : m.expressions»
+//			«e.compile»
+//	  	«ENDFOR»
+//	} 
+//	'''
+//	
+//	def compile(Fun f) '''
+//	public static void «f.name»() {
+//		«FOR e : f.expressions»
+//			«e.compile»
+//	  	«ENDFOR»
+//	}
+//	'''
+//	
+//	def compile(Expression e) {
+//		switch e {
+//			Assignment : {
+//				'''final String «e.name» = "«e.value»";'''
+//			}
+//			
+//			FunCall : {
+//				'''«e.name»();'''
+//			}
+//			
+//			Println : {
+//				'''System.out.println("«e.values.join(" ")»");'''
+//			}
+//		}
+//	}
 }

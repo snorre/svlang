@@ -18,9 +18,13 @@ import org.svlang.v0.v0.Assignment;
 import org.svlang.v0.v0.Domainmodel;
 import org.svlang.v0.v0.Fun;
 import org.svlang.v0.v0.FunCall;
+import org.svlang.v0.v0.INT;
 import org.svlang.v0.v0.Main;
-import org.svlang.v0.v0.Println;
+import org.svlang.v0.v0.NumberLiteral;
 import org.svlang.v0.v0.RootElement;
+import org.svlang.v0.v0.STRING;
+import org.svlang.v0.v0.StringLiteral;
+import org.svlang.v0.v0.SymbolRef;
 import org.svlang.v0.v0.V0Package;
 
 @SuppressWarnings("all")
@@ -51,9 +55,15 @@ public class V0SemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				}
 				else break;
 			case V0Package.FUN_CALL:
-				if(context == grammarAccess.getExpressionRule() ||
-				   context == grammarAccess.getFunCallRule()) {
-					sequence_FunCall(context, (FunCall) semanticObject); 
+				if(context == grammarAccess.getAtomicRule()) {
+					sequence_Atomic(context, (FunCall) semanticObject); 
+					return; 
+				}
+				else break;
+			case V0Package.INT:
+				if(context == grammarAccess.getMyIntTypeRule() ||
+				   context == grammarAccess.getTypeRule()) {
+					sequence_MyIntType(context, (INT) semanticObject); 
 					return; 
 				}
 				else break;
@@ -63,10 +73,9 @@ public class V0SemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
-			case V0Package.PRINTLN:
-				if(context == grammarAccess.getExpressionRule() ||
-				   context == grammarAccess.getPrintlnRule()) {
-					sequence_Println(context, (Println) semanticObject); 
+			case V0Package.NUMBER_LITERAL:
+				if(context == grammarAccess.getAtomicRule()) {
+					sequence_Atomic(context, (NumberLiteral) semanticObject); 
 					return; 
 				}
 				else break;
@@ -76,16 +85,37 @@ public class V0SemanticSequencer extends AbstractDelegatingSemanticSequencer {
 					return; 
 				}
 				else break;
+			case V0Package.STRING:
+				if(context == grammarAccess.getMyStringTypeRule() ||
+				   context == grammarAccess.getTypeRule()) {
+					sequence_MyStringType(context, (STRING) semanticObject); 
+					return; 
+				}
+				else break;
+			case V0Package.STRING_LITERAL:
+				if(context == grammarAccess.getAtomicRule()) {
+					sequence_Atomic(context, (StringLiteral) semanticObject); 
+					return; 
+				}
+				else break;
+			case V0Package.SYMBOL_REF:
+				if(context == grammarAccess.getAtomicRule()) {
+					sequence_Atomic(context, (SymbolRef) semanticObject); 
+					return; 
+				}
+				else break;
 			}
 		if (errorAcceptor != null) errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
 	
 	/**
 	 * Constraint:
-	 *     (name=ID value=STRING)
+	 *     (type=[Type|ID] name=ID value=Atomic)
 	 */
 	protected void sequence_Assignment(EObject context, Assignment semanticObject) {
 		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, V0Package.Literals.ASSIGNMENT__TYPE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, V0Package.Literals.ASSIGNMENT__TYPE));
 			if(transientValues.isValueTransient(semanticObject, V0Package.Literals.ASSIGNMENT__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, V0Package.Literals.ASSIGNMENT__NAME));
 			if(transientValues.isValueTransient(semanticObject, V0Package.Literals.ASSIGNMENT__VALUE) == ValueTransient.YES)
@@ -93,8 +123,73 @@ public class V0SemanticSequencer extends AbstractDelegatingSemanticSequencer {
 		}
 		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
 		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getAssignmentAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getAssignmentAccess().getValueSTRINGTerminalRuleCall_2_0(), semanticObject.getValue());
+		feeder.accept(grammarAccess.getAssignmentAccess().getTypeTypeIDTerminalRuleCall_1_0_1(), semanticObject.getType());
+		feeder.accept(grammarAccess.getAssignmentAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getAssignmentAccess().getValueAtomicParserRuleCall_4_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     fun=[Fun|ID]
+	 */
+	protected void sequence_Atomic(EObject context, FunCall semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, V0Package.Literals.FUN_CALL__FUN) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, V0Package.Literals.FUN_CALL__FUN));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getAtomicAccess().getFunFunIDTerminalRuleCall_3_1_0_1(), semanticObject.getFun());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     value=INT
+	 */
+	protected void sequence_Atomic(EObject context, NumberLiteral semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, V0Package.Literals.NUMBER_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, V0Package.Literals.NUMBER_LITERAL__VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getAtomicAccess().getValueINTTerminalRuleCall_1_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     value=STRING
+	 */
+	protected void sequence_Atomic(EObject context, StringLiteral semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, V0Package.Literals.STRING_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, V0Package.Literals.STRING_LITERAL__VALUE));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getAtomicAccess().getValueSTRINGTerminalRuleCall_2_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     symbol=[Symbol|ID]
+	 */
+	protected void sequence_Atomic(EObject context, SymbolRef semanticObject) {
+		if(errorAcceptor != null) {
+			if(transientValues.isValueTransient(semanticObject, V0Package.Literals.SYMBOL_REF__SYMBOL) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, V0Package.Literals.SYMBOL_REF__SYMBOL));
+		}
+		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
+		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
+		feeder.accept(grammarAccess.getAtomicAccess().getSymbolSymbolIDTerminalRuleCall_0_1_0_1(), semanticObject.getSymbol());
 		feeder.finish();
 	}
 	
@@ -110,23 +205,7 @@ public class V0SemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     name=ID
-	 */
-	protected void sequence_FunCall(EObject context, FunCall semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, V0Package.Literals.FUN_CALL__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, V0Package.Literals.FUN_CALL__NAME));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getFunCallAccess().getNameIDTerminalRuleCall_0_0(), semanticObject.getName());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Constraint:
-	 *     (name=ID expressions+=Expression*)
+	 *     (name=ID returnType=[Type|ID] expressions+=Expression*)
 	 */
 	protected void sequence_Fun(EObject context, Fun semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -135,7 +214,7 @@ public class V0SemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     expressions+=Expression*
+	 *     expressions+=Expression+
 	 */
 	protected void sequence_Main(EObject context, Main semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -144,9 +223,18 @@ public class V0SemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Constraint:
-	 *     values+=STRING+
+	 *     {INT}
 	 */
-	protected void sequence_Println(EObject context, Println semanticObject) {
+	protected void sequence_MyIntType(EObject context, INT semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {STRING}
+	 */
+	protected void sequence_MyStringType(EObject context, STRING semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

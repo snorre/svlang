@@ -389,3 +389,103 @@ Command-line arguments:  -product org.eclipse.platform.ide -data /Users/snorre/U
 
 !ENTRY org.eclipse.core.net 1 0 2014-06-26 01:06:45.957
 !MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2014-06-26 21:15:28.415 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.7.0_10
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.platform.ide
+Command-line arguments:  -product org.eclipse.platform.ide -data /Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/org.svlang.v0.testworkspace -dev file:/Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/.metadata/.plugins/org.eclipse.pde.core/org.svlang.v0.testworkspace/dev.properties -os macosx -ws cocoa -arch x86_64
+
+!ENTRY org.eclipse.core.net 1 0 2014-06-26 21:15:34.448
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2014-06-26 21:23:58.882 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.7.0_10
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.platform.ide
+Command-line arguments:  -product org.eclipse.platform.ide -data /Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/org.svlang.v0.testworkspace -dev file:/Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/.metadata/.plugins/org.eclipse.pde.core/org.svlang.v0.testworkspace/dev.properties -os macosx -ws cocoa -arch x86_64
+
+!ENTRY org.eclipse.core.net 1 0 2014-06-26 21:24:04.039
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2014-06-26 21:28:46.801 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.7.0_10
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.platform.ide
+Command-line arguments:  -product org.eclipse.platform.ide -data /Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/org.svlang.v0.testworkspace -dev file:/Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/.metadata/.plugins/org.eclipse.pde.core/org.svlang.v0.testworkspace/dev.properties -os macosx -ws cocoa -arch x86_64
+
+!ENTRY org.eclipse.core.net 1 0 2014-06-26 21:28:51.710
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2014-06-26 21:37:24.845 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.7.0_10
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.platform.ide
+Command-line arguments:  -product org.eclipse.platform.ide -data /Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/org.svlang.v0.testworkspace -dev file:/Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/.metadata/.plugins/org.eclipse.pde.core/org.svlang.v0.testworkspace/dev.properties -os macosx -ws cocoa -arch x86_64
+
+!ENTRY org.eclipse.core.net 1 0 2014-06-26 21:37:29.803
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2014-06-26 21:39:14.951 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.7.0_10
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.platform.ide
+Command-line arguments:  -product org.eclipse.platform.ide -data /Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/org.svlang.v0.testworkspace -dev file:/Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/.metadata/.plugins/org.eclipse.pde.core/org.svlang.v0.testworkspace/dev.properties -os macosx -ws cocoa -arch x86_64
+
+!ENTRY org.eclipse.core.net 1 0 2014-06-26 21:39:20.286
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2014-06-26 21:41:25.268 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.7.0_10
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.platform.ide
+Command-line arguments:  -product org.eclipse.platform.ide -data /Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/org.svlang.v0.testworkspace -dev file:/Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/.metadata/.plugins/org.eclipse.pde.core/org.svlang.v0.testworkspace/dev.properties -os macosx -ws cocoa -arch x86_64
+
+!ENTRY org.eclipse.core.net 1 0 2014-06-26 21:41:30.510
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2014-06-26 21:52:37.135 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.7.0_10
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.platform.ide
+Command-line arguments:  -product org.eclipse.platform.ide -data /Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/org.svlang.v0.testworkspace -dev file:/Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/.metadata/.plugins/org.eclipse.pde.core/org.svlang.v0.testworkspace/dev.properties -os macosx -ws cocoa -arch x86_64
+
+!ENTRY org.eclipse.core.net 1 0 2014-06-26 21:52:42.092
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2014-06-26 21:57:28.649 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.7.0_10
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.platform.ide
+Command-line arguments:  -product org.eclipse.platform.ide -data /Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/org.svlang.v0.testworkspace -dev file:/Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/.metadata/.plugins/org.eclipse.pde.core/org.svlang.v0.testworkspace/dev.properties -os macosx -ws cocoa -arch x86_64
+
+!ENTRY org.eclipse.core.net 1 0 2014-06-26 21:57:33.600
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2014-06-26 21:59:37.231 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.7.0_10
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.platform.ide
+Command-line arguments:  -product org.eclipse.platform.ide -data /Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/org.svlang.v0.testworkspace -dev file:/Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/.metadata/.plugins/org.eclipse.pde.core/org.svlang.v0.testworkspace/dev.properties -os macosx -ws cocoa -arch x86_64
+
+!ENTRY org.eclipse.core.net 1 0 2014-06-26 21:59:42.453
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences
+!SESSION 2014-06-26 22:13:29.488 -----------------------------------------------
+eclipse.buildId=4.3.2.M20140221-1700
+java.version=1.7.0_10
+java.vendor=Oracle Corporation
+BootLoader constants: OS=macosx, ARCH=x86_64, WS=cocoa, NL=en_US
+Framework arguments:  -product org.eclipse.platform.ide
+Command-line arguments:  -product org.eclipse.platform.ide -data /Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/org.svlang.v0.testworkspace -dev file:/Users/snorre/Utvikling/Prosjekter_Egne/svlang/Attempts/1_EclipseXtextWs/.metadata/.plugins/org.eclipse.pde.core/org.svlang.v0.testworkspace/dev.properties -os macosx -ws cocoa -arch x86_64
+
+!ENTRY org.eclipse.core.net 1 0 2014-06-26 22:13:34.436
+!MESSAGE System property http.nonProxyHosts has been set to local|*.local|169.254/16|*.169.254/16 by an external source. This value will be overwritten using the values from the preferences

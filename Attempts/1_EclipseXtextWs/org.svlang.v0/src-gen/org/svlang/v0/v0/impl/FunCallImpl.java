@@ -5,9 +5,11 @@ package org.svlang.v0.v0.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.svlang.v0.v0.Fun;
 import org.svlang.v0.v0.FunCall;
 import org.svlang.v0.v0.V0Package;
 
@@ -18,33 +20,23 @@ import org.svlang.v0.v0.V0Package;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.svlang.v0.v0.impl.FunCallImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.svlang.v0.v0.impl.FunCallImpl#getFun <em>Fun</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class FunCallImpl extends ExpressionImpl implements FunCall
+public class FunCallImpl extends AtomicImpl implements FunCall
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getFun() <em>Fun</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getFun()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
+  protected Fun fun;
 
   /**
    * <!-- begin-user-doc -->
@@ -72,9 +64,19 @@ public class FunCallImpl extends ExpressionImpl implements FunCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
+  public Fun getFun()
   {
-    return name;
+    if (fun != null && fun.eIsProxy())
+    {
+      InternalEObject oldFun = (InternalEObject)fun;
+      fun = (Fun)eResolveProxy(oldFun);
+      if (fun != oldFun)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, V0Package.FUN_CALL__FUN, oldFun, fun));
+      }
+    }
+    return fun;
   }
 
   /**
@@ -82,12 +84,22 @@ public class FunCallImpl extends ExpressionImpl implements FunCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
+  public Fun basicGetFun()
   {
-    String oldName = name;
-    name = newName;
+    return fun;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setFun(Fun newFun)
+  {
+    Fun oldFun = fun;
+    fun = newFun;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, V0Package.FUN_CALL__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, V0Package.FUN_CALL__FUN, oldFun, fun));
   }
 
   /**
@@ -100,8 +112,9 @@ public class FunCallImpl extends ExpressionImpl implements FunCall
   {
     switch (featureID)
     {
-      case V0Package.FUN_CALL__NAME:
-        return getName();
+      case V0Package.FUN_CALL__FUN:
+        if (resolve) return getFun();
+        return basicGetFun();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -116,8 +129,8 @@ public class FunCallImpl extends ExpressionImpl implements FunCall
   {
     switch (featureID)
     {
-      case V0Package.FUN_CALL__NAME:
-        setName((String)newValue);
+      case V0Package.FUN_CALL__FUN:
+        setFun((Fun)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -133,8 +146,8 @@ public class FunCallImpl extends ExpressionImpl implements FunCall
   {
     switch (featureID)
     {
-      case V0Package.FUN_CALL__NAME:
-        setName(NAME_EDEFAULT);
+      case V0Package.FUN_CALL__FUN:
+        setFun((Fun)null);
         return;
     }
     super.eUnset(featureID);
@@ -150,27 +163,10 @@ public class FunCallImpl extends ExpressionImpl implements FunCall
   {
     switch (featureID)
     {
-      case V0Package.FUN_CALL__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case V0Package.FUN_CALL__FUN:
+        return fun != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
   }
 
 } //FunCallImpl

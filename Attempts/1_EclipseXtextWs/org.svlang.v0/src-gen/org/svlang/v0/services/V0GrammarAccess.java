@@ -71,16 +71,16 @@ public class V0GrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//Main:
-		//	"main {" expressions+=Expression* "}";
+		//	"main {" expressions+=Expression+ "}";
 		public ParserRule getRule() { return rule; }
 
-		//"main {" expressions+=Expression* "}"
+		//"main {" expressions+=Expression+ "}"
 		public Group getGroup() { return cGroup; }
 
 		//"main {"
 		public Keyword getMainKeyword_0() { return cMainKeyword_0; }
 
-		//expressions+=Expression*
+		//expressions+=Expression+
 		public Assignment getExpressionsAssignment_1() { return cExpressionsAssignment_1; }
 
 		//Expression
@@ -93,149 +93,277 @@ public class V0GrammarAccess extends AbstractGrammarElementFinder {
 	public class FunElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Fun");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cFunKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cSpaceLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cExpressionsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cExpressionsExpressionParserRuleCall_3_0 = (RuleCall)cExpressionsAssignment_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
+		private final Action cFunAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cFunKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cColonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cReturnTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final CrossReference cReturnTypeTypeCrossReference_4_0 = (CrossReference)cReturnTypeAssignment_4.eContents().get(0);
+		private final RuleCall cReturnTypeTypeIDTerminalRuleCall_4_0_1 = (RuleCall)cReturnTypeTypeCrossReference_4_0.eContents().get(1);
+		private final Keyword cSpaceLeftCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Assignment cExpressionsAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cExpressionsExpressionParserRuleCall_6_0 = (RuleCall)cExpressionsAssignment_6.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//Fun:
-		//	"fun " name=ID " {" expressions+=Expression* "}";
+		//	{Fun} "fun " name=ID ":" returnType=[Type] " {" expressions+=Expression* "}";
 		public ParserRule getRule() { return rule; }
 
-		//"fun " name=ID " {" expressions+=Expression* "}"
+		//{Fun} "fun " name=ID ":" returnType=[Type] " {" expressions+=Expression* "}"
 		public Group getGroup() { return cGroup; }
 
+		//{Fun}
+		public Action getFunAction_0() { return cFunAction_0; }
+
 		//"fun "
-		public Keyword getFunKeyword_0() { return cFunKeyword_0; }
+		public Keyword getFunKeyword_1() { return cFunKeyword_1; }
 
 		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+
+		//":"
+		public Keyword getColonKeyword_3() { return cColonKeyword_3; }
+
+		//returnType=[Type]
+		public Assignment getReturnTypeAssignment_4() { return cReturnTypeAssignment_4; }
+
+		//[Type]
+		public CrossReference getReturnTypeTypeCrossReference_4_0() { return cReturnTypeTypeCrossReference_4_0; }
+
+		//ID
+		public RuleCall getReturnTypeTypeIDTerminalRuleCall_4_0_1() { return cReturnTypeTypeIDTerminalRuleCall_4_0_1; }
 
 		//" {"
-		public Keyword getSpaceLeftCurlyBracketKeyword_2() { return cSpaceLeftCurlyBracketKeyword_2; }
+		public Keyword getSpaceLeftCurlyBracketKeyword_5() { return cSpaceLeftCurlyBracketKeyword_5; }
 
 		//expressions+=Expression*
-		public Assignment getExpressionsAssignment_3() { return cExpressionsAssignment_3; }
+		public Assignment getExpressionsAssignment_6() { return cExpressionsAssignment_6; }
 
 		//Expression
-		public RuleCall getExpressionsExpressionParserRuleCall_3_0() { return cExpressionsExpressionParserRuleCall_3_0; }
+		public RuleCall getExpressionsExpressionParserRuleCall_6_0() { return cExpressionsExpressionParserRuleCall_6_0; }
 
 		//"}"
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 	}
 
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Expression");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cAssignmentParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cFunCallParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cPrintlnParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cAssignmentParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
+		////	| FunCall 
+		////	| Println
 		//Expression:
-		//	Assignment | FunCall | Println;
+		//	Assignment;
 		public ParserRule getRule() { return rule; }
 
-		//Assignment | FunCall | Println
-		public Alternatives getAlternatives() { return cAlternatives; }
-
 		//Assignment
-		public RuleCall getAssignmentParserRuleCall_0() { return cAssignmentParserRuleCall_0; }
-
-		//FunCall
-		public RuleCall getFunCallParserRuleCall_1() { return cFunCallParserRuleCall_1; }
-
-		//Println
-		public RuleCall getPrintlnParserRuleCall_2() { return cPrintlnParserRuleCall_2; }
+		public RuleCall getAssignmentParserRuleCall() { return cAssignmentParserRuleCall; }
 	}
 
 	public class AssignmentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Assignment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cSpaceEqualsSignSpaceKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cValueSTRINGTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
+		private final Action cAssignmentAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cTypeAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cTypeTypeCrossReference_1_0 = (CrossReference)cTypeAssignment_1.eContents().get(0);
+		private final RuleCall cTypeTypeIDTerminalRuleCall_1_0_1 = (RuleCall)cTypeTypeCrossReference_1_0.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cSpaceEqualsSignSpaceKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cValueAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cValueAtomicParserRuleCall_4_0 = (RuleCall)cValueAssignment_4.eContents().get(0);
 		
-		//Assignment:
-		//	name=ID " = " value=STRING;
+		//Assignment returns Symbol:
+		//	{Assignment} type=[Type] name=ID " = " value=Atomic;
 		public ParserRule getRule() { return rule; }
 
-		//name=ID " = " value=STRING
+		//{Assignment} type=[Type] name=ID " = " value=Atomic
 		public Group getGroup() { return cGroup; }
 
-		//name=ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		//{Assignment}
+		public Action getAssignmentAction_0() { return cAssignmentAction_0; }
+
+		//type=[Type]
+		public Assignment getTypeAssignment_1() { return cTypeAssignment_1; }
+
+		//[Type]
+		public CrossReference getTypeTypeCrossReference_1_0() { return cTypeTypeCrossReference_1_0; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		public RuleCall getTypeTypeIDTerminalRuleCall_1_0_1() { return cTypeTypeIDTerminalRuleCall_1_0_1; }
+
+		//name=ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
 		//" = "
-		public Keyword getSpaceEqualsSignSpaceKeyword_1() { return cSpaceEqualsSignSpaceKeyword_1; }
+		public Keyword getSpaceEqualsSignSpaceKeyword_3() { return cSpaceEqualsSignSpaceKeyword_3; }
 
-		//value=STRING
-		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
+		//value=Atomic
+		public Assignment getValueAssignment_4() { return cValueAssignment_4; }
 
-		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_2_0() { return cValueSTRINGTerminalRuleCall_2_0; }
+		//Atomic
+		public RuleCall getValueAtomicParserRuleCall_4_0() { return cValueAtomicParserRuleCall_4_0; }
 	}
 
-	public class FunCallElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "FunCall");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cNameIDTerminalRuleCall_0_0 = (RuleCall)cNameAssignment_0.eContents().get(0);
-		private final Keyword cLeftParenthesisRightParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
+	public class AtomicElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Atomic");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
+		private final Action cSymbolRefAction_0_0 = (Action)cGroup_0.eContents().get(0);
+		private final Assignment cSymbolAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final CrossReference cSymbolSymbolCrossReference_0_1_0 = (CrossReference)cSymbolAssignment_0_1.eContents().get(0);
+		private final RuleCall cSymbolSymbolIDTerminalRuleCall_0_1_0_1 = (RuleCall)cSymbolSymbolCrossReference_0_1_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
+		private final Action cNumberLiteralAction_1_0 = (Action)cGroup_1.eContents().get(0);
+		private final Assignment cValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cValueINTTerminalRuleCall_1_1_0 = (RuleCall)cValueAssignment_1_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Action cStringLiteralAction_2_0 = (Action)cGroup_2.eContents().get(0);
+		private final Assignment cValueAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cValueSTRINGTerminalRuleCall_2_1_0 = (RuleCall)cValueAssignment_2_1.eContents().get(0);
+		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
+		private final Action cFunCallAction_3_0 = (Action)cGroup_3.eContents().get(0);
+		private final Assignment cFunAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final CrossReference cFunFunCrossReference_3_1_0 = (CrossReference)cFunAssignment_3_1.eContents().get(0);
+		private final RuleCall cFunFunIDTerminalRuleCall_3_1_0_1 = (RuleCall)cFunFunCrossReference_3_1_0.eContents().get(1);
+		private final Keyword cLeftParenthesisRightParenthesisKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
 		
-		//FunCall:
-		//	name=ID "()";
+		////Println:
+		////	'pln(' (values += Type)+ ')'
+		////;
+		//Atomic:
+		//	{SymbolRef} symbol=[Symbol] | {NumberLiteral} value=INT | {StringLiteral} value=STRING | {FunCall} fun=[Fun] "()";
 		public ParserRule getRule() { return rule; }
 
-		//name=ID "()"
-		public Group getGroup() { return cGroup; }
+		//{SymbolRef} symbol=[Symbol] | {NumberLiteral} value=INT | {StringLiteral} value=STRING | {FunCall} fun=[Fun] "()"
+		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//name=ID
-		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		//{SymbolRef} symbol=[Symbol]
+		public Group getGroup_0() { return cGroup_0; }
+
+		//{SymbolRef}
+		public Action getSymbolRefAction_0_0() { return cSymbolRefAction_0_0; }
+
+		//symbol=[Symbol]
+		public Assignment getSymbolAssignment_0_1() { return cSymbolAssignment_0_1; }
+
+		//[Symbol]
+		public CrossReference getSymbolSymbolCrossReference_0_1_0() { return cSymbolSymbolCrossReference_0_1_0; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_0_0() { return cNameIDTerminalRuleCall_0_0; }
+		public RuleCall getSymbolSymbolIDTerminalRuleCall_0_1_0_1() { return cSymbolSymbolIDTerminalRuleCall_0_1_0_1; }
 
-		//"()"
-		public Keyword getLeftParenthesisRightParenthesisKeyword_1() { return cLeftParenthesisRightParenthesisKeyword_1; }
-	}
+		//{NumberLiteral} value=INT
+		public Group getGroup_1() { return cGroup_1; }
 
-	public class PrintlnElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Println");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cPlnKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cValuesAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cValuesSTRINGTerminalRuleCall_1_0 = (RuleCall)cValuesAssignment_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		
-		//Println:
-		//	"pln(" values+=STRING+ ")";
-		public ParserRule getRule() { return rule; }
+		//{NumberLiteral}
+		public Action getNumberLiteralAction_1_0() { return cNumberLiteralAction_1_0; }
 
-		//"pln(" values+=STRING+ ")"
-		public Group getGroup() { return cGroup; }
+		//value=INT
+		public Assignment getValueAssignment_1_1() { return cValueAssignment_1_1; }
 
-		//"pln("
-		public Keyword getPlnKeyword_0() { return cPlnKeyword_0; }
+		//INT
+		public RuleCall getValueINTTerminalRuleCall_1_1_0() { return cValueINTTerminalRuleCall_1_1_0; }
 
-		//values+=STRING+
-		public Assignment getValuesAssignment_1() { return cValuesAssignment_1; }
+		//{StringLiteral} value=STRING
+		public Group getGroup_2() { return cGroup_2; }
+
+		//{StringLiteral}
+		public Action getStringLiteralAction_2_0() { return cStringLiteralAction_2_0; }
+
+		//value=STRING
+		public Assignment getValueAssignment_2_1() { return cValueAssignment_2_1; }
 
 		//STRING
-		public RuleCall getValuesSTRINGTerminalRuleCall_1_0() { return cValuesSTRINGTerminalRuleCall_1_0; }
+		public RuleCall getValueSTRINGTerminalRuleCall_2_1_0() { return cValueSTRINGTerminalRuleCall_2_1_0; }
 
-		//")"
-		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
+		//{FunCall} fun=[Fun] "()"
+		public Group getGroup_3() { return cGroup_3; }
+
+		//{FunCall}
+		public Action getFunCallAction_3_0() { return cFunCallAction_3_0; }
+
+		//fun=[Fun]
+		public Assignment getFunAssignment_3_1() { return cFunAssignment_3_1; }
+
+		//[Fun]
+		public CrossReference getFunFunCrossReference_3_1_0() { return cFunFunCrossReference_3_1_0; }
+
+		//ID
+		public RuleCall getFunFunIDTerminalRuleCall_3_1_0_1() { return cFunFunIDTerminalRuleCall_3_1_0_1; }
+
+		//"()"
+		public Keyword getLeftParenthesisRightParenthesisKeyword_3_2() { return cLeftParenthesisRightParenthesisKeyword_3_2; }
+	}
+
+	public class TypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Type");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cMyIntTypeParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cMyStringTypeParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		////FunCall returns Atomic:
+		////	name=ID '(' (parameters += Atomic)* ')'
+		////;
+		//Type:
+		//	MyIntType | MyStringType;
+		public ParserRule getRule() { return rule; }
+
+		//MyIntType | MyStringType
+		public Alternatives getAlternatives() { return cAlternatives; }
+
+		//MyIntType
+		public RuleCall getMyIntTypeParserRuleCall_0() { return cMyIntTypeParserRuleCall_0; }
+
+		//MyStringType
+		public RuleCall getMyStringTypeParserRuleCall_1() { return cMyStringTypeParserRuleCall_1; }
+	}
+
+	public class MyIntTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MyIntType");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cINTAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cIntKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//MyIntType:
+		//	{INT} "int";
+		public ParserRule getRule() { return rule; }
+
+		//{INT} "int"
+		public Group getGroup() { return cGroup; }
+
+		//{INT}
+		public Action getINTAction_0() { return cINTAction_0; }
+
+		//"int"
+		public Keyword getIntKeyword_1() { return cIntKeyword_1; }
+	}
+
+	public class MyStringTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MyStringType");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cSTRINGAction_0 = (Action)cGroup.eContents().get(0);
+		private final Keyword cStringKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		
+		//MyStringType:
+		//	{STRING} "string";
+		public ParserRule getRule() { return rule; }
+
+		//{STRING} "string"
+		public Group getGroup() { return cGroup; }
+
+		//{STRING}
+		public Action getSTRINGAction_0() { return cSTRINGAction_0; }
+
+		//"string"
+		public Keyword getStringKeyword_1() { return cStringKeyword_1; }
 	}
 	
 	
@@ -245,8 +373,10 @@ public class V0GrammarAccess extends AbstractGrammarElementFinder {
 	private FunElements pFun;
 	private ExpressionElements pExpression;
 	private AssignmentElements pAssignment;
-	private FunCallElements pFunCall;
-	private PrintlnElements pPrintln;
+	private AtomicElements pAtomic;
+	private TypeElements pType;
+	private MyIntTypeElements pMyIntType;
+	private MyStringTypeElements pMyStringType;
 	
 	private final Grammar grammar;
 
@@ -307,7 +437,7 @@ public class V0GrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Main:
-	//	"main {" expressions+=Expression* "}";
+	//	"main {" expressions+=Expression+ "}";
 	public MainElements getMainAccess() {
 		return (pMain != null) ? pMain : (pMain = new MainElements());
 	}
@@ -317,7 +447,7 @@ public class V0GrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Fun:
-	//	"fun " name=ID " {" expressions+=Expression* "}";
+	//	{Fun} "fun " name=ID ":" returnType=[Type] " {" expressions+=Expression* "}";
 	public FunElements getFunAccess() {
 		return (pFun != null) ? pFun : (pFun = new FunElements());
 	}
@@ -326,8 +456,10 @@ public class V0GrammarAccess extends AbstractGrammarElementFinder {
 		return getFunAccess().getRule();
 	}
 
+	////	| FunCall 
+	////	| Println
 	//Expression:
-	//	Assignment | FunCall | Println;
+	//	Assignment;
 	public ExpressionElements getExpressionAccess() {
 		return (pExpression != null) ? pExpression : (pExpression = new ExpressionElements());
 	}
@@ -336,8 +468,8 @@ public class V0GrammarAccess extends AbstractGrammarElementFinder {
 		return getExpressionAccess().getRule();
 	}
 
-	//Assignment:
-	//	name=ID " = " value=STRING;
+	//Assignment returns Symbol:
+	//	{Assignment} type=[Type] name=ID " = " value=Atomic;
 	public AssignmentElements getAssignmentAccess() {
 		return (pAssignment != null) ? pAssignment : (pAssignment = new AssignmentElements());
 	}
@@ -346,24 +478,50 @@ public class V0GrammarAccess extends AbstractGrammarElementFinder {
 		return getAssignmentAccess().getRule();
 	}
 
-	//FunCall:
-	//	name=ID "()";
-	public FunCallElements getFunCallAccess() {
-		return (pFunCall != null) ? pFunCall : (pFunCall = new FunCallElements());
+	////Println:
+	////	'pln(' (values += Type)+ ')'
+	////;
+	//Atomic:
+	//	{SymbolRef} symbol=[Symbol] | {NumberLiteral} value=INT | {StringLiteral} value=STRING | {FunCall} fun=[Fun] "()";
+	public AtomicElements getAtomicAccess() {
+		return (pAtomic != null) ? pAtomic : (pAtomic = new AtomicElements());
 	}
 	
-	public ParserRule getFunCallRule() {
-		return getFunCallAccess().getRule();
+	public ParserRule getAtomicRule() {
+		return getAtomicAccess().getRule();
 	}
 
-	//Println:
-	//	"pln(" values+=STRING+ ")";
-	public PrintlnElements getPrintlnAccess() {
-		return (pPrintln != null) ? pPrintln : (pPrintln = new PrintlnElements());
+	////FunCall returns Atomic:
+	////	name=ID '(' (parameters += Atomic)* ')'
+	////;
+	//Type:
+	//	MyIntType | MyStringType;
+	public TypeElements getTypeAccess() {
+		return (pType != null) ? pType : (pType = new TypeElements());
 	}
 	
-	public ParserRule getPrintlnRule() {
-		return getPrintlnAccess().getRule();
+	public ParserRule getTypeRule() {
+		return getTypeAccess().getRule();
+	}
+
+	//MyIntType:
+	//	{INT} "int";
+	public MyIntTypeElements getMyIntTypeAccess() {
+		return (pMyIntType != null) ? pMyIntType : (pMyIntType = new MyIntTypeElements());
+	}
+	
+	public ParserRule getMyIntTypeRule() {
+		return getMyIntTypeAccess().getRule();
+	}
+
+	//MyStringType:
+	//	{STRING} "string";
+	public MyStringTypeElements getMyStringTypeAccess() {
+		return (pMyStringType != null) ? pMyStringType : (pMyStringType = new MyStringTypeElements());
+	}
+	
+	public ParserRule getMyStringTypeRule() {
+		return getMyStringTypeAccess().getRule();
 	}
 
 	//terminal ID:

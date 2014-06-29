@@ -10,13 +10,20 @@ import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.svlang.v0.v0.Assignment;
+import org.svlang.v0.v0.Atomic;
 import org.svlang.v0.v0.Domainmodel;
 import org.svlang.v0.v0.Expression;
 import org.svlang.v0.v0.Fun;
 import org.svlang.v0.v0.FunCall;
 import org.svlang.v0.v0.Main;
-import org.svlang.v0.v0.Println;
+import org.svlang.v0.v0.MyIntType;
+import org.svlang.v0.v0.MyStringType;
+import org.svlang.v0.v0.NumberLiteral;
 import org.svlang.v0.v0.RootElement;
+import org.svlang.v0.v0.StringLiteral;
+import org.svlang.v0.v0.Symbol;
+import org.svlang.v0.v0.SymbolRef;
+import org.svlang.v0.v0.Type;
 import org.svlang.v0.v0.V0Factory;
 import org.svlang.v0.v0.V0Package;
 
@@ -68,7 +75,63 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass symbolEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass atomicEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass typeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass myIntTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass myStringTypeEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass assignmentEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass symbolRefEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass numberLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stringLiteralEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -82,7 +145,14 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass printlnEClass = null;
+  private EClass intEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stringEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -242,9 +312,19 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getFun_Expressions()
+  public EReference getFun_ReturnType()
   {
     return (EReference)funEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getFun_Expressions()
+  {
+    return (EReference)funEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -262,6 +342,56 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getSymbol()
+  {
+    return symbolEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAtomic()
+  {
+    return atomicEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getType()
+  {
+    return typeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getMyIntType()
+  {
+    return myIntTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getMyStringType()
+  {
+    return myStringTypeEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getAssignment()
   {
     return assignmentEClass;
@@ -272,9 +402,9 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAssignment_Name()
+  public EReference getAssignment_Type()
   {
-    return (EAttribute)assignmentEClass.getEStructuralFeatures().get(0);
+    return (EReference)assignmentEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -282,9 +412,79 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAssignment_Value()
+  public EAttribute getAssignment_Name()
   {
     return (EAttribute)assignmentEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAssignment_Value()
+  {
+    return (EReference)assignmentEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getSymbolRef()
+  {
+    return symbolRefEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getSymbolRef_Symbol()
+  {
+    return (EReference)symbolRefEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getNumberLiteral()
+  {
+    return numberLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getNumberLiteral_Value()
+  {
+    return (EAttribute)numberLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getStringLiteral()
+  {
+    return stringLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getStringLiteral_Value()
+  {
+    return (EAttribute)stringLiteralEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -302,9 +502,9 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getFunCall_Name()
+  public EReference getFunCall_Fun()
   {
-    return (EAttribute)funCallEClass.getEStructuralFeatures().get(0);
+    return (EReference)funCallEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -312,9 +512,9 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPrintln()
+  public EClass getINT()
   {
-    return printlnEClass;
+    return intEClass;
   }
 
   /**
@@ -322,9 +522,9 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPrintln_Values()
+  public EClass getSTRING()
   {
-    return (EAttribute)printlnEClass.getEStructuralFeatures().get(0);
+    return stringEClass;
   }
 
   /**
@@ -369,19 +569,41 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
 
     funEClass = createEClass(FUN);
     createEAttribute(funEClass, FUN__NAME);
+    createEReference(funEClass, FUN__RETURN_TYPE);
     createEReference(funEClass, FUN__EXPRESSIONS);
 
     expressionEClass = createEClass(EXPRESSION);
 
+    symbolEClass = createEClass(SYMBOL);
+
+    atomicEClass = createEClass(ATOMIC);
+
+    typeEClass = createEClass(TYPE);
+
+    myIntTypeEClass = createEClass(MY_INT_TYPE);
+
+    myStringTypeEClass = createEClass(MY_STRING_TYPE);
+
     assignmentEClass = createEClass(ASSIGNMENT);
+    createEReference(assignmentEClass, ASSIGNMENT__TYPE);
     createEAttribute(assignmentEClass, ASSIGNMENT__NAME);
-    createEAttribute(assignmentEClass, ASSIGNMENT__VALUE);
+    createEReference(assignmentEClass, ASSIGNMENT__VALUE);
+
+    symbolRefEClass = createEClass(SYMBOL_REF);
+    createEReference(symbolRefEClass, SYMBOL_REF__SYMBOL);
+
+    numberLiteralEClass = createEClass(NUMBER_LITERAL);
+    createEAttribute(numberLiteralEClass, NUMBER_LITERAL__VALUE);
+
+    stringLiteralEClass = createEClass(STRING_LITERAL);
+    createEAttribute(stringLiteralEClass, STRING_LITERAL__VALUE);
 
     funCallEClass = createEClass(FUN_CALL);
-    createEAttribute(funCallEClass, FUN_CALL__NAME);
+    createEReference(funCallEClass, FUN_CALL__FUN);
 
-    printlnEClass = createEClass(PRINTLN);
-    createEAttribute(printlnEClass, PRINTLN__VALUES);
+    intEClass = createEClass(INT);
+
+    stringEClass = createEClass(STRING);
   }
 
   /**
@@ -413,9 +635,16 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
     // Set bounds for type parameters
 
     // Add supertypes to classes
-    assignmentEClass.getESuperTypes().add(this.getExpression());
-    funCallEClass.getESuperTypes().add(this.getExpression());
-    printlnEClass.getESuperTypes().add(this.getExpression());
+    symbolEClass.getESuperTypes().add(this.getExpression());
+    myIntTypeEClass.getESuperTypes().add(this.getType());
+    myStringTypeEClass.getESuperTypes().add(this.getType());
+    assignmentEClass.getESuperTypes().add(this.getSymbol());
+    symbolRefEClass.getESuperTypes().add(this.getAtomic());
+    numberLiteralEClass.getESuperTypes().add(this.getAtomic());
+    stringLiteralEClass.getESuperTypes().add(this.getAtomic());
+    funCallEClass.getESuperTypes().add(this.getAtomic());
+    intEClass.getESuperTypes().add(this.getMyIntType());
+    stringEClass.getESuperTypes().add(this.getMyStringType());
 
     // Initialize classes and features; add operations and parameters
     initEClass(domainmodelEClass, Domainmodel.class, "Domainmodel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -430,19 +659,41 @@ public class V0PackageImpl extends EPackageImpl implements V0Package
 
     initEClass(funEClass, Fun.class, "Fun", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFun_Name(), ecorePackage.getEString(), "name", null, 0, 1, Fun.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFun_ReturnType(), this.getType(), null, "returnType", null, 0, 1, Fun.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFun_Expressions(), this.getExpression(), null, "expressions", null, 0, -1, Fun.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
+    initEClass(symbolEClass, Symbol.class, "Symbol", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(atomicEClass, Atomic.class, "Atomic", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(typeEClass, Type.class, "Type", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(myIntTypeEClass, MyIntType.class, "MyIntType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(myStringTypeEClass, MyStringType.class, "MyStringType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
     initEClass(assignmentEClass, Assignment.class, "Assignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAssignment_Type(), this.getType(), null, "type", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getAssignment_Name(), ecorePackage.getEString(), "name", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getAssignment_Value(), ecorePackage.getEString(), "value", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAssignment_Value(), this.getAtomic(), null, "value", null, 0, 1, Assignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(symbolRefEClass, SymbolRef.class, "SymbolRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSymbolRef_Symbol(), this.getSymbol(), null, "symbol", null, 0, 1, SymbolRef.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(numberLiteralEClass, NumberLiteral.class, "NumberLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getNumberLiteral_Value(), ecorePackage.getEInt(), "value", null, 0, 1, NumberLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(stringLiteralEClass, StringLiteral.class, "StringLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStringLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, StringLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(funCallEClass, FunCall.class, "FunCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getFunCall_Name(), ecorePackage.getEString(), "name", null, 0, 1, FunCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFunCall_Fun(), this.getFun(), null, "fun", null, 0, 1, FunCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(printlnEClass, Println.class, "Println", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getPrintln_Values(), ecorePackage.getEString(), "values", null, 0, -1, Println.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(intEClass, org.svlang.v0.v0.INT.class, "INT", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(stringEClass, org.svlang.v0.v0.STRING.class, "STRING", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
     // Create resource
     createResource(eNS_URI);

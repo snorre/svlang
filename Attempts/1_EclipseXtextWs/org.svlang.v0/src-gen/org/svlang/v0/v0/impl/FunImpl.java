@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.svlang.v0.v0.Expression;
 import org.svlang.v0.v0.Fun;
+import org.svlang.v0.v0.Type;
 import org.svlang.v0.v0.V0Package;
 
 /**
@@ -30,6 +31,7 @@ import org.svlang.v0.v0.V0Package;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.svlang.v0.v0.impl.FunImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.svlang.v0.v0.impl.FunImpl#getReturnType <em>Return Type</em>}</li>
  *   <li>{@link org.svlang.v0.v0.impl.FunImpl#getExpressions <em>Expressions</em>}</li>
  * </ul>
  * </p>
@@ -57,6 +59,16 @@ public class FunImpl extends MinimalEObjectImpl.Container implements Fun
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getReturnType() <em>Return Type</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getReturnType()
+   * @generated
+   * @ordered
+   */
+  protected Type returnType;
 
   /**
    * The cached value of the '{@link #getExpressions() <em>Expressions</em>}' containment reference list.
@@ -117,6 +129,49 @@ public class FunImpl extends MinimalEObjectImpl.Container implements Fun
    * <!-- end-user-doc -->
    * @generated
    */
+  public Type getReturnType()
+  {
+    if (returnType != null && returnType.eIsProxy())
+    {
+      InternalEObject oldReturnType = (InternalEObject)returnType;
+      returnType = (Type)eResolveProxy(oldReturnType);
+      if (returnType != oldReturnType)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, V0Package.FUN__RETURN_TYPE, oldReturnType, returnType));
+      }
+    }
+    return returnType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Type basicGetReturnType()
+  {
+    return returnType;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setReturnType(Type newReturnType)
+  {
+    Type oldReturnType = returnType;
+    returnType = newReturnType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, V0Package.FUN__RETURN_TYPE, oldReturnType, returnType));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<Expression> getExpressions()
   {
     if (expressions == null)
@@ -154,6 +209,9 @@ public class FunImpl extends MinimalEObjectImpl.Container implements Fun
     {
       case V0Package.FUN__NAME:
         return getName();
+      case V0Package.FUN__RETURN_TYPE:
+        if (resolve) return getReturnType();
+        return basicGetReturnType();
       case V0Package.FUN__EXPRESSIONS:
         return getExpressions();
     }
@@ -173,6 +231,9 @@ public class FunImpl extends MinimalEObjectImpl.Container implements Fun
     {
       case V0Package.FUN__NAME:
         setName((String)newValue);
+        return;
+      case V0Package.FUN__RETURN_TYPE:
+        setReturnType((Type)newValue);
         return;
       case V0Package.FUN__EXPRESSIONS:
         getExpressions().clear();
@@ -195,6 +256,9 @@ public class FunImpl extends MinimalEObjectImpl.Container implements Fun
       case V0Package.FUN__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case V0Package.FUN__RETURN_TYPE:
+        setReturnType((Type)null);
+        return;
       case V0Package.FUN__EXPRESSIONS:
         getExpressions().clear();
         return;
@@ -214,6 +278,8 @@ public class FunImpl extends MinimalEObjectImpl.Container implements Fun
     {
       case V0Package.FUN__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case V0Package.FUN__RETURN_TYPE:
+        return returnType != null;
       case V0Package.FUN__EXPRESSIONS:
         return expressions != null && !expressions.isEmpty();
     }
