@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<debugInfo>
+  <unitInfo fileName="BehaviorAspectDescriptor.java" startLine="9" startPosition="0" endLine="32" endPosition="0" unitName="SVLang.v0.behavior.BehaviorAspectDescriptor" />
+  <unitInfo fileName="CodeFile_BehaviorDescriptor.java" startLine="7" startPosition="0" endLine="16" endPosition="0" unitName="SVLang.v0.behavior.CodeFile_BehaviorDescriptor" />
+  <unitInfo fileName="Codeline_BehaviorDescriptor.java" startLine="7" startPosition="0" endLine="16" endPosition="0" unitName="SVLang.v0.behavior.Codeline_BehaviorDescriptor" />
+  <unitInfo fileName="Import_BehaviorDescriptor.java" startLine="7" startPosition="0" endLine="16" endPosition="0" unitName="SVLang.v0.behavior.Import_BehaviorDescriptor" />
+  <unitInfo fileName="Main_BehaviorDescriptor.java" startLine="7" startPosition="0" endLine="16" endPosition="0" unitName="SVLang.v0.behavior.Main_BehaviorDescriptor" />
+  <unitInfo fileName="Namespace_BehaviorDescriptor.java" startLine="7" startPosition="0" endLine="16" endPosition="0" unitName="SVLang.v0.behavior.Namespace_BehaviorDescriptor" />
+</debugInfo>
+
