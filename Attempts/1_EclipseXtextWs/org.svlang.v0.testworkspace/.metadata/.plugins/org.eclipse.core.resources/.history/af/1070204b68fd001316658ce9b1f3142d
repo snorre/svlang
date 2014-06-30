@@ -1,0 +1,9 @@
+main {
+	a = Type
+//	c = jalla()
+}
+
+fun jalla:int {
+	b = 'hei'
+	pln('noe' 'mere')
+}

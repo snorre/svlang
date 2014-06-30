@@ -20,10 +20,12 @@ public class EditorAspectDescriptorImpl implements EditorAspectDescriptor {
       case 1:
         return Collections.<ConceptEditor>singletonList(new Codeline_Editor());
       case 2:
-        return Collections.<ConceptEditor>singletonList(new Import_Editor());
+        return Collections.<ConceptEditor>singletonList(new Fun_Editor());
       case 3:
-        return Collections.<ConceptEditor>singletonList(new Main_Editor());
+        return Collections.<ConceptEditor>singletonList(new Import_Editor());
       case 4:
+        return Collections.<ConceptEditor>singletonList(new Main_Editor());
+      case 5:
         return Collections.<ConceptEditor>singletonList(new Namespace_Editor());
       default:
     }
@@ -36,5 +38,5 @@ public class EditorAspectDescriptorImpl implements EditorAspectDescriptor {
 
 
 
-  private static String[] stringSwitchCases_xbvbvu_a0a0b = new String[]{"SVLang.v0.structure.CodeFile", "SVLang.v0.structure.Codeline", "SVLang.v0.structure.Import", "SVLang.v0.structure.Main", "SVLang.v0.structure.Namespace"};
+  private static String[] stringSwitchCases_xbvbvu_a0a0b = new String[]{"SVLang.v0.structure.CodeFile", "SVLang.v0.structure.Codeline", "SVLang.v0.structure.Fun", "SVLang.v0.structure.Import", "SVLang.v0.structure.Main", "SVLang.v0.structure.Namespace"};
 }

@@ -1,0 +1,9 @@
+main {
+	a = 'abc'
+	jalla()
+}
+
+fun jalla:1 {
+	b = 'hei'
+	pln('noe' 'mere')
+}

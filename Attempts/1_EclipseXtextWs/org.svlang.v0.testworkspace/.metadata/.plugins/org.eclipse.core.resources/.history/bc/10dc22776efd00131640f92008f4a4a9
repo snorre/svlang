@@ -1,0 +1,11 @@
+main {
+	int a = 123
+	string b = 'abc'
+	c = b
+//	c = jalla()
+}
+
+//fun jalla:int {
+//	b = 'hei'
+//	pln('noe' 'mere')
+//}
