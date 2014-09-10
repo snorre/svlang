@@ -1,4 +1,4 @@
-#
+﻿#
 # # er kommentarstreng
 # void er et objekt som int og string
 # indent-drevet?
@@ -62,3 +62,7 @@ aspect post sjekkreturn (returnoe:string)
 aspect post dobbeltsjekk(returnoe:string)
 	if returnoe = 'noe annet'
 		pln('Hmm mulig problem')
+
+fun sammenligning
+	if a < b  <= c # Samme som a < b && b <= c. 
+		pln('Flerleddet sammenligning!')
