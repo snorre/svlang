@@ -68,6 +68,10 @@ let builtin_defn (ctx:Context) (expressions:expr list) : simpleValue =
     | (_,_,_) -> 
         raise (System.ArgumentException("Invalid arguments to defn"))
 
+let builtin_var (ctx:Context) (name:string) (value:simpleValue) : simpleValue =
+    ctx.addVariable (name, value)
+    value
+
 let builtin_plus (values:simpleValue list) : simpleValue =
     let ints = values |> List.map (fun pv -> (EvalValue pv) :?> int)
     Number(ints |> List.sum)
@@ -89,6 +93,12 @@ let rec EvalExpr (e:expr) (ctx:Context) : simpleValue =
     | Call (fn, pel) -> 
         match fn with
         | "defn" -> builtin_defn ctx pel
+        | "var" -> 
+            let vName = EvalValue (EvalExpr pel.[0] ctx) :?> string
+            let vValue = EvalExpr pel.[1] ctx
+            builtin_var ctx vName vValue
+        | "if" ->
+            String("Implement me!")
         | "+" -> builtin_plus (pel |> List.map (fun e -> EvalExpr e ctx))
         | "prt" -> builtin_prt (pel |> List.map (fun e -> EvalExpr e ctx))
         | _ -> 
@@ -102,8 +112,6 @@ let rec EvalExpr (e:expr) (ctx:Context) : simpleValue =
     | Value v -> v
 
     | Reference r -> ctx.Variables.[r]
-
-    | Assignment (n, e) -> String("implement me!")
 
 let Run code = EvalExpr code (Context(Map.empty<string, simpleValue>, Map.empty<string, string list * expr list>))
 
@@ -130,6 +138,13 @@ let code_call =
         [
             Value(Number(2));
             Value(Number(3))
+        ]
+    )
+let code_assign =
+    Codeblock(
+        [
+            Call("var", [Value(String("x")); Value(Number(4))])
+            Call("+", [Reference("x"); Reference("x")])
         ]
     )
 let code = Codeblock([ code_defn; code_call ])
