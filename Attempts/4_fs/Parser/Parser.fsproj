@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -38,8 +38,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="LISP_3.fs" />
-    <Compile Include="LISP_4.fs" />
+    <Compile Include="AST.fs" />
+    <Compile Include="Context.fs" />
+    <Compile Include="Builtins.fs" />
+    <Compile Include="Evaluation.fs" />
+    <Compile Include="InteractiveTest.fs" />
+    <Compile Include="old\LISP_3.fs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\..\Microsoft SDKs\F#\3.1\Framework\v4.0\Microsoft.FSharp.Targets" />
+  <ItemGroup>
+    <Folder Include="old\" />
+  </ItemGroup>
 </Project>
