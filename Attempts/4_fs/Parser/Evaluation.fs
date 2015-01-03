@@ -1,13 +1,15 @@
 ﻿namespace svlang
-(* AST» *)
 
 module evaluation =
 
-    let rec EvalExpr (e:ast.expr) (c:ctx.Context) : ast.simpleValue =
+    let rec private EvalExpr (e:ast.expr) (c:ctx.Context) : ast.simpleValue =
+
+        let ToValueList (el:ast.expr list) : ast.simpleValue list =
+            el |> List.map (fun e -> EvalExpr e c)
+
         match e with
         | ast.Codeblock cb ->
-            cb
-                |> List.map (fun e -> EvalExpr e c)
+            (ToValueList cb)
                 |> List.rev
                 |> List.head // Returns the last value
 
@@ -23,15 +25,15 @@ module evaluation =
             | "<" -> ast.String("Implement me!")
             | "<=" -> ast.String("Implement me!")
             | "=" -> ast.String("Implement me!")
-            | "-" -> ast.String("Implement me!")
-            | "+" -> builtins.plus (pel |> List.map (fun e -> EvalExpr e c))
-            | "prt" -> builtins.prt (pel |> List.map (fun e -> EvalExpr e c))
+            | "-" -> builtins.minus (ToValueList pel)
+            | "+" -> builtins.plus (ToValueList pel)
+            | "prt" -> builtins.prt (ToValueList pel)
             | "ext" -> ast.String("Implement me! - call .NET libraries")
             | _ -> 
                 let func_and_params = c.findFunction fn
                 let pnl = fst func_and_params |> List.toArray
                 let exprList = snd func_and_params
-                let pvel = pel |> List.map (fun p -> EvalExpr p c) |> List.toArray
+                let pvel = (ToValueList pel) |> List.toArray
 
                 EvalExpr (ast.Codeblock(exprList)) (c.copyAndAddParameter (Array.zip pnl pvel |> List.ofArray))
 
@@ -39,3 +41,5 @@ module evaluation =
 
         | ast.Reference r -> c.Variables.[r]
 
+    let Eval (e:ast.expr) : ast.simpleValue =
+        EvalExpr e ctx.emptyContext

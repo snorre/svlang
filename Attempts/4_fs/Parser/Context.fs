@@ -29,3 +29,5 @@ module ctx =
             let newC = Context(variables, functions)
             newC.addFunction fName fParams fExprList
             newC
+
+    let emptyContext = Context(Map.empty<string, ast.simpleValue>, Map.empty<string, string list * ast.expr list>)

@@ -2,6 +2,15 @@
 
 module builtins =
 
+    let private getInt (value:ast.simpleValue) : int =
+        (ast.EvalValue value) :?> int
+
+    let private getInts (values:ast.simpleValue list) : int list =
+        values |> List.map getInt
+
+    let private error (msg:string) =
+        raise (System.ArgumentException(msg))
+
     // TODO: Return true if function was overwritten?
     let defn (c:ctx.Context) (expressions:ast.expr list) : ast.simpleValue =
         let fname = expressions.[0]
@@ -14,14 +23,21 @@ module builtins =
                 | (ast.String fnS, ast.StringList pnlS) ->
                     c.addFunction fnS pnlS cb
                     ast.Bool(false)
-                | _ -> raise (System.ArgumentException("Invalid arguments to defn"))
+                | _ -> error ("Invalid arguments to defn")
             )
         | (_,_,_) -> 
-            raise (System.ArgumentException("Invalid arguments to defn"))
+            error("Invalid arguments to defn")
 
     let plus (values:ast.simpleValue list) : ast.simpleValue =
-        let ints = values |> List.map (fun pv -> (ast.EvalValue pv) :?> int)
+        let ints = getInts values
         ast.Number(ints |> List.sum)
+
+    let minus (values:ast.simpleValue list) : ast.simpleValue =
+        // (- x y1 y2 y3) will return x - (y1 + y2 + y3)
+        let ints = getInts values
+        let x = ints.Head
+        let sumYs = ints.Tail |> List.sum
+        ast.Number((x-sumYs))
 
     let var (c:ctx.Context) (name:string) (value:ast.simpleValue) : ast.simpleValue =
         c.addVariable (name, value)
@@ -32,3 +48,11 @@ module builtins =
         let output = System.String.Join(" ", strings)
         printfn "%s" output
         ast.String(output)
+
+//    let gt (x:ast.simpleValue) (y:ast.simpleValue) : ast.simpleValue =
+//        match (x, y) with
+//        | (ast.Number x, ast.Number y) -> ast.Bool(x > y)
+//        | (ast.String x, ast.String y) -> ast.Bool(x > y)
+//        | (ast.Bool x, ast.Bool y) -> error("Cannot compare booleans")
+//        | (_,_) -> error("Cannot compare types")
+
