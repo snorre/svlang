@@ -1,5 +1,7 @@
 ﻿namespace svlang
 
+open svlang.common
+
 module builtins =
 
     let private getInt (value:ast.simpleValue) : int =
@@ -48,6 +50,15 @@ module builtins =
         let output = System.String.Join(" ", strings)
         printfn "%s" output
         ast.String(output)
+
+//    let ext (values:ast.simpleValue list) : ast.simpleValue =
+//        let t = System.Type.GetType "System.String"
+//        let m = t.GetMethod "Substring"
+//        t.InvokeMember(
+//            "Substring", 
+//            System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.invo,
+//        m
+//        ast.Bool(true)
 
 //    let gt (x:ast.simpleValue) (y:ast.simpleValue) : ast.simpleValue =
 //        match (x, y) with

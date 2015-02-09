@@ -1,6 +1,7 @@
 ﻿namespace svlang.test
 
 open svlang 
+open svlang.common
 
 module interactive_tests =
 

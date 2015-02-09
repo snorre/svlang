@@ -5,6 +5,10 @@ Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "Parser", "Parser\Parser.fsp
 EndProject
 Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "Tests", "Tests\Tests.fsproj", "{5F538672-72C6-4246-B806-C2DCDC93B410}"
 EndProject
+Project("{f2a71f9b-5d33-465a-a702-920d77279786}") = "Common", "Common\Common.fsproj", "{9104B848-82DD-4ABF-9105-95197BC8CD4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runtime", "Runtime\Runtime.csproj", "{8F2CD0FF-AB2E-4517-B0C1-D8CB60FBC2C8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -15,12 +19,17 @@ Global
 		{5F538672-72C6-4246-B806-C2DCDC93B410}.Debug|x86.Build.0 = Debug|Any CPU
 		{5F538672-72C6-4246-B806-C2DCDC93B410}.Release|x86.ActiveCfg = Release|Any CPU
 		{5F538672-72C6-4246-B806-C2DCDC93B410}.Release|x86.Build.0 = Release|Any CPU
+		{8F2CD0FF-AB2E-4517-B0C1-D8CB60FBC2C8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8F2CD0FF-AB2E-4517-B0C1-D8CB60FBC2C8}.Debug|x86.Build.0 = Debug|Any CPU
+		{8F2CD0FF-AB2E-4517-B0C1-D8CB60FBC2C8}.Release|x86.ActiveCfg = Release|Any CPU
+		{8F2CD0FF-AB2E-4517-B0C1-D8CB60FBC2C8}.Release|x86.Build.0 = Release|Any CPU
+		{9104B848-82DD-4ABF-9105-95197BC8CD4A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9104B848-82DD-4ABF-9105-95197BC8CD4A}.Debug|x86.Build.0 = Debug|Any CPU
+		{9104B848-82DD-4ABF-9105-95197BC8CD4A}.Release|x86.ActiveCfg = Release|Any CPU
+		{9104B848-82DD-4ABF-9105-95197BC8CD4A}.Release|x86.Build.0 = Release|Any CPU
 		{FF8EDF44-3711-4F65-A6FA-5D7B028BC7DC}.Debug|x86.ActiveCfg = Debug|x86
 		{FF8EDF44-3711-4F65-A6FA-5D7B028BC7DC}.Debug|x86.Build.0 = Debug|x86
 		{FF8EDF44-3711-4F65-A6FA-5D7B028BC7DC}.Release|x86.ActiveCfg = Release|x86
 		{FF8EDF44-3711-4F65-A6FA-5D7B028BC7DC}.Release|x86.Build.0 = Release|x86
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Parser\Parser.fsproj
 	EndGlobalSection
 EndGlobal

@@ -1,5 +1,7 @@
 ﻿namespace svlang
 
+open svlang.common
+
 module evaluation =
 
     let rec private EvalExpr (e:ast.expr) (c:ctx.Context) : ast.simpleValue =

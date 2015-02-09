@@ -1,5 +1,6 @@
 ﻿namespace svlang
 
+open svlang.common
 
 module ctx =
 

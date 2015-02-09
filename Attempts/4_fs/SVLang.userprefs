@@ -1,24 +1,9 @@
-﻿<Properties GitUserInfo="UsingGIT">
+﻿<Properties GitUserInfo="UsingGIT" StartupItem="Parser/Parser.fsproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Tests/BuiltinsTests.fs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Parser/Evaluation.fs">
     <Files>
-      <File FileName="Parser/Builtins.fs" Line="51" Column="51" />
-      <File FileName="Parser/Evaluation.fs" Line="21" Column="21" />
-      <File FileName="Parser/AST.fs" Line="19" Column="19" />
-      <File FileName="Parser/Context.fs" Line="55" Column="55" />
-      <File FileName="Parser/InteractiveTest.fs" Line="10" Column="10" />
-      <File FileName="Tests/BuiltinsTests.fs" Line="15" Column="15" />
-      <File FileName="Tests/TestBase.fs" Line="9" Column="9" />
+      <File FileName="Parser/Evaluation.fs" Line="28" Column="28" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.NUnit.TestPad">
-        <State expanded="True" selected="True">
-          <Node name="Tests" expanded="True">
-            <Node name="Tests" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />

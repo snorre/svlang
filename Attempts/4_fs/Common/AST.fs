@@ -1,4 +1,4 @@
-﻿namespace svlang
+﻿namespace svlang.common
 
 module ast =
 

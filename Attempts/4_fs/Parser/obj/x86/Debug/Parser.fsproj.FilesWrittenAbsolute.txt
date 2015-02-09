@@ -3,3 +3,5 @@
 /Users/snorre/Dev/p/svlang/Attempts/4_fs/Parser/bin/Debug/Parser.exe
 /Users/snorre/Dev/p/svlang/Attempts/4_fs/Parser/obj/x86/Debug/Parser.exe
 /Users/snorre/Dev/p/svlang/Attempts/4_fs/Parser/obj/x86/Debug/Parser.exe.mdb
+/Users/snorre/Dev/p/svlang/Attempts/4_fs/Parser/bin/Debug/FParsec.dll
+/Users/snorre/Dev/p/svlang/Attempts/4_fs/Parser/bin/Debug/FParsecCS.dll

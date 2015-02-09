@@ -3,6 +3,7 @@
 open System
 open NUnit.Framework
 open svlang
+open svlang.common
 
 
 [<TestFixture>]
