@@ -93,9 +93,34 @@ namespace Test
             );
         }
 
-        // TODO Scoping
-        // TODO Dont overwrite in another scope
-        // TODO Memory management?
+        [TestMethod]
+        public void call_function_in_outer_scope()
+        {
+            ShouldFail(
+                "Cannot find function: fun",
+                new DefineFunction(
+                    "outer",
+                    new Codeblock(new DefineFunction("fun", Val_123))
+                ),
+                new CallFunction("outer"),
+                new CallFunction("fun")
+            );
+        }
+
+        [TestMethod]
+        public void cannot_overwrite_function_in_outer_scope()
+        {
+            EvaluatesTo(
+                123,
+                new DefineFunction("fun", Val_123),
+                new DefineFunction(
+                    "possibleOverwrite",
+                    new Codeblock(new DefineFunction("fun", Val_456))
+                ),
+                new CallFunction("possibleOverwrite"),
+                new CallFunction("fun")
+            );
+        }
 
         #region Helpers
 
@@ -108,11 +133,29 @@ namespace Test
         private static readonly Value Val_123 = new Value(123);
         private static readonly Value Val_456 = new Value(456);
 
-        public void EvaluatesTo(object expected, params Expr[] codelines)
+        private void EvaluatesTo(object expected, params Expr[] codelines)
+        {
+            var result = Run(codelines);
+            Assert.AreEqual(expected, result);
+        }
+
+        private void ShouldFail(string expectedMessage, params Expr[] codelines)
+        {
+            try
+            {
+                Run(codelines);
+                Assert.Fail("Code emitted no exception.");
+            }
+            catch (Exception x)
+            {
+                Assert.AreEqual(expectedMessage, x.Message);
+            }
+        }
+
+        private object Run(Expr[] codelines)
         {
             var cb = new Codeblock(codelines);
-            var result = new Runner(cb).Run();
-            Assert.AreEqual(expected, result);
+            return new Runner(cb).Run();
         }
 
         #endregion
