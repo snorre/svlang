@@ -2,6 +2,12 @@
 {
     public class Value : Expr
     {
+        public static readonly Value Void = new Value(new RawVoid());
+
+        public class RawVoid
+        {
+        }
+
         private readonly object _rawValue;
 
         public Value(object rawValue)

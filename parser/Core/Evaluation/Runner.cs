@@ -43,7 +43,7 @@ namespace Core.Evaluation
         private Value EvalDefineSymbol(DefineSymbol s)
         {
             Memory.AddValue(s.Name, s.Value);
-            return null; // TODO Return something else?
+            return Value.Void;
         }
 
         private Value EvalReference(ReferenceSymbol r)
@@ -54,7 +54,7 @@ namespace Core.Evaluation
         private Value EvalDefineFunction(DefineFunction df)
         {
             Memory.AddExpr(df.Name, df);
-            return null; // TODO Return something else?
+            return Value.Void;
         }
 
         private Value EvalCodeblock(Codeblock c)
