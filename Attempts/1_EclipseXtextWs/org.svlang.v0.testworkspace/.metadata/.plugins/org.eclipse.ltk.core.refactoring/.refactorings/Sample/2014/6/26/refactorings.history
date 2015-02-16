@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring accessors="true" comment="Delete element from project &apos;Sample&apos;&#x0A;- Original project: &apos;Sample&apos;&#x0A;- Original element: &apos;Sample/src-gen/org.svlang.v0.fixme&apos;" description="Delete element" element1="/src-gen&lt;org.svlang.v0.fixme" element2="/src-gen&lt;org.svlang.v0" element3="/src-gen&lt;org.svlang" element4="/src-gen&lt;org" elements="4" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1403737190782" subPackages="false" version="1.0"/>
-</session>

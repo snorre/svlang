@@ -1,8 +1,0 @@
-package org.svlang.v0.fixme;
-
-public class all {
-	public static void Main(String[] args) {
-	} 
-	public static void jalla() {
-	}	
-}

@@ -1,9 +1,0 @@
-main {
-	a = MyIntType
-//	c = jalla()
-}
-
-fun jalla:int {
-	b = 'hei'
-	pln('noe' 'mere')
-}

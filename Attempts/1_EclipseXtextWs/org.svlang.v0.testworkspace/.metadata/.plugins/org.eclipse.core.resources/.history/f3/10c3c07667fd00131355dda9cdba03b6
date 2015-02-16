@@ -1,9 +1,0 @@
-main {
-	a = 'abc'
-	c = jalla()
-}
-
-fun jalla:jalla {
-	b = 'hei'
-	pln('noe' 'mere')
-}

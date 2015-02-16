@@ -1,9 +1,0 @@
-main {
-	a = 1
-	jalla()
-}
-
-fun jalla {
-	b = 2
-	pln(3)
-}

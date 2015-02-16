@@ -1,9 +1,0 @@
-main {
-	a = Primitive
-//	c = jalla()
-}
-
-fun jalla:int {
-	b = 'hei'
-	pln('noe' 'mere')
-}
