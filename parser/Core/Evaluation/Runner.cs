@@ -61,7 +61,7 @@ namespace Core.Evaluation
             {
                 var p = cf.Parameters[i];
                 var n = f.ParameterNames[i];
-                Memory.AddValue(n, Evaluate(p));
+                Memory.AddExpr(n, new DefineFunction(n, p));
             }
             return Evaluate(f.Code);
         }

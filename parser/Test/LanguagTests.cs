@@ -66,7 +66,7 @@ namespace Test
         {
             EvaluatesTo(
                 123,
-                new DefineFunction("name", new ReferenceSymbol("a"), "a"),
+                new DefineFunction("name", new CallFunction("a"), "a"),
                 new CallFunction("name", Val_123)
             );
         }
@@ -76,7 +76,7 @@ namespace Test
         {
             EvaluatesTo(
                 456,
-                new DefineFunction("name", new ReferenceSymbol("a"), "a"),
+                new DefineFunction("name", new CallFunction("a"), "a"),
                 new CallFunction("name", Val_123),
                 new CallFunction("name", Val_456)
             );
@@ -87,8 +87,8 @@ namespace Test
         {
             EvaluatesTo(
                 123,
-                new DefineFunction("name", new ReferenceSymbol("a"), "a"),
-                new DefineFunction("name", new ReferenceSymbol("a"), "a"),
+                new DefineFunction("name", new CallFunction("a"), "a"),
+                new DefineFunction("name", new CallFunction("a"), "a"),
                 new CallFunction("name", Val_123)
             );
         }

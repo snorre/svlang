@@ -5,39 +5,29 @@ namespace Core
 {
     public static class Memory
     {
-        private static Dictionary<string, Value> _dictValues;
-        private static Dictionary<string, Expr> _dictExprs;
+        private static Dictionary<string, Expr> _dict;
 
         static Memory()
         {
             Reset();
         }
-
-        public static void AddValue(string name, Value value)
-        {
-            if (_dictValues.ContainsKey(name))
-                _dictValues[name] = value;
-            else
-                _dictValues.Add(name, value);
-        }
-
+        
         public static void AddExpr(string name, Expr value)
         {
-            if (_dictExprs.ContainsKey(name))
-                _dictExprs[name] = value;
+            if (_dict.ContainsKey(name))
+                _dict[name] = value;
             else
-                _dictExprs.Add(name, value);
+                _dict.Add(name, value);
         }
 
         public static Expr GetExpr(string name)
         {
-            return _dictExprs[name];
+            return _dict[name];
         }
 
         public static void Reset()
         {
-            _dictValues = new Dictionary<string, Value>();
-            _dictExprs = new Dictionary<string, Expr>();
+            _dict = new Dictionary<string, Expr>();
         }
     }
 }
