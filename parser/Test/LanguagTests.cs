@@ -1,6 +1,7 @@
 ﻿using System;
 using Core;
 using Core.AST;
+using Core.Evaluation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Test
@@ -33,7 +34,8 @@ namespace Test
         {
             EvaluatesTo(
                 123,
-                new Symbol("name", Val_123)
+                new DefineSymbol("name", Val_123),
+                new ReferenceSymbol("name")
             );
         }
 
@@ -42,22 +44,9 @@ namespace Test
         {
             EvaluatesTo(
                 456,
-                new Codeblock(
-                    new Symbol("name", Val_123),
-                    new Symbol("name", Val_456)
-                )
-            );
-        }
-
-        [TestMethod]
-        public void reference_symbol()
-        {
-            EvaluatesTo(
-                123,
-                new Codeblock(
-                    new Symbol("name", Val_123),
-                    new Reference("name")
-                )
+                new DefineSymbol("name", Val_123),
+                new DefineSymbol("name", Val_456),
+                new ReferenceSymbol("name")
             );
         }
 
@@ -66,10 +55,8 @@ namespace Test
         {
             EvaluatesTo(
                 123,
-                new Codeblock(
-                    new DefineFunction("name", Val_123),
-                    new CallFunction("name")
-                )
+                new DefineFunction("name", Val_123),
+                new CallFunction("name")
             );
         }
 
@@ -78,11 +65,9 @@ namespace Test
         {
             EvaluatesTo(
                 123,
-                new Codeblock(
-                    new DefineFunction("name", Val_123),
-                    new CallFunction("name"),
-                    new CallFunction("name")
-                )
+                new DefineFunction("name", Val_123),
+                new CallFunction("name"),
+                new CallFunction("name")
             );
         }
 
@@ -91,10 +76,8 @@ namespace Test
         {
             EvaluatesTo(
                 123,
-                new Codeblock(
-                    new DefineFunction("name", new Reference("a"), "a"),
-                    new CallFunction("name", Val_123)
-                )
+                new DefineFunction("name", new ReferenceSymbol("a"), "a"),
+                new CallFunction("name", Val_123)
             );
         }
 
@@ -103,11 +86,9 @@ namespace Test
         {
             EvaluatesTo(
                 456,
-                new Codeblock(
-                    new DefineFunction("name", new Reference("a"), "a"),
-                    new CallFunction("name", Val_123),
-                    new CallFunction("name", Val_456)
-                )
+                new DefineFunction("name", new ReferenceSymbol("a"), "a"),
+                new CallFunction("name", Val_123),
+                new CallFunction("name", Val_456)
             );
         }
 
@@ -126,9 +107,10 @@ namespace Test
         private static readonly Value Val_123 = new Value(123);
         private static readonly Value Val_456 = new Value(456);
 
-        public void EvaluatesTo(object expected, Expr e)
+        public void EvaluatesTo(object expected, params Expr[] codelines)
         {
-            var result = e.Eval().RawValue();
+            var cb = new Codeblock(codelines);
+            var result = new Runner(cb).Run();
             Assert.AreEqual(expected, result);
         }
 

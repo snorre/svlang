@@ -19,11 +19,6 @@
             return _rawValue.GetHashCode();
         }
 
-        public override Value Eval()
-        {
-            return this;
-        }
-
         public override bool Equals(object obj)
         {
             return
