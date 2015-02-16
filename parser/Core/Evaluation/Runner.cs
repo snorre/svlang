@@ -22,12 +22,6 @@ namespace Core.Evaluation
             if (e is Value)
                 return e as Value;
 
-            if (e is DefineSymbol) // TODO Merge with DefineFunction?
-                return EvalDefineSymbol(e as DefineSymbol);
-
-            if (e is ReferenceSymbol) // TODO Merge with CallFunction?
-                return EvalReference(e as ReferenceSymbol);
-
             if (e is DefineFunction)
                 return EvalDefineFunction(e as DefineFunction);
 
@@ -38,17 +32,6 @@ namespace Core.Evaluation
                 return EvalCodeblock(e as Codeblock);
 
             throw new InvalidOperationException("Cannot evaluate: " + e.GetType());
-        }
-
-        private Value EvalDefineSymbol(DefineSymbol s)
-        {
-            Memory.AddValue(s.Name, s.Value);
-            return Value.Void;
-        }
-
-        private Value EvalReference(ReferenceSymbol r)
-        {
-            return Memory.GetValue(r.SymbolName);
         }
 
         private Value EvalDefineFunction(DefineFunction df)

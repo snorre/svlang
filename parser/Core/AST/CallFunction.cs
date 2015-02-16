@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Core.AST
+﻿namespace Core.AST
 {
     public class CallFunction : Expr
     {

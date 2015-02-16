@@ -28,28 +28,7 @@ namespace Test
             valueIs(true, new Value(true));
             valueIs(false, new Value(false));
         }
-
-        [TestMethod]
-        public void set_symbol()
-        {
-            EvaluatesTo(
-                123,
-                new DefineSymbol("name", Val_123),
-                new ReferenceSymbol("name")
-            );
-        }
-
-        [TestMethod]
-        public void set_symbol_twice()
-        {
-            EvaluatesTo(
-                456,
-                new DefineSymbol("name", Val_123),
-                new DefineSymbol("name", Val_456),
-                new ReferenceSymbol("name")
-            );
-        }
-
+        
         [TestMethod]
         public void call_function()
         {
@@ -72,6 +51,17 @@ namespace Test
         }
 
         [TestMethod]
+        public void define_function_twice()
+        {
+            EvaluatesTo(
+                456,
+                new DefineFunction("name", Val_123),
+                new DefineFunction("name", Val_456),
+                new CallFunction("name")
+            );
+        }
+
+        [TestMethod]
         public void call_function_with_parameter()
         {
             EvaluatesTo(
@@ -89,6 +79,17 @@ namespace Test
                 new DefineFunction("name", new ReferenceSymbol("a"), "a"),
                 new CallFunction("name", Val_123),
                 new CallFunction("name", Val_456)
+            );
+        }
+
+        [TestMethod]
+        public void define_function_with_parameter_twice()
+        {
+            EvaluatesTo(
+                123,
+                new DefineFunction("name", new ReferenceSymbol("a"), "a"),
+                new DefineFunction("name", new ReferenceSymbol("a"), "a"),
+                new CallFunction("name", Val_123)
             );
         }
 

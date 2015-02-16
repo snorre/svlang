@@ -23,12 +23,10 @@ namespace Core
 
         public static void AddExpr(string name, Expr value)
         {
-            _dictExprs.Add(name, value);
-        }
-
-        public static Value GetValue(string name)
-        {
-            return _dictValues[name];
+            if (_dictExprs.ContainsKey(name))
+                _dictExprs[name] = value;
+            else
+                _dictExprs.Add(name, value);
         }
 
         public static Expr GetExpr(string name)

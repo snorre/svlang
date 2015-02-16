@@ -41,10 +41,8 @@
   <ItemGroup>
     <Compile Include="AST\CallFunction.cs" />
     <Compile Include="AST\Codeblock.cs" />
-    <Compile Include="AST\DefineSymbol.cs" />
     <Compile Include="AST\Expr.cs" />
     <Compile Include="AST\DefineFunction.cs" />
-    <Compile Include="AST\ReferenceSymbol.cs" />
     <Compile Include="AST\Value.cs" />
     <Compile Include="Evaluation\Runner.cs" />
     <Compile Include="Memory.cs" />
