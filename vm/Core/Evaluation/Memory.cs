@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Core.AST;
 
-namespace Core
+namespace Core.Evaluation
 {
     public static class Memory
     {

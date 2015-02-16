@@ -45,7 +45,7 @@
     <Compile Include="AST\DefineFunction.cs" />
     <Compile Include="AST\Value.cs" />
     <Compile Include="Evaluation\Runner.cs" />
-    <Compile Include="Memory.cs" />
+    <Compile Include="Evaluation\Memory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
