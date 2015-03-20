@@ -100,7 +100,7 @@ namespace Test
                 "Cannot find function: fun",
                 new DefineFunction(
                     "outer",
-                    new Codeblock(new DefineFunction("fun", Val_123))
+                    new DefineFunction("fun", Val_123)
                 ),
                 new CallFunction("outer"),
                 new CallFunction("fun")
@@ -115,7 +115,7 @@ namespace Test
                 new DefineFunction("fun", Val_123),
                 new DefineFunction(
                     "possibleOverwrite",
-                    new Codeblock(new DefineFunction("fun", Val_456))
+                    new DefineFunction("fun", Val_456)
                 ),
                 new CallFunction("possibleOverwrite"),
                 new CallFunction("fun")
