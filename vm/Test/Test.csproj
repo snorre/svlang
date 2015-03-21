@@ -6,8 +6,8 @@
     <ProjectGuid>{0261E398-8D59-4293-A377-129E71EE2D44}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Test</RootNamespace>
-    <AssemblyName>Test</AssemblyName>
+    <RootNamespace>SVLang.Test</RootNamespace>
+    <AssemblyName>SVLang.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,6 +50,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ParserTests.cs" />
     <Compile Include="LanguagTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -57,6 +58,10 @@
     <ProjectReference Include="..\Core\Core.csproj">
       <Project>{E6001124-F1EE-4EE6-A59F-48D4C85CFA4C}</Project>
       <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Parser\Parser.csproj">
+      <Project>{7b521d45-68be-4613-bb7a-181d4854d2a4}</Project>
+      <Name>Parser</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

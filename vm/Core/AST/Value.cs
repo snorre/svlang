@@ -1,4 +1,4 @@
-﻿namespace Core.AST
+﻿namespace SVLang.Core.AST
 {
     public class Value : Expr
     {
@@ -30,6 +30,11 @@
             return
                 obj is Value &&
                 (obj as Value)._rawValue.Equals(_rawValue);
+        }
+
+        public override string ToString()
+        {
+            return "Value(type=" + _rawValue.GetType() + ", value=" + _rawValue + ")";
         }
     }
 }

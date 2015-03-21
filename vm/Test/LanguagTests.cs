@@ -1,10 +1,9 @@
 ﻿using System;
-using Core;
-using Core.AST;
-using Core.Evaluation;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SVLang.Core.AST;
+using SVLang.Core.Evaluation;
 
-namespace Test
+namespace SVLang.Test
 {
     // ReSharper disable InconsistentNaming
 

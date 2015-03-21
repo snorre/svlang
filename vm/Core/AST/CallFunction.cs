@@ -1,4 +1,4 @@
-﻿namespace Core.AST
+﻿namespace SVLang.Core.AST
 {
     public class CallFunction : Expr
     {

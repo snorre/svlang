@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Core.AST;
+using SVLang.Core.AST;
 
-namespace Core.Evaluation
+namespace SVLang.Core.Evaluation
 {
     public static class Memory
     {
