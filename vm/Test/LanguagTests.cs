@@ -151,7 +151,7 @@ namespace SVLang.Test
         private object Run(Expr[] codelines)
         {
             var cb = new Codeblock(codelines);
-            return new Runner(cb).Run();
+            return new Execution(cb).Run();
         }
 
         #endregion

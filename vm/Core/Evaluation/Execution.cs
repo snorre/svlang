@@ -3,18 +3,18 @@ using SVLang.Core.AST;
 
 namespace SVLang.Core.Evaluation
 {
-    public class Runner
+    public class Execution
     {
-        private readonly Codeblock _codeblock;
+        private readonly Expr _code;
 
-        public Runner(Codeblock codeblock)
+        public Execution(Expr code)
         {
-            _codeblock = codeblock;
+            _code = code;
         }
 
         public object Run()
         {
-            return Evaluate(_codeblock).RawValue();
+            return Evaluate(_code).RawValue();
         }
 
         private Value Evaluate(Expr e)
