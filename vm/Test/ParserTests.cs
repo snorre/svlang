@@ -5,7 +5,7 @@ using SVLang.Parser;
 namespace SVLang.Test
 {
     [TestClass]
-    public class ParserTests
+    public class ParserTests : TestBase
     {
         [TestMethod]
         public void value_int()
@@ -38,12 +38,59 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void callfunction_1()
+        public void callfunction_no_params()
         {
-            ParsesTo("fun()", new CallFunction("fun"));
-            ParsesTo("fun(1)", new CallFunction("fun", new Value(1)));
+            ParsesTo("(fun)", new CallFunction("fun"));
+        }
 
-            Assert.Inconclusive("Add reference parameter, and more parameters.");
+        [TestMethod]
+        public void callfunction_with_param()
+        {
+            ParsesTo("(fun 123)", new CallFunction("fun", Val_123));
+        }
+
+        [TestMethod]
+        public void callfunction_with_two_params()
+        {
+            ParsesTo("(fun 123 456)", new CallFunction("fun", Val_123, Val_456));
+        }
+
+        [TestMethod]
+        public void definefunction_no_params()
+        {
+            ParsesTo("fun = 1", new DefineFunction("fun", Val_1));
+        }
+
+        [TestMethod]
+        public void codeblock()
+        {
+            ParsesTo(
+                @"{
+                    1
+                    ""abc""
+                }",
+                new Codeblock(Val_1, Val_abc)
+            );
+        }
+
+        [TestMethod]
+        public void complex_1()
+        {
+            ParsesTo(
+                @"{
+                    fun = {
+                        1
+                        456
+                    }
+                    (fun)
+                }",
+                new Codeblock(
+                    new DefineFunction("fun", 
+                        new Codeblock(Val_1, Val_456)
+                    ), 
+                    new CallFunction("fun")
+                )
+            );
         }
 
         #region Helpers

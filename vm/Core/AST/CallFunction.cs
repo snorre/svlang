@@ -20,10 +20,11 @@ namespace SVLang.Core.AST
 
         public override bool Equals(object obj)
         {
+            var other = obj as CallFunction;
             return
-                (obj is CallFunction) &&
-                (obj as CallFunction).Name.Equals(Name) &&
-                (obj as CallFunction).Parameters.SequenceEqual(Parameters);
+                other != null &&
+                other.Name.Equals(Name) &&
+                other.Parameters.SequenceEqual(Parameters);
         }
 
         public override string ToString()

@@ -8,7 +8,7 @@ namespace SVLang.Test
     // ReSharper disable InconsistentNaming
 
     [TestClass]
-    public class LanguagTests
+    public class LanguagTests : TestBase
     {
         [TestMethod]
         public void value_returns_raw_values()
@@ -128,9 +128,6 @@ namespace SVLang.Test
         {
             Memory.Reset();
         }
-
-        private static readonly Value Val_123 = new Value(123);
-        private static readonly Value Val_456 = new Value(456);
 
         private void EvaluatesTo(object expected, params Expr[] codelines)
         {

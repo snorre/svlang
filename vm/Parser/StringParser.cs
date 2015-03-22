@@ -15,8 +15,7 @@ namespace SVLang.Parser
 
         public Expr Run()
         {
-            return
-                ValueParser.All.Or(CallFunctionParser.All).Parse(_code);
+            return ExprParser.Single.Parse(_code);
         }
     }
 }

@@ -6,20 +6,18 @@ namespace SVLang.Parser.SubParsers
 {
     public static class CallFunctionParser
     {
-        private static readonly Parser<CallFunction> NoParams =
-            from name in Parse.Letter.AtLeastOnce().Text()
-            from b1 in Parse.Char('(').Once()
-            from b2 in Parse.Char(')').Once()
-            select new CallFunction(name);
+        private static readonly Parser<Expr> Parameter =
+            from s in Parse.Char(' ')
+            from p in ValueParser.Single
+            select p;
 
-        // TODO use for both no params and any params
         private static readonly Parser<CallFunction> WithParams =
-            from name in Parse.Letter.AtLeastOnce().Text()
             from b1 in Parse.Char('(').Once()
-            from p in ValueParser.All.Once()
+            from name in Parse.Letter.AtLeastOnce().Text()
+            from parameters in Parameter.Many()
             from b2 in Parse.Char(')').Once()
-            select new CallFunction(name, p.Single());
+            select new CallFunction(name, parameters.ToArray());
 
-        public static Parser<Expr> All = NoParams.Or(WithParams);
+        public static Parser<Expr> Single = WithParams; // NoParams.Or(WithParams);
     }
 }

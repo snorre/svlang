@@ -53,6 +53,7 @@
     <Compile Include="ParserTests.cs" />
     <Compile Include="LanguagTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
