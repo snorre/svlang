@@ -42,16 +42,23 @@ namespace SVLang.Core.Evaluation
 
         private Value EvalCodeblock(Codeblock c)
         {
+            Memory.Mark();
+
             Value lastValue = null;
             foreach (var line in c.Codelines)
             {
                 lastValue = Evaluate(line);
             }
+
+            Memory.RollbackMark();
+
             return lastValue;
         }
 
         private Value EvalCallFunction(CallFunction cf)
         {
+            Memory.Mark();
+
             var f = (DefineFunction)Memory.GetExpr(cf.Name);
 
             if (f.ParameterNames.Length != cf.Parameters.Length)
@@ -63,7 +70,11 @@ namespace SVLang.Core.Evaluation
                 var n = f.ParameterNames[i];
                 Memory.AddExpr(n, new DefineFunction(n, p));
             }
-            return Evaluate(f.Code);
+            var result = Evaluate(f.Code);
+
+            Memory.RollbackMark();
+
+            return result;
         }
 
     }

@@ -8,7 +8,7 @@ namespace SVLang.Test
     // ReSharper disable InconsistentNaming
 
     [TestClass]
-    public class LanguagTests : TestBase
+    public class LanguageTests : TestBase
     {
         [TestMethod]
         public void value_returns_raw_values()
@@ -52,8 +52,8 @@ namespace SVLang.Test
         [TestMethod]
         public void define_function_twice()
         {
-            EvaluatesTo(
-                456,
+            MustFail(
+                "Cannot re-define: name",
                 new DefineFunction("name", Val_123),
                 new DefineFunction("name", Val_456),
                 new CallFunction("name")
@@ -84,8 +84,8 @@ namespace SVLang.Test
         [TestMethod]
         public void define_function_with_parameter_twice()
         {
-            EvaluatesTo(
-                123,
+            MustFail(
+                "Cannot re-define: name",
                 new DefineFunction("name", new CallFunction("a"), "a"),
                 new DefineFunction("name", new CallFunction("a"), "a"),
                 new CallFunction("name", Val_123)
@@ -95,8 +95,8 @@ namespace SVLang.Test
         [TestMethod]
         public void call_function_in_outer_scope()
         {
-            ShouldFail(
-                "Cannot find function: fun",
+            MustFail(
+                "Cannot get: fun",
                 new DefineFunction(
                     "outer",
                     new DefineFunction("fun", Val_123)
@@ -109,14 +109,43 @@ namespace SVLang.Test
         [TestMethod]
         public void cannot_overwrite_function_in_outer_scope()
         {
-            EvaluatesTo(
-                123,
+            MustFail(
+                "Cannot re-define: fun",
                 new DefineFunction("fun", Val_123),
                 new DefineFunction(
                     "possibleOverwrite",
                     new DefineFunction("fun", Val_456)
                 ),
                 new CallFunction("possibleOverwrite"),
+                new CallFunction("fun")
+            );
+        }
+
+        [TestMethod]
+        public void can_define_function_in_inner_scope_many_times()
+        {
+            EvaluatesTo(
+                123,
+                new DefineFunction(
+                    "fun", 
+                    new Codeblock(
+                        new DefineFunction("inner", Val_123),
+                        new CallFunction("inner")
+                    )
+                ),
+                new CallFunction("fun"),
+                new CallFunction("fun")
+            );
+        }
+
+        [TestMethod]
+        public void codeblock_exit_removes_inner_declarations()
+        {
+            MustFail(
+                "Cannot get: fun",
+                new Codeblock(
+                    new DefineFunction("fun", Val_1)
+                ),
                 new CallFunction("fun")
             );
         }
@@ -135,7 +164,7 @@ namespace SVLang.Test
             Assert.AreEqual(expected, result);
         }
 
-        private void ShouldFail(string expectedMessage, params Expr[] codelines)
+        private void MustFail(string expectedMessage, params Expr[] codelines)
         {
             try
             {
