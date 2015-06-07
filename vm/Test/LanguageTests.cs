@@ -150,6 +150,24 @@ namespace SVLang.Test
             );
         }
 
+        [TestMethod]
+        public void dot_is_reserved_for_namespace()
+        {
+            Assert.Inconclusive("TODO");
+        }
+
+        [TestMethod]
+        public void can_import_namespace()
+        {
+            Assert.Inconclusive("TODO");
+        }
+
+        [TestMethod]
+        public void sort_tests()
+        {
+            Assert.Inconclusive("TODO");
+        }
+
         #region Helpers
 
         [TestInitialize]
