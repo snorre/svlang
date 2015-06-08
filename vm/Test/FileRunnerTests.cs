@@ -1,8 +1,8 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SVLang.Core.AST;
 using SVLang.Runner;
 
 namespace SVLang.Test
@@ -22,12 +22,20 @@ namespace SVLang.Test
             FilePrints(123, "function_call.svl");
         }
 
+        [TestMethod]
+        public void file_with_print()
+        {
+            FilePrints(123, "builtin_print.svl");
+            OutputMustBe("hello world!");
+        }
+
         #region Helpers
 
         private void FilePrints(object expected, string fileName)
         {
             var file = PrepFile(fileName);
             var retVal = new FileRunner(file).Run();
+            Console.WriteLine("Execution result: " + retVal);
             Assert.AreEqual(expected, retVal);
         }
 

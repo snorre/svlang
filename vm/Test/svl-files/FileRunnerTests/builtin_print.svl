@@ -1,0 +1,11 @@
+﻿fun = {
+	(print "hello world!")
+	123
+}
+
+fun2 = {
+	(print "fun2")
+	(fun)
+}
+
+(fun2)
