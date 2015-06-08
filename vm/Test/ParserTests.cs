@@ -4,6 +4,8 @@ using SVLang.Parser;
 
 namespace SVLang.Test
 {
+    // ReSharper disable InconsistentNaming
+
     [TestClass]
     public class ParserTests : TestBase
     {
@@ -46,19 +48,19 @@ namespace SVLang.Test
         [TestMethod]
         public void callfunction_with_param()
         {
-            ParsesTo("(fun 123)", new CallFunction("fun", Val_123));
+            ParsesTo("(fun 123)", new CallFunction("fun", V(123)));
         }
 
         [TestMethod]
         public void callfunction_with_two_params()
         {
-            ParsesTo("(fun 123 456)", new CallFunction("fun", Val_123, Val_456));
+            ParsesTo("(fun 123 456)", new CallFunction("fun", V(123), V(456)));
         }
 
         [TestMethod]
         public void definefunction_no_params()
         {
-            ParsesTo("fun = 1", new DefineFunction("fun", Val_1));
+            ParsesTo("fun = 1", new DefineFunction("fun", V(1)));
         }
 
         [TestMethod]
@@ -69,7 +71,7 @@ namespace SVLang.Test
                     1
                     ""abc""
                 }",
-                new Codeblock(Val_1, Val_abc)
+                new Codeblock(V(1), V("abc"))
             );
         }
 
@@ -86,7 +88,7 @@ namespace SVLang.Test
                 }",
                 new Codeblock(
                     new DefineFunction("fun", 
-                        new Codeblock(Val_1, Val_456)
+                        new Codeblock(V(1), V(456))
                     ), 
                     new CallFunction("fun")
                 )
@@ -103,4 +105,6 @@ namespace SVLang.Test
 
         #endregion
     }
+
+    // ReSharper restore InconsistentNaming
 }

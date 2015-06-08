@@ -44,6 +44,8 @@
     <Compile Include="AST\Expr.cs" />
     <Compile Include="AST\DefineFunction.cs" />
     <Compile Include="AST\Value.cs" />
+    <Compile Include="Builtins\BuiltinFunction.cs" />
+    <Compile Include="Builtins\sys\Print.cs" />
     <Compile Include="Evaluation\Execution.cs" />
     <Compile Include="Evaluation\Memory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

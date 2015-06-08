@@ -17,9 +17,8 @@ namespace SVLang.Core.Evaluation
         
         public static void AddExpr(string name, Expr value)
         {
-            var entry = _stack.SingleOrDefault(e => e.Name == name);
-
-            if (entry != null)
+            var entryInSameScope = _stack.SingleOrDefault(e => e.Name == name && e.CreatedInMark == _activeMark);
+            if (entryInSameScope != null)
             {
                 throw new InvalidOperationException("Cannot re-define: " + name);
             }
@@ -31,14 +30,15 @@ namespace SVLang.Core.Evaluation
                     Expr = value,
                     CreatedInMark = _activeMark
                 }
-            );    
+            );
         }
 
+        // TODO change from Expr to something more concrete? Maybe a Function class instead of putting DefineFunction on the stack..
         public static Expr GetExpr(string name)
         {
             try
             {
-                return _stack.Single(e => e.Name == name).Expr;
+                return _stack.First(e => e.Name == name).Expr;
             }
             catch (Exception e)
             {

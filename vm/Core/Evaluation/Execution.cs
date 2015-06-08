@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Linq;
 using SVLang.Core.AST;
+using SVLang.Core.Builtins;
+using SVLang.Core.Builtins.sys;
 
 namespace SVLang.Core.Evaluation
 {
@@ -14,11 +17,20 @@ namespace SVLang.Core.Evaluation
 
         public object Run()
         {
+            LoadBuiltins();
             return Evaluate(_code).RawValue();
+        }
+
+        private void LoadBuiltins()
+        {
+            BuiltinFunction.Load(new Print("message"));
         }
 
         private Value Evaluate(Expr e)
         {
+            if (e is BuiltinFunction)
+                return EvaluateBuiltinFunction(e as BuiltinFunction);
+
             if (e is Value)
                 return e as Value;
 
@@ -34,8 +46,24 @@ namespace SVLang.Core.Evaluation
             throw new InvalidOperationException("Cannot evaluate: " + e.GetType());
         }
 
+        private Value EvaluateBuiltinFunction(BuiltinFunction bf)
+        {
+            var parameterValues =
+                bf
+                    .ParameterNames
+                    .Select(pn => Evaluate(Memory.GetExpr(pn)))
+                    .ToArray();
+
+            return bf.Execute(parameterValues);
+        }
+
         private Value EvalDefineFunction(DefineFunction df)
         {
+            if (df.Name.Contains("."))
+            {
+                throw new InvalidOperationException("Function name cannot contain .: " + df.Name);
+            }
+
             Memory.AddExpr(df.Name, df);
             return Value.Void;
         }
@@ -59,23 +87,33 @@ namespace SVLang.Core.Evaluation
         {
             Memory.Mark();
 
-            var f = (DefineFunction)Memory.GetExpr(cf.Name);
+            var e = Memory.GetExpr(cf.Name);
+
+            if (e is Value)
+            {
+                return e as Value;
+            }
+
+            var f = (DefineFunction)e;
 
             if (f.ParameterNames.Length != cf.Parameters.Length)
                 throw new InvalidOperationException("Number of defined parameters and given parameter values differ.");
 
             for (int i = 0; i < cf.Parameters.Length; i++)
             {
-                var p = cf.Parameters[i];
                 var n = f.ParameterNames[i];
-                Memory.AddExpr(n, new DefineFunction(n, p));
+                var p = Evaluate(cf.Parameters[i]);
+                Memory.AddExpr(n, p);
             }
-            var result = Evaluate(f.Code);
+
+            var result =
+                f is BuiltinFunction
+                    ? Evaluate(f)
+                    : Evaluate(f.Code);
 
             Memory.RollbackMark();
 
             return result;
         }
-
     }
 }

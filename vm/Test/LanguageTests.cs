@@ -15,17 +15,17 @@ namespace SVLang.Test
         {
             Action<object, Value> valueIs = (e, v) => Assert.AreEqual(e, v.RawValue());
 
-            valueIs(123, new Value(123));
-            valueIs(-123, new Value(-123));
+            valueIs(123, V(123));
+            valueIs(-123, V(-123));
 
-            valueIs("hei", new Value("hei"));
-            valueIs(string.Empty, new Value(string.Empty));
+            valueIs("hei", V("hei"));
+            valueIs(string.Empty, V(string.Empty));
 
-            valueIs(123.45m, new Value(123.45m));
-            valueIs(-123.45m, new Value(-123.45m));
+            valueIs(123.45m, V(123.45m));
+            valueIs(-123.45m, V(-123.45m));
 
-            valueIs(true, new Value(true));
-            valueIs(false, new Value(false));
+            valueIs(true, V(true));
+            valueIs(false, V(false));
         }
         
         [TestMethod]
@@ -33,8 +33,8 @@ namespace SVLang.Test
         {
             EvaluatesTo(
                 123,
-                new DefineFunction("name", Val_123),
-                new CallFunction("name")
+                DefF("name", V(123)),
+                CallF("name")
             );
         }
 
@@ -43,9 +43,9 @@ namespace SVLang.Test
         {
             EvaluatesTo(
                 123,
-                new DefineFunction("name", Val_123),
-                new CallFunction("name"),
-                new CallFunction("name")
+                DefF("name", V(123)),
+                CallF("name"),
+                CallF("name")
             );
         }
 
@@ -54,9 +54,9 @@ namespace SVLang.Test
         {
             MustFail(
                 "Cannot re-define: name",
-                new DefineFunction("name", Val_123),
-                new DefineFunction("name", Val_456),
-                new CallFunction("name")
+                DefF("name", V(123)),
+                DefF("name", V(456)),
+                CallF("name")
             );
         }
 
@@ -65,8 +65,8 @@ namespace SVLang.Test
         {
             EvaluatesTo(
                 123,
-                new DefineFunction("name", new CallFunction("a"), "a"),
-                new CallFunction("name", Val_123)
+                DefF("name", CallF("a"), "a"),
+                CallF("name", V(123))
             );
         }
 
@@ -75,9 +75,9 @@ namespace SVLang.Test
         {
             EvaluatesTo(
                 456,
-                new DefineFunction("name", new CallFunction("a"), "a"),
-                new CallFunction("name", Val_123),
-                new CallFunction("name", Val_456)
+                DefF("name", CallF("a"), "a"),
+                CallF("name", V(123)),
+                CallF("name", V(456))
             );
         }
 
@@ -86,9 +86,9 @@ namespace SVLang.Test
         {
             MustFail(
                 "Cannot re-define: name",
-                new DefineFunction("name", new CallFunction("a"), "a"),
-                new DefineFunction("name", new CallFunction("a"), "a"),
-                new CallFunction("name", Val_123)
+                DefF("name", CallF("a"), "a"),
+                DefF("name", CallF("a"), "a"),
+                CallF("name", V(123))
             );
         }
 
@@ -97,27 +97,27 @@ namespace SVLang.Test
         {
             MustFail(
                 "Cannot get: fun",
-                new DefineFunction(
+                DefF(
                     "outer",
-                    new DefineFunction("fun", Val_123)
+                    DefF("fun", V(123))
                 ),
-                new CallFunction("outer"),
-                new CallFunction("fun")
+                CallF("outer"),
+                CallF("fun")
             );
         }
 
         [TestMethod]
-        public void cannot_overwrite_function_in_outer_scope()
+        public void can_overwrite_function_in_outer_scope()
         {
-            MustFail(
-                "Cannot re-define: fun",
-                new DefineFunction("fun", Val_123),
-                new DefineFunction(
+            EvaluatesTo(
+                123,
+                DefF("fun", V(123)),
+                DefF(
                     "possibleOverwrite",
-                    new DefineFunction("fun", Val_456)
+                    DefF("fun", V(456))
                 ),
-                new CallFunction("possibleOverwrite"),
-                new CallFunction("fun")
+                CallF("possibleOverwrite"),
+                CallF("fun")
             );
         }
 
@@ -126,15 +126,15 @@ namespace SVLang.Test
         {
             EvaluatesTo(
                 123,
-                new DefineFunction(
+                DefF(
                     "fun", 
-                    new Codeblock(
-                        new DefineFunction("inner", Val_123),
-                        new CallFunction("inner")
+                    Cb(
+                        DefF("inner", V(123)),
+                        CallF("inner")
                     )
                 ),
-                new CallFunction("fun"),
-                new CallFunction("fun")
+                CallF("fun"),
+                CallF("fun")
             );
         }
 
@@ -143,17 +143,50 @@ namespace SVLang.Test
         {
             MustFail(
                 "Cannot get: fun",
-                new Codeblock(
-                    new DefineFunction("fun", Val_1)
+                Cb(
+                    DefF("fun", V(1))
                 ),
-                new CallFunction("fun")
+                CallF("fun")
             );
         }
 
         [TestMethod]
         public void dot_is_reserved_for_namespace()
         {
-            Assert.Inconclusive("TODO");
+            MustFail(
+                "Function name cannot contain .: test.fun",
+                DefF("test.fun", V(1))
+            );
+        }
+
+        [TestMethod]
+        public void can_call_builtin_print()
+        {
+            const string s = "Hello world!";
+            EvaluatesTo(
+                s,
+                CallF("print", V(s))
+            );
+            OutputMustBe(s);
+        }
+
+        [TestMethod]
+        public void call_multiple_functions_with_same_parameter_name()
+        {
+            EvaluatesTo(
+                123,
+                DefF(
+                    "fun1", 
+                    CallF("p"), 
+                    "p"
+                ),
+                DefF(
+                    "fun2", 
+                    CallF("fun1", CallF("p")), 
+                    "p"
+                ),
+                CallF("fun2", V(123))
+            );
         }
 
         [TestMethod]
@@ -169,12 +202,6 @@ namespace SVLang.Test
         }
 
         #region Helpers
-
-        [TestInitialize]
-        public void Reset()
-        {
-            Memory.Reset();
-        }
 
         private void EvaluatesTo(object expected, params Expr[] codelines)
         {
