@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using SVLang.Core.AST;
+﻿using SVLang.Core.AST;
 using SVLang.Core.Evaluation;
 
 namespace SVLang.Core.Builtins

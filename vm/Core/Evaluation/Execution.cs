@@ -23,7 +23,8 @@ namespace SVLang.Core.Evaluation
 
         private void LoadBuiltins()
         {
-            BuiltinFunction.Load(new Print("message"));
+            BuiltinFunction.Load(new Print());
+            BuiltinFunction.Load(new Concat());
         }
 
         private Value Evaluate(Expr e)

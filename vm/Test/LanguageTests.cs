@@ -171,6 +171,15 @@ namespace SVLang.Test
         }
 
         [TestMethod]
+        public void can_call_builtin_concat_with_two_strings()
+        {
+            EvaluatesTo(
+                "ab",
+                CallF("concat", V("a"), V("b"))
+            );
+        }
+
+        [TestMethod]
         public void call_multiple_functions_with_same_parameter_name()
         {
             EvaluatesTo(

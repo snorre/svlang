@@ -9,7 +9,7 @@ namespace SVLang.Core.Builtins.sys
     {
         public static TextWriter Output = Console.Out;
 
-        public Print(string parameterName) : base("print", parameterName)
+        public Print() : base("print", "message")
         {
         }
         
