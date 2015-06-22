@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SVLang.Core.AST;
 using SVLang.Parser;
 
@@ -12,55 +13,55 @@ namespace SVLang.Test
         [TestMethod]
         public void value_int()
         {
-            ParsesTo("1", new Value(1));
-            ParsesTo("2", new Value(2));
-            ParsesTo("123", new Value(123));
-            ParsesTo("0", new Value(0));
-            ParsesTo("-0", new Value(0));
-            ParsesTo("-1", new Value(-1));
-            ParsesTo("-123", new Value(-123));
+            ParsesTo("1", V(1));
+            ParsesTo("2", V(2));
+            ParsesTo("123", V(123));
+            ParsesTo("0", V(0));
+            ParsesTo("-0", V(0));
+            ParsesTo("-1", V(-1));
+            ParsesTo("-123", V(-123));
         }
 
         [TestMethod]
         public void value_string()
         {
-            ParsesTo("\"\"", new Value(""));
-            ParsesTo("\"1\"", new Value("1"));
-            ParsesTo("\"a\"", new Value("a"));
-            ParsesTo("\"123\"", new Value("123"));
-            ParsesTo("\"abc\"", new Value("abc"));
-            ParsesTo("\"!¤#\"", new Value("!¤#"));
+            ParsesTo("\"\"", V(""));
+            ParsesTo("\"1\"", V("1"));
+            ParsesTo("\"a\"", V("a"));
+            ParsesTo("\"123\"", V("123"));
+            ParsesTo("\"abc\"", V("abc"));
+            ParsesTo("\"!¤#\"", V("!¤#"));
         }
 
         [TestMethod]
         public void value_bool()
         {
-            ParsesTo("true", new Value(true));
-            ParsesTo("false", new Value(false));
+            ParsesTo("true", V(true));
+            ParsesTo("false", V(false));
         }
 
         [TestMethod]
         public void callfunction_no_params()
         {
-            ParsesTo("(fun)", new CallFunction("fun"));
+            ParsesTo("(fun)", CallF("fun"));
         }
 
         [TestMethod]
         public void callfunction_with_param()
         {
-            ParsesTo("(fun 123)", new CallFunction("fun", V(123)));
+            ParsesTo("(fun 123)", CallF("fun", V(123)));
         }
 
         [TestMethod]
         public void callfunction_with_two_params()
         {
-            ParsesTo("(fun 123 456)", new CallFunction("fun", V(123), V(456)));
+            ParsesTo("(fun 123 456)", CallF("fun", V(123), V(456)));
         }
 
         [TestMethod]
         public void definefunction_no_params()
         {
-            ParsesTo("fun = 1", new DefineFunction("fun", V(1)));
+            ParsesTo("fun = 1", DefF("fun", V(1)));
         }
 
         [TestMethod]
@@ -71,7 +72,7 @@ namespace SVLang.Test
                     1
                     ""abc""
                 }",
-                new Codeblock(V(1), V("abc"))
+                Cb(V(1), V("abc"))
             );
         }
 
@@ -86,13 +87,54 @@ namespace SVLang.Test
                     }
                     (fun)
                 }",
-                new Codeblock(
-                    new DefineFunction("fun", 
-                        new Codeblock(V(1), V(456))
+                Cb(
+                    DefF("fun", 
+                        Cb(V(1), V(456))
                     ), 
-                    new CallFunction("fun")
+                    CallF("fun")
                 )
             );
+        }
+
+        [TestMethod]
+        public void define_two_methods()
+        {
+            ParsesTo(
+                @"{
+                    funA = {
+                        123
+                    }
+
+                    funB = {
+                        456
+                    }
+
+                    (funB)
+                }",
+                Cb(
+                    DefF("funA", Cb(V(123))),
+                    DefF("funB", Cb(V(456))),
+                    CallF("funB")
+                )
+            );
+        }
+
+        [TestMethod]
+        public void define_methods_with_different_names()
+        {
+            Action<string> test = name => 
+                ParsesTo(
+                    name + @" = {
+                            123
+                        }
+                        ",
+                    DefF(name, Cb(V(123)))
+                );
+
+            test("fun");
+            test("fA");
+            test("f1");
+            test("f");
         }
 
         #region Helpers

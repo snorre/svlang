@@ -13,7 +13,7 @@ namespace SVLang.Parser.SubParsers
 
         private static readonly Parser<CallFunction> WithParams =
             from b1 in Parse.Char('(').Once()
-            from name in Parse.Letter.AtLeastOnce().Text()
+            from name in BasicParser.FunctionName
             from parameters in Parameter.Many()
             from b2 in Parse.Char(')').Once()
             select new CallFunction(name, parameters.ToArray());

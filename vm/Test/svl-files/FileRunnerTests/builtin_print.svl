@@ -1,11 +1,10 @@
-﻿fun = {
+﻿fun1 = {
 	(print "hello world!")
 	123
 }
 
 fun2 = {
-	(print "fun2")
-	(fun)
+	(fun1)
 }
 
 (fun2)

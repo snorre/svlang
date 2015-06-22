@@ -33,10 +33,19 @@ namespace SVLang.Test
 
         private void FilePrints(object expected, string fileName)
         {
-            var file = PrepFile(fileName);
-            var retVal = new FileRunner(file).Run();
-            Console.WriteLine("Execution result: " + retVal);
-            Assert.AreEqual(expected, retVal);
+            FileInfo file = null;
+            try
+            {
+                file = PrepFile(fileName);
+                var retVal = new FileRunner(file).Run();
+                Console.WriteLine("Execution result: " + retVal);
+                Assert.AreEqual(expected, retVal);
+            }
+            finally
+            {
+                if (file != null) 
+                    file.Delete();
+            }
         }
 
         private FileInfo PrepFile(string fileName)
@@ -44,9 +53,8 @@ namespace SVLang.Test
             var fullName = Assembly.GetExecutingAssembly().GetManifestResourceNames().Single(res => res.EndsWith(fileName));
 
             // ReSharper disable PossibleNullReferenceException
-            var folder = new FileInfo(Path.GetTempFileName()).Directory.FullName;
+            var newTempFile = new FileInfo(Path.GetTempFileName()).FullName;
             // ReSharper restore PossibleNullReferenceException
-            var newTempFile = folder + Path.DirectorySeparatorChar + fullName;
 
             using (var input = Assembly.GetExecutingAssembly().GetManifestResourceStream(fullName))
             {
