@@ -1,4 +1,5 @@
-﻿using SVLang.Core.AST;
+﻿using System.Linq;
+using SVLang.Core.AST;
 using SVLang.Core.Evaluation;
 
 namespace SVLang.Core.Builtins
@@ -9,9 +10,11 @@ namespace SVLang.Core.Builtins
         {
         }
 
-        public static void Load(BuiltinFunction bf)
+        public static void Load(params BuiltinFunction[] builtinFunctions)
         {
-            Memory.AddExpr(bf.Name, bf);
+            builtinFunctions
+                .ToList()
+                .ForEach(bf => Memory.AddExpr(bf.Name, bf));
         }
 
         public abstract Value Execute(Value[] parameterValues);

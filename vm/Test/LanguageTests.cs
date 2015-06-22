@@ -199,6 +199,24 @@ namespace SVLang.Test
         }
 
         [TestMethod]
+        public void add_numbers()
+        {
+            EvaluatesTo(
+                3,
+                CallF("+", V(1), V(2))
+            );
+        }
+
+        [TestMethod]
+        public void subtract_numbers()
+        {
+            EvaluatesTo(
+                1,
+                CallF("-", V(3), V(2))
+            );
+        }
+
+        [TestMethod]
         public void can_import_namespace()
         {
             Assert.Inconclusive("TODO");

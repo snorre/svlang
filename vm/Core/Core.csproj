@@ -46,6 +46,8 @@
     <Compile Include="AST\Value.cs" />
     <Compile Include="Builtins\BuiltinFunction.cs" />
     <Compile Include="Builtins\sys\Concat.cs" />
+    <Compile Include="Builtins\sys\Minus.cs" />
+    <Compile Include="Builtins\sys\Plus.cs" />
     <Compile Include="Builtins\sys\Print.cs" />
     <Compile Include="Evaluation\Execution.cs" />
     <Compile Include="Evaluation\Memory.cs" />
