@@ -50,7 +50,7 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void define_function_twice()
+        public void define_function_twice_fails()
         {
             MustFail(
                 "Cannot re-define: name",
@@ -82,7 +82,7 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void define_function_with_parameter_twice()
+        public void define_function_with_parameter_twice_fails()
         {
             MustFail(
                 "Cannot re-define: name",
@@ -93,7 +93,7 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void call_function_in_outer_scope()
+        public void call_function_in_outer_scope_fails()
         {
             MustFail(
                 "Cannot get: fun",
@@ -139,7 +139,7 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void codeblock_exit_removes_inner_declarations()
+        public void codeblock_exit_removes_inner_declarations_fails()
         {
             MustFail(
                 "Cannot get: fun",
@@ -151,7 +151,7 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void dot_is_reserved_for_namespace()
+        public void dot_is_reserved_for_namespace_fails()
         {
             MustFail(
                 "Function name cannot contain .: test.fun",
@@ -234,6 +234,12 @@ namespace SVLang.Test
         private object Run(Expr[] codelines)
         {
             var cb = new Codeblock(codelines);
+
+            Console.WriteLine("Running:");
+            Console.WriteLine("==============");
+            Console.WriteLine(cb);
+            Console.WriteLine("==============");
+
             return new Execution(cb).Run();
         }
 

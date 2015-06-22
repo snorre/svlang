@@ -24,13 +24,19 @@ namespace SVLang.Core.AST
                 other.Codelines.SequenceEqual(Codelines);
         }
 
-        public override string ToString()
+        public override string ToString(string indent)
         {
             return 
                 string.Format(
-                    "Codeblock(lines=[{0}])",
-                    string.Join(",", Codelines.ToList())
+                    "{0}{{\n{1}\n{0}}}", 
+                    indent,
+                    string.Join("\n" + indent, Codelines.Select(c => c.ToString(indent + OneLevelIndent)))
                 );
+            //return 
+            //    string.Format(
+            //        "Codeblock(lines=[{0}])",
+            //        string.Join(",", Codelines.ToList())
+            //    );
         }
     }
 }

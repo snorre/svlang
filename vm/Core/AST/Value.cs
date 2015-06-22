@@ -32,9 +32,15 @@
                 (obj as Value)._rawValue.Equals(_rawValue);
         }
 
-        public override string ToString()
+        public override string ToString(string indent)
         {
-            return "Value(type=" + _rawValue.GetType() + ", value=" + _rawValue + ")";
+            return
+                indent +
+                (_rawValue is string
+                    ? "\"" + _rawValue + "\""
+                    : _rawValue.ToString()
+                );
+            //return "Value(type=" + _rawValue.GetType() + ", value=" + _rawValue + ")";
         }
     }
 }

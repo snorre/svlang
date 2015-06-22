@@ -30,15 +30,23 @@ namespace SVLang.Core.AST
                 other.ParameterNames.SequenceEqual(ParameterNames);
         }
 
-        public override string ToString()
+        public override string ToString(string indent)
         {
             return
                 string.Format(
-                    "DefineFunction(name={0}, params=[{1}], code={2}",
+                    "{0}{1} {2} = {{\n{3}\n{0}}}",
+                    indent,
                     Name,
-                    string.Join(",", ParameterNames),
-                    Code
+                    string.Join(" ", ParameterNames),
+                    Code.ToString(indent + OneLevelIndent)
                 );
+            //return
+            //    string.Format(
+            //        "DefineFunction(name={0}, params=[{1}], code={2}",
+            //        Name,
+            //        string.Join(",", ParameterNames),
+            //        Code
+            //    );
         }
     }
 }

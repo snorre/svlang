@@ -27,9 +27,23 @@ namespace SVLang.Core.AST
                 other.Parameters.SequenceEqual(Parameters);
         }
 
-        public override string ToString()
+        public override string ToString(string indent)
         {
-            return "CallFunction(name=" + Name + ", params=[" + string.Join(",", Parameters.Select(p => p.ToString())) + "])";
+            return
+                indent +
+                "(" +
+                    (
+                        Name +
+                        " " +
+                        string.Join(", ", Parameters.Select(p => p.ToString(string.Empty)))
+                    ).Trim() +
+                ")";
+                //string.Format(
+                //    "({0} {1})",
+                //    Name,
+                //    string.Join(", ", Parameters.Select(p => p.ToString(string.Empty)))
+                //);
+            //return "CallFunction(name=" + Name + ", params=[" + string.Join(",", Parameters.Select(p => p.ToString())) + "])";
         }
     }
 }
