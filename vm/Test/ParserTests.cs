@@ -138,7 +138,7 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void simple_if()
+        public void if_simple()
         {
             ParsesTo(
                 @"(sjekk 1 2) -> (print 123)",
@@ -149,12 +149,72 @@ namespace SVLang.Test
             );
         }
 
+        [TestMethod]
+        public void if_with_value_action()
+        {
+            ParsesTo(
+                @"(sjekk 1 2) -> 3",
+                If(
+                    CallF("sjekk", V(1), V(2)),
+                    V(3)
+                )
+            );
+        }
+
+        [TestMethod]
+        public void first_simple()
+        {
+            ParsesTo(
+                @"first {
+                    (cond) -> (act)
+                }",
+                First(
+                    If(CallF("cond"), CallF("act"))
+                )
+            );
+        }
+
+        [TestMethod]
+        public void first_multiple()
+        {
+            ParsesTo(
+                @"first {
+                    (cond1) -> (act1)
+                    (cond2) -> (act2)
+                    (cond3) -> 3
+                }",
+                First(
+                    If(CallF("cond1"), CallF("act1")),
+                    If(CallF("cond2"), CallF("act2")),
+                    If(CallF("cond3"), V(3))
+                )
+            );
+        }
+
+        [TestMethod]
+        public void first_with_else()
+        {
+            ParsesTo(
+                @"first {
+                    (cond1) -> (act1)
+                    (cond2) -> (act2)
+                    false
+                }",
+                First(
+                    If(CallF("cond1"), CallF("act1")),
+                    If(CallF("cond2"), CallF("act2")),
+                    If(V(true), V(false))
+                )
+            );
+        }
+
         #region Helpers
 
         private void ParsesTo(string code, Expr expr)
         {
             var actual = new StringParser(code).Run();
             Assert.AreEqual(expr, actual);
+            PrintSection("Parsed to", actual.ToString());
         }
 
         #endregion

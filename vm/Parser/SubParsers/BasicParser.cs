@@ -8,7 +8,7 @@ namespace SVLang.Parser.SubParsers
     public class BasicParser
     {
         public static readonly Parser<IEnumerable<char>> Indent =
-            Parse.Chars(new[] { '\t', ' ' }).Many();
+            Parse.Chars('\t', ' ').Many();
 
         public static readonly Parser<string> BlankLine =
             from i in Indent

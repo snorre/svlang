@@ -27,7 +27,7 @@
 
         public override string ToString(string indent)
         {
-            return Condition + " -> " + Action;
+            return indent + Condition + " -> " + Action;
         }
     }
 }

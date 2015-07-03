@@ -50,6 +50,9 @@ namespace SVLang.Core
             if (e is IfLine)
                 return EvalIfLine(e as IfLine);
 
+            if (e is First)
+                return EvalFirst(e as First);
+
             throw new InvalidOperationException("Cannot evaluate: " + e.GetType());
         }
 
@@ -125,13 +128,31 @@ namespace SVLang.Core
 
         private Value EvalIfLine(IfLine ifLine)
         {
-            var conditionResult = Evaluate(ifLine.Condition);
-            if (conditionResult.IsTrue())
-            {
-                return Evaluate(ifLine.Action);
-            }
+            bool notUsed;
+            return EvalIfLine(ifLine, out notUsed);
+        }
 
-            return Value.Void;
+        private Value EvalIfLine(IfLine ifLine, out bool conditionWasTrue)
+        {
+            var conditionResult = Evaluate(ifLine.Condition);
+            conditionWasTrue = conditionResult.IsTrue();
+            return
+                conditionWasTrue
+                    ? Evaluate(ifLine.Action)
+                    : Value.Void;
+        }
+
+        private Value EvalFirst(First first)
+        {
+            Value result = Value.Void;
+            foreach (var ifLine in first.IfLines)
+            {
+                bool conditionWasTrue;
+                result = EvalIfLine(ifLine, out conditionWasTrue);
+                if (conditionWasTrue)
+                    break;
+            }
+            return result;
         }
     }
 }

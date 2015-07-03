@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Sprache;
+﻿using Sprache;
 using SVLang.AST;
 
 namespace SVLang.Parser.SubParsers
 {
     public class IfLineParser
     {
-        public static readonly Parser<IfLine> Single =
+        public static readonly Parser<Expr> Single =
+            from indent in BasicParser.Indent.Optional()
             from condition in CallFunctionParser.Single
             from arrow in Parse.String(" -> ")
-            from action in CallFunctionParser.Single
+            from action in ExprParser.Single
+            from bl in BasicParser.BlankLine.Many().Optional()
             select new IfLine(condition, action);
     }
 }

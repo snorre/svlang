@@ -49,6 +49,7 @@
     <Compile Include="SubParsers\CodeblockParser.cs" />
     <Compile Include="SubParsers\DefineFunctionParser.cs" />
     <Compile Include="SubParsers\ExprParser.cs" />
+    <Compile Include="SubParsers\FirstParser.cs" />
     <Compile Include="SubParsers\IfLineParser.cs" />
     <Compile Include="SubParsers\ValueParser.cs" />
   </ItemGroup>

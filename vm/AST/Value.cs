@@ -54,7 +54,7 @@ namespace SVLang.AST
                 indent +
                 (_rawValue is string
                     ? "\"" + _rawValue + "\""
-                    : _rawValue.ToString()
+                    : _rawValue.ToString().ToLower()
                 );
         }
 

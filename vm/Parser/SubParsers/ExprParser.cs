@@ -6,7 +6,8 @@ namespace SVLang.Parser.SubParsers
     public class ExprParser
     {
         public static readonly Parser<Expr> SingleExceptCodeblock =
-            IfLineParser.Single
+            FirstParser.Single
+                .Or(IfLineParser.Single)
                 .Or(CallFunctionParser.Single)
                 .Or(DefineFunctionParser.Single)
                 .Or(ValueParser.Single);

@@ -235,6 +235,57 @@ namespace SVLang.Test
         }
 
         [TestMethod]
+        public void first_single()
+        {
+            EvaluatesTo(
+                3,
+                First(
+                    If(CallF("=", V(1), V(1)), V(3))
+                )
+            );
+        }
+
+        [TestMethod]
+        public void first_multiple()
+        {
+            EvaluatesTo(
+                5,
+                First(
+                    If(CallF("=", V(1), V(2)), V(3)),
+                    If(V(false), V(6)),
+                    If(CallF("=", V(4), V(4)), V(5))
+                )
+            );
+        }
+
+        [TestMethod]
+        public void first_nothing_is_hit()
+        {
+            EvaluatesTo(
+                Value.Void,
+                First(
+                    If(CallF("=", V(1), V(2)), V(3)),
+                    If(CallF("=", V(4), V(5)), V(6))
+                )
+            );
+        }
+
+        [TestMethod]
+        public void first_hit_is_void_is_still_treated_as_a_hit()
+        {
+            EvaluatesTo(
+                Value.Void,
+                DefF("test", Value.Void),
+                First(
+                    If(CallF("=", V(1), V(1)), CallF("test")),
+                    If(CallF("=", V(1), V(1)), CallF("print", V(4))),
+                    If(CallF("=", V(4), V(4)), V(5))
+                )
+            );
+            OutputMustBe("");
+        }
+
+        [TestMethod]
         public void can_import_namespace()
         {
             Assert.Inconclusive("TODO");
@@ -276,12 +327,7 @@ namespace SVLang.Test
         private object Run(Expr[] codelines)
         {
             var cb = new Codeblock(codelines);
-
-            Console.WriteLine("Running:");
-            Console.WriteLine("==============");
-            Console.WriteLine(cb);
-            Console.WriteLine("==============");
-
+            PrintSection("Running", cb.ToString());
             return new Execution(cb).Run();
         }
 

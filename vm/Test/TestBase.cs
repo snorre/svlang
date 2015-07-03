@@ -24,10 +24,14 @@ namespace SVLang.Test
         [TestCleanup]
         public void TestBase_PrintOutput()
         {
-            Console.WriteLine("Output:");
-            Console.WriteLine("==========================");
-            Console.WriteLine(TestOutputStream.ToString());
-            Console.WriteLine("==========================");
+            PrintSection("Output", TestOutputStream.ToString());
+        }
+
+        protected void PrintSection(string header, string content)
+        {
+            Console.WriteLine("=== " + header + " ========================");
+            Console.WriteLine(content);
+            Console.WriteLine("\n");
         }
 
         protected void OutputMustBe(string expected)
@@ -59,6 +63,11 @@ namespace SVLang.Test
         protected IfLine If(Expr condition, Expr action)
         {
             return new IfLine(condition, action);
+        }
+
+        protected First First(params IfLine[] ifLines)
+        {
+            return new First(ifLines);
         }
     }
     // ReSharper restore InconsistentNaming
