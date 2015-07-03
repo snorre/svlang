@@ -1,4 +1,4 @@
-﻿namespace SVLang.Core.AST
+﻿namespace SVLang.AST
 {
     public class Value : Expr
     {

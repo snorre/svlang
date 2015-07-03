@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SVLang.Core.AST;
-using SVLang.Core.Builtins.sys;
-using SVLang.Core.Evaluation;
+using SVLang.AST;
+using SVLang.Builtins.sys;
+using SVLang.Core;
 
 namespace SVLang.Test
 {

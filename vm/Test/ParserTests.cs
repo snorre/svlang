@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SVLang.Core.AST;
+using SVLang.AST;
 using SVLang.Parser;
 
 namespace SVLang.Test

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace SVLang.Core.AST
+namespace SVLang.AST
 {
     public class DefineFunction : Expr
     {

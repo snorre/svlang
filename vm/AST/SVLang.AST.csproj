@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7B521D45-68BE-4613-BB7A-181D4854D2A4}</ProjectGuid>
+    <ProjectGuid>{76314FCF-D0D9-4BE9-A85E-B87B99D53D5F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SVLang.Parser</RootNamespace>
-    <AssemblyName>SVLang.Parser</AssemblyName>
+    <RootNamespace>SVLang.AST</RootNamespace>
+    <AssemblyName>SVLang.AST</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,9 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Sprache">
-      <HintPath>..\packages\Sprache.2.0.0.45\lib\portable-net4+netcore45+win8+wp8+sl5+MonoAndroid1+MonoTouch1\Sprache.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -42,23 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="StringParser.cs" />
+    <Compile Include="BuiltinFunction.cs" />
+    <Compile Include="CallFunction.cs" />
+    <Compile Include="Codeblock.cs" />
+    <Compile Include="DefineFunction.cs" />
+    <Compile Include="Expr.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SubParsers\BasicParser.cs" />
-    <Compile Include="SubParsers\CallFunctionParser.cs" />
-    <Compile Include="SubParsers\CodeblockParser.cs" />
-    <Compile Include="SubParsers\DefineFunctionParser.cs" />
-    <Compile Include="SubParsers\ExprParser.cs" />
-    <Compile Include="SubParsers\ValueParser.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj">
-      <Project>{E6001124-F1EE-4EE6-A59F-48D4C85CFA4C}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
+    <Compile Include="Value.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.3.0\lib\net45\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\packages\Castle.Windsor.3.3.0\lib\net45\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,19 +45,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AST\CallFunction.cs" />
-    <Compile Include="AST\Codeblock.cs" />
-    <Compile Include="AST\Expr.cs" />
-    <Compile Include="AST\DefineFunction.cs" />
-    <Compile Include="AST\Value.cs" />
-    <Compile Include="Builtins\BuiltinFunction.cs" />
-    <Compile Include="Builtins\sys\Concat.cs" />
-    <Compile Include="Builtins\sys\Minus.cs" />
-    <Compile Include="Builtins\sys\Plus.cs" />
-    <Compile Include="Builtins\sys\Print.cs" />
-    <Compile Include="Evaluation\Execution.cs" />
-    <Compile Include="Evaluation\Memory.cs" />
+    <Compile Include="Execution.cs" />
+    <Compile Include="Memory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AST\SVLang.AST.csproj">
+      <Project>{76314fcf-d0d9-4be9-a85e-b87b99d53d5f}</Project>
+      <Name>SVLang.AST</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

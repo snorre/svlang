@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SVLang.Core.AST;
-using SVLang.Core.Evaluation;
+using SVLang.AST;
+using SVLang.Core;
 
 namespace SVLang.Test
 {

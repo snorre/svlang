@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Linq;
-using SVLang.Core.AST;
-using SVLang.Core.Builtins;
-using SVLang.Core.Builtins.sys;
+using Castle.Core.Internal;
+using SVLang.AST;
 
-namespace SVLang.Core.Evaluation
+namespace SVLang.Core
 {
     public class Execution
     {
@@ -23,12 +22,12 @@ namespace SVLang.Core.Evaluation
 
         private void LoadBuiltins()
         {
-            BuiltinFunction.Load(
-                new Print(),
-                new Concat(),
-                new Plus(),
-                new Minus()
-            );
+            var baseType = typeof(BuiltinFunction);
+            AppDomain.CurrentDomain.GetAssemblies()
+                .SelectMany(s => s.GetTypes())
+                .Where(t => baseType.IsAssignableFrom(t) && t != typeof(BuiltinFunction))
+                .Select(t => (BuiltinFunction)Activator.CreateInstance(t))
+                .ForEach(i => Memory.AddExpr(i.Name, i));
         }
 
         private Value Evaluate(Expr e)

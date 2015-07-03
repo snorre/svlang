@@ -1,5 +1,5 @@
 ﻿using Sprache;
-using SVLang.Core.AST;
+using SVLang.AST;
 
 namespace SVLang.Parser.SubParsers
 {

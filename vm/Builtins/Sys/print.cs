@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using SVLang.Core.AST;
+using SVLang.AST;
 
-namespace SVLang.Core.Builtins.sys
+namespace SVLang.Builtins.sys
 {
     public class Print : BuiltinFunction
     {

@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FCB1687B-32D1-4893-B19E-611102110CF4}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{5B8E8E93-B646-4E07-9058-350B62DDEF93}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SVLang.Runner</RootNamespace>
-    <AssemblyName>SVLang.Runner</AssemblyName>
+    <RootNamespace>SVLang.Builtins.Sys</RootNamespace>
+    <AssemblyName>SVLang.Builtins.Sys</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,21 +39,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileRunner.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Concat.cs" />
+    <Compile Include="Minus.cs" />
+    <Compile Include="Plus.cs" />
+    <Compile Include="print.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj">
-      <Project>{e6001124-f1ee-4ee6-a59f-48d4c85cfa4c}</Project>
-      <Name>Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Parser\Parser.csproj">
-      <Project>{7b521d45-68be-4613-bb7a-181d4854d2a4}</Project>
-      <Name>Parser</Name>
+    <ProjectReference Include="..\..\AST\SVLang.AST.csproj">
+      <Project>{76314fcf-d0d9-4be9-a85e-b87b99d53d5f}</Project>
+      <Name>SVLang.AST</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

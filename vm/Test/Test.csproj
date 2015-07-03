@@ -57,17 +57,25 @@
     <Compile Include="TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\Core.csproj">
+    <ProjectReference Include="..\AST\SVLang.AST.csproj">
+      <Project>{76314fcf-d0d9-4be9-a85e-b87b99d53d5f}</Project>
+      <Name>SVLang.AST</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Builtins\Sys\SVLang.Builtins.Sys.csproj">
+      <Project>{5b8e8e93-b646-4e07-9058-350b62ddef93}</Project>
+      <Name>SVLang.Builtins.Sys</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\SVLang.Core.csproj">
       <Project>{E6001124-F1EE-4EE6-A59F-48D4C85CFA4C}</Project>
-      <Name>Core</Name>
+      <Name>SVLang.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Parser\Parser.csproj">
+    <ProjectReference Include="..\Parser\SVLang.Parser.csproj">
       <Project>{7b521d45-68be-4613-bb7a-181d4854d2a4}</Project>
-      <Name>Parser</Name>
+      <Name>SVLang.Parser</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Runner\Runner.csproj">
+    <ProjectReference Include="..\Runner\SVLang.Runner.csproj">
       <Project>{FCB1687B-32D1-4893-B19E-611102110CF4}</Project>
-      <Name>Runner</Name>
+      <Name>SVLang.Runner</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

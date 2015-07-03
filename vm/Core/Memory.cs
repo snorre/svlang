@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SVLang.Core.AST;
+using SVLang.AST;
 
-namespace SVLang.Core.Evaluation
+namespace SVLang.Core
 {
     public static class Memory
     {

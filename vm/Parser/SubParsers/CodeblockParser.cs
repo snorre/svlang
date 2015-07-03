@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using SVLang.Core.AST;
+using SVLang.AST;
 using Sprache;
 
 namespace SVLang.Parser.SubParsers
