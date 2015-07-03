@@ -55,6 +55,11 @@ namespace SVLang.Test
         {
             return new Codeblock(codelines);
         }
+
+        protected IfLine If(Expr condition, Expr action)
+        {
+            return new IfLine(condition, action);
+        }
     }
     // ReSharper restore InconsistentNaming
 }

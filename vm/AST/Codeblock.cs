@@ -32,11 +32,6 @@ namespace SVLang.AST
                     indent,
                     string.Join("\n" + indent, Codelines.Select(c => c.ToString(indent + OneLevelIndent)))
                 );
-            //return 
-            //    string.Format(
-            //        "Codeblock(lines=[{0}])",
-            //        string.Join(",", Codelines.ToList())
-            //    );
         }
     }
 }

@@ -137,6 +137,18 @@ namespace SVLang.Test
             test("f");
         }
 
+        [TestMethod]
+        public void simple_if()
+        {
+            ParsesTo(
+                @"(sjekk 1 2) -> (print 123)",
+                If(
+                    CallF("sjekk", V(1), V(2)), 
+                    CallF("print", V(123))
+                )
+            );
+        }
+
         #region Helpers
 
         private void ParsesTo(string code, Expr expr)

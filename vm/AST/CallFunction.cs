@@ -35,15 +35,9 @@ namespace SVLang.AST
                     (
                         Name +
                         " " +
-                        string.Join(", ", Parameters.Select(p => p.ToString(string.Empty)))
+                        string.Join(" ", Parameters.Select(p => p.ToString(string.Empty)))
                     ).Trim() +
                 ")";
-                //string.Format(
-                //    "({0} {1})",
-                //    Name,
-                //    string.Join(", ", Parameters.Select(p => p.ToString(string.Empty)))
-                //);
-            //return "CallFunction(name=" + Name + ", params=[" + string.Join(",", Parameters.Select(p => p.ToString())) + "])";
         }
     }
 }

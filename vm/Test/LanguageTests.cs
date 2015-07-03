@@ -208,6 +208,24 @@ namespace SVLang.Test
         }
 
         [TestMethod]
+        public void if_not_called_returns_void()
+        {
+            EvaluatesTo(
+                Value.Void,
+                If(CallF("=", V(1), V(2)), V(1))
+            );
+        }
+
+        [TestMethod]
+        public void if_called_returns_action_return_value()
+        {
+            EvaluatesTo(
+                3,
+                If(CallF("=", V(1), V(1)), V(3))
+            );
+        }
+
+        [TestMethod]
         public void subtract_numbers()
         {
             EvaluatesTo(
@@ -233,6 +251,12 @@ namespace SVLang.Test
         private void EvaluatesTo(object expected, params Expr[] codelines)
         {
             var result = Run(codelines);
+
+            if (expected is Value)
+            {
+                expected = (expected as Value).RawValue();
+            }
+        
             Assert.AreEqual(expected, result);
         }
 

@@ -40,9 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Concat.cs" />
+    <Compile Include="Equal.cs" />
     <Compile Include="Minus.cs" />
     <Compile Include="Plus.cs" />
-    <Compile Include="print.cs" />
+    <Compile Include="Print.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

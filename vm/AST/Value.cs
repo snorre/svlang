@@ -1,4 +1,6 @@
-﻿namespace SVLang.AST
+﻿using System;
+
+namespace SVLang.AST
 {
     public class Value : Expr
     {
@@ -6,6 +8,20 @@
 
         public class RawVoid
         {
+            public override int GetHashCode()
+            {
+                return 1;
+            }
+
+            public override bool Equals(object obj)
+            {
+                return obj is RawVoid;
+            }
+
+            public override string ToString()
+            {
+                return "void";
+            }
         }
 
         private readonly object _rawValue;
@@ -40,7 +56,16 @@
                     ? "\"" + _rawValue + "\""
                     : _rawValue.ToString()
                 );
-            //return "Value(type=" + _rawValue.GetType() + ", value=" + _rawValue + ")";
+        }
+
+        public bool IsTrue()
+        {
+            if (_rawValue is bool)
+            {
+                return (bool)_rawValue;
+            }
+
+            throw new InvalidOperationException("Only booleans is supported in IsTrue() method.");
         }
     }
 }

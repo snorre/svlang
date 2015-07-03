@@ -30,6 +30,6 @@ namespace SVLang.Parser.SubParsers
         public static readonly Parser<string> FunctionName =
             from l in Parse.Letter.AtLeastOnce()
             from ld in Parse.LetterOrDigit.Many().Optional()
-            select new string(l.Union(ld.GetOrDefault()).ToArray());
+            select new string(l.Concat(ld.GetOrDefault()).ToArray());
     }
 }

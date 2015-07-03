@@ -40,13 +40,6 @@ namespace SVLang.AST
                     string.Join(" ", ParameterNames),
                     Code.ToString(indent + OneLevelIndent)
                 );
-            //return
-            //    string.Format(
-            //        "DefineFunction(name={0}, params=[{1}], code={2}",
-            //        Name,
-            //        string.Join(",", ParameterNames),
-            //        Code
-            //    );
         }
     }
 }

@@ -47,6 +47,9 @@ namespace SVLang.Core
             if (e is Codeblock)
                 return EvalCodeblock(e as Codeblock);
 
+            if (e is IfLine)
+                return EvalIfLine(e as IfLine);
+
             throw new InvalidOperationException("Cannot evaluate: " + e.GetType());
         }
 
@@ -118,6 +121,17 @@ namespace SVLang.Core
             Memory.RollbackMark();
 
             return result;
+        }
+
+        private Value EvalIfLine(IfLine ifLine)
+        {
+            var conditionResult = Evaluate(ifLine.Condition);
+            if (conditionResult.IsTrue())
+            {
+                return Evaluate(ifLine.Action);
+            }
+
+            return Value.Void;
         }
     }
 }
