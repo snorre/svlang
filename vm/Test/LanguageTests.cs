@@ -285,18 +285,6 @@ namespace SVLang.Test
             OutputMustBe("");
         }
 
-        [TestMethod]
-        public void can_import_namespace()
-        {
-            Assert.Inconclusive("TODO");
-        }
-
-        [TestMethod]
-        public void sort_tests()
-        {
-            Assert.Inconclusive("TODO");
-        }
-
         #region Helpers
 
         private void EvaluatesTo(object expected, params Expr[] codelines)

@@ -33,7 +33,6 @@ namespace SVLang.Core
             );
         }
 
-        // TODO change from Expr to something more concrete? Maybe a Function class instead of putting DefineFunction on the stack..
         public static Expr GetExpr(string name)
         {
             try
@@ -56,7 +55,7 @@ namespace SVLang.Core
         {
             var m = Guid.NewGuid();
             _activeMark = m;
-            _stack.Push(new Entry { CreatedInMark = m }); // TODO Something cleaner.. Every mark must be represented in stack
+            _stack.Push(new Entry { CreatedInMark = m });
         }
 
         public static void RollbackMark()
