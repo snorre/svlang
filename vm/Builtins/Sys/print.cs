@@ -1,7 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
-using SVLang.AST;
+using SVLang.Basics;
+using SVLang.Basics.AST;
 
 namespace SVLang.Builtins.sys
 {

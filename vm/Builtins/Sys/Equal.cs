@@ -1,5 +1,5 @@
-﻿using System;
-using SVLang.AST;
+﻿using SVLang.Basics;
+using SVLang.Basics.AST;
 
 namespace SVLang.Builtins.Sys
 {
@@ -13,7 +13,7 @@ namespace SVLang.Builtins.Sys
         {
             if (parameterValues.Length != 2)
             {
-                throw new InvalidOperationException(Name + " only supports 2 parameters.");
+                throw Error.Panic(Name + " only supports 2 parameters.");
             }
 
             var p1 = parameterValues[0].RawValue();

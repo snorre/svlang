@@ -57,9 +57,9 @@
     <Compile Include="TestBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AST\SVLang.AST.csproj">
+    <ProjectReference Include="..\AST\SVLang.Basics.csproj">
       <Project>{76314fcf-d0d9-4be9-a85e-b87b99d53d5f}</Project>
-      <Name>SVLang.AST</Name>
+      <Name>SVLang.Basics</Name>
     </ProjectReference>
     <ProjectReference Include="..\Builtins\Sys\SVLang.Builtins.Sys.csproj">
       <Project>{5b8e8e93-b646-4e07-9058-350b62ddef93}</Project>

@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Linq;
 using Castle.Core.Internal;
-using SVLang.AST;
+using SVLang.Basics;
+using SVLang.Basics.AST;
 
 namespace SVLang.Core
 {
@@ -53,7 +54,7 @@ namespace SVLang.Core
             if (e is First)
                 return EvalFirst(e as First);
 
-            throw new InvalidOperationException("Cannot evaluate: " + e.GetType());
+            throw Error.Panic("Cannot evaluate: " + e.GetType(), e);
         }
 
         private Value EvaluateBuiltinFunction(BuiltinFunction bf)
@@ -71,7 +72,7 @@ namespace SVLang.Core
         {
             if (df.Name.Contains("."))
             {
-                throw new InvalidOperationException("Function name cannot contain .: " + df.Name);
+                throw Error.Panic("Function name cannot contain .: " + df.Name, df);
             }
 
             Memory.AddExpr(df.Name, df);
@@ -107,7 +108,7 @@ namespace SVLang.Core
             var f = (DefineFunction)e;
 
             if (f.ParameterNames.Length != cf.Parameters.Length)
-                throw new InvalidOperationException("Number of defined parameters and given parameter values differ.");
+                throw Error.Panic("Number of defined parameters and given parameter values differ.", cf);
 
             for (int i = 0; i < cf.Parameters.Length; i++)
             {

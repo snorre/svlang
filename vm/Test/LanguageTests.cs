@@ -1,6 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SVLang.AST;
+using SVLang.Basics.AST;
 using SVLang.Core;
 
 namespace SVLang.Test
@@ -309,6 +309,7 @@ namespace SVLang.Test
             catch (Exception x)
             {
                 Assert.AreEqual(expectedMessage, x.Message);
+                Console.WriteLine(x);
             }
         }
 

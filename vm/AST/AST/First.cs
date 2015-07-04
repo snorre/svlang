@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace SVLang.AST
+namespace SVLang.Basics.AST
 {
     public class First : Expr
     {

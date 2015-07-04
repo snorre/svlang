@@ -1,6 +1,6 @@
-﻿using System;
-using System.Linq;
-using SVLang.AST;
+﻿using System.Linq;
+using SVLang.Basics;
+using SVLang.Basics.AST;
 
 namespace SVLang.Builtins.sys
 {
@@ -14,7 +14,7 @@ namespace SVLang.Builtins.sys
         {
             if (!parameterValues.All(pv => pv.RawValue() is int))
             {
-                throw new InvalidOperationException(Name + " only supports integers.");
+                throw Error.Panic(Name + " only supports integers.");
             }
 
             var result = parameterValues.Select(pv => (int)pv.RawValue()).Sum();

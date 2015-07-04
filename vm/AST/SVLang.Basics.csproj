@@ -7,8 +7,8 @@
     <ProjectGuid>{76314FCF-D0D9-4BE9-A85E-B87B99D53D5F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SVLang.AST</RootNamespace>
-    <AssemblyName>SVLang.AST</AssemblyName>
+    <RootNamespace>SVLang.Basics</RootNamespace>
+    <AssemblyName>SVLang.Basics</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Build.Tasks.v4.0" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,14 +41,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BuiltinFunction.cs" />
-    <Compile Include="CallFunction.cs" />
-    <Compile Include="Codeblock.cs" />
-    <Compile Include="DefineFunction.cs" />
-    <Compile Include="Expr.cs" />
-    <Compile Include="First.cs" />
-    <Compile Include="IfLine.cs" />
+    <Compile Include="AST\CallFunction.cs" />
+    <Compile Include="AST\Codeblock.cs" />
+    <Compile Include="AST\DefineFunction.cs" />
+    <Compile Include="AST\Expr.cs" />
+    <Compile Include="AST\First.cs" />
+    <Compile Include="AST\IfLine.cs" />
+    <Compile Include="Error.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Value.cs" />
+    <Compile Include="AST\Value.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

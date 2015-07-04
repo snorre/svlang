@@ -1,4 +1,6 @@
-﻿namespace SVLang.AST
+﻿using SVLang.Basics.AST;
+
+namespace SVLang.Basics
 {
     public abstract class BuiltinFunction : DefineFunction
     {

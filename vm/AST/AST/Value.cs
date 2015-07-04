@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SVLang.AST
+﻿namespace SVLang.Basics.AST
 {
     public class Value : Expr
     {
@@ -65,7 +63,7 @@ namespace SVLang.AST
                 return (bool)_rawValue;
             }
 
-            throw new InvalidOperationException("Only booleans is supported in IsTrue() method.");
+            throw Error.Panic("Only booleans is supported in IsTrue() method.", this);
         }
     }
 }

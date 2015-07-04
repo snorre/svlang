@@ -1,4 +1,4 @@
-﻿namespace SVLang.AST
+﻿namespace SVLang.Basics.AST
 {
     public abstract class Expr
     {

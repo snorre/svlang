@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using SVLang.AST;
+using SVLang.Basics;
+using SVLang.Basics.AST;
 
 namespace SVLang.Core
 {
@@ -20,7 +21,7 @@ namespace SVLang.Core
             var entryInSameScope = _stack.SingleOrDefault(e => e.Name == name && e.CreatedInMark == _activeMark);
             if (entryInSameScope != null)
             {
-                throw new InvalidOperationException("Cannot re-define: " + name);
+                throw Error.Panic("Cannot re-define: " + name, value);
             }
 
             _stack.Push(
@@ -41,7 +42,7 @@ namespace SVLang.Core
             }
             catch (Exception e)
             {
-                throw new InvalidOperationException("Cannot get: " + name, e);
+                throw Error.Panic("Cannot get: " + name, innerException: e);
             }
         }
 

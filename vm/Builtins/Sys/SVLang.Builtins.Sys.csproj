@@ -47,9 +47,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\AST\SVLang.AST.csproj">
+    <ProjectReference Include="..\..\AST\SVLang.Basics.csproj">
       <Project>{76314fcf-d0d9-4be9-a85e-b87b99d53d5f}</Project>
-      <Name>SVLang.AST</Name>
+      <Name>SVLang.Basics</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

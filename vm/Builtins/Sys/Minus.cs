@@ -1,6 +1,6 @@
-﻿using System;
-using System.Linq;
-using SVLang.AST;
+﻿using System.Linq;
+using SVLang.Basics;
+using SVLang.Basics.AST;
 
 namespace SVLang.Builtins.sys
 {
@@ -14,12 +14,12 @@ namespace SVLang.Builtins.sys
         {
             if (!parameterValues.All(pv => pv.RawValue() is int))
             {
-                throw new InvalidOperationException(Name + " only supports integers.");
+                throw Error.Panic(Name + " only supports integers.");
             }
 
             if (parameterValues.Length != 2)
             {
-                throw new InvalidOperationException(Name + " only supports 2 parameters.");
+                throw Error.Panic(Name + " only supports 2 parameters.");
             }
 
             var p1 = (int)parameterValues[0].RawValue();
