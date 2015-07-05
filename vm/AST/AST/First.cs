@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace SVLang.Basics.AST
 {
@@ -25,11 +26,13 @@ namespace SVLang.Basics.AST
 
         public override string ToString(string indent)
         {
+            var nl = Environment.NewLine;
             return
                 string.Format(
-                    "{0}first {{\n{1}\n{0}}}",
+                    "{0}first {{{2}{1}{2}{0}}}",
                     indent,
-                    string.Join("\n", IfLines.Select(il => il.ToString(indent + OneLevelIndent)))
+                    string.Join(nl, IfLines.Select(il => il.ToString(indent + OneLevelIndent))),
+                    nl
                 );
         }
     }

@@ -22,15 +22,20 @@ namespace SVLang.Basics
 
             public override string ToString()
             {
-                var relatedToCode = RelatedTo.ToString();
+                var nl = Environment.NewLine;
+                var relatedToString = string.Empty;
+                if (RelatedTo != null)
+                {
+                    var str = RelatedTo.ToString(Expr.OneLevelIndent);
+                    relatedToString = string.Format("Related to:{0}\"{0}{1}{0}\"", nl, str.Substring(0, Math.Min(str.Length, 100)));
+                }
 
                 return 
                     string.Format(
-                        "Error during execution: {0}{1}",
+                        "Error during execution: {0}{1}{1}{2}",
                         Message,
-                        RelatedTo != null
-                            ? "\n\nRelated to:\n\"\n" + relatedToCode.Substring(0, Math.Min(relatedToCode.Length, 100)) +"\n\""
-                            : string.Empty
+                        nl,
+                        relatedToString
                     );
             }
         }

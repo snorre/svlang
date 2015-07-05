@@ -2,7 +2,7 @@
 {
     public abstract class Expr
     {
-        protected const string OneLevelIndent = "    ";
+        internal const string OneLevelIndent = "    ";
 
         public abstract string ToString(string indent);
 

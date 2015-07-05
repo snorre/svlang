@@ -31,7 +31,8 @@ namespace SVLang.Test
         {
             Console.WriteLine("=== " + header + " ========================");
             Console.WriteLine(content);
-            Console.WriteLine("\n");
+            Console.WriteLine("");
+            Console.WriteLine("");
         }
 
         protected void OutputMustBe(string expected)
