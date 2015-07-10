@@ -101,15 +101,15 @@ namespace SVLang.Test
         {
             ParsesTo(
                 @"{
-                    funA = {
+                    afunA = {
                         123
                     }
 
-                    funB = {
+                    bfunB = {
                         456
                     }
 
-                    (funB)
+                    (cfunB)
                 }",
                 Cb(
                     DefF("funA", Cb(V(123))),
@@ -141,9 +141,9 @@ namespace SVLang.Test
         public void if_simple()
         {
             ParsesTo(
-                @"(sjekk 1 2) -> (print 123)",
+                "(sjekk 1 \"a b c\" 2) -> (print 123)",
                 If(
-                    CallF("sjekk", V(1), V(2)), 
+                    CallF("sjekk", V(1), V("a b c"), V(2)), 
                     CallF("print", V(123))
                 )
             );
