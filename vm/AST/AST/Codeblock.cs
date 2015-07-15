@@ -32,7 +32,7 @@ namespace SVLang.Basics.AST
                 string.Format(
                     "{0}{{{2}{1}{2}{0}}}", 
                     indent,
-                    string.Join(nl + indent, Codelines.Select(c => c.ToString(indent + OneLevelIndent))),
+                    string.Join(nl, Codelines.Select(c => c.ToString(indent + OneLevelIndent))),
                     nl
                 );
         }

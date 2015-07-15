@@ -285,6 +285,22 @@ namespace SVLang.Test
             OutputMustBe("");
         }
 
+        [TestMethod]
+        public void call_outer_fun_which_references_inner_fun()
+        {
+            MustFail(
+                "Cannot get: inner",
+                DefF("outer", CallF("inner")),
+                DefF("call",
+                    Cb(
+                        DefF("inner", V(1)),
+                        CallF("outer")
+                    )
+                ),
+                CallF("call")
+            );
+        }
+
         #region Helpers
 
         private void EvaluatesTo(object expected, params Expr[] codelines)
