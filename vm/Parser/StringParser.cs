@@ -1,6 +1,7 @@
-﻿using Sprache;
+﻿using System.IO;
+using Antlr4.Runtime;
 using SVLang.Basics.AST;
-using SVLang.Parser.SubParsers;
+using SVLang.Parser.GeneratedParser;
 
 namespace SVLang.Parser
 {
@@ -15,7 +16,12 @@ namespace SVLang.Parser
 
         public Expr Run()
         {
-            return ExprParser.Single.Parse(_code);
+            var sr = new StringReader(_code);
+            var lexer = new SVLangLexer(new AntlrInputStream(sr));
+            var tokenStream = new CommonTokenStream(lexer);
+            var parser = new SVLangParser(tokenStream);
+            var tree = parser.expr();
+            return new ASTBuilder().Build(tree);
         }
     }
 }

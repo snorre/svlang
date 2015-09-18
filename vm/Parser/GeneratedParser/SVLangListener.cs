@@ -17,7 +17,7 @@
 // Missing XML comment for publicly visible type or member '...'
 #pragma warning disable 1591
 
-namespace SVLang.Parser.SubParsers {
+namespace SVLang.Parser.GeneratedParser {
 using Antlr4.Runtime.Misc;
 using IParseTreeListener = Antlr4.Runtime.Tree.IParseTreeListener;
 using IToken = Antlr4.Runtime.IToken;
@@ -30,14 +30,24 @@ using IToken = Antlr4.Runtime.IToken;
 [System.CLSCompliant(false)]
 public interface ISVLangListener : IParseTreeListener {
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="SVLangParser.r"/>.
+	/// Enter a parse tree produced by <see cref="SVLangParser.expr"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterR([NotNull] SVLangParser.RContext context);
+	void EnterExpr([NotNull] SVLangParser.ExprContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="SVLangParser.r"/>.
+	/// Exit a parse tree produced by <see cref="SVLangParser.expr"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitR([NotNull] SVLangParser.RContext context);
+	void ExitExpr([NotNull] SVLangParser.ExprContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SVLangParser.value"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterValue([NotNull] SVLangParser.ValueContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SVLangParser.value"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitValue([NotNull] SVLangParser.ValueContext context);
 }
-} // namespace SVLang.Parser.SubParsers
+} // namespace SVLang.Parser.GeneratedParser

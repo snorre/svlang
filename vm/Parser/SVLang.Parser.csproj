@@ -47,12 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ASTBuilder.cs" />
+    <Compile Include="GeneratedParser\SVLangBaseListener.cs" />
+    <Compile Include="GeneratedParser\SVLangLexer.cs" />
+    <Compile Include="GeneratedParser\SVLangListener.cs" />
+    <Compile Include="GeneratedParser\SVLangParser.cs" />
     <Compile Include="StringParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SubParsers\SVLangBaseListener.cs" />
-    <Compile Include="SubParsers\SVLangLexer.cs" />
-    <Compile Include="SubParsers\SVLangListener.cs" />
-    <Compile Include="SubParsers\SVLangParser.cs" />
     <Compile Include="SubParsers_old\BasicParser.cs" />
     <Compile Include="SubParsers_old\CallFunctionParser.cs" />
     <Compile Include="SubParsers_old\CodeblockParser.cs" />
@@ -63,11 +64,11 @@
     <Compile Include="SubParsers_old\ValueParser.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="GeneratedParser\SVLang.tokens" />
+    <None Include="GeneratedParser\SVLangLexer.tokens" />
     <None Include="Grammar\GenerateParser.bat" />
     <None Include="packages.config" />
     <None Include="Grammar\SVLang.g4" />
-    <None Include="SubParsers\SVLang.tokens" />
-    <None Include="SubParsers\SVLangLexer.tokens" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AST\SVLang.Basics.csproj">

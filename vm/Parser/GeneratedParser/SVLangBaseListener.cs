@@ -17,7 +17,7 @@
 // Missing XML comment for publicly visible type or member '...'
 #pragma warning disable 1591
 
-namespace SVLang.Parser.SubParsers {
+namespace SVLang.Parser.GeneratedParser {
 
 using Antlr4.Runtime.Misc;
 using IErrorNode = Antlr4.Runtime.Tree.IErrorNode;
@@ -34,17 +34,29 @@ using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 [System.CLSCompliant(false)]
 public partial class SVLangBaseListener : ISVLangListener {
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="SVLangParser.r"/>.
+	/// Enter a parse tree produced by <see cref="SVLangParser.expr"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterR([NotNull] SVLangParser.RContext context) { }
+	public virtual void EnterExpr([NotNull] SVLangParser.ExprContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="SVLangParser.r"/>.
+	/// Exit a parse tree produced by <see cref="SVLangParser.expr"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitR([NotNull] SVLangParser.RContext context) { }
+	public virtual void ExitExpr([NotNull] SVLangParser.ExprContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SVLangParser.value"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterValue([NotNull] SVLangParser.ValueContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SVLangParser.value"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitValue([NotNull] SVLangParser.ValueContext context) { }
 
 	/// <inheritdoc/>
 	/// <remarks>The default implementation does nothing.</remarks>
@@ -59,4 +71,4 @@ public partial class SVLangBaseListener : ISVLangListener {
 	/// <remarks>The default implementation does nothing.</remarks>
 	public virtual void VisitErrorNode([NotNull] IErrorNode node) { }
 }
-} // namespace SVLang.Parser.SubParsers
+} // namespace SVLang.Parser.GeneratedParser

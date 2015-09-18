@@ -17,7 +17,7 @@
 // Missing XML comment for publicly visible type or member '...'
 #pragma warning disable 1591
 
-namespace SVLang.Parser.SubParsers {
+namespace SVLang.Parser.GeneratedParser {
 using System;
 using System.Text;
 using System.Diagnostics;
@@ -32,18 +32,17 @@ using DFA = Antlr4.Runtime.Dfa.DFA;
 [System.CLSCompliant(false)]
 public partial class SVLangParser : Parser {
 	public const int
-		T__0=1, ID=2, WS=3;
+		BOOL=1, NUM=2, STRING=3;
 	public const int
-		RULE_r = 0;
+		RULE_expr = 0, RULE_value = 1;
 	public static readonly string[] ruleNames = {
-		"r"
+		"expr", "value"
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, "'hello'"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, null, "ID", "WS"
+		null, "BOOL", "NUM", "STRING"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -67,32 +66,81 @@ public partial class SVLangParser : Parser {
 	{
 		Interpreter = new ParserATNSimulator(this,_ATN);
 	}
-	public partial class RContext : ParserRuleContext {
-		public ITerminalNode ID() { return GetToken(SVLangParser.ID, 0); }
-		public RContext(ParserRuleContext parent, int invokingState)
+	public partial class ExprContext : ParserRuleContext {
+		public ValueContext value() {
+			return GetRuleContext<ValueContext>(0);
+		}
+		public ExprContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
-		public override int RuleIndex { get { return RULE_r; } }
+		public override int RuleIndex { get { return RULE_expr; } }
 		public override void EnterRule(IParseTreeListener listener) {
 			ISVLangListener typedListener = listener as ISVLangListener;
-			if (typedListener != null) typedListener.EnterR(this);
+			if (typedListener != null) typedListener.EnterExpr(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
 			ISVLangListener typedListener = listener as ISVLangListener;
-			if (typedListener != null) typedListener.ExitR(this);
+			if (typedListener != null) typedListener.ExitExpr(this);
 		}
 	}
 
 	[RuleVersion(0)]
-	public RContext r() {
-		RContext _localctx = new RContext(Context, State);
-		EnterRule(_localctx, 0, RULE_r);
+	public ExprContext expr() {
+		ExprContext _localctx = new ExprContext(Context, State);
+		EnterRule(_localctx, 0, RULE_expr);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 2; Match(T__0);
-			State = 3; Match(ID);
+			State = 4; value();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class ValueContext : ParserRuleContext {
+		public ITerminalNode BOOL() { return GetToken(SVLangParser.BOOL, 0); }
+		public ITerminalNode NUM() { return GetToken(SVLangParser.NUM, 0); }
+		public ITerminalNode STRING() { return GetToken(SVLangParser.STRING, 0); }
+		public ValueContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_value; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.EnterValue(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.ExitValue(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ValueContext value() {
+		ValueContext _localctx = new ValueContext(Context, State);
+		EnterRule(_localctx, 2, RULE_value);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 6;
+			_la = TokenStream.La(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOL) | (1L << NUM) | (1L << STRING))) != 0)) ) {
+			ErrorHandler.RecoverInline(this);
+			}
+			else {
+			    Consume();
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -107,10 +155,11 @@ public partial class SVLangParser : Parser {
 	}
 
 	public static readonly string _serializedATN =
-		"\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3\x5\b\x4\x2\t\x2"+
-		"\x3\x2\x3\x2\x3\x2\x3\x2\x2\x2\x3\x2\x2\x2\x6\x2\x4\x3\x2\x2\x2\x4\x5"+
-		"\a\x3\x2\x2\x5\x6\a\x4\x2\x2\x6\x3\x3\x2\x2\x2\x2";
+		"\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3\x5\v\x4\x2\t\x2"+
+		"\x4\x3\t\x3\x3\x2\x3\x2\x3\x3\x3\x3\x3\x3\x2\x2\x4\x2\x4\x2\x3\x3\x2\x3"+
+		"\x5\b\x2\x6\x3\x2\x2\x2\x4\b\x3\x2\x2\x2\x6\a\x5\x4\x3\x2\a\x3\x3\x2\x2"+
+		"\x2\b\t\t\x2\x2\x2\t\x5\x3\x2\x2\x2\x2";
 	public static readonly ATN _ATN =
 		new ATNDeserializer().Deserialize(_serializedATN.ToCharArray());
 }
-} // namespace SVLang.Parser.SubParsers
+} // namespace SVLang.Parser.GeneratedParser

@@ -1,6 +1,27 @@
-// Define a grammar called Hello
 grammar SVLang;
 
-r  : 'hello' ID ;         // match keyword hello followed by an identifier
-ID : [a-z]+ ;             // match lower-case identifiers
-WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
+expr 
+	: value
+	;
+
+value 
+	: BOOL
+	| NUM
+	| STRING
+	;
+
+
+BOOL 
+	: ('true' | 'false') 
+	;
+
+NUM 
+	: '-'?[0-9]+ 
+	;
+
+STRING
+	: '"' ~('\r' | '\n' | '"')* '"' 
+	;
+
+//ID : [a-z]+ ;             // match lower-case identifiers
+//WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines

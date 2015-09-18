@@ -29,7 +29,7 @@ namespace SVLang.Test
 
         protected void PrintSection(string header, string content)
         {
-            Console.WriteLine("=== " + header + " ========================");
+            Console.WriteLine("=== " + header + " ===");
             Console.WriteLine(content);
             Console.WriteLine("");
             Console.WriteLine("");
