@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Dev\Egne\svlang\vm\Parser\Grammar\\svlang.g4 by ANTLR 4.5.1
+// Generated from C:\Dev\Egne\svlang\vm\Parser\Grammar\\SVLang.g4 by ANTLR 4.5.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -17,6 +17,7 @@
 // Missing XML comment for publicly visible type or member '...'
 #pragma warning disable 1591
 
+namespace SVLang.Parser.SubParsers {
 using System;
 using Antlr4.Runtime;
 using Antlr4.Runtime.Atn;
@@ -25,7 +26,7 @@ using DFA = Antlr4.Runtime.Dfa.DFA;
 
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.5.1")]
 [System.CLSCompliant(false)]
-public partial class svlangLexer : Lexer {
+public partial class SVLangLexer : Lexer {
 	public const int
 		T__0=1, ID=2, WS=3;
 	public static string[] modeNames = {
@@ -37,7 +38,7 @@ public partial class svlangLexer : Lexer {
 	};
 
 
-	public svlangLexer(ICharStream input)
+	public SVLangLexer(ICharStream input)
 		: base(input)
 	{
 		Interpreter = new LexerATNSimulator(this,_ATN);
@@ -60,7 +61,7 @@ public partial class svlangLexer : Lexer {
 		}
 	}
 
-	public override string GrammarFileName { get { return "svlang.g4"; } }
+	public override string GrammarFileName { get { return "SVLang.g4"; } }
 
 	public override string[] RuleNames { get { return ruleNames; } }
 
@@ -84,3 +85,4 @@ public partial class svlangLexer : Lexer {
 	public static readonly ATN _ATN =
 		new ATNDeserializer().Deserialize(_serializedATN.ToCharArray());
 }
+} // namespace SVLang.Parser.SubParsers

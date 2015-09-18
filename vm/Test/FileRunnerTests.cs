@@ -11,19 +11,19 @@ namespace SVLang.Test
     public class FileRunnerTests : TestBase
     {
         [TestMethod]
-        public void simple_file()
+        public void Simple_file()
         {
             FilePrints(1, "return_1.svl");
         }
 
         [TestMethod]
-        public void function_call()
+        public void Function_call()
         {
             FilePrints(123, "function_call.svl");
         }
 
         [TestMethod]
-        public void file_with_print()
+        public void File_with_print()
         {
             FilePrints(123, "builtin_print.svl");
             OutputMustBe("hello world!");

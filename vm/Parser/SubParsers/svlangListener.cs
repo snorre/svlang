@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Dev\Egne\svlang\vm\Parser\Grammar\\svlang.g4 by ANTLR 4.5.1
+// Generated from C:\Dev\Egne\svlang\vm\Parser\Grammar\\SVLang.g4 by ANTLR 4.5.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -17,25 +17,27 @@
 // Missing XML comment for publicly visible type or member '...'
 #pragma warning disable 1591
 
+namespace SVLang.Parser.SubParsers {
 using Antlr4.Runtime.Misc;
 using IParseTreeListener = Antlr4.Runtime.Tree.IParseTreeListener;
 using IToken = Antlr4.Runtime.IToken;
 
 /// <summary>
 /// This interface defines a complete listener for a parse tree produced by
-/// <see cref="svlangParser"/>.
+/// <see cref="SVLangParser"/>.
 /// </summary>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.5.1")]
 [System.CLSCompliant(false)]
-public interface IsvlangListener : IParseTreeListener {
+public interface ISVLangListener : IParseTreeListener {
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="svlangParser.r"/>.
+	/// Enter a parse tree produced by <see cref="SVLangParser.r"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void EnterR([NotNull] svlangParser.RContext context);
+	void EnterR([NotNull] SVLangParser.RContext context);
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="svlangParser.r"/>.
+	/// Exit a parse tree produced by <see cref="SVLangParser.r"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	void ExitR([NotNull] svlangParser.RContext context);
+	void ExitR([NotNull] SVLangParser.RContext context);
 }
+} // namespace SVLang.Parser.SubParsers

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Dev\Egne\svlang\vm\Parser\Grammar\\svlang.g4 by ANTLR 4.5.1
+// Generated from C:\Dev\Egne\svlang\vm\Parser\Grammar\\SVLang.g4 by ANTLR 4.5.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -17,6 +17,7 @@
 // Missing XML comment for publicly visible type or member '...'
 #pragma warning disable 1591
 
+namespace SVLang.Parser.SubParsers {
 using System;
 using System.Text;
 using System.Diagnostics;
@@ -29,7 +30,7 @@ using DFA = Antlr4.Runtime.Dfa.DFA;
 
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.5.1")]
 [System.CLSCompliant(false)]
-public partial class svlangParser : Parser {
+public partial class SVLangParser : Parser {
 	public const int
 		T__0=1, ID=2, WS=3;
 	public const int
@@ -55,30 +56,30 @@ public partial class svlangParser : Parser {
 		}
 	}
 
-	public override string GrammarFileName { get { return "svlang.g4"; } }
+	public override string GrammarFileName { get { return "SVLang.g4"; } }
 
 	public override string[] RuleNames { get { return ruleNames; } }
 
 	public override string SerializedAtn { get { return _serializedATN; } }
 
-	public svlangParser(ITokenStream input)
+	public SVLangParser(ITokenStream input)
 		: base(input)
 	{
 		Interpreter = new ParserATNSimulator(this,_ATN);
 	}
 	public partial class RContext : ParserRuleContext {
-		public ITerminalNode ID() { return GetToken(svlangParser.ID, 0); }
+		public ITerminalNode ID() { return GetToken(SVLangParser.ID, 0); }
 		public RContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
 		}
 		public override int RuleIndex { get { return RULE_r; } }
 		public override void EnterRule(IParseTreeListener listener) {
-			IsvlangListener typedListener = listener as IsvlangListener;
+			ISVLangListener typedListener = listener as ISVLangListener;
 			if (typedListener != null) typedListener.EnterR(this);
 		}
 		public override void ExitRule(IParseTreeListener listener) {
-			IsvlangListener typedListener = listener as IsvlangListener;
+			ISVLangListener typedListener = listener as ISVLangListener;
 			if (typedListener != null) typedListener.ExitR(this);
 		}
 	}
@@ -112,3 +113,4 @@ public partial class svlangParser : Parser {
 	public static readonly ATN _ATN =
 		new ATNDeserializer().Deserialize(_serializedATN.ToCharArray());
 }
+} // namespace SVLang.Parser.SubParsers

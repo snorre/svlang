@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-// Generated from C:\Dev\Egne\svlang\vm\Parser\Grammar\\svlang.g4 by ANTLR 4.5.1
+// Generated from C:\Dev\Egne\svlang\vm\Parser\Grammar\\SVLang.g4 by ANTLR 4.5.1
 
 // Unreachable code detected
 #pragma warning disable 0162
@@ -17,6 +17,7 @@
 // Missing XML comment for publicly visible type or member '...'
 #pragma warning disable 1591
 
+namespace SVLang.Parser.SubParsers {
 
 using Antlr4.Runtime.Misc;
 using IErrorNode = Antlr4.Runtime.Tree.IErrorNode;
@@ -25,25 +26,25 @@ using IToken = Antlr4.Runtime.IToken;
 using ParserRuleContext = Antlr4.Runtime.ParserRuleContext;
 
 /// <summary>
-/// This class provides an empty implementation of <see cref="IsvlangListener"/>,
+/// This class provides an empty implementation of <see cref="ISVLangListener"/>,
 /// which can be extended to create a listener which only needs to handle a subset
 /// of the available methods.
 /// </summary>
 [System.CodeDom.Compiler.GeneratedCode("ANTLR", "4.5.1")]
 [System.CLSCompliant(false)]
-public partial class svlangBaseListener : IsvlangListener {
+public partial class SVLangBaseListener : ISVLangListener {
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="svlangParser.r"/>.
+	/// Enter a parse tree produced by <see cref="SVLangParser.r"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void EnterR([NotNull] svlangParser.RContext context) { }
+	public virtual void EnterR([NotNull] SVLangParser.RContext context) { }
 	/// <summary>
-	/// Exit a parse tree produced by <see cref="svlangParser.r"/>.
+	/// Exit a parse tree produced by <see cref="SVLangParser.r"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
-	public virtual void ExitR([NotNull] svlangParser.RContext context) { }
+	public virtual void ExitR([NotNull] SVLangParser.RContext context) { }
 
 	/// <inheritdoc/>
 	/// <remarks>The default implementation does nothing.</remarks>
@@ -58,3 +59,4 @@ public partial class svlangBaseListener : IsvlangListener {
 	/// <remarks>The default implementation does nothing.</remarks>
 	public virtual void VisitErrorNode([NotNull] IErrorNode node) { }
 }
+} // namespace SVLang.Parser.SubParsers
