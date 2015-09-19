@@ -50,6 +50,26 @@ public interface ISVLangListener : IParseTreeListener {
 	/// <param name="context">The parse tree.</param>
 	void ExitValue([NotNull] SVLangParser.ValueContext context);
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SVLangParser.valuesingle"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterValuesingle([NotNull] SVLangParser.ValuesingleContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SVLangParser.valuesingle"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitValuesingle([NotNull] SVLangParser.ValuesingleContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SVLangParser.valuelist"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterValuelist([NotNull] SVLangParser.ValuelistContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SVLangParser.valuelist"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitValuelist([NotNull] SVLangParser.ValuelistContext context);
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SVLangParser.callFunction"/>.
 	/// </summary>
 	/// <param name="context">The parse tree.</param>

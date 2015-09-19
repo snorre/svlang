@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Concat.cs" />
+    <Compile Include="Str.cs" />
     <Compile Include="Equal.cs" />
     <Compile Include="Minus.cs" />
     <Compile Include="Plus.cs" />

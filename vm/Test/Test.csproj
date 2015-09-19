@@ -55,7 +55,7 @@
   <ItemGroup>
     <Compile Include="FileRunnerTests.cs" />
     <Compile Include="ParserTests.cs" />
-    <Compile Include="LanguageTests.cs" />
+    <Compile Include="ExecutionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestBase.cs" />
   </ItemGroup>

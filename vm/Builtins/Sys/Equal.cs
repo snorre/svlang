@@ -9,16 +9,11 @@ namespace SVLang.Builtins.Sys
         {
         }
 
-        public override Value Execute(Value[] parameterValues)
+        protected override Value ExecuteImpl(Value[] parameterValues)
         {
-            if (parameterValues.Length != 2)
-            {
-                throw Error.Panic(Name + " only supports 2 parameters.");
-            }
-
             var p1 = parameterValues[0].RawValue();
             var p2 = parameterValues[1].RawValue();
-            return new Value(p1.Equals(p2));
+            return new ValueSingle(p1.Equals(p2));
         }
     }
 }

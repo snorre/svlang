@@ -9,10 +9,18 @@ expr
 	| first
 	;
 
-value 
+value
+	: ( valuesingle | valuelist )
+	;
+
+valuesingle 
 	: BOOL
 	| NUM
 	| STRING
+	;
+
+valuelist
+	: '[' valuesingle* ']'
 	;
 
 callFunction

@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AST\ValueList.cs" />
+    <Compile Include="AST\ValueSingle.cs" />
     <Compile Include="BuiltinFunction.cs" />
     <Compile Include="AST\CallFunction.cs" />
     <Compile Include="AST\Codeblock.cs" />

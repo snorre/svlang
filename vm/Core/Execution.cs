@@ -36,8 +36,11 @@ namespace SVLang.Core
             if (e is BuiltinFunction)
                 return EvaluateBuiltinFunction(e as BuiltinFunction);
 
-            if (e is Value)
-                return e as Value;
+            if (e is ValueSingle)
+                return e as ValueSingle;
+
+            if (e is ValueList)
+                return e as ValueList;
 
             if (e is DefineFunction)
                 return EvalDefineFunction(e as DefineFunction);
@@ -108,7 +111,7 @@ namespace SVLang.Core
             var f = (DefineFunction)e;
 
             if (f.ParameterNames.Length != cf.Parameters.Length)
-                throw Error.Panic("Number of defined parameters and given parameter values differ.", cf);
+                throw Error.Panic($"Number of defined parameters and given parameter values differ. Expected: {f.ParameterNames.Length}, actual: {cf.Parameters.Length}", cf);
 
             for (int i = 0; i < cf.Parameters.Length; i++)
             {

@@ -32,23 +32,25 @@ using DFA = Antlr4.Runtime.Dfa.DFA;
 [System.CLSCompliant(false)]
 public partial class SVLangParser : Parser {
 	public const int
-		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, BOOL=8, NUM=9, 
-		STRING=10, ID=11, WS=12, EOL=13;
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, T__7=8, T__8=9, 
+		BOOL=10, NUM=11, STRING=12, ID=13, WS=14, EOL=15;
 	public const int
-		RULE_expr = 0, RULE_value = 1, RULE_callFunction = 2, RULE_parameterList = 3, 
-		RULE_defineFunction = 4, RULE_ifLine = 5, RULE_codeblock = 6, RULE_codeblockline = 7, 
-		RULE_first = 8, RULE_firstline = 9, RULE_firstelse = 10;
+		RULE_expr = 0, RULE_value = 1, RULE_valuesingle = 2, RULE_valuelist = 3, 
+		RULE_callFunction = 4, RULE_parameterList = 5, RULE_defineFunction = 6, 
+		RULE_ifLine = 7, RULE_codeblock = 8, RULE_codeblockline = 9, RULE_first = 10, 
+		RULE_firstline = 11, RULE_firstelse = 12;
 	public static readonly string[] ruleNames = {
-		"expr", "value", "callFunction", "parameterList", "defineFunction", "ifLine", 
-		"codeblock", "codeblockline", "first", "firstline", "firstelse"
+		"expr", "value", "valuesingle", "valuelist", "callFunction", "parameterList", 
+		"defineFunction", "ifLine", "codeblock", "codeblockline", "first", "firstline", 
+		"firstelse"
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, "'('", "')'", "'='", "'->'", "'{'", "'}'", "'first'"
+		null, "'['", "']'", "'('", "')'", "'='", "'->'", "'{'", "'}'", "'first'"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, null, null, null, null, null, null, null, "BOOL", "NUM", "STRING", 
-		"ID", "WS", "EOL"
+		null, null, null, null, null, null, null, null, null, null, "BOOL", "NUM", 
+		"STRING", "ID", "WS", "EOL"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -111,42 +113,42 @@ public partial class SVLangParser : Parser {
 		ExprContext _localctx = new ExprContext(Context, State);
 		EnterRule(_localctx, 0, RULE_expr);
 		try {
-			State = 28;
+			State = 32;
 			switch ( Interpreter.AdaptivePredict(TokenStream,0,Context) ) {
 			case 1:
 				EnterOuterAlt(_localctx, 1);
 				{
-				State = 22; value();
+				State = 26; value();
 				}
 				break;
 			case 2:
 				EnterOuterAlt(_localctx, 2);
 				{
-				State = 23; callFunction();
+				State = 27; callFunction();
 				}
 				break;
 			case 3:
 				EnterOuterAlt(_localctx, 3);
 				{
-				State = 24; defineFunction();
+				State = 28; defineFunction();
 				}
 				break;
 			case 4:
 				EnterOuterAlt(_localctx, 4);
 				{
-				State = 25; ifLine();
+				State = 29; ifLine();
 				}
 				break;
 			case 5:
 				EnterOuterAlt(_localctx, 5);
 				{
-				State = 26; codeblock();
+				State = 30; codeblock();
 				}
 				break;
 			case 6:
 				EnterOuterAlt(_localctx, 6);
 				{
-				State = 27; first();
+				State = 31; first();
 				}
 				break;
 			}
@@ -163,9 +165,12 @@ public partial class SVLangParser : Parser {
 	}
 
 	public partial class ValueContext : ParserRuleContext {
-		public ITerminalNode BOOL() { return GetToken(SVLangParser.BOOL, 0); }
-		public ITerminalNode NUM() { return GetToken(SVLangParser.NUM, 0); }
-		public ITerminalNode STRING() { return GetToken(SVLangParser.STRING, 0); }
+		public ValuesingleContext valuesingle() {
+			return GetRuleContext<ValuesingleContext>(0);
+		}
+		public ValuelistContext valuelist() {
+			return GetRuleContext<ValuelistContext>(0);
+		}
 		public ValueContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -185,11 +190,67 @@ public partial class SVLangParser : Parser {
 	public ValueContext value() {
 		ValueContext _localctx = new ValueContext(Context, State);
 		EnterRule(_localctx, 2, RULE_value);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 36;
+			switch (TokenStream.La(1)) {
+			case BOOL:
+			case NUM:
+			case STRING:
+				{
+				State = 34; valuesingle();
+				}
+				break;
+			case T__0:
+				{
+				State = 35; valuelist();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class ValuesingleContext : ParserRuleContext {
+		public ITerminalNode BOOL() { return GetToken(SVLangParser.BOOL, 0); }
+		public ITerminalNode NUM() { return GetToken(SVLangParser.NUM, 0); }
+		public ITerminalNode STRING() { return GetToken(SVLangParser.STRING, 0); }
+		public ValuesingleContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_valuesingle; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.EnterValuesingle(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.ExitValuesingle(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ValuesingleContext valuesingle() {
+		ValuesingleContext _localctx = new ValuesingleContext(Context, State);
+		EnterRule(_localctx, 4, RULE_valuesingle);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 30;
+			State = 38;
 			_la = TokenStream.La(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOL) | (1L << NUM) | (1L << STRING))) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
@@ -197,6 +258,64 @@ public partial class SVLangParser : Parser {
 			else {
 			    Consume();
 			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class ValuelistContext : ParserRuleContext {
+		public ValuesingleContext[] valuesingle() {
+			return GetRuleContexts<ValuesingleContext>();
+		}
+		public ValuesingleContext valuesingle(int i) {
+			return GetRuleContext<ValuesingleContext>(i);
+		}
+		public ValuelistContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_valuelist; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.EnterValuelist(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.ExitValuelist(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ValuelistContext valuelist() {
+		ValuelistContext _localctx = new ValuelistContext(Context, State);
+		EnterRule(_localctx, 6, RULE_valuelist);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 40; Match(T__0);
+			State = 44;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.La(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOL) | (1L << NUM) | (1L << STRING))) != 0)) {
+				{
+				{
+				State = 41; valuesingle();
+				}
+				}
+				State = 46;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.La(1);
+			}
+			State = 47; Match(T__1);
 			}
 		}
 		catch (RecognitionException re) {
@@ -233,14 +352,14 @@ public partial class SVLangParser : Parser {
 	[RuleVersion(0)]
 	public CallFunctionContext callFunction() {
 		CallFunctionContext _localctx = new CallFunctionContext(Context, State);
-		EnterRule(_localctx, 4, RULE_callFunction);
+		EnterRule(_localctx, 8, RULE_callFunction);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 32; Match(T__0);
-			State = 33; Match(ID);
-			State = 34; parameterList();
-			State = 35; Match(T__1);
+			State = 49; Match(T__2);
+			State = 50; Match(ID);
+			State = 51; parameterList();
+			State = 52; Match(T__3);
 			}
 		}
 		catch (RecognitionException re) {
@@ -279,21 +398,21 @@ public partial class SVLangParser : Parser {
 	[RuleVersion(0)]
 	public ParameterListContext parameterList() {
 		ParameterListContext _localctx = new ParameterListContext(Context, State);
-		EnterRule(_localctx, 6, RULE_parameterList);
+		EnterRule(_localctx, 10, RULE_parameterList);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 40;
+			State = 57;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.La(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOL) | (1L << NUM) | (1L << STRING))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << BOOL) | (1L << NUM) | (1L << STRING))) != 0)) {
 				{
 				{
-				State = 37; value();
+				State = 54; value();
 				}
 				}
-				State = 42;
+				State = 59;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.La(1);
 			}
@@ -336,24 +455,25 @@ public partial class SVLangParser : Parser {
 	[RuleVersion(0)]
 	public DefineFunctionContext defineFunction() {
 		DefineFunctionContext _localctx = new DefineFunctionContext(Context, State);
-		EnterRule(_localctx, 8, RULE_defineFunction);
+		EnterRule(_localctx, 12, RULE_defineFunction);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 43; Match(ID);
-			State = 44; Match(T__2);
-			State = 47;
+			State = 60; Match(ID);
+			State = 61; Match(T__4);
+			State = 64;
 			switch (TokenStream.La(1)) {
+			case T__0:
 			case BOOL:
 			case NUM:
 			case STRING:
 				{
-				State = 45; value();
+				State = 62; value();
 				}
 				break;
-			case T__4:
+			case T__6:
 				{
-				State = 46; codeblock();
+				State = 63; codeblock();
 				}
 				break;
 			default:
@@ -400,24 +520,25 @@ public partial class SVLangParser : Parser {
 	[RuleVersion(0)]
 	public IfLineContext ifLine() {
 		IfLineContext _localctx = new IfLineContext(Context, State);
-		EnterRule(_localctx, 10, RULE_ifLine);
+		EnterRule(_localctx, 14, RULE_ifLine);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 49; callFunction();
-			State = 50; Match(T__3);
-			State = 53;
+			State = 66; callFunction();
+			State = 67; Match(T__5);
+			State = 70;
 			switch (TokenStream.La(1)) {
-			case T__0:
+			case T__2:
 				{
-				State = 51; callFunction();
+				State = 68; callFunction();
 				}
 				break;
+			case T__0:
 			case BOOL:
 			case NUM:
 			case STRING:
 				{
-				State = 52; value();
+				State = 69; value();
 				}
 				break;
 			default:
@@ -462,27 +583,27 @@ public partial class SVLangParser : Parser {
 	[RuleVersion(0)]
 	public CodeblockContext codeblock() {
 		CodeblockContext _localctx = new CodeblockContext(Context, State);
-		EnterRule(_localctx, 12, RULE_codeblock);
+		EnterRule(_localctx, 16, RULE_codeblock);
 		int _la;
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 55; Match(T__4);
-			State = 56; Match(EOL);
-			State = 60;
+			State = 72; Match(T__6);
+			State = 73; Match(EOL);
+			State = 77;
 			ErrorHandler.Sync(this);
 			_la = TokenStream.La(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__4) | (1L << T__6) | (1L << BOOL) | (1L << NUM) | (1L << STRING) | (1L << ID))) != 0)) {
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__2) | (1L << T__6) | (1L << T__8) | (1L << BOOL) | (1L << NUM) | (1L << STRING) | (1L << ID))) != 0)) {
 				{
 				{
-				State = 57; codeblockline();
+				State = 74; codeblockline();
 				}
 				}
-				State = 62;
+				State = 79;
 				ErrorHandler.Sync(this);
 				_la = TokenStream.La(1);
 			}
-			State = 63; Match(T__5);
+			State = 80; Match(T__7);
 			}
 		}
 		catch (RecognitionException re) {
@@ -519,12 +640,12 @@ public partial class SVLangParser : Parser {
 	[RuleVersion(0)]
 	public CodeblocklineContext codeblockline() {
 		CodeblocklineContext _localctx = new CodeblocklineContext(Context, State);
-		EnterRule(_localctx, 14, RULE_codeblockline);
+		EnterRule(_localctx, 18, RULE_codeblockline);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 65; expr();
-			State = 66; Match(EOL);
+			State = 82; expr();
+			State = 83; Match(EOL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -567,16 +688,16 @@ public partial class SVLangParser : Parser {
 	[RuleVersion(0)]
 	public FirstContext first() {
 		FirstContext _localctx = new FirstContext(Context, State);
-		EnterRule(_localctx, 16, RULE_first);
+		EnterRule(_localctx, 20, RULE_first);
 		int _la;
 		try {
 			int _alt;
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 68; Match(T__6);
-			State = 69; Match(T__4);
-			State = 70; Match(EOL);
-			State = 72;
+			State = 85; Match(T__8);
+			State = 86; Match(T__6);
+			State = 87; Match(EOL);
+			State = 89;
 			ErrorHandler.Sync(this);
 			_alt = 1;
 			do {
@@ -584,26 +705,26 @@ public partial class SVLangParser : Parser {
 				case 1:
 					{
 					{
-					State = 71; firstline();
+					State = 88; firstline();
 					}
 					}
 					break;
 				default:
 					throw new NoViableAltException(this);
 				}
-				State = 74;
+				State = 91;
 				ErrorHandler.Sync(this);
-				_alt = Interpreter.AdaptivePredict(TokenStream,5,Context);
+				_alt = Interpreter.AdaptivePredict(TokenStream,7,Context);
 			} while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber );
-			State = 77;
+			State = 94;
 			_la = TokenStream.La(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << BOOL) | (1L << NUM) | (1L << STRING))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__2) | (1L << BOOL) | (1L << NUM) | (1L << STRING))) != 0)) {
 				{
-				State = 76; firstelse();
+				State = 93; firstelse();
 				}
 			}
 
-			State = 79; Match(T__5);
+			State = 96; Match(T__7);
 			}
 		}
 		catch (RecognitionException re) {
@@ -640,12 +761,12 @@ public partial class SVLangParser : Parser {
 	[RuleVersion(0)]
 	public FirstlineContext firstline() {
 		FirstlineContext _localctx = new FirstlineContext(Context, State);
-		EnterRule(_localctx, 18, RULE_firstline);
+		EnterRule(_localctx, 22, RULE_firstline);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 81; ifLine();
-			State = 82; Match(EOL);
+			State = 98; ifLine();
+			State = 99; Match(EOL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -685,28 +806,29 @@ public partial class SVLangParser : Parser {
 	[RuleVersion(0)]
 	public FirstelseContext firstelse() {
 		FirstelseContext _localctx = new FirstelseContext(Context, State);
-		EnterRule(_localctx, 20, RULE_firstelse);
+		EnterRule(_localctx, 24, RULE_firstelse);
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 86;
+			State = 103;
 			switch (TokenStream.La(1)) {
+			case T__0:
 			case BOOL:
 			case NUM:
 			case STRING:
 				{
-				State = 84; value();
+				State = 101; value();
 				}
 				break;
-			case T__0:
+			case T__2:
 				{
-				State = 85; callFunction();
+				State = 102; callFunction();
 				}
 				break;
 			default:
 				throw new NoViableAltException(this);
 			}
-			State = 88; Match(EOL);
+			State = 105; Match(EOL);
 			}
 		}
 		catch (RecognitionException re) {
@@ -721,36 +843,41 @@ public partial class SVLangParser : Parser {
 	}
 
 	public static readonly string _serializedATN =
-		"\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3\xF]\x4\x2\t\x2\x4"+
-		"\x3\t\x3\x4\x4\t\x4\x4\x5\t\x5\x4\x6\t\x6\x4\a\t\a\x4\b\t\b\x4\t\t\t\x4"+
-		"\n\t\n\x4\v\t\v\x4\f\t\f\x3\x2\x3\x2\x3\x2\x3\x2\x3\x2\x3\x2\x5\x2\x1F"+
-		"\n\x2\x3\x3\x3\x3\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x5\a\x5)\n\x5\f\x5"+
-		"\xE\x5,\v\x5\x3\x6\x3\x6\x3\x6\x3\x6\x5\x6\x32\n\x6\x3\a\x3\a\x3\a\x3"+
-		"\a\x5\a\x38\n\a\x3\b\x3\b\x3\b\a\b=\n\b\f\b\xE\b@\v\b\x3\b\x3\b\x3\t\x3"+
-		"\t\x3\t\x3\n\x3\n\x3\n\x3\n\x6\nK\n\n\r\n\xE\nL\x3\n\x5\nP\n\n\x3\n\x3"+
-		"\n\x3\v\x3\v\x3\v\x3\f\x3\f\x5\fY\n\f\x3\f\x3\f\x3\f\x2\x2\r\x2\x4\x6"+
-		"\b\n\f\xE\x10\x12\x14\x16\x2\x3\x3\x2\n\f]\x2\x1E\x3\x2\x2\x2\x4 \x3\x2"+
-		"\x2\x2\x6\"\x3\x2\x2\x2\b*\x3\x2\x2\x2\n-\x3\x2\x2\x2\f\x33\x3\x2\x2\x2"+
-		"\xE\x39\x3\x2\x2\x2\x10\x43\x3\x2\x2\x2\x12\x46\x3\x2\x2\x2\x14S\x3\x2"+
-		"\x2\x2\x16X\x3\x2\x2\x2\x18\x1F\x5\x4\x3\x2\x19\x1F\x5\x6\x4\x2\x1A\x1F"+
-		"\x5\n\x6\x2\x1B\x1F\x5\f\a\x2\x1C\x1F\x5\xE\b\x2\x1D\x1F\x5\x12\n\x2\x1E"+
-		"\x18\x3\x2\x2\x2\x1E\x19\x3\x2\x2\x2\x1E\x1A\x3\x2\x2\x2\x1E\x1B\x3\x2"+
-		"\x2\x2\x1E\x1C\x3\x2\x2\x2\x1E\x1D\x3\x2\x2\x2\x1F\x3\x3\x2\x2\x2 !\t"+
-		"\x2\x2\x2!\x5\x3\x2\x2\x2\"#\a\x3\x2\x2#$\a\r\x2\x2$%\x5\b\x5\x2%&\a\x4"+
-		"\x2\x2&\a\x3\x2\x2\x2\')\x5\x4\x3\x2(\'\x3\x2\x2\x2),\x3\x2\x2\x2*(\x3"+
-		"\x2\x2\x2*+\x3\x2\x2\x2+\t\x3\x2\x2\x2,*\x3\x2\x2\x2-.\a\r\x2\x2.\x31"+
-		"\a\x5\x2\x2/\x32\x5\x4\x3\x2\x30\x32\x5\xE\b\x2\x31/\x3\x2\x2\x2\x31\x30"+
-		"\x3\x2\x2\x2\x32\v\x3\x2\x2\x2\x33\x34\x5\x6\x4\x2\x34\x37\a\x6\x2\x2"+
-		"\x35\x38\x5\x6\x4\x2\x36\x38\x5\x4\x3\x2\x37\x35\x3\x2\x2\x2\x37\x36\x3"+
-		"\x2\x2\x2\x38\r\x3\x2\x2\x2\x39:\a\a\x2\x2:>\a\xF\x2\x2;=\x5\x10\t\x2"+
-		"<;\x3\x2\x2\x2=@\x3\x2\x2\x2><\x3\x2\x2\x2>?\x3\x2\x2\x2?\x41\x3\x2\x2"+
-		"\x2@>\x3\x2\x2\x2\x41\x42\a\b\x2\x2\x42\xF\x3\x2\x2\x2\x43\x44\x5\x2\x2"+
-		"\x2\x44\x45\a\xF\x2\x2\x45\x11\x3\x2\x2\x2\x46G\a\t\x2\x2GH\a\a\x2\x2"+
-		"HJ\a\xF\x2\x2IK\x5\x14\v\x2JI\x3\x2\x2\x2KL\x3\x2\x2\x2LJ\x3\x2\x2\x2"+
-		"LM\x3\x2\x2\x2MO\x3\x2\x2\x2NP\x5\x16\f\x2ON\x3\x2\x2\x2OP\x3\x2\x2\x2"+
-		"PQ\x3\x2\x2\x2QR\a\b\x2\x2R\x13\x3\x2\x2\x2ST\x5\f\a\x2TU\a\xF\x2\x2U"+
-		"\x15\x3\x2\x2\x2VY\x5\x4\x3\x2WY\x5\x6\x4\x2XV\x3\x2\x2\x2XW\x3\x2\x2"+
-		"\x2YZ\x3\x2\x2\x2Z[\a\xF\x2\x2[\x17\x3\x2\x2\x2\n\x1E*\x31\x37>LOX";
+		"\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3\x11n\x4\x2\t\x2"+
+		"\x4\x3\t\x3\x4\x4\t\x4\x4\x5\t\x5\x4\x6\t\x6\x4\a\t\a\x4\b\t\b\x4\t\t"+
+		"\t\x4\n\t\n\x4\v\t\v\x4\f\t\f\x4\r\t\r\x4\xE\t\xE\x3\x2\x3\x2\x3\x2\x3"+
+		"\x2\x3\x2\x3\x2\x5\x2#\n\x2\x3\x3\x3\x3\x5\x3\'\n\x3\x3\x4\x3\x4\x3\x5"+
+		"\x3\x5\a\x5-\n\x5\f\x5\xE\x5\x30\v\x5\x3\x5\x3\x5\x3\x6\x3\x6\x3\x6\x3"+
+		"\x6\x3\x6\x3\a\a\a:\n\a\f\a\xE\a=\v\a\x3\b\x3\b\x3\b\x3\b\x5\b\x43\n\b"+
+		"\x3\t\x3\t\x3\t\x3\t\x5\tI\n\t\x3\n\x3\n\x3\n\a\nN\n\n\f\n\xE\nQ\v\n\x3"+
+		"\n\x3\n\x3\v\x3\v\x3\v\x3\f\x3\f\x3\f\x3\f\x6\f\\\n\f\r\f\xE\f]\x3\f\x5"+
+		"\f\x61\n\f\x3\f\x3\f\x3\r\x3\r\x3\r\x3\xE\x3\xE\x5\xEj\n\xE\x3\xE\x3\xE"+
+		"\x3\xE\x2\x2\xF\x2\x4\x6\b\n\f\xE\x10\x12\x14\x16\x18\x1A\x2\x3\x3\x2"+
+		"\f\xEn\x2\"\x3\x2\x2\x2\x4&\x3\x2\x2\x2\x6(\x3\x2\x2\x2\b*\x3\x2\x2\x2"+
+		"\n\x33\x3\x2\x2\x2\f;\x3\x2\x2\x2\xE>\x3\x2\x2\x2\x10\x44\x3\x2\x2\x2"+
+		"\x12J\x3\x2\x2\x2\x14T\x3\x2\x2\x2\x16W\x3\x2\x2\x2\x18\x64\x3\x2\x2\x2"+
+		"\x1Ai\x3\x2\x2\x2\x1C#\x5\x4\x3\x2\x1D#\x5\n\x6\x2\x1E#\x5\xE\b\x2\x1F"+
+		"#\x5\x10\t\x2 #\x5\x12\n\x2!#\x5\x16\f\x2\"\x1C\x3\x2\x2\x2\"\x1D\x3\x2"+
+		"\x2\x2\"\x1E\x3\x2\x2\x2\"\x1F\x3\x2\x2\x2\" \x3\x2\x2\x2\"!\x3\x2\x2"+
+		"\x2#\x3\x3\x2\x2\x2$\'\x5\x6\x4\x2%\'\x5\b\x5\x2&$\x3\x2\x2\x2&%\x3\x2"+
+		"\x2\x2\'\x5\x3\x2\x2\x2()\t\x2\x2\x2)\a\x3\x2\x2\x2*.\a\x3\x2\x2+-\x5"+
+		"\x6\x4\x2,+\x3\x2\x2\x2-\x30\x3\x2\x2\x2.,\x3\x2\x2\x2./\x3\x2\x2\x2/"+
+		"\x31\x3\x2\x2\x2\x30.\x3\x2\x2\x2\x31\x32\a\x4\x2\x2\x32\t\x3\x2\x2\x2"+
+		"\x33\x34\a\x5\x2\x2\x34\x35\a\xF\x2\x2\x35\x36\x5\f\a\x2\x36\x37\a\x6"+
+		"\x2\x2\x37\v\x3\x2\x2\x2\x38:\x5\x4\x3\x2\x39\x38\x3\x2\x2\x2:=\x3\x2"+
+		"\x2\x2;\x39\x3\x2\x2\x2;<\x3\x2\x2\x2<\r\x3\x2\x2\x2=;\x3\x2\x2\x2>?\a"+
+		"\xF\x2\x2?\x42\a\a\x2\x2@\x43\x5\x4\x3\x2\x41\x43\x5\x12\n\x2\x42@\x3"+
+		"\x2\x2\x2\x42\x41\x3\x2\x2\x2\x43\xF\x3\x2\x2\x2\x44\x45\x5\n\x6\x2\x45"+
+		"H\a\b\x2\x2\x46I\x5\n\x6\x2GI\x5\x4\x3\x2H\x46\x3\x2\x2\x2HG\x3\x2\x2"+
+		"\x2I\x11\x3\x2\x2\x2JK\a\t\x2\x2KO\a\x11\x2\x2LN\x5\x14\v\x2ML\x3\x2\x2"+
+		"\x2NQ\x3\x2\x2\x2OM\x3\x2\x2\x2OP\x3\x2\x2\x2PR\x3\x2\x2\x2QO\x3\x2\x2"+
+		"\x2RS\a\n\x2\x2S\x13\x3\x2\x2\x2TU\x5\x2\x2\x2UV\a\x11\x2\x2V\x15\x3\x2"+
+		"\x2\x2WX\a\v\x2\x2XY\a\t\x2\x2Y[\a\x11\x2\x2Z\\\x5\x18\r\x2[Z\x3\x2\x2"+
+		"\x2\\]\x3\x2\x2\x2][\x3\x2\x2\x2]^\x3\x2\x2\x2^`\x3\x2\x2\x2_\x61\x5\x1A"+
+		"\xE\x2`_\x3\x2\x2\x2`\x61\x3\x2\x2\x2\x61\x62\x3\x2\x2\x2\x62\x63\a\n"+
+		"\x2\x2\x63\x17\x3\x2\x2\x2\x64\x65\x5\x10\t\x2\x65\x66\a\x11\x2\x2\x66"+
+		"\x19\x3\x2\x2\x2gj\x5\x4\x3\x2hj\x5\n\x6\x2ig\x3\x2\x2\x2ih\x3\x2\x2\x2"+
+		"jk\x3\x2\x2\x2kl\a\x11\x2\x2l\x1B\x3\x2\x2\x2\f\"&.;\x42HO]`i";
 	public static readonly ATN _ATN =
 		new ATNDeserializer().Deserialize(_serializedATN.ToCharArray());
 }

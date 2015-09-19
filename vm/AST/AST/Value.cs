@@ -1,8 +1,8 @@
 ﻿namespace SVLang.Basics.AST
 {
-    public class Value : Expr
+    public abstract class Value : Expr
     {
-        public static readonly Value Void = new Value(new RawVoid());
+        public static readonly ValueSingle Void = new ValueSingle(new RawVoid());
 
         public class RawVoid
         {
@@ -22,48 +22,8 @@
             }
         }
 
-        private readonly object _rawValue;
+        public abstract object RawValue();
 
-        public Value(object rawValue)
-        {
-            _rawValue = rawValue;
-        }
-
-        public object RawValue()
-        {
-            return _rawValue;
-        }
-
-        public override int GetHashCode()
-        {
-            return _rawValue.GetHashCode();
-        }
-
-        public override bool Equals(object obj)
-        {
-            return
-                obj is Value &&
-                (obj as Value)._rawValue.Equals(_rawValue);
-        }
-
-        public override string ToString(string indent)
-        {
-            return
-                indent +
-                (_rawValue is string
-                    ? "\"" + _rawValue + "\""
-                    : _rawValue.ToString().ToLower()
-                );
-        }
-
-        public bool IsTrue()
-        {
-            if (_rawValue is bool)
-            {
-                return (bool)_rawValue;
-            }
-
-            throw Error.Panic("Only booleans is supported in IsTrue() method.", this);
-        }
+        public abstract bool IsTrue();
     }
 }

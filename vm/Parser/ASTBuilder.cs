@@ -46,7 +46,22 @@ namespace SVLang.Parser
                 return BuildFirst(first);
             }
 
-            throw new InvalidOperationException("Cannot build expr, unknown type.");
+            throw new InvalidOperationException("Cannot build expr, unknown type.", expr.exception);
+        }
+
+        private ValueList BuildValueList(SVLangParser.ValuelistContext valuelist)
+        {
+            var valuesingleList = valuelist.valuesingle(); 
+            var values = new ValueSingle[0];
+            if (valuesingleList != null)
+            {
+                values =
+                    valuesingleList
+                        .Select(v => BuildValueSingle((SVLangParser.ValuesingleContext)v.Payload))
+                        .ToArray();
+            }
+
+            return new ValueList(values);
         }
 
         private First BuildFirst(SVLangParser.FirstContext first)
@@ -67,7 +82,7 @@ namespace SVLang.Parser
                         ? (Expr)BuildValue(v)
                         : BuildCallFunction(cf);
                 ifLines.Add(
-                    new IfLine(new Value(true), action)
+                    new IfLine(new ValueSingle(true), action)
                 );
             }
 
@@ -115,26 +130,43 @@ namespace SVLang.Parser
 
         private Value BuildValue(SVLangParser.ValueContext value)
         {
-            var n = value.NUM();
-            if (n != null)
+            var valuesingle = value.valuesingle();
+            if (valuesingle != null)
             {
-                return new Value(int.Parse(n.GetText()));
+                return BuildValueSingle(valuesingle);
             }
 
-            var b = value.BOOL();
-            if (b != null)
+            var valuelist = value.valuelist();
+            if (valuelist != null)
             {
-                return new Value(bool.Parse(b.GetText()));
-            }
-
-            var s = value.STRING();
-            if (s != null)
-            {
-                var str = s.GetText();
-                return new Value(str.Substring(1, str.Length - 2)); // from "x" to x
+                return BuildValueList(valuelist);
             }
 
             throw new InvalidOperationException("Cannot build value, unknown type.", value.exception);
+        }
+
+        private ValueSingle BuildValueSingle(SVLangParser.ValuesingleContext valuesingle)
+        {
+            var n = valuesingle.NUM();
+            if (n != null)
+            {
+                return new ValueSingle(int.Parse(n.GetText()));
+            }
+
+            var b = valuesingle.BOOL();
+            if (b != null)
+            {
+                return new ValueSingle(bool.Parse(b.GetText()));
+            }
+
+            var s = valuesingle.STRING();
+            if (s != null)
+            {
+                var str = s.GetText();
+                return new ValueSingle(str.Substring(1, str.Length - 2)); // from "x" to x
+            }
+
+            throw new InvalidOperationException("Cannot build valuesingle, unknown type.", valuesingle.exception);
         }
 
         private CallFunction BuildCallFunction(SVLangParser.CallFunctionContext cf)

@@ -267,6 +267,37 @@ namespace SVLang.Test
             );
         }
 
+        [TestMethod]
+        public void valuelist()
+        {
+            ParsesTo(
+                "[1 true        \"abc\"  ]",
+                VL(1, true, "abc")
+            );
+        }
+
+        [TestMethod]
+        public void valuelist_one_element()
+        {
+            ParsesTo(
+                "[ 1]",
+                VL(1)
+            );
+        }
+
+        [TestMethod]
+        public void valuelist_empty()
+        {
+            ParsesTo(
+                "[]",
+                VL()
+            );
+            ParsesTo(
+                "[      ]",
+                VL()
+            );
+        }
+
         #region Helpers
 
         private void ParsesTo(string code, Expr expr)

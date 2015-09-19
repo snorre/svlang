@@ -58,6 +58,30 @@ public partial class SVLangBaseListener : ISVLangListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitValue([NotNull] SVLangParser.ValueContext context) { }
 	/// <summary>
+	/// Enter a parse tree produced by <see cref="SVLangParser.valuesingle"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterValuesingle([NotNull] SVLangParser.ValuesingleContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SVLangParser.valuesingle"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitValuesingle([NotNull] SVLangParser.ValuesingleContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SVLangParser.valuelist"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterValuelist([NotNull] SVLangParser.ValuelistContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SVLangParser.valuelist"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitValuelist([NotNull] SVLangParser.ValuelistContext context) { }
+	/// <summary>
 	/// Enter a parse tree produced by <see cref="SVLangParser.callFunction"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

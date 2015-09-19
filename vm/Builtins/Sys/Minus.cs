@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using SVLang.Basics;
 using SVLang.Basics.AST;
 
@@ -6,25 +8,19 @@ namespace SVLang.Builtins.sys
 {
     public class Minus : BuiltinFunction
     {
+        private static readonly List<Type> Integer = new List<Type> { typeof(int) };
+
+        protected override List<Type> RawTypesSupported => Integer;
+
         public Minus() : base("-", "i1", "i2")
         {
         }
 
-        public override Value Execute(Value[] parameterValues)
+        protected override Value ExecuteImpl(Value[] parameterValues)
         {
-            if (!parameterValues.All(pv => pv.RawValue() is int))
-            {
-                throw Error.Panic(Name + " only supports integers.");
-            }
-
-            if (parameterValues.Length != 2)
-            {
-                throw Error.Panic(Name + " only supports 2 parameters.");
-            }
-
             var p1 = (int)parameterValues[0].RawValue();
             var p2 = (int)parameterValues[1].RawValue();
-            return new Value(p1 - p2);
+            return new ValueSingle(p1 - p2);
         }
     }
 }

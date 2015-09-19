@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SVLang.Basics.AST;
 using SVLang.Builtins.sys;
@@ -24,7 +25,7 @@ namespace SVLang.Test
         [TestCleanup]
         public void TestBase_PrintOutput()
         {
-            PrintSection("Output", TestOutputStream.ToString());
+            PrintSection("Print output", TestOutputStream.ToString());
         }
 
         protected void PrintSection(string header, string content)
@@ -41,9 +42,14 @@ namespace SVLang.Test
             Assert.AreEqual(expected, actual);
         }
 
-        protected Value V(object rawValue)
+        protected ValueSingle V(object rawValue)
         {
-            return new Value(rawValue);
+            return new ValueSingle(rawValue);
+        }
+
+        protected ValueList VL(params object[] rawValues)
+        {
+            return new ValueList(rawValues.Select(V).ToArray());
         }
 
         protected CallFunction CallF(string name, params Expr[] parameters)
