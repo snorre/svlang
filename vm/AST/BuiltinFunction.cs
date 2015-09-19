@@ -20,7 +20,15 @@ namespace SVLang.Basics
         public Value Execute(Value[] parameterValues)
         {
             ValidateTypesOfParametervalues(parameterValues);
-            return ExecuteImpl(parameterValues);
+
+            try
+            {
+                return ExecuteImpl(parameterValues);
+            }
+            catch (Exception e)
+            {
+                throw Error.Panic($"Builtin function \"{Name}\" failed: {e.Message}", innerException: e);
+            }
         }
 
         private void ValidateTypesOfParametervalues(Value[] parameterValues)

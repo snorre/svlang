@@ -377,6 +377,105 @@ namespace SVLang.Test
             );
         }
 
+        [TestMethod]
+        public void call_builtin_head_with_list()
+        {
+            EvaluatesTo(
+                "first",
+                CallF("head", VL("first", "second", "third"))
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_head_with_list_with_one_element()
+        {
+            EvaluatesTo(
+                "only",
+                CallF("head", VL("only"))
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_head_with_list_with_no_element()
+        {
+            EvaluatesTo(
+                Value.Void,
+                CallF("head", VL())
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_head_with_single_element()
+        {
+            EvaluatesTo(
+                "only",
+                CallF("head", V("only"))
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_empty_with_list()
+        {
+            EvaluatesTo(
+                false,
+                CallF("empty", VL(1))
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_empty_with_empty_list()
+        {
+            EvaluatesTo(
+                true,
+                CallF("empty", VL())
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_empty_with_single_element()
+        {
+            EvaluatesTo(
+                false,
+                CallF("empty", V(1))
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_tail_with_list()
+        {
+            EvaluatesTo(
+                VL(2, 3),
+                CallF("tail", VL(1, 2, 3))
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_tail_with_single_element()
+        {
+            MustFail(
+                "Builtin function \"tail\" failed: Only lists with more than 1 element supported.",
+                CallF("tail", V(1))
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_tail_with_list_with_one_element()
+        {
+            MustFail(
+                "Builtin function \"tail\" failed: List contains less than 2 elements.",
+                CallF("tail", VL(1))
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_tail_with_empty_list()
+        {
+            MustFail(
+                "Builtin function \"tail\" failed: List contains less than 2 elements.",
+                CallF("tail", VL())
+            );
+        }
+
         #region Helpers
 
         private void EvaluatesTo(object expected, params Expr[] codelines)
