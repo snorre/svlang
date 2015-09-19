@@ -56,7 +56,7 @@ BOOL
 	;
 
 NUM 
-	: '-'?[0-9]+ 
+	: '-'?DIGIT+ 
 	;
 
 STRING
