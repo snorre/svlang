@@ -12,13 +12,8 @@ namespace SVLang.Builtins.Sys
 
         protected override Value ExecuteImpl(Value[] parameterValues)
         {
-            var pv = parameterValues.Single();
-            if (pv is ValueList)
-            {
-                return ((ValueList)pv).Values.FirstOrDefault() ?? Value.Void;
-            }
-
-            return pv;
+            var list = GetSingleParameterAsValueList(parameterValues);
+            return list.Values.FirstOrDefault() ?? Value.Void;
         }
     }
 }

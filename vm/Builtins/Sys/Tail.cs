@@ -12,19 +12,14 @@ namespace SVLang.Builtins.Sys
 
         protected override Value ExecuteImpl(Value[] parameterValues)
         {
-            var pv = parameterValues.Single();
-            if (pv is ValueList)
-            {
-                var list = (ValueList)pv;
-                if (list.Values.Length < 2)
-                {
-                    throw Error.Panic("List contains less than 2 elements.");
-                }
+            var list = GetSingleParameterAsValueList(parameterValues);
 
-                return new ValueList(list.Values.Skip(1).ToArray());
+            if (list.Values.Length < 2)
+            {
+                throw Error.Panic("List contains less than 2 elements.");
             }
 
-            throw Error.Panic("Only lists with more than 1 element supported.");
+            return new ValueList(list.Values.Skip(1).ToArray());
         }
     }
 }

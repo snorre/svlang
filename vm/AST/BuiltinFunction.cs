@@ -31,6 +31,38 @@ namespace SVLang.Basics
             }
         }
 
+        protected ValueList GetSingleParameterAsValueList(Value[] parameterValues)
+        {
+            var pv = GetSingleParameter(parameterValues);
+            if (!(pv is ValueList))
+            {
+                throw Error.Panic($"Cannot cast single parameter to ValueList, type is: {pv.GetType()}");
+            }
+
+            return (ValueList)pv;
+        }
+
+        protected ValueSingle GetSingleParameterAsValueSingle(Value[] parameterValues)
+        {
+            var pv = GetSingleParameter(parameterValues);
+            if (!(pv is ValueSingle))
+            {
+                throw Error.Panic($"Cannot cast single parameter to ValueList, type is: {pv.GetType()}");
+            }
+
+            return (ValueSingle)pv;
+        }
+
+        protected Value GetSingleParameter(Value[] parameterValues)
+        {
+            if (parameterValues.Length != 1)
+            {
+                throw Error.Panic($"Cannot get single parameter. Parameter count: {parameterValues.Length}");
+            }
+
+            return parameterValues.Single();
+        }
+
         private void ValidateTypesOfParametervalues(Value[] parameterValues)
         {
             if (!RawTypesSupported.Any())

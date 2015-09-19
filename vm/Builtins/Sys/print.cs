@@ -16,7 +16,7 @@ namespace SVLang.Builtins.sys
         
         protected override Value ExecuteImpl(Value[] parameterValues)
         {
-            var pv = parameterValues.Single();
+            var pv = GetSingleParameter(parameterValues);
             string str;
             if (pv is ValueList)
             {

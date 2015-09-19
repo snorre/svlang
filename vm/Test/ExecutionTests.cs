@@ -407,8 +407,8 @@ namespace SVLang.Test
         [TestMethod]
         public void call_builtin_head_with_single_element()
         {
-            EvaluatesTo(
-                "only",
+            MustFail(
+                "Builtin function \"head\" failed: Cannot cast single parameter to ValueList, type is: SVLang.Basics.AST.ValueSingle",
                 CallF("head", V("only"))
             );
         }
@@ -453,7 +453,7 @@ namespace SVLang.Test
         public void call_builtin_tail_with_single_element()
         {
             MustFail(
-                "Builtin function \"tail\" failed: Only lists with more than 1 element supported.",
+                "Builtin function \"tail\" failed: Cannot cast single parameter to ValueList, type is: SVLang.Basics.AST.ValueSingle",
                 CallF("tail", V(1))
             );
         }
