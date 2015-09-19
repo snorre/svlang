@@ -18,8 +18,10 @@ namespace SVLang.Parser
         {
             var sr = new StringReader(_code);
             var lexer = new SVLangLexer(new AntlrInputStream(sr));
+            lexer.AddErrorListener(new ErrorListener());
             var tokenStream = new CommonTokenStream(lexer);
             var parser = new SVLangParser(tokenStream);
+            parser.AddErrorListener(new ErrorListener());
             var tree = parser.expr();
             return new ASTBuilder().Build(tree);
         }

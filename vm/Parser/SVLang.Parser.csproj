@@ -48,20 +48,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ASTBuilder.cs" />
+    <Compile Include="ErrorListener.cs" />
     <Compile Include="GeneratedParser\SVLangBaseListener.cs" />
     <Compile Include="GeneratedParser\SVLangLexer.cs" />
     <Compile Include="GeneratedParser\SVLangListener.cs" />
     <Compile Include="GeneratedParser\SVLangParser.cs" />
     <Compile Include="StringParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SubParsers_old\BasicParser.cs" />
-    <Compile Include="SubParsers_old\CallFunctionParser.cs" />
-    <Compile Include="SubParsers_old\CodeblockParser.cs" />
-    <Compile Include="SubParsers_old\DefineFunctionParser.cs" />
-    <Compile Include="SubParsers_old\ExprParser.cs" />
-    <Compile Include="SubParsers_old\FirstParser.cs" />
-    <Compile Include="SubParsers_old\IfLineParser.cs" />
-    <Compile Include="SubParsers_old\ValueParser.cs" />
+    <Compile Include="SubParsers_TODO_REMOVE\BasicParser.cs" />
+    <Compile Include="SubParsers_TODO_REMOVE\CallFunctionParser.cs" />
+    <Compile Include="SubParsers_TODO_REMOVE\CodeblockParser.cs" />
+    <Compile Include="SubParsers_TODO_REMOVE\DefineFunctionParser.cs" />
+    <Compile Include="SubParsers_TODO_REMOVE\ExprParser.cs" />
+    <Compile Include="SubParsers_TODO_REMOVE\FirstParser.cs" />
+    <Compile Include="SubParsers_TODO_REMOVE\IfLineParser.cs" />
+    <Compile Include="SubParsers_TODO_REMOVE\ValueParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GeneratedParser\SVLang.tokens" />
