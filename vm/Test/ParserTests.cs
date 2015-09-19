@@ -49,7 +49,7 @@ namespace SVLang.Test
         [TestMethod]
         public void callfunction_with_param()
         {
-            ParsesTo("(fun 123)", CallF("fun", V(123)));
+            ParsesTo("(fun 123 )", CallF("fun", V(123)));
         }
 
         [TestMethod]
@@ -77,6 +77,17 @@ namespace SVLang.Test
         }
 
         [TestMethod]
+        public void definefunction_with_codeblock()
+        {
+            ParsesTo(
+                @"fun = {
+                    1
+                }",
+                DefF("fun", Cb(V(1)))
+            );
+        }
+
+        [TestMethod]
         public void complex_1()
         {
             ParsesTo(
@@ -97,19 +108,50 @@ namespace SVLang.Test
         }
 
         [TestMethod]
+        public void complex_2_with_blank_lines()
+        {
+            ParsesTo(
+                @"
+
+                {
+
+                    fun = {
+
+                        1
+
+                        456
+
+                    }
+
+                    (fun)
+
+                    1
+
+                }
+
+                ",
+                Cb(
+                    DefF("fun",
+                        Cb(V(1), V(456))
+                    ),
+                    CallF("fun"),
+                    V(1)
+                )
+            );
+        }
+
+        [TestMethod]
         public void define_two_methods()
         {
             ParsesTo(
                 @"{
-                    afunA = {
+                    funA = {
                         123
                     }
-
-                    bfunB = {
+                    funB = {
                         456
                     }
-
-                    (cfunB)
+                    (funB)
                 }",
                 Cb(
                     DefF("funA", Cb(V(123))),
@@ -204,6 +246,23 @@ namespace SVLang.Test
                     If(CallF("cond1"), CallF("act1")),
                     If(CallF("cond2"), CallF("act2")),
                     If(V(true), V(false))
+                )
+            );
+        }
+
+        [TestMethod]
+        public void first_with_else_as_callfunction()
+        {
+            ParsesTo(
+                @"first {
+                    (cond1) -> (act1)
+                    (cond2) -> (act2)
+                    (funElse)
+                }",
+                First(
+                    If(CallF("cond1"), CallF("act1")),
+                    If(CallF("cond2"), CallF("act2")),
+                    If(V(true), CallF("funElse"))
                 )
             );
         }

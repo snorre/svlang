@@ -55,14 +55,6 @@
     <Compile Include="GeneratedParser\SVLangParser.cs" />
     <Compile Include="StringParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SubParsers_TODO_REMOVE\BasicParser.cs" />
-    <Compile Include="SubParsers_TODO_REMOVE\CallFunctionParser.cs" />
-    <Compile Include="SubParsers_TODO_REMOVE\CodeblockParser.cs" />
-    <Compile Include="SubParsers_TODO_REMOVE\DefineFunctionParser.cs" />
-    <Compile Include="SubParsers_TODO_REMOVE\ExprParser.cs" />
-    <Compile Include="SubParsers_TODO_REMOVE\FirstParser.cs" />
-    <Compile Include="SubParsers_TODO_REMOVE\IfLineParser.cs" />
-    <Compile Include="SubParsers_TODO_REMOVE\ValueParser.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GeneratedParser\SVLang.tokens" />

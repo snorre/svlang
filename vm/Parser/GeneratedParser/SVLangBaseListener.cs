@@ -57,6 +57,114 @@ public partial class SVLangBaseListener : ISVLangListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitValue([NotNull] SVLangParser.ValueContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SVLangParser.callFunction"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterCallFunction([NotNull] SVLangParser.CallFunctionContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SVLangParser.callFunction"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitCallFunction([NotNull] SVLangParser.CallFunctionContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SVLangParser.parameterList"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterParameterList([NotNull] SVLangParser.ParameterListContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SVLangParser.parameterList"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitParameterList([NotNull] SVLangParser.ParameterListContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SVLangParser.defineFunction"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterDefineFunction([NotNull] SVLangParser.DefineFunctionContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SVLangParser.defineFunction"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitDefineFunction([NotNull] SVLangParser.DefineFunctionContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SVLangParser.ifLine"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterIfLine([NotNull] SVLangParser.IfLineContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SVLangParser.ifLine"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitIfLine([NotNull] SVLangParser.IfLineContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SVLangParser.codeblock"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterCodeblock([NotNull] SVLangParser.CodeblockContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SVLangParser.codeblock"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitCodeblock([NotNull] SVLangParser.CodeblockContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SVLangParser.codeblockline"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterCodeblockline([NotNull] SVLangParser.CodeblocklineContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SVLangParser.codeblockline"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitCodeblockline([NotNull] SVLangParser.CodeblocklineContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SVLangParser.first"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFirst([NotNull] SVLangParser.FirstContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SVLangParser.first"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFirst([NotNull] SVLangParser.FirstContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SVLangParser.firstline"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFirstline([NotNull] SVLangParser.FirstlineContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SVLangParser.firstline"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFirstline([NotNull] SVLangParser.FirstlineContext context) { }
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SVLangParser.firstelse"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void EnterFirstelse([NotNull] SVLangParser.FirstelseContext context) { }
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SVLangParser.firstelse"/>.
+	/// <para>The default implementation does nothing.</para>
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	public virtual void ExitFirstelse([NotNull] SVLangParser.FirstelseContext context) { }
 
 	/// <inheritdoc/>
 	/// <remarks>The default implementation does nothing.</remarks>

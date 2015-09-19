@@ -11,7 +11,7 @@ namespace SVLang.Parser
 
         public StringParser(string code)
         {
-            _code = code;
+            _code = code.Trim();
         }
 
         public Expr Run()
@@ -23,7 +23,7 @@ namespace SVLang.Parser
             var parser = new SVLangParser(tokenStream);
             parser.AddErrorListener(new ErrorListener());
             var tree = parser.expr();
-            return new ASTBuilder().Build(tree);
+            return new ASTBuilder().BuildExpr(tree);
         }
     }
 }

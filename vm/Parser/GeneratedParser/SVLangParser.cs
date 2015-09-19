@@ -32,17 +32,23 @@ using DFA = Antlr4.Runtime.Dfa.DFA;
 [System.CLSCompliant(false)]
 public partial class SVLangParser : Parser {
 	public const int
-		BOOL=1, NUM=2, STRING=3;
+		T__0=1, T__1=2, T__2=3, T__3=4, T__4=5, T__5=6, T__6=7, BOOL=8, NUM=9, 
+		STRING=10, ID=11, WS=12, EOL=13;
 	public const int
-		RULE_expr = 0, RULE_value = 1;
+		RULE_expr = 0, RULE_value = 1, RULE_callFunction = 2, RULE_parameterList = 3, 
+		RULE_defineFunction = 4, RULE_ifLine = 5, RULE_codeblock = 6, RULE_codeblockline = 7, 
+		RULE_first = 8, RULE_firstline = 9, RULE_firstelse = 10;
 	public static readonly string[] ruleNames = {
-		"expr", "value"
+		"expr", "value", "callFunction", "parameterList", "defineFunction", "ifLine", 
+		"codeblock", "codeblockline", "first", "firstline", "firstelse"
 	};
 
 	private static readonly string[] _LiteralNames = {
+		null, "'('", "')'", "'='", "'->'", "'{'", "'}'", "'first'"
 	};
 	private static readonly string[] _SymbolicNames = {
-		null, "BOOL", "NUM", "STRING"
+		null, null, null, null, null, null, null, null, "BOOL", "NUM", "STRING", 
+		"ID", "WS", "EOL"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -70,6 +76,21 @@ public partial class SVLangParser : Parser {
 		public ValueContext value() {
 			return GetRuleContext<ValueContext>(0);
 		}
+		public CallFunctionContext callFunction() {
+			return GetRuleContext<CallFunctionContext>(0);
+		}
+		public DefineFunctionContext defineFunction() {
+			return GetRuleContext<DefineFunctionContext>(0);
+		}
+		public IfLineContext ifLine() {
+			return GetRuleContext<IfLineContext>(0);
+		}
+		public CodeblockContext codeblock() {
+			return GetRuleContext<CodeblockContext>(0);
+		}
+		public FirstContext first() {
+			return GetRuleContext<FirstContext>(0);
+		}
 		public ExprContext(ParserRuleContext parent, int invokingState)
 			: base(parent, invokingState)
 		{
@@ -90,9 +111,44 @@ public partial class SVLangParser : Parser {
 		ExprContext _localctx = new ExprContext(Context, State);
 		EnterRule(_localctx, 0, RULE_expr);
 		try {
-			EnterOuterAlt(_localctx, 1);
-			{
-			State = 4; value();
+			State = 28;
+			switch ( Interpreter.AdaptivePredict(TokenStream,0,Context) ) {
+			case 1:
+				EnterOuterAlt(_localctx, 1);
+				{
+				State = 22; value();
+				}
+				break;
+			case 2:
+				EnterOuterAlt(_localctx, 2);
+				{
+				State = 23; callFunction();
+				}
+				break;
+			case 3:
+				EnterOuterAlt(_localctx, 3);
+				{
+				State = 24; defineFunction();
+				}
+				break;
+			case 4:
+				EnterOuterAlt(_localctx, 4);
+				{
+				State = 25; ifLine();
+				}
+				break;
+			case 5:
+				EnterOuterAlt(_localctx, 5);
+				{
+				State = 26; codeblock();
+				}
+				break;
+			case 6:
+				EnterOuterAlt(_localctx, 6);
+				{
+				State = 27; first();
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -133,7 +189,7 @@ public partial class SVLangParser : Parser {
 		try {
 			EnterOuterAlt(_localctx, 1);
 			{
-			State = 6;
+			State = 30;
 			_la = TokenStream.La(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOL) | (1L << NUM) | (1L << STRING))) != 0)) ) {
 			ErrorHandler.RecoverInline(this);
@@ -154,11 +210,547 @@ public partial class SVLangParser : Parser {
 		return _localctx;
 	}
 
+	public partial class CallFunctionContext : ParserRuleContext {
+		public ITerminalNode ID() { return GetToken(SVLangParser.ID, 0); }
+		public ParameterListContext parameterList() {
+			return GetRuleContext<ParameterListContext>(0);
+		}
+		public CallFunctionContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_callFunction; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.EnterCallFunction(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.ExitCallFunction(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public CallFunctionContext callFunction() {
+		CallFunctionContext _localctx = new CallFunctionContext(Context, State);
+		EnterRule(_localctx, 4, RULE_callFunction);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 32; Match(T__0);
+			State = 33; Match(ID);
+			State = 34; parameterList();
+			State = 35; Match(T__1);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class ParameterListContext : ParserRuleContext {
+		public ValueContext[] value() {
+			return GetRuleContexts<ValueContext>();
+		}
+		public ValueContext value(int i) {
+			return GetRuleContext<ValueContext>(i);
+		}
+		public ParameterListContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_parameterList; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.EnterParameterList(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.ExitParameterList(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public ParameterListContext parameterList() {
+		ParameterListContext _localctx = new ParameterListContext(Context, State);
+		EnterRule(_localctx, 6, RULE_parameterList);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 40;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.La(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BOOL) | (1L << NUM) | (1L << STRING))) != 0)) {
+				{
+				{
+				State = 37; value();
+				}
+				}
+				State = 42;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.La(1);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class DefineFunctionContext : ParserRuleContext {
+		public ITerminalNode ID() { return GetToken(SVLangParser.ID, 0); }
+		public ValueContext value() {
+			return GetRuleContext<ValueContext>(0);
+		}
+		public CodeblockContext codeblock() {
+			return GetRuleContext<CodeblockContext>(0);
+		}
+		public DefineFunctionContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_defineFunction; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.EnterDefineFunction(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.ExitDefineFunction(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public DefineFunctionContext defineFunction() {
+		DefineFunctionContext _localctx = new DefineFunctionContext(Context, State);
+		EnterRule(_localctx, 8, RULE_defineFunction);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 43; Match(ID);
+			State = 44; Match(T__2);
+			State = 47;
+			switch (TokenStream.La(1)) {
+			case BOOL:
+			case NUM:
+			case STRING:
+				{
+				State = 45; value();
+				}
+				break;
+			case T__4:
+				{
+				State = 46; codeblock();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class IfLineContext : ParserRuleContext {
+		public CallFunctionContext[] callFunction() {
+			return GetRuleContexts<CallFunctionContext>();
+		}
+		public CallFunctionContext callFunction(int i) {
+			return GetRuleContext<CallFunctionContext>(i);
+		}
+		public ValueContext value() {
+			return GetRuleContext<ValueContext>(0);
+		}
+		public IfLineContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_ifLine; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.EnterIfLine(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.ExitIfLine(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public IfLineContext ifLine() {
+		IfLineContext _localctx = new IfLineContext(Context, State);
+		EnterRule(_localctx, 10, RULE_ifLine);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 49; callFunction();
+			State = 50; Match(T__3);
+			State = 53;
+			switch (TokenStream.La(1)) {
+			case T__0:
+				{
+				State = 51; callFunction();
+				}
+				break;
+			case BOOL:
+			case NUM:
+			case STRING:
+				{
+				State = 52; value();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class CodeblockContext : ParserRuleContext {
+		public ITerminalNode EOL() { return GetToken(SVLangParser.EOL, 0); }
+		public CodeblocklineContext[] codeblockline() {
+			return GetRuleContexts<CodeblocklineContext>();
+		}
+		public CodeblocklineContext codeblockline(int i) {
+			return GetRuleContext<CodeblocklineContext>(i);
+		}
+		public CodeblockContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_codeblock; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.EnterCodeblock(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.ExitCodeblock(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public CodeblockContext codeblock() {
+		CodeblockContext _localctx = new CodeblockContext(Context, State);
+		EnterRule(_localctx, 12, RULE_codeblock);
+		int _la;
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 55; Match(T__4);
+			State = 56; Match(EOL);
+			State = 60;
+			ErrorHandler.Sync(this);
+			_la = TokenStream.La(1);
+			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << T__4) | (1L << T__6) | (1L << BOOL) | (1L << NUM) | (1L << STRING) | (1L << ID))) != 0)) {
+				{
+				{
+				State = 57; codeblockline();
+				}
+				}
+				State = 62;
+				ErrorHandler.Sync(this);
+				_la = TokenStream.La(1);
+			}
+			State = 63; Match(T__5);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class CodeblocklineContext : ParserRuleContext {
+		public ExprContext expr() {
+			return GetRuleContext<ExprContext>(0);
+		}
+		public ITerminalNode EOL() { return GetToken(SVLangParser.EOL, 0); }
+		public CodeblocklineContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_codeblockline; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.EnterCodeblockline(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.ExitCodeblockline(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public CodeblocklineContext codeblockline() {
+		CodeblocklineContext _localctx = new CodeblocklineContext(Context, State);
+		EnterRule(_localctx, 14, RULE_codeblockline);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 65; expr();
+			State = 66; Match(EOL);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class FirstContext : ParserRuleContext {
+		public ITerminalNode EOL() { return GetToken(SVLangParser.EOL, 0); }
+		public FirstlineContext[] firstline() {
+			return GetRuleContexts<FirstlineContext>();
+		}
+		public FirstlineContext firstline(int i) {
+			return GetRuleContext<FirstlineContext>(i);
+		}
+		public FirstelseContext firstelse() {
+			return GetRuleContext<FirstelseContext>(0);
+		}
+		public FirstContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_first; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.EnterFirst(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.ExitFirst(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public FirstContext first() {
+		FirstContext _localctx = new FirstContext(Context, State);
+		EnterRule(_localctx, 16, RULE_first);
+		int _la;
+		try {
+			int _alt;
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 68; Match(T__6);
+			State = 69; Match(T__4);
+			State = 70; Match(EOL);
+			State = 72;
+			ErrorHandler.Sync(this);
+			_alt = 1;
+			do {
+				switch (_alt) {
+				case 1:
+					{
+					{
+					State = 71; firstline();
+					}
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
+				}
+				State = 74;
+				ErrorHandler.Sync(this);
+				_alt = Interpreter.AdaptivePredict(TokenStream,5,Context);
+			} while ( _alt!=2 && _alt!=global::Antlr4.Runtime.Atn.ATN.InvalidAltNumber );
+			State = 77;
+			_la = TokenStream.La(1);
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << T__0) | (1L << BOOL) | (1L << NUM) | (1L << STRING))) != 0)) {
+				{
+				State = 76; firstelse();
+				}
+			}
+
+			State = 79; Match(T__5);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class FirstlineContext : ParserRuleContext {
+		public IfLineContext ifLine() {
+			return GetRuleContext<IfLineContext>(0);
+		}
+		public ITerminalNode EOL() { return GetToken(SVLangParser.EOL, 0); }
+		public FirstlineContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_firstline; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.EnterFirstline(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.ExitFirstline(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public FirstlineContext firstline() {
+		FirstlineContext _localctx = new FirstlineContext(Context, State);
+		EnterRule(_localctx, 18, RULE_firstline);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 81; ifLine();
+			State = 82; Match(EOL);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
+	public partial class FirstelseContext : ParserRuleContext {
+		public ITerminalNode EOL() { return GetToken(SVLangParser.EOL, 0); }
+		public ValueContext value() {
+			return GetRuleContext<ValueContext>(0);
+		}
+		public CallFunctionContext callFunction() {
+			return GetRuleContext<CallFunctionContext>(0);
+		}
+		public FirstelseContext(ParserRuleContext parent, int invokingState)
+			: base(parent, invokingState)
+		{
+		}
+		public override int RuleIndex { get { return RULE_firstelse; } }
+		public override void EnterRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.EnterFirstelse(this);
+		}
+		public override void ExitRule(IParseTreeListener listener) {
+			ISVLangListener typedListener = listener as ISVLangListener;
+			if (typedListener != null) typedListener.ExitFirstelse(this);
+		}
+	}
+
+	[RuleVersion(0)]
+	public FirstelseContext firstelse() {
+		FirstelseContext _localctx = new FirstelseContext(Context, State);
+		EnterRule(_localctx, 20, RULE_firstelse);
+		try {
+			EnterOuterAlt(_localctx, 1);
+			{
+			State = 86;
+			switch (TokenStream.La(1)) {
+			case BOOL:
+			case NUM:
+			case STRING:
+				{
+				State = 84; value();
+				}
+				break;
+			case T__0:
+				{
+				State = 85; callFunction();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+			State = 88; Match(EOL);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			ErrorHandler.ReportError(this, re);
+			ErrorHandler.Recover(this, re);
+		}
+		finally {
+			ExitRule();
+		}
+		return _localctx;
+	}
+
 	public static readonly string _serializedATN =
-		"\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3\x5\v\x4\x2\t\x2"+
-		"\x4\x3\t\x3\x3\x2\x3\x2\x3\x3\x3\x3\x3\x3\x2\x2\x4\x2\x4\x2\x3\x3\x2\x3"+
-		"\x5\b\x2\x6\x3\x2\x2\x2\x4\b\x3\x2\x2\x2\x6\a\x5\x4\x3\x2\a\x3\x3\x2\x2"+
-		"\x2\b\t\t\x2\x2\x2\t\x5\x3\x2\x2\x2\x2";
+		"\x3\x430\xD6D1\x8206\xAD2D\x4417\xAEF1\x8D80\xAADD\x3\xF]\x4\x2\t\x2\x4"+
+		"\x3\t\x3\x4\x4\t\x4\x4\x5\t\x5\x4\x6\t\x6\x4\a\t\a\x4\b\t\b\x4\t\t\t\x4"+
+		"\n\t\n\x4\v\t\v\x4\f\t\f\x3\x2\x3\x2\x3\x2\x3\x2\x3\x2\x3\x2\x5\x2\x1F"+
+		"\n\x2\x3\x3\x3\x3\x3\x4\x3\x4\x3\x4\x3\x4\x3\x4\x3\x5\a\x5)\n\x5\f\x5"+
+		"\xE\x5,\v\x5\x3\x6\x3\x6\x3\x6\x3\x6\x5\x6\x32\n\x6\x3\a\x3\a\x3\a\x3"+
+		"\a\x5\a\x38\n\a\x3\b\x3\b\x3\b\a\b=\n\b\f\b\xE\b@\v\b\x3\b\x3\b\x3\t\x3"+
+		"\t\x3\t\x3\n\x3\n\x3\n\x3\n\x6\nK\n\n\r\n\xE\nL\x3\n\x5\nP\n\n\x3\n\x3"+
+		"\n\x3\v\x3\v\x3\v\x3\f\x3\f\x5\fY\n\f\x3\f\x3\f\x3\f\x2\x2\r\x2\x4\x6"+
+		"\b\n\f\xE\x10\x12\x14\x16\x2\x3\x3\x2\n\f]\x2\x1E\x3\x2\x2\x2\x4 \x3\x2"+
+		"\x2\x2\x6\"\x3\x2\x2\x2\b*\x3\x2\x2\x2\n-\x3\x2\x2\x2\f\x33\x3\x2\x2\x2"+
+		"\xE\x39\x3\x2\x2\x2\x10\x43\x3\x2\x2\x2\x12\x46\x3\x2\x2\x2\x14S\x3\x2"+
+		"\x2\x2\x16X\x3\x2\x2\x2\x18\x1F\x5\x4\x3\x2\x19\x1F\x5\x6\x4\x2\x1A\x1F"+
+		"\x5\n\x6\x2\x1B\x1F\x5\f\a\x2\x1C\x1F\x5\xE\b\x2\x1D\x1F\x5\x12\n\x2\x1E"+
+		"\x18\x3\x2\x2\x2\x1E\x19\x3\x2\x2\x2\x1E\x1A\x3\x2\x2\x2\x1E\x1B\x3\x2"+
+		"\x2\x2\x1E\x1C\x3\x2\x2\x2\x1E\x1D\x3\x2\x2\x2\x1F\x3\x3\x2\x2\x2 !\t"+
+		"\x2\x2\x2!\x5\x3\x2\x2\x2\"#\a\x3\x2\x2#$\a\r\x2\x2$%\x5\b\x5\x2%&\a\x4"+
+		"\x2\x2&\a\x3\x2\x2\x2\')\x5\x4\x3\x2(\'\x3\x2\x2\x2),\x3\x2\x2\x2*(\x3"+
+		"\x2\x2\x2*+\x3\x2\x2\x2+\t\x3\x2\x2\x2,*\x3\x2\x2\x2-.\a\r\x2\x2.\x31"+
+		"\a\x5\x2\x2/\x32\x5\x4\x3\x2\x30\x32\x5\xE\b\x2\x31/\x3\x2\x2\x2\x31\x30"+
+		"\x3\x2\x2\x2\x32\v\x3\x2\x2\x2\x33\x34\x5\x6\x4\x2\x34\x37\a\x6\x2\x2"+
+		"\x35\x38\x5\x6\x4\x2\x36\x38\x5\x4\x3\x2\x37\x35\x3\x2\x2\x2\x37\x36\x3"+
+		"\x2\x2\x2\x38\r\x3\x2\x2\x2\x39:\a\a\x2\x2:>\a\xF\x2\x2;=\x5\x10\t\x2"+
+		"<;\x3\x2\x2\x2=@\x3\x2\x2\x2><\x3\x2\x2\x2>?\x3\x2\x2\x2?\x41\x3\x2\x2"+
+		"\x2@>\x3\x2\x2\x2\x41\x42\a\b\x2\x2\x42\xF\x3\x2\x2\x2\x43\x44\x5\x2\x2"+
+		"\x2\x44\x45\a\xF\x2\x2\x45\x11\x3\x2\x2\x2\x46G\a\t\x2\x2GH\a\a\x2\x2"+
+		"HJ\a\xF\x2\x2IK\x5\x14\v\x2JI\x3\x2\x2\x2KL\x3\x2\x2\x2LJ\x3\x2\x2\x2"+
+		"LM\x3\x2\x2\x2MO\x3\x2\x2\x2NP\x5\x16\f\x2ON\x3\x2\x2\x2OP\x3\x2\x2\x2"+
+		"PQ\x3\x2\x2\x2QR\a\b\x2\x2R\x13\x3\x2\x2\x2ST\x5\f\a\x2TU\a\xF\x2\x2U"+
+		"\x15\x3\x2\x2\x2VY\x5\x4\x3\x2WY\x5\x6\x4\x2XV\x3\x2\x2\x2XW\x3\x2\x2"+
+		"\x2YZ\x3\x2\x2\x2Z[\a\xF\x2\x2[\x17\x3\x2\x2\x2\n\x1E*\x31\x37>LOX";
 	public static readonly ATN _ATN =
 		new ATNDeserializer().Deserialize(_serializedATN.ToCharArray());
 }
