@@ -13,9 +13,10 @@ namespace SVLang.Basics.AST
 
         public override bool Equals(object obj)
         {
-            return
-                obj is ValueList &&
-                Values.SequenceEqual(((ValueList)obj).Values);
+            var otherList = obj as ValueList;
+            return 
+                otherList != null &&
+                Values.SequenceEqual(otherList.Values);
         }
 
         public override int GetHashCode()

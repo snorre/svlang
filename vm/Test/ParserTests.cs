@@ -88,6 +88,24 @@ namespace SVLang.Test
         }
 
         [TestMethod]
+        public void definefunction_with_one_parameter()
+        {
+            ParsesTo(
+                "fun p = 1",
+                DefF("fun", V(1), "p")
+            );
+        }
+
+        [TestMethod]
+        public void definefunction_with_two_parameters()
+        {
+            ParsesTo(
+                "fun p1 p2 = 1",
+                DefF("fun", V(1), "p1", "p2")
+            );
+        }
+
+        [TestMethod]
         public void complex_1()
         {
             ParsesTo(
@@ -295,6 +313,15 @@ namespace SVLang.Test
             ParsesTo(
                 "[      ]",
                 VL()
+            );
+        }
+
+        [TestMethod]
+        public void word_void()
+        {
+            ParsesTo(
+                "void",
+                Value.Void
             );
         }
 

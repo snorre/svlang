@@ -1,0 +1,18 @@
+﻿fizzbuzz numbers = {
+	num = {
+		(head (numbers))
+	}
+	numIsMod x = {
+		(eq 0 (mod (x) (num)))
+	}
+	first {
+		(numIsMod 15) -> (print "FizzBuzz")
+		(numIsMod 3) -> (print "Fizz")
+		(numIsMod 5) -> (print "Buzz")
+		(print (num))
+	}
+
+	(hastail (numbers)) -> (fizzbuzz (tail (numbers)))
+}
+
+(fizzbuzz (range 1 15))

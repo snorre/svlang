@@ -27,7 +27,7 @@ namespace SVLang.Builtins.sys
                 str = pv.RawValue().ToString();
             }
 
-            Output.Write(str);
+            Output.Write(str + Environment.NewLine);
             return new ValueSingle(str);
         }
     }

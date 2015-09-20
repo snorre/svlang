@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using SVLang.Basics.AST;
 using SVLang.Core;
 using SVLang.Parser;
 
@@ -19,7 +20,7 @@ namespace SVLang.Runner
             _file = file;
         }
 
-        public object Run()
+        public Expr Run()
         {
             string code = File.ReadAllText(_file.FullName);
             code = "{" + Environment.NewLine + code + Environment.NewLine + "}";

@@ -94,18 +94,6 @@ public partial class SVLangBaseListener : ISVLangListener {
 	/// <param name="context">The parse tree.</param>
 	public virtual void ExitCallFunction([NotNull] SVLangParser.CallFunctionContext context) { }
 	/// <summary>
-	/// Enter a parse tree produced by <see cref="SVLangParser.parameterList"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void EnterParameterList([NotNull] SVLangParser.ParameterListContext context) { }
-	/// <summary>
-	/// Exit a parse tree produced by <see cref="SVLangParser.parameterList"/>.
-	/// <para>The default implementation does nothing.</para>
-	/// </summary>
-	/// <param name="context">The parse tree.</param>
-	public virtual void ExitParameterList([NotNull] SVLangParser.ParameterListContext context) { }
-	/// <summary>
 	/// Enter a parse tree produced by <see cref="SVLangParser.defineFunction"/>.
 	/// <para>The default implementation does nothing.</para>
 	/// </summary>

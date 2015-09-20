@@ -15,10 +15,10 @@ namespace SVLang.Core
             _code = code;
         }
 
-        public object Run()
+        public Expr Run()
         {
             LoadBuiltins();
-            return Evaluate(_code).RawValue();
+            return Evaluate(_code);
         }
 
         private void LoadBuiltins()
@@ -86,7 +86,7 @@ namespace SVLang.Core
         {
             Memory.Mark();
 
-            Value lastValue = null;
+            Value lastValue = Value.Void;
             foreach (var line in c.Codelines)
             {
                 lastValue = Evaluate(line);
@@ -111,7 +111,7 @@ namespace SVLang.Core
             var f = (DefineFunction)e;
 
             if (f.ParameterNames.Length != cf.Parameters.Length)
-                throw Error.Panic($"Number of defined parameters and given parameter values differ. Expected: {f.ParameterNames.Length}, actual: {cf.Parameters.Length}", cf);
+                throw Error.Panic($"Call to \"{f.Name}\" failed. Number of defined parameters and given parameter values differ. Expected: {f.ParameterNames.Length}, actual: {cf.Parameters.Length}", cf);
 
             for (int i = 0; i < cf.Parameters.Length; i++)
             {

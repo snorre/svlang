@@ -99,7 +99,10 @@ namespace SVLang.Parser
 
         private DefineFunction BuildDefineFunction(SVLangParser.DefineFunctionContext df)
         {
-            var id = df.ID().GetText();
+            var idList = df.ID().Select(id => id.GetText()).ToList();
+
+            var functionId = idList.First();
+            var parameterIdList = idList.Skip(1);
             var v = df.value();
             var cb = df.codeblock();
 
@@ -110,8 +113,9 @@ namespace SVLang.Parser
 
             return 
                 new DefineFunction(
-                    name: id,
-                    code: code
+                    name: functionId,
+                    code: code,
+                    parameterNames: parameterIdList.ToArray()
                 );
         }
 
@@ -166,20 +170,25 @@ namespace SVLang.Parser
                 return new ValueSingle(str.Substring(1, str.Length - 2)); // from "x" to x
             }
 
+            var v = valuesingle.VOID();
+            if (v != null)
+            {
+                return Value.Void;
+            }
+
             throw new InvalidOperationException("Cannot build valuesingle, unknown type.", valuesingle.exception);
         }
 
         private CallFunction BuildCallFunction(SVLangParser.CallFunctionContext cf)
         {
-            var cfParameters = cf.parameterList().children;
+            var cfParameters = cf.expr();
 
             var parameterExprList = new Expr[0];
             if (cfParameters != null)
             {
                 parameterExprList =
                     cfParameters
-                        .Select(p => BuildValue((SVLangParser.ValueContext)p.Payload))
-                        .Cast<Expr>()
+                        .Select(BuildExpr)
                         .ToArray();
             }
 

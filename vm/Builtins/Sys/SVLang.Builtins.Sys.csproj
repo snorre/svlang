@@ -39,8 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Count.cs" />
     <Compile Include="Empty.cs" />
+    <Compile Include="HasTail.cs" />
     <Compile Include="Head.cs" />
+    <Compile Include="Mod.cs" />
+    <Compile Include="NotEqual.cs" />
+    <Compile Include="Range.cs" />
     <Compile Include="Str.cs" />
     <Compile Include="Equal.cs" />
     <Compile Include="Minus.cs" />

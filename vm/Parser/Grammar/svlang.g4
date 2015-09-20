@@ -17,6 +17,7 @@ valuesingle
 	: BOOL
 	| NUM
 	| STRING
+	| VOID
 	;
 
 valuelist
@@ -24,15 +25,11 @@ valuelist
 	;
 
 callFunction
-	: '(' ID parameterList ')'
-	;
-
-parameterList
-	: value*
+	: '(' ID expr* ')'
 	;
 
 defineFunction
-	: ID '=' ( value | codeblock )
+	: ID+ '=' ( value | codeblock )
 	;
 
 ifLine
@@ -71,13 +68,17 @@ STRING
 	: '"' ~('\r' | '\n' | '"')* '"' 
 	;
 
+VOID
+	: 'void'
+	;
+
 ID
 	: NONDIGIT ( NONDIGIT | DIGIT )*
 	;
 
 fragment
 NONDIGIT
-	: [a-zA-Z_]
+	: [a-zA-Z]
 	;
 
 fragment

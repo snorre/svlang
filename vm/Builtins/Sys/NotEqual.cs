@@ -3,9 +3,9 @@ using SVLang.Basics.AST;
 
 namespace SVLang.Builtins.Sys
 {
-    public class Equal : BuiltinFunction
+    public class NotEqual : BuiltinFunction
     {
-        public Equal() : base("eq", "p1", "p2")
+        public NotEqual() : base("noteq", "p1", "p2")
         {
         }
 
@@ -13,7 +13,7 @@ namespace SVLang.Builtins.Sys
         {
             var p1 = parameterValues[0].RawValue();
             var p2 = parameterValues[1].RawValue();
-            return new ValueSingle(p1.Equals(p2));
+            return new ValueSingle(!p1.Equals(p2));
         }
     }
 }

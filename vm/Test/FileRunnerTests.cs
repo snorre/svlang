@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SVLang.Basics.AST;
 using SVLang.Runner;
 
 namespace SVLang.Test
@@ -13,38 +14,60 @@ namespace SVLang.Test
         [TestMethod]
         public void Simple_file()
         {
-            FilePrints(1, "return_1.svl");
+            FilePrints(V(1), "return_1.svl");
         }
 
         [TestMethod]
         public void Function_call()
         {
-            FilePrints(123, "function_call.svl");
+            FilePrints(V(123), "function_call.svl");
         }
 
         [TestMethod]
         public void File_with_print()
         {
-            FilePrints(123, "builtin_print.svl");
+            FilePrints(V(123), "builtin_print.svl");
             OutputMustBe("hello world!");
+        }
+
+        [TestMethod]
+        public void FizzBuzz()
+        {
+            FilePrints(Value.Void, "fizzbuzz.svl");
+            OutputMustBe(
+                "1",
+                "2",
+                "Fizz",
+                "4",
+                "Buzz",
+                "Fizz",
+                "7",
+                "8",
+                "Fizz",
+                "Buzz",
+                "11",
+                "Fizz",
+                "13",
+                "14",
+                "FizzBuzz"
+            );
         }
 
         #region Helpers
 
-        private void FilePrints(object expected, string fileName)
+        private void FilePrints(Expr expected, string fileName)
         {
             FileInfo file = null;
             try
             {
                 file = PrepFile(fileName);
                 var retVal = new FileRunner(file).Run();
-                Console.WriteLine("Execution result: " + retVal);
+                PrintSection("Execution result", retVal.ToString());
                 Assert.AreEqual(expected, retVal);
             }
             finally
             {
-                if (file != null) 
-                    file.Delete();
+                file?.Delete();
             }
         }
 

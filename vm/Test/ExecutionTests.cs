@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SVLang.Basics;
 using SVLang.Basics.AST;
 using SVLang.Core;
 
@@ -241,8 +242,8 @@ namespace SVLang.Test
         public void add_numbers()
         {
             EvaluatesTo(
-                3,
-                CallF("+", V(1), V(2))
+                V(3),
+                CallF("plus", V(1), V(2))
             );
         }
 
@@ -251,7 +252,7 @@ namespace SVLang.Test
         {
             EvaluatesTo(
                 Value.Void,
-                If(CallF("=", V(1), V(2)), V(1))
+                If(CallF("eq", V(1), V(2)), V(1))
             );
         }
 
@@ -260,7 +261,7 @@ namespace SVLang.Test
         {
             EvaluatesTo(
                 3,
-                If(CallF("=", V(1), V(1)), V(3))
+                If(CallF("eq", V(1), V(1)), V(3))
             );
         }
 
@@ -269,7 +270,7 @@ namespace SVLang.Test
         {
             EvaluatesTo(
                 1,
-                CallF("-", V(3), V(2))
+                CallF("minus", V(3), V(2))
             );
         }
 
@@ -279,7 +280,7 @@ namespace SVLang.Test
             EvaluatesTo(
                 3,
                 First(
-                    If(CallF("=", V(1), V(1)), V(3))
+                    If(CallF("eq", V(1), V(1)), V(3))
                 )
             );
         }
@@ -290,9 +291,9 @@ namespace SVLang.Test
             EvaluatesTo(
                 5,
                 First(
-                    If(CallF("=", V(1), V(2)), V(3)),
+                    If(CallF("eq", V(1), V(2)), V(3)),
                     If(V(false), V(6)),
-                    If(CallF("=", V(4), V(4)), V(5))
+                    If(CallF("eq", V(4), V(4)), V(5))
                 )
             );
         }
@@ -303,8 +304,8 @@ namespace SVLang.Test
             EvaluatesTo(
                 Value.Void,
                 First(
-                    If(CallF("=", V(1), V(2)), V(3)),
-                    If(CallF("=", V(4), V(5)), V(6))
+                    If(CallF("eq", V(1), V(2)), V(3)),
+                    If(CallF("eq", V(4), V(5)), V(6))
                 )
             );
         }
@@ -316,12 +317,12 @@ namespace SVLang.Test
                 Value.Void,
                 DefF("test", Value.Void),
                 First(
-                    If(CallF("=", V(1), V(1)), CallF("test")),
-                    If(CallF("=", V(1), V(1)), CallF("print", V(4))),
-                    If(CallF("=", V(4), V(4)), V(5))
+                    If(CallF("eq", V(1), V(1)), CallF("test")),
+                    If(CallF("eq", V(1), V(1)), CallF("print", V(4))),
+                    If(CallF("eq", V(4), V(4)), V(5))
                 )
             );
-            OutputMustBe("");
+            OutputMustBeEmpty();
         }
 
         [TestMethod, Ignore] // Fix later
@@ -360,20 +361,11 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void valuelist_eval()
-        {
-            EvaluatesTo(
-                new object[] { 1, true, "abc" },
-                VL(1, true, "abc")
-            );
-        }
-
-        [TestMethod]
         public void call_builtin_minus_with_invalid_parametertype()
         {
             MustFail(
-                "Builtin function \"-\" got invalid type in parameter. Type: System.String, ParameterName: i2. Supported types are: System.Int32",
-                CallF("-", V(1), V("wrong"))
+                "Builtin function \"minus\" got invalid type in parameter. Type: System.String, ParameterName: i2. Supported types are: System.Int32",
+                CallF("minus", V(1), V("wrong"))
             );
         }
 
@@ -476,25 +468,155 @@ namespace SVLang.Test
             );
         }
 
+        [TestMethod]
+        public void call_builtin_range_with_empty_range()
+        {
+            EvaluatesTo(
+                VL(3),
+                CallF("range", V(3), V(3))
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_range_with_negative_range()
+        {
+            MustFail(
+                "Builtin function \"range\" failed: To parameter must be bigger than from parameter. From was 3, to was 2.",
+                CallF("range", V(3), V(2))
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_range_with_negative_parameters()
+        {
+            MustFail(
+                "Builtin function \"range\" failed: Parameters must be positive. From was -3, to was -2.",
+                CallF("range", V(-3), V(-2))
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_count_with_empty_list()
+        {
+            EvaluatesTo(
+                0,
+                CallF("count", VL())
+            );
+        }
+
+        [TestMethod]
+        public void codeblock_with_no_content_returns_void()
+        {
+            EvaluatesTo(
+                Value.Void,
+                Cb()
+            );
+        }
+
+        [TestMethod]
+        public void codeblock_with_void_returns_void()
+        {
+            EvaluatesTo(
+                Value.Void,
+                Cb(Value.Void)
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_mod()
+        {
+            EvaluatesTo(
+                V(3),
+                CallF("mod", V(10), V(3))
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_has_tail_with_list()
+        {
+            EvaluatesTo(
+                V(true),
+                CallF("hastail", VL(1, 2))
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_has_tail_with_list_with_one_element()
+        {
+            EvaluatesTo(
+                V(false),
+                CallF("hastail", VL(1))
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_has_tail_with_empty_list()
+        {
+            EvaluatesTo(
+                V(false),
+                CallF("hastail", VL())
+            );
+        }
+
+        [TestMethod]
+        public void fizz_buzz()
+        {
+            EvaluatesTo(
+                Value.Void,
+                Cb(
+                    DefF(
+                        "fizzbuzz",
+                        Cb(
+                            DefF("num", Cb(CallF("head", CallF("numbers")))),
+                            DefF("numIsMod", Cb(CallF("eq", V(0), CallF("mod", CallF("x"), CallF("num")))), "x"),
+                            First(
+                                If(CallF("numIsMod", V(15)), CallF("print", V("FizzBuzz"))),
+                                If(CallF("numIsMod", V(3)), CallF("print", V("Fizz"))),
+                                If(CallF("numIsMod", V(5)), CallF("print", V("Buzz"))),
+                                If(V(true), CallF("print", CallF("num")))
+                            ),
+                            If(CallF("hastail", CallF("numbers")), CallF("fizzbuzz", CallF("tail", CallF("numbers"))))
+                        ),
+                        "numbers"
+                    ),
+                    CallF("fizzbuzz", CallF("range", V(1), V(15)))
+                )
+            );
+            OutputMustBe(
+                "1",
+                "2",
+                "Fizz",
+                "4",
+                "Buzz",
+                "Fizz",
+                "7",
+                "8",
+                "Fizz",
+                "Buzz",
+                "11",
+                "Fizz",
+                "13",
+                "14",
+                "FizzBuzz"
+            );
+        }
+
         #region Helpers
 
         private void EvaluatesTo(object expected, params Expr[] codelines)
         {
-            var result = Run(codelines);
-
-            if (expected is Value)
+            if (expected is int || expected is bool || expected is string)
             {
-                expected = (expected as Value).RawValue();
+                expected = V(expected);
             }
 
             if (expected is object[])
             {
-                Assert.IsTrue((expected as object[]).SequenceEqual((object[])result));
+                expected = VL(expected);
             }
-            else
-            {
-                Assert.AreEqual(expected, result);
-            }
+
+            var result = Run(codelines);
+            Assert.AreEqual(expected, result);
         }
 
         private void MustFail(string expectedMessage, params Expr[] codelines)
@@ -504,6 +626,11 @@ namespace SVLang.Test
                 Run(codelines);
                 Assert.Fail("Code emitted no exception.");
             }
+            catch (Error.SvlException x)
+            {
+                Assert.AreEqual(expectedMessage, x.MessageBasic);
+                Console.WriteLine(x);
+            }
             catch (Exception x)
             {
                 Assert.AreEqual(expectedMessage, x.Message);
@@ -511,7 +638,7 @@ namespace SVLang.Test
             }
         }
 
-        private object Run(Expr[] codelines)
+        private Expr Run(Expr[] codelines)
         {
             var cb = new Codeblock(codelines);
             PrintSection("Running", cb.ToString());

@@ -36,10 +36,17 @@ namespace SVLang.Test
             Console.WriteLine("");
         }
 
-        protected void OutputMustBe(string expected)
+        protected void OutputMustBeEmpty()
         {
+            Assert.IsTrue(TestOutputStream.ToString().Length == 0);
+        }
+
+        protected void OutputMustBe(params string[] expectedLines)
+        {
+            var allLines = string.Join(Environment.NewLine, expectedLines);
+
             string actual = TestOutputStream.ToString();
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(allLines + Environment.NewLine, actual);
         }
 
         protected ValueSingle V(object rawValue)

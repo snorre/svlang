@@ -7,7 +7,10 @@ namespace SVLang.Basics
 {
     public abstract class BuiltinFunction : DefineFunction
     {
-        private static readonly List<Type> AllRawTypesSupported = new List<Type>();
+        protected static readonly List<Type> AllRawTypesSupported = new List<Type>();
+        protected static readonly List<Type> OnlyInts = new List<Type> { typeof(int) }; 
+        protected static readonly List<Type> OnlyStrings = new List<Type> { typeof(string) };
+        protected static readonly List<Type> OnlyBools = new List<Type> { typeof(bool) };
 
         protected virtual List<Type> RawTypesSupported => AllRawTypesSupported;
 

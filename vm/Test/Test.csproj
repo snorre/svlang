@@ -87,6 +87,7 @@
   <ItemGroup>
     <EmbeddedResource Include="svl-files\FileRunnerTests\function_call.svl" />
     <EmbeddedResource Include="svl-files\FileRunnerTests\builtin_print.svl" />
+    <EmbeddedResource Include="svl-files\FileRunnerTests\fizzbuzz.svl" />
     <None Include="svl-files\Run.bat" />
   </ItemGroup>
   <Choose>

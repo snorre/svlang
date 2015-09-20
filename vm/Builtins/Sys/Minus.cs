@@ -7,11 +7,9 @@ namespace SVLang.Builtins.sys
 {
     public class Minus : BuiltinFunction
     {
-        private static readonly List<Type> Integer = new List<Type> { typeof(int) };
+        protected override List<Type> RawTypesSupported => OnlyInts;
 
-        protected override List<Type> RawTypesSupported => Integer;
-
-        public Minus() : base("-", "i1", "i2")
+        public Minus() : base("minus", "i1", "i2")
         {
         }
 

@@ -8,11 +8,9 @@ namespace SVLang.Builtins.sys
 {
     public class Plus : BuiltinFunction
     {
-        private static readonly List<Type> Ints = new List<Type> { typeof(int) };
+        protected override List<Type> RawTypesSupported => OnlyInts;
 
-        protected override List<Type> RawTypesSupported => Ints;
-
-        public Plus() : base("+", "i1", "i2")
+        public Plus() : base("plus", "i1", "i2")
         {
         }
 

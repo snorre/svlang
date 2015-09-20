@@ -33,16 +33,9 @@ namespace SVLang.Basics.AST
 
         public override string ToString(string indent)
         {
-            var parameterString = (" " + string.Join(" ", ParameterNames)).Trim();
-            return
-                string.Format(
-                    "{0}{1}{2} = {{{4}{3}{4}{0}}}",
-                    indent,
-                    Name,
-                    parameterString,
-                    Code.ToString(indent + OneLevelIndent),
-                    Environment.NewLine
-                );
+            var preEqualSign = (Name + " " + string.Join(" ", ParameterNames)).Trim();
+            var codeString = Code.ToString(indent).Trim();
+            return $"{indent}{preEqualSign} = {codeString}";
         }
     }
 }

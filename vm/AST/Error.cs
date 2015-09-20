@@ -12,31 +12,34 @@ namespace SVLang.Basics
 
         public class SvlException : Exception
         {
+            public string MessageBasic { get; private set; }
+
             public Expr RelatedTo { get; private set; }
 
             internal SvlException(string message, Expr relatedTo)
-                : base(message)
+                : base(BuildMessage(message, relatedTo))
             {
+                MessageBasic = message;
                 RelatedTo = relatedTo;
             }
 
-            public override string ToString()
+            private static string BuildMessage(string message, Expr relatedTo)
             {
                 var nl = Environment.NewLine;
                 var relatedToString = string.Empty;
-                if (RelatedTo != null)
+                if (relatedTo != null)
                 {
-                    var str = RelatedTo.ToString(Expr.OneLevelIndent);
+                    var str = relatedTo.ToString(Expr.OneLevelIndent);
                     relatedToString = string.Format("Related to:{0}\"{0}{1}{0}\"", nl, str.Substring(0, Math.Min(str.Length, 100)));
                 }
 
-                return 
+                return
                     string.Format(
-                        "Error during execution: {0}{1}{1}{2}",
-                        Message,
+                        "{0}{1}{1}{2}",
+                        message,
                         nl,
                         relatedToString
-                    );
+                    ).Trim();
             }
         }
     }
