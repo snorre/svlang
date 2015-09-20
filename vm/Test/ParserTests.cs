@@ -325,6 +325,15 @@ namespace SVLang.Test
             );
         }
 
+        [TestMethod]
+        public void definefunction_with_callfunction_body()
+        {
+            ParsesTo(
+                "fun x = (call)",
+                DefF("fun", CallF("call"), "x")
+            );
+        }
+
         #region Helpers
 
         private void ParsesTo(string code, Expr expr)

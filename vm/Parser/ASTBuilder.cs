@@ -105,11 +105,25 @@ namespace SVLang.Parser
             var parameterIdList = idList.Skip(1);
             var v = df.value();
             var cb = df.codeblock();
+            var cf = df.callFunction();
 
-            var code =
-                v != null
-                    ? (Expr)BuildValue(v)
-                    : BuildCodeblock(cb);
+            Expr code;
+            if (v != null)
+            {
+                code = BuildValue(v);
+            }
+            else if (cb != null)
+            {
+                code = BuildCodeblock(cb);
+            }
+            else if (cf != null)
+            {
+                code = BuildCallFunction(cf);
+            }
+            else
+            {
+                throw new InvalidOperationException("Cannot build define function.");
+            }
 
             return 
                 new DefineFunction(

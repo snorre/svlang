@@ -29,7 +29,7 @@ callFunction
 	;
 
 defineFunction
-	: ID+ '=' ( value | codeblock )
+	: ID+ '=' ( value | codeblock | callFunction )
 	;
 
 ifLine
