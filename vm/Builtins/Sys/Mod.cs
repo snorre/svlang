@@ -18,7 +18,6 @@ namespace SVLang.Builtins.Sys
             var valueParams = GetParametersAs<ValueSingle>(parameterValues);
             var modulus = (int)(valueParams[0].RawValue());
             var num = (int)(valueParams[1].RawValue());
-            var retval = num % modulus;
             return new ValueSingle(num % modulus);
         }
     }
