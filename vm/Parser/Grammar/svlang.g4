@@ -26,6 +26,7 @@ valuelist
 
 callFunction
 	: '(' ID expr* ')'
+	| ID
 	;
 
 defineFunction

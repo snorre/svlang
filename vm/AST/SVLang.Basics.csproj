@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AST\Functionpointer.cs" />
     <Compile Include="AST\ValueList.cs" />
     <Compile Include="AST\ValueSingle.cs" />
     <Compile Include="BuiltinFunction.cs" />

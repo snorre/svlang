@@ -334,6 +334,21 @@ namespace SVLang.Test
             );
         }
 
+        [TestMethod]
+        public void callfunction_without_parameters_doesnt_need_paranthesis()
+        {
+            ParsesTo(
+                @"{
+                    x = (fun)
+                    x
+                }",
+                Cb(
+                    DefF("x", CallF("fun")),
+                    CallF("x")
+                )
+            );
+        }
+
         #region Helpers
 
         private void ParsesTo(string code, Expr expr)
