@@ -355,8 +355,10 @@ namespace SVLang.Test
         public void codeblock_can_return_functionref()
         {
             ParsesTo(
-                "x",
-                FR("x")
+                @"{
+                    x
+                }",
+                Cb(FR("x"))
             );
         }
 
