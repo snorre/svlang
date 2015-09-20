@@ -50,6 +50,7 @@
     <Compile Include="Execution.cs" />
     <Compile Include="Memory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StackFunction.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AST\SVLang.Basics.csproj">

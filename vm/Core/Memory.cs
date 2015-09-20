@@ -8,7 +8,7 @@ namespace SVLang.Core
 {
     public static class Memory
     {
-        private static Stack<Entry> _stack;
+        private static Stack<StackFunction> _stack;
         private static Guid _activeMark;
 
         static Memory()
@@ -16,29 +16,29 @@ namespace SVLang.Core
             Reset();
         }
         
-        public static void AddExpr(string name, Expr value)
+        public static void AddExpr(string name, string[] parameterNames, Expr code)
         {
             var entryInSameScope = _stack.SingleOrDefault(e => e.Name == name && e.CreatedInMark == _activeMark);
             if (entryInSameScope != null)
             {
-                throw Error.Panic("Cannot re-define: " + name, value);
+                throw Error.Panic("Cannot re-define: " + name, code);
             }
 
             _stack.Push(
-                new Entry
-                {
-                    Name = name,
-                    Expr = value,
-                    CreatedInMark = _activeMark
-                }
+                new StackFunction(
+                    name: name,
+                    parameterNames: parameterNames,
+                    code: code,
+                    createdInMark: _activeMark
+                )
             );
         }
 
-        public static Expr GetExpr(string name)
+        public static StackFunction GetExpr(string name)
         {
             try
             {
-                return _stack.First(e => e.Name == name).Expr;
+                return _stack.First(e => e.Name == name);
             }
             catch (Exception e)
             {
@@ -48,7 +48,7 @@ namespace SVLang.Core
 
         public static void Reset()
         {
-            _stack = new Stack<Entry>();
+            _stack = new Stack<StackFunction>();
             _activeMark = Guid.Empty;
         }
 
@@ -56,7 +56,7 @@ namespace SVLang.Core
         {
             var m = Guid.NewGuid();
             _activeMark = m;
-            _stack.Push(new Entry { CreatedInMark = m });
+            _stack.Push(new StackFunction(m));
         }
 
         public static void RollbackMark()
@@ -70,13 +70,6 @@ namespace SVLang.Core
                 _stack.Any()
                     ? _stack.Peek().CreatedInMark
                     : Guid.Empty;
-        }
-
-        private class Entry
-        {
-            public string Name { get; set; }
-            public Expr Expr { get; set; }
-            public Guid CreatedInMark { get; set; }
         }
     }
 }
