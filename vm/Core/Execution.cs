@@ -31,7 +31,7 @@ namespace SVLang.Core
                 .ForEach(i => Memory.AddExpr(i.Name, i));
         }
 
-        private Value Evaluate(Expr e)
+        private Expr Evaluate(Expr e)
         {
             if (e is BuiltinFunction)
                 return EvaluateBuiltinFunction(e as BuiltinFunction);
@@ -57,10 +57,18 @@ namespace SVLang.Core
             if (e is First)
                 return EvalFirst(e as First);
 
+            if (e is FunctionRef)
+                return EvalFunctionRef(e as FunctionRef);
+
             throw Error.Panic("Cannot evaluate: " + e.GetType(), e);
         }
 
-        private Value EvaluateBuiltinFunction(BuiltinFunction bf)
+        private Expr EvalFunctionRef(FunctionRef functionRef)
+        {
+            return Memory.GetExpr(functionRef.Name);
+        }
+
+        private Expr EvaluateBuiltinFunction(BuiltinFunction bf)
         {
             var parameterValues =
                 bf
@@ -71,22 +79,17 @@ namespace SVLang.Core
             return bf.Execute(parameterValues);
         }
 
-        private Value EvalDefineFunction(DefineFunction df)
+        private Expr EvalDefineFunction(DefineFunction df)
         {
-            if (df.Name.Contains("."))
-            {
-                throw Error.Panic("Function name cannot contain .: " + df.Name, df);
-            }
-
             Memory.AddExpr(df.Name, df);
             return Value.Void;
         }
 
-        private Value EvalCodeblock(Codeblock c)
+        private Expr EvalCodeblock(Codeblock c)
         {
             Memory.Mark();
 
-            Value lastValue = Value.Void;
+            Expr lastValue = Value.Void;
             foreach (var line in c.Codelines)
             {
                 lastValue = Evaluate(line);
@@ -97,7 +100,7 @@ namespace SVLang.Core
             return lastValue;
         }
 
-        private Value EvalCallFunction(CallFunction cf)
+        private Expr EvalCallFunction(CallFunction cf)
         {
             Memory.Mark();
 
@@ -130,13 +133,13 @@ namespace SVLang.Core
             return result;
         }
 
-        private Value EvalIfLine(IfLine ifLine)
+        private Expr EvalIfLine(IfLine ifLine)
         {
             bool notUsed;
             return EvalIfLine(ifLine, out notUsed);
         }
 
-        private Value EvalIfLine(IfLine ifLine, out bool conditionWasTrue)
+        private Expr EvalIfLine(IfLine ifLine, out bool conditionWasTrue)
         {
             var conditionResult = Evaluate(ifLine.Condition);
             conditionWasTrue = conditionResult.IsTrue();
@@ -146,9 +149,9 @@ namespace SVLang.Core
                     : Value.Void;
         }
 
-        private Value EvalFirst(First first)
+        private Expr EvalFirst(First first)
         {
-            Value result = Value.Void;
+            Expr result = Value.Void;
             foreach (var ifLine in first.IfLines)
             {
                 bool conditionWasTrue;

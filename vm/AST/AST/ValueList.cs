@@ -33,13 +33,6 @@ namespace SVLang.Basics.AST
             return Values.Select(v => v.RawValue()).ToArray();
         }
 
-        public override bool IsTrue()
-        {
-            return
-                Values.Length == 1 &&
-                Values[0].IsTrue();
-        }
-
         public override string ToString(string indent)
         {
             return

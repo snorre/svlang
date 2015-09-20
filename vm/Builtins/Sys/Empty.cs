@@ -10,7 +10,7 @@ namespace SVLang.Builtins.Sys
         {
         }
 
-        protected override Value ExecuteImpl(Value[] parameterValues)
+        protected override Expr ExecuteImpl(Expr[] parameterValues)
         {
             var pv = parameterValues.Single();
             if (pv is ValueList)

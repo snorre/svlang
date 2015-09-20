@@ -14,7 +14,7 @@ namespace SVLang.Builtins.sys
         {
         }
         
-        protected override Value ExecuteImpl(Value[] parameterValues)
+        protected override Expr ExecuteImpl(Expr[] parameterValues)
         {
             var pv = GetSingleParameter(parameterValues);
             string str;
@@ -22,9 +22,13 @@ namespace SVLang.Builtins.sys
             {
                 str = string.Join(" ", (pv as ValueList).Values.Select(v => v.RawValue()));
             }
+            else if (pv is ValueSingle)
+            {
+                str = (pv as ValueSingle).RawValue().ToString();
+            }
             else
             {
-                str = pv.RawValue().ToString();
+                throw Error.Panic("Takes only values as parameter.");
             }
 
             Output.Write(str + Environment.NewLine);

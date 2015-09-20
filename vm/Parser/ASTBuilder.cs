@@ -46,7 +46,18 @@ namespace SVLang.Parser
                 return BuildFirst(first);
             }
 
+            var fr = expr.functionRef();
+            if (fr != null)
+            {
+                return BuildFunctionRef(fr);
+            }
+
             throw new InvalidOperationException("Cannot build expr, unknown type.", expr.exception);
+        }
+
+        private FunctionRef BuildFunctionRef(SVLangParser.FunctionRefContext fr)
+        {
+            return new FunctionRef(fr.ID().GetText());
         }
 
         private ValueList BuildValueList(SVLangParser.ValuelistContext valuelist)
@@ -106,6 +117,8 @@ namespace SVLang.Parser
             var v = df.value();
             var cb = df.codeblock();
             var cf = df.callFunction();
+            var first = df.first();
+            var il = df.ifLine();
 
             Expr code;
             if (v != null)
@@ -119,6 +132,14 @@ namespace SVLang.Parser
             else if (cf != null)
             {
                 code = BuildCallFunction(cf);
+            }
+            else if (first != null)
+            {
+                code = BuildFirst(first);
+            }
+            else if (il != null)
+            {
+                code = BuildIfLine(il);
             }
             else
             {

@@ -5,7 +5,7 @@
 		(numIsMod 15) -> (print "FizzBuzz")
 		(numIsMod 3) -> (print "Fizz")
 		(numIsMod 5) -> (print "Buzz")
-		(print (num))
+		(print num)
 	}
 
 	(hastail numbers) -> (fizzbuzz (tail numbers))

@@ -153,15 +153,6 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void dot_is_reserved_for_namespace_fails()
-        {
-            MustFail(
-                "Function name cannot contain .: test.fun",
-                DefF("test.fun", V(1))
-            );
-        }
-
-        [TestMethod]
         public void call_builtin_print_with_list()
         {
             const string s = "1 True abc";
@@ -239,7 +230,7 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void add_numbers()
+        public void call_builtin_plus()
         {
             EvaluatesTo(
                 V(3),
@@ -266,7 +257,7 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void subtract_numbers()
+        public void call_builtin_minus()
         {
             EvaluatesTo(
                 1,
@@ -325,7 +316,7 @@ namespace SVLang.Test
             OutputMustBeEmpty();
         }
 
-        [TestMethod, Ignore] // Fix later
+        [TestMethod]
         public void call_outer_fun_which_references_inner_fun()
         {
             MustFail(
@@ -400,7 +391,7 @@ namespace SVLang.Test
         public void call_builtin_head_with_single_element()
         {
             MustFail(
-                "Builtin function \"head\" failed: Cannot cast single parameter to ValueList, type is: SVLang.Basics.AST.ValueSingle",
+                "Builtin function \"head\" failed: Cannot get parameters as type SVLang.Basics.AST.ValueList",
                 CallF("head", V("only"))
             );
         }
@@ -445,7 +436,7 @@ namespace SVLang.Test
         public void call_builtin_tail_with_single_element()
         {
             MustFail(
-                "Builtin function \"tail\" failed: Cannot cast single parameter to ValueList, type is: SVLang.Basics.AST.ValueSingle",
+                "Builtin function \"tail\" failed: Cannot get parameters as type SVLang.Basics.AST.ValueList",
                 CallF("tail", V(1))
             );
         }
@@ -598,6 +589,53 @@ namespace SVLang.Test
                 "13",
                 "14",
                 "FizzBuzz"
+            );
+        }
+
+        [TestMethod]
+        public void ifline_can_return_something()
+        {
+            EvaluatesTo(
+                V(1),
+                First(
+                    If(V(true), V(1))
+                )
+            );
+        }
+
+        [TestMethod]
+        public void definefunction_can_have_first_as_body()
+        {
+            EvaluatesTo(
+                V(1),
+                DefF(
+                    "fun",
+                    First(
+                        If(V(true), V(1))
+                    )
+                ),
+                CallF("fun")
+            );
+        }
+
+        [TestMethod]
+        public void definefunction_can_have_ifline_as_body()
+        {
+            EvaluatesTo(
+                V(1),
+                DefF("fun", If(V(true), V(1))),
+                CallF("fun")
+            );
+        }
+
+        [TestMethod]
+        public void callfunction_can_take_functionref_as_parameter()
+        {
+            EvaluatesTo(
+                V(1),
+                DefF("inner", CallF("x"), "x"),
+                DefF("outer", CallF("fr", V(1)), "fr"),
+                CallF("outer", FR("inner"))
             );
         }
 

@@ -335,17 +335,54 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void callfunction_without_parameters_doesnt_need_paranthesis()
+        public void callfunction_with_functionref_as_parameter()
         {
             ParsesTo(
                 @"{
-                    x = (fun)
-                    x
+                    inner x = (print (x))
+                    outer fr = (fr 1)
+                    (outer inner)
                 }",
                 Cb(
-                    DefF("x", CallF("fun")),
-                    CallF("x")
+                    DefF("inner", CallF("print", CallF("x")), "x"),
+                    DefF("outer", CallF("fr", V(1)) , "fr"),
+                    CallF("outer", FR("inner"))
                 )
+            );
+        }
+
+        [TestMethod]
+        public void codeblock_can_return_functionref()
+        {
+            ParsesTo(
+                "x",
+                FR("x")
+            );
+        }
+
+        [TestMethod]
+        public void definefunction_can_have_first_as_body()
+        {
+            ParsesTo(
+                @"
+                    x = first {
+                        (cond) -> (action)
+                    }
+                ",
+                DefF("x", 
+                    First(
+                        If(CallF("cond"), CallF("action"))
+                    )
+                )
+            );
+        }
+
+        [TestMethod]
+        public void definefunction_can_have_ifline_as_body()
+        {
+            ParsesTo(
+                "x = (cond) -> (action)",
+                DefF("x", If(CallF("cond"), CallF("action")))
             );
         }
 

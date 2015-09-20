@@ -10,9 +10,9 @@ namespace SVLang.Builtins.Sys
         {
         }
 
-        protected override Value ExecuteImpl(Value[] parameterValues)
+        protected override Expr ExecuteImpl(Expr[] parameterValues)
         {
-            var list = GetSingleParameterAsValueList(parameterValues);
+            var list = GetSingleParameter(GetParametersAs<ValueList>(parameterValues));
 
             if (list.Values.Length < 2)
             {

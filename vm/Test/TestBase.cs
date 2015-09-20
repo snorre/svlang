@@ -83,6 +83,11 @@ namespace SVLang.Test
         {
             return new First(ifLines);
         }
+
+        protected FunctionRef FR(string name)
+        {
+            return new FunctionRef(name);
+        }
     }
     // ReSharper restore InconsistentNaming
 }

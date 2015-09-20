@@ -7,6 +7,7 @@ expr
 	| ifLine
 	| codeblock
 	| first
+	| functionRef
 	;
 
 value
@@ -26,11 +27,10 @@ valuelist
 
 callFunction
 	: '(' ID expr* ')'
-	| ID
 	;
 
 defineFunction
-	: ID+ '=' ( value | codeblock | callFunction )
+	: ID+ '=' ( value | codeblock | callFunction | first | ifLine )
 	;
 
 ifLine
@@ -55,6 +55,10 @@ firstline
 
 firstelse
 	: ( value | callFunction ) EOL
+	;
+
+functionRef
+	: ID
 	;
 
 BOOL 

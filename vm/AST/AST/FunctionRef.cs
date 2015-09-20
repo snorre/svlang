@@ -1,17 +1,17 @@
 ﻿namespace SVLang.Basics.AST
 {
-    public class Functionpointer : Expr
+    public class FunctionRef : Expr
     {
         public readonly string Name;
 
-        public Functionpointer(string name)
+        public FunctionRef(string name)
         {
             Name = name;
         }
 
         public override bool Equals(object obj)
         {
-            var otherFp = obj as Functionpointer;
+            var otherFp = obj as FunctionRef;
             return
                 otherFp != null &&
                 Name == otherFp.Name;

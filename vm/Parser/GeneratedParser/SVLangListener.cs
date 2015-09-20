@@ -149,5 +149,15 @@ public interface ISVLangListener : IParseTreeListener {
 	/// </summary>
 	/// <param name="context">The parse tree.</param>
 	void ExitFirstelse([NotNull] SVLangParser.FirstelseContext context);
+	/// <summary>
+	/// Enter a parse tree produced by <see cref="SVLangParser.functionRef"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void EnterFunctionRef([NotNull] SVLangParser.FunctionRefContext context);
+	/// <summary>
+	/// Exit a parse tree produced by <see cref="SVLangParser.functionRef"/>.
+	/// </summary>
+	/// <param name="context">The parse tree.</param>
+	void ExitFunctionRef([NotNull] SVLangParser.FunctionRefContext context);
 }
 } // namespace SVLang.Parser.GeneratedParser

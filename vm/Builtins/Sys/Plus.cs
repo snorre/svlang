@@ -14,9 +14,10 @@ namespace SVLang.Builtins.sys
         {
         }
 
-        protected override Value ExecuteImpl(Value[] parameterValues)
+        protected override Expr ExecuteImpl(Expr[] parameterValues)
         {
-            var result = parameterValues.Select(pv => (int)pv.RawValue()).Sum();
+            var valueParams = GetParametersAs<ValueSingle>(parameterValues);
+            var result = valueParams.Select(pv => (int)pv.RawValue()).Sum();
             return new ValueSingle(result);
         }
     }

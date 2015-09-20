@@ -10,6 +10,11 @@
 
         public abstract override int GetHashCode();
 
+        public virtual bool IsTrue()
+        {
+            throw Error.Panic("Only booleans is supported as condition checks.", this);
+        }
+
         public override string ToString()
         {
             return ToString(string.Empty);

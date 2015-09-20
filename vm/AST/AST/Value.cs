@@ -23,7 +23,5 @@
         }
 
         public abstract object RawValue();
-
-        public abstract bool IsTrue();
     }
 }

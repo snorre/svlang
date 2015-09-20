@@ -18,9 +18,9 @@ namespace SVLang.Basics
         {
         }
 
-        protected abstract Value ExecuteImpl(Value[] parameterValues);
+        protected abstract Expr ExecuteImpl(Expr[] parameterValues);
 
-        public Value Execute(Value[] parameterValues)
+        public Expr Execute(Expr[] parameterValues)
         {
             ValidateTypesOfParametervalues(parameterValues);
 
@@ -34,29 +34,7 @@ namespace SVLang.Basics
             }
         }
 
-        protected ValueList GetSingleParameterAsValueList(Value[] parameterValues)
-        {
-            var pv = GetSingleParameter(parameterValues);
-            if (!(pv is ValueList))
-            {
-                throw Error.Panic($"Cannot cast single parameter to ValueList, type is: {pv.GetType()}");
-            }
-
-            return (ValueList)pv;
-        }
-
-        protected ValueSingle GetSingleParameterAsValueSingle(Value[] parameterValues)
-        {
-            var pv = GetSingleParameter(parameterValues);
-            if (!(pv is ValueSingle))
-            {
-                throw Error.Panic($"Cannot cast single parameter to ValueList, type is: {pv.GetType()}");
-            }
-
-            return (ValueSingle)pv;
-        }
-
-        protected Value GetSingleParameter(Value[] parameterValues)
+        protected T GetSingleParameter<T>(T[] parameterValues)
         {
             if (parameterValues.Length != 1)
             {
@@ -66,7 +44,21 @@ namespace SVLang.Basics
             return parameterValues.Single();
         }
 
-        private void ValidateTypesOfParametervalues(Value[] parameterValues)
+        protected T[] GetParametersAs<T>(Expr[] parameterValues) where T : Expr
+        {
+            var allAreValues = parameterValues.All(pv => (pv as T) != null);
+            if (!allAreValues)
+            {
+                throw Error.Panic($"Cannot get parameters as type {typeof(T)}");
+            }
+
+            return
+                parameterValues
+                    .Select(pv => pv as T)
+                    .ToArray();
+        }
+
+        private void ValidateTypesOfParametervalues(Expr[] parameterValues)
         {
             if (!RawTypesSupported.Any())
             {
@@ -75,7 +67,7 @@ namespace SVLang.Basics
 
             for (int i=0; i<parameterValues.Length; i++)
             {
-                var pvType = parameterValues[i].RawValue().GetType();
+                var pvType = (parameterValues[i] as Value)?.RawValue()?.GetType() ?? typeof(Expr);
                 if (!RawTypesSupported.Contains(pvType))
                 {
                     var pName = ParameterNames[i];

@@ -9,10 +9,11 @@ namespace SVLang.Builtins.Sys
         {
         }
 
-        protected override Value ExecuteImpl(Value[] parameterValues)
+        protected override Expr ExecuteImpl(Expr[] parameterValues)
         {
-            var p1 = parameterValues[0].RawValue();
-            var p2 = parameterValues[1].RawValue();
+            var valueParams = GetParametersAs<ValueSingle>(parameterValues);
+            var p1 = valueParams[0].RawValue();
+            var p2 = valueParams[1].RawValue();
             return new ValueSingle(!p1.Equals(p2));
         }
     }

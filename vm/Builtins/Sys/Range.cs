@@ -13,10 +13,11 @@ namespace SVLang.Builtins.Sys
         {
         }
 
-        protected override Value ExecuteImpl(Value[] parameterValues)
+        protected override Expr ExecuteImpl(Expr[] parameterValues)
         {
-            var from = (int)parameterValues[0].RawValue();
-            var to = (int)parameterValues[1].RawValue();
+            var valueParams = GetParametersAs<ValueSingle>(parameterValues);
+            var from = (int)valueParams[0].RawValue();
+            var to = (int)valueParams[1].RawValue();
 
             if (to < from)
             {
