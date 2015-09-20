@@ -28,7 +28,7 @@ namespace SVLang.Core
                 .SelectMany(s => s.GetTypes())
                 .Where(t => baseType.IsAssignableFrom(t) && t != typeof(BuiltinFunction))
                 .Select(t => (BuiltinFunction)Activator.CreateInstance(t))
-                .ForEach(i => Memory.AddExpr(i.Name, i));
+                .ForEach(i => Memory.AddExpr(i.Name, i.ParameterNames, i));
         }
 
         private Expr Evaluate(Expr e)
@@ -63,9 +63,17 @@ namespace SVLang.Core
             throw Error.Panic("Cannot evaluate: " + e.GetType(), e);
         }
 
+        private Expr Evaluate(StackFunction sf)
+        {
+            return Evaluate(sf.Code);
+        }
+
         private Expr EvalFunctionRef(FunctionRef functionRef)
         {
-            return Memory.GetExpr(functionRef.Name);
+            return 
+                Evaluate(
+                    Memory.GetExpr(functionRef.Name)
+                );
         }
 
         private Expr EvaluateBuiltinFunction(BuiltinFunction bf)
@@ -81,7 +89,7 @@ namespace SVLang.Core
 
         private Expr EvalDefineFunction(DefineFunction df)
         {
-            Memory.AddExpr(df.Name, df);
+            Memory.AddExpr(df.Name, df.ParameterNames, df.Code);
             return Value.Void;
         }
 
@@ -104,29 +112,24 @@ namespace SVLang.Core
         {
             Memory.Mark();
 
-            var e = Memory.GetExpr(cf.Name);
+            var sf = Memory.GetExpr(cf.Name);
 
-            if (e is Value)
+            if (sf.Code is Value)
             {
-                return e as Value;
+                return (Value)sf.Code;
             }
 
-            var f = (DefineFunction)e;
-
-            if (f.ParameterNames.Length != cf.Parameters.Length)
-                throw Error.Panic($"Call to \"{f.Name}\" failed. Number of defined parameters and given parameter values differ. Expected: {f.ParameterNames.Length}, actual: {cf.Parameters.Length}", cf);
+            if (sf.ParameterNames.Length != cf.Parameters.Length)
+                throw Error.Panic($"Call to \"{sf.Name}\" failed. Number of defined parameters and given parameter values differ. Expected: {sf.ParameterNames.Length}, actual: {cf.Parameters.Length}", cf);
 
             for (int i = 0; i < cf.Parameters.Length; i++)
             {
-                var n = f.ParameterNames[i];
+                var n = sf.ParameterNames[i];
                 var p = Evaluate(cf.Parameters[i]);
-                Memory.AddExpr(n, p);
+                Memory.AddExpr(n, sf.ParameterNames, p);
             }
 
-            var result =
-                f is BuiltinFunction
-                    ? Evaluate(f)
-                    : Evaluate(f.Code);
+            var result = Evaluate(sf.Code);
 
             Memory.RollbackMark();
 

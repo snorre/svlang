@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SVLang.Basics;
 using SVLang.Basics.AST;
@@ -636,6 +635,26 @@ namespace SVLang.Test
                 DefF("inner", CallF("x"), "x"),
                 DefF("outer", CallF("fr", V(1)), "fr"),
                 CallF("outer", FR("inner"))
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_evaluates_parameters_to_values()
+        {
+            EvaluatesTo(
+                V(2),
+                DefF("x", V(1)),
+                CallF("plus", FR("x"), V(1))
+            );
+        }
+
+        [TestMethod]
+        public void two_functionrefs_to_same_function()
+        {
+            EvaluatesTo(
+                V(2),
+                DefF("x", V(1)),
+                CallF("plus", FR("x"), FR("x"))
             );
         }
 
