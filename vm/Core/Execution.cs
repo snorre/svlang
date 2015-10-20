@@ -57,8 +57,9 @@ namespace SVLang.Core
             if (e is First)
                 return EvalFirst(e as First);
 
-            if (e is FunctionRef)
-                return EvalFunctionRef(e as FunctionRef);
+            // Moved to direct call because of parameters. Need to get FR's parameters from outside call.
+            //if (e is FunctionRef) 
+            //    return EvalFunctionRef(e as FunctionRef);
 
             throw Error.Panic("Cannot evaluate: " + e.GetType(), e);
         }
@@ -68,11 +69,19 @@ namespace SVLang.Core
             return Evaluate(sf.Code);
         }
 
-        private Expr EvalFunctionRef(FunctionRef functionRef)
+        private Expr EvalFunctionRef(FunctionRef fr, Expr callingCode)
         {
+            var asCallF = callingCode as CallFunction;
+
+            if (asCallF == null)
+            {
+                return Evaluate(Memory.GetExpr(fr.Name));
+            }
+
             return 
-                Evaluate(
-                    Memory.GetExpr(functionRef.Name)
+                new CallFunction(
+                    fr.Name,
+                    asCallF.Parameters
                 );
         }
 
@@ -125,7 +134,13 @@ namespace SVLang.Core
             for (int i = 0; i < cf.Parameters.Length; i++)
             {
                 var n = sf.ParameterNames[i];
-                var p = Evaluate(cf.Parameters[i]);
+
+                var parameter = cf.Parameters[i];
+                var p = 
+                    (parameter is FunctionRef)
+                        ? EvalFunctionRef((FunctionRef)parameter, sf.Code)
+                        : Evaluate(parameter);
+
                 Memory.AddExpr(n, sf.ParameterNames, p);
             }
 

@@ -22,5 +22,7 @@ namespace SVLang.Core
             ParameterNames = parameterNames;
             Code = code;
         }
+
+        public override string ToString() => $"StackFunction {{ Name={Name} }}";
     }
 }
