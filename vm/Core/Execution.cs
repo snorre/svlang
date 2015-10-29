@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using Castle.Core.Internal;
 using SVLang.Basics;
 using SVLang.Basics.AST;
@@ -8,26 +11,39 @@ namespace SVLang.Core
 {
     public class Execution
     {
-        private readonly Expr _code;
+        private bool _isPrepared;
 
-        public Execution(Expr code)
-        {
-            _code = code;
-        }
-
-        public Expr Run()
+        public Execution Prepare()
         {
             LoadBuiltins();
-            return Evaluate(_code);
+            _isPrepared = true;
+            return this;
         }
 
+        public Expr Run(Expr code)
+        {
+            if (!_isPrepared)
+            {
+                throw Error.Panic("Execution not prepared, prepare before run.");
+            }
+
+            return Evaluate(code);
+        }
+
+        [SuppressMessage("ReSharper", "PossibleNullReferenceException")]
         private void LoadBuiltins()
         {
             var baseType = typeof(BuiltinFunction);
-            AppDomain.CurrentDomain.GetAssemblies()
-                .SelectMany(s => s.GetTypes())
-                .Where(t => baseType.IsAssignableFrom(t) && t != typeof(BuiltinFunction))
-                .Select(t => (BuiltinFunction)Activator.CreateInstance(t))
+            var currentFolder = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory;
+            var allBuiltins =
+                currentFolder
+                    .GetFiles("*.dll")
+                    .Select(f => Assembly.LoadFile(f.FullName))
+                    .SelectMany(a => a.GetTypes())
+                    .Where(t => baseType.IsAssignableFrom(t) && t != baseType)
+                    .Select(t => (BuiltinFunction)Activator.CreateInstance(t));
+
+            allBuiltins
                 .ForEach(i => Memory.AddExpr(i.Name, i.ParameterNames, i));
         }
 

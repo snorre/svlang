@@ -27,6 +27,10 @@ namespace SVLang.Runner
             var sw = new Stopwatch();
             sw.Start();
 
+            var e = new Execution();
+            e.Prepare();
+            Log("Prepared execution engine", sw);
+
             string code = File.ReadAllText(_file.FullName);
             code = "{" + Environment.NewLine + code + Environment.NewLine + "}";
             Log("Read svl code", sw);
@@ -34,10 +38,13 @@ namespace SVLang.Runner
             var ast = new StringParser(code).Run();
             Log("Parsed code", sw);
 
-            var retVal = new Execution(ast).Run();
+            var retVal = e.Run(ast);
             Log("Executed code", sw);
 
-            Console.WriteLine("Time usage: ");
+            Console.WriteLine();
+            Console.WriteLine("===========");
+            Console.WriteLine();
+            Console.WriteLine("Timing: ");
             Console.WriteLine(_timelog);
             sw.Stop();
             return retVal;
@@ -46,7 +53,7 @@ namespace SVLang.Runner
         private void Log(string section, Stopwatch runningStopwatch)
         {
             runningStopwatch.Stop();
-            _timelog += section + ": " + runningStopwatch.ElapsedMilliseconds + "ms" + Environment.NewLine;
+            _timelog += $"  {section}: {runningStopwatch.ElapsedMilliseconds}ms" + Environment.NewLine;
             runningStopwatch.Restart();
         }
     }

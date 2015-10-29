@@ -699,7 +699,7 @@ namespace SVLang.Test
         {
             var cb = new Codeblock(codelines);
             PrintSection("Running", cb.ToString());
-            var result = new Execution(cb).Run();
+            var result = new Execution().Prepare().Run(cb);
             PrintSection("Return value", result.ToString());
             return result;
         }

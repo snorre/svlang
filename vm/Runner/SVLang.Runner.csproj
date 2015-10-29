@@ -53,6 +53,10 @@
       <Project>{76314FCF-D0D9-4BE9-A85E-B87B99D53D5F}</Project>
       <Name>SVLang.Basics</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Builtins\Sys\SVLang.Builtins.Sys.csproj">
+      <Project>{5b8e8e93-b646-4e07-9058-350b62ddef93}</Project>
+      <Name>SVLang.Builtins.Sys</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Core\SVLang.Core.csproj">
       <Project>{e6001124-f1ee-4ee6-a59f-48d4c85cfa4c}</Project>
       <Name>SVLang.Core</Name>

@@ -17,7 +17,9 @@ namespace SVLang.Runner
                 var file = InterpretArgs(args);
                 var fr = new FileRunner(file);
                 var retVal = fr.Run();
-                Console.WriteLine(retVal);
+                Console.WriteLine("Return value:");
+                Console.WriteLine($"  {retVal}");
+                Console.WriteLine();
             }
             catch (Exception e)
             {
