@@ -88,9 +88,8 @@ namespace SVLang.Core
             if (e is First)
                 return EvalFirst(e as First);
 
-            // Moved to direct call because of parameters. Need to get FR's parameters from outside call.
-            //if (e is FunctionRef) 
-            //    return EvalFunctionRef(e as FunctionRef);
+            if (e is FunctionRef)
+                return e;
 
             throw Error.Panic("Cannot evaluate: " + e.GetType(), e);
         }
@@ -180,7 +179,7 @@ namespace SVLang.Core
                 var parameter = cf.Parameters[i];
                 var p = 
                     (parameter is FunctionRef)
-                        ? EvalFunctionRef((FunctionRef)parameter, sf.Code)
+                        ? parameter // EvalFunctionRef((FunctionRef)parameter, sf.Code)
                         : Evaluate(parameter);
 
                 Memory.AddExpr(n, sf.ParameterNames, p);

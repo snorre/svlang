@@ -661,12 +661,10 @@ namespace SVLang.Test
         [TestMethod]
         public void call_builtin_map_with_list_with_one_parameter()
         {
-            Assert.Inconclusive("Redo builtins to take functionrefs, instead of evaluating parameters to values when calling. Execution, line 183");
-
             EvaluatesTo(
-                V(1),
-                DefF("mapper", V(1), "x"),
-                CallF("map", VL(2), FR("mapper"))
+                VL(3),
+                DefF("add-one", CallF("plus", CallF("x"), V(1)), "x"),
+                CallF("map", VL(2), FR("add-one"))
             );
         }
 
