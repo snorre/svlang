@@ -11,6 +11,7 @@ namespace SVLang.Basics
         protected static readonly List<Type> OnlyInts = new List<Type> { typeof(int) }; 
         protected static readonly List<Type> OnlyStrings = new List<Type> { typeof(string) };
         protected static readonly List<Type> OnlyBools = new List<Type> { typeof(bool) };
+        protected IExecution Execution;
 
         protected virtual List<Type> RawTypesSupported => AllRawTypesSupported;
 
@@ -19,6 +20,11 @@ namespace SVLang.Basics
         }
 
         protected abstract Expr ExecuteImpl(Expr[] parameterValues);
+
+        public void SetExecutionEngine(IExecution execution)
+        {
+            Execution = execution;
+        }
 
         public Expr Execute(Expr[] parameterValues)
         {
@@ -44,10 +50,28 @@ namespace SVLang.Basics
             return parameterValues.Single();
         }
 
+        protected T GetNamedParameterAs<T>(Expr[] allParameters, string name) where T : Expr
+        {
+            if (ParameterNames.All(pn => pn != name))
+            {
+                throw Error.Panic($"Parameter not given: {name}");
+            }
+
+            var index = Array.IndexOf(ParameterNames, name);
+            var paramAsT = allParameters[index] as T;
+            if (paramAsT == null)
+            {
+                throw Error.Panic($"Cannot get parameter as type {typeof(T)} at index {index}");
+            }
+
+            return paramAsT;
+        }
+
+
         protected T[] GetParametersAs<T>(Expr[] parameterValues) where T : Expr
         {
-            var allAreValues = parameterValues.All(pv => (pv as T) != null);
-            if (!allAreValues)
+            var allAreCorrectType = parameterValues.All(pv => (pv as T) != null);
+            if (!allAreCorrectType)
             {
                 throw Error.Panic($"Cannot get parameters as type {typeof(T)}");
             }

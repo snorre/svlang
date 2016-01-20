@@ -3,13 +3,12 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Castle.Core.Internal;
 using SVLang.Basics;
 using SVLang.Basics.AST;
 
 namespace SVLang.Core
 {
-    public class Execution
+    public class Execution : IExecution
     {
         private bool _isPrepared;
 
@@ -38,13 +37,29 @@ namespace SVLang.Core
             var allBuiltins =
                 currentFolder
                     .GetFiles("*.dll")
-                    .Select(f => Assembly.LoadFile(f.FullName))
+                    .Select(LoadFile)
+                    .Where(a => a != null)
                     .SelectMany(a => a.GetTypes())
                     .Where(t => baseType.IsAssignableFrom(t) && t != baseType)
-                    .Select(t => (BuiltinFunction)Activator.CreateInstance(t));
+                    .Select(t => (BuiltinFunction)Activator.CreateInstance(t))
+                    .ToList();
+
+            allBuiltins.ForEach(b => b.SetExecutionEngine(this));
 
             allBuiltins
                 .ForEach(i => Memory.AddExpr(i.Name, i.ParameterNames, i));
+        }
+
+        private Assembly LoadFile(FileInfo file)
+        {
+            try
+            {
+                return Assembly.LoadFile(file.FullName);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         private Expr Evaluate(Expr e)
@@ -85,7 +100,7 @@ namespace SVLang.Core
             return Evaluate(sf.Code);
         }
 
-        private Expr EvalFunctionRef(FunctionRef fr, Expr callingCode)
+        public Expr EvalFunctionRef(FunctionRef fr, Expr callingCode)
         {
             var asCallF = callingCode as CallFunction;
 
@@ -98,6 +113,17 @@ namespace SVLang.Core
                 new CallFunction(
                     fr.Name,
                     asCallF.Parameters
+                );
+        }
+
+        public ValueSingle EvalFunctionRefFromBuiltin(FunctionRef fr, ValueSingle[] parameters)
+        {
+            return
+                (ValueSingle)Evaluate(
+                    new CallFunction(
+                        fr.Name,
+                        parameters.Cast<Expr>().ToArray()
+                    )
                 );
         }
 

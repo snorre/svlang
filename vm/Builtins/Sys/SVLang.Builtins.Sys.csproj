@@ -43,6 +43,7 @@
     <Compile Include="Empty.cs" />
     <Compile Include="HasTail.cs" />
     <Compile Include="Head.cs" />
+    <Compile Include="Map.cs" />
     <Compile Include="Mod.cs" />
     <Compile Include="NotEqual.cs" />
     <Compile Include="Range.cs" />
