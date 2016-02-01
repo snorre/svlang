@@ -54,6 +54,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="FileRunnerTests.cs" />
+    <Compile Include="ILLearning.cs" />
     <Compile Include="ParserTests.cs" />
     <Compile Include="ExecutionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -4,7 +4,6 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SVLang.Basics.AST;
 using SVLang.Builtins.sys;
-using SVLang.Core;
 
 namespace SVLang.Test
 {
@@ -17,7 +16,6 @@ namespace SVLang.Test
         [TestInitialize]
         public void TestBase_Reset()
         {
-            Memory.Reset();
             TestOutputStream = new StringWriter();
             Print.Output = TestOutputStream;
         }
