@@ -1,4 +1,5 @@
-﻿using SVLang.Basics;
+﻿using System;
+using SVLang.Basics;
 using SVLang.Basics.AST;
 
 namespace SVLang.Core
@@ -21,12 +22,17 @@ namespace SVLang.Core
                 throw Error.Panic("Execution not prepared, prepare before run.");
             }
 
-            object result = null;
+            var atc = new AstToCsDom();
+            var csDom = atc.BuildDom(code);
 
+            var csc = new CsCompiler();
+            var t = csc.BuildType(csDom);
 
-            var atm = new AstToMsil();
-            var t = atm.BuildType(code);
-            result = t.GetMethod(AstToMsil.EntryMethodName).Invoke(null, new string[] { null });
+            var m = t.GetMethod(AstToCsDom.EntryMethodName);
+            var ti = Activator.CreateInstance(t);
+
+            object result = m.Invoke(ti, new object[0]);
+            //object result = t.GetMethod(AstToCsDom.EntryMethodName).Invoke(null, new string[] { null });
 
             return new ValueSingle(result);
         }
