@@ -1,4 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Linq;
+using System.Reflection;
 using SVLang.Basics;
 using SVLang.Basics.AST;
 
@@ -7,10 +12,12 @@ namespace SVLang.Core
     public class Execution
     {
         private bool _isPrepared;
+        private Dictionary<string, IBuiltIn> _builtins; 
+
 
         public Execution Prepare()
         {
-            //LoadBuiltins();
+            _builtins = LoadBuiltins();
             _isPrepared = true;
             return this;
         }
@@ -22,8 +29,8 @@ namespace SVLang.Core
                 throw Error.Panic("Execution not prepared, prepare before run.");
             }
 
-            var atc = new AstToCsDom();
-            var csDom = atc.BuildDom(code);
+            var atc = new AstToCsDom(code, _builtins);
+            var csDom = atc.BuildDom();
 
             var csc = new CsCompiler();
             var t = csc.BuildType(csDom);
@@ -37,37 +44,39 @@ namespace SVLang.Core
             return new ValueSingle(result);
         }
 
-        //[SuppressMessage("ReSharper", "PossibleNullReferenceException")]
-        //private void LoadBuiltins()
-        //{
-        //    var baseType = typeof(BuiltinFunction);
-        //    var currentFolder = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory;
-        //    var allBuiltins =
-        //        currentFolder
-        //            .GetFiles("*.dll")
-        //            .Select(LoadFile)
-        //            .Where(a => a != null)
-        //            .SelectMany(a => a.GetTypes())
-        //            .Where(t => baseType.IsAssignableFrom(t) && t != baseType)
-        //            .Select(t => (BuiltinFunction)Activator.CreateInstance(t))
-        //            .ToList();
+        [SuppressMessage("ReSharper", "PossibleNullReferenceException")]
+        private Dictionary<string, IBuiltIn> LoadBuiltins()
+        {
+            var baseType = typeof(IBuiltIn);
+            var currentFolder = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory;
+            var allBuiltins =
+                currentFolder
+                    .GetFiles("*.dll")
+                    .Select(LoadFile)
+                    .Where(a => a != null)
+                    .SelectMany(a => a.GetTypes())
+                    .Where(t => baseType.IsAssignableFrom(t) && t != baseType)
+                    .Select(t => (IBuiltIn) Activator.CreateInstance(t))
+                    .ToList();
 
-        //    allBuiltins.ForEach(b => b.SetExecutionEngine(this));
+            //allBuiltins.ForEach(b => b.SetExecutionEngine(this));
 
-        //    allBuiltins
-        //        .ForEach(i => Memory.AddExpr(i.Name, i.ParameterNames, i));
-        //}
+            //allBuiltins
+            //    .ForEach(i => Memory.AddExpr(i.Name, i.ParameterNames, i));
 
-        //private Assembly LoadFile(FileInfo file)
-        //{
-        //    try
-        //    {
-        //        return Assembly.LoadFile(file.FullName);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return null;
-        //    }
-        //}
+            return allBuiltins.ToDictionary(b => b.Name);
+        }
+
+        private Assembly LoadFile(FileInfo file)
+        {
+            try
+            {
+                return Assembly.LoadFile(file.FullName);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
     }
 }
