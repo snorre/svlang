@@ -1,6 +1,7 @@
-﻿using System;
-using System.CodeDom;
+﻿using System.CodeDom;
 using System.Collections.Generic;
+using System.Linq;
+using Castle.Components.DictionaryAdapter;
 using Castle.Core.Internal;
 using SVLang.Basics;
 using SVLang.Basics.AST;
@@ -9,8 +10,9 @@ namespace SVLang.Core
 {
     internal class AstToCsDom
     {
-        private const string AssemblyName = "SvlAssembly";
-        private const string EntryTypeName = "SvlEntryType";
+        // TODO Move?
+        internal const string EntryNamespace = "SvlCompilation";
+        internal const string EntryTypeName = "SvlEntryType";
         internal const string EntryMethodName = "SvlEntryMethod";
 
         private readonly Expr _code;
@@ -24,16 +26,53 @@ namespace SVLang.Core
 
         internal CodeCompileUnit BuildDom()
         {
-            string output = "Hello world!";
+            var compilationUnit = new CodeCompileUnit();
+            CodeMemberMethod entryMethod = AddEverythingDownToEntryMethod(compilationUnit);
 
-            CodeCompileUnit compilationUnit = new CodeCompileUnit();
-            CodeNamespace samples = new CodeNamespace("Samples");
-            samples.Imports.Add(new CodeNamespaceImport("System"));
-            compilationUnit.Namespaces.Add(samples);
-            CodeTypeDeclaration class1 = new CodeTypeDeclaration("Class1");
-            samples.Types.Add(class1);
+            var statements = BuildCode(_code);
+            statements.ForEach(s => entryMethod.Statements.Add(s));
 
-            CodeMemberMethod entryMethod =
+            AddHelloWorld(entryMethod); // TODO Remove
+
+            return compilationUnit;
+        }
+
+        private CodeExpression[] BuildCode(Expr expr)
+        {
+            if (IsCallToBuiltin(expr))
+            {
+                var bcf = (CallFunction)expr;
+                var b = _builtins[bcf.Name];
+
+                return new CodeExpression[] { BuildMethodCall(b, bcf) };
+            }
+
+            if (expr is Codeblock)
+            {
+                var cb = expr as Codeblock;
+                return cb.Codelines.ConvertAll(l => BuildCode(l).Single());
+            }
+
+            if (expr is ValueSingle)
+            {
+                var vs = expr as ValueSingle;
+                return new CodeExpression[] { new CodePrimitiveExpression(vs.RawValue()) };
+            }
+
+            return new CodeExpression[0];
+        }
+
+        private bool IsCallToBuiltin(Expr code)
+        {
+            var cf = code as CallFunction;
+            return
+                cf != null &&
+                _builtins.ContainsKey(cf.Name);
+        }
+
+        private CodeMemberMethod AddEverythingDownToEntryMethod(CodeCompileUnit compilationUnit)
+        {
+            var entryMethod =
                 new CodeMemberMethod
                 {
                     Name = EntryMethodName,
@@ -41,46 +80,41 @@ namespace SVLang.Core
                     ReturnType = new CodeTypeReference(typeof(object))
                 };
 
-            var builtinOrNull = GetBuiltinOrNull(_code);
-            if (builtinOrNull != null)
-            {
-                entryMethod.Statements.Add(BuildMethodCall(builtinOrNull, _code as CallFunction));
-            }
-            else
-            {
-                entryMethod.Statements.Add(
-                    new CodeMethodInvokeExpression(
-                        targetObject: new CodeTypeReferenceExpression("System.Console"),
-                        methodName: "WriteLine",
-                        parameters: new CodePrimitiveExpression(output)
-                    )
-                );
-                entryMethod.Statements.Add(
-                    new CodeMethodReturnStatement(new CodePrimitiveExpression(output))
-                );
-            }
+            var entryClass = new CodeTypeDeclaration(EntryTypeName);
+            entryClass.Members.Add(entryMethod);
 
-            class1.Members.Add(entryMethod);
+            var ns = new CodeNamespace(EntryNamespace);
+            ns.Types.Add(entryClass);
+            AddImports(ns);
 
-            return compilationUnit;
+            compilationUnit.Namespaces.Add(ns);
+
+            return entryMethod;
         }
 
-        private IBuiltIn GetBuiltinOrNull(Expr code)
+        private void AddImports(CodeNamespace ns)
         {
-            var cf = _code as CallFunction;
-            if (cf != null && _builtins.ContainsKey(cf.Name))
-            {
-                return _builtins[cf.Name];
-            }
-            return null;
+            ns.Imports.Add(new CodeNamespaceImport("System"));
+            
+            _builtins
+                .Select(b => b.Value.GetType().Namespace)
+                .Distinct()
+                .ForEach(tns => ns.Imports.Add(new CodeNamespaceImport(tns)));
         }
 
-        private bool IsCallToBuiltin()
+        private void AddHelloWorld(CodeMemberMethod entryMethod)
         {
-            var cf = _code as CallFunction;
-            return
-                cf != null &&
-                _builtins.ContainsKey(cf.Name);
+            var helloWorld = new CodePrimitiveExpression("Hello world!");
+
+            entryMethod.Statements.Add(
+                new CodeMethodInvokeExpression(
+                    targetObject: new CodeTypeReferenceExpression("System.Console"),
+                    methodName: "WriteLine",
+                    parameters: helloWorld
+                )
+            );
+
+            entryMethod.Statements.Add(new CodeMethodReturnStatement(helloWorld));
         }
 
         private CodeMethodInvokeExpression BuildMethodCall(IBuiltIn builtin, CallFunction cf)
@@ -88,11 +122,10 @@ namespace SVLang.Core
             var t = builtin.GetType();
             return 
                 new CodeMethodInvokeExpression(
-                    targetObject: new CodeTypeReferenceExpression(t), 
+                    targetObject: new CodeObjectCreateExpression(t), 
                     methodName: "Call",
-                    parameters: new CodePrimitiveExpression(cf.Parameters)
+                    parameters: cf.Parameters.ConvertAll(p => BuildCode(p).Single())
                 );
         }
-
     }
 }

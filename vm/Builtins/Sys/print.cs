@@ -16,5 +16,11 @@ namespace SVLang.Builtins.sys
             Output.Write(str + Environment.NewLine);
             return str;
         }
+
+        public object Call(string str)
+        {
+            Output.Write(str + Environment.NewLine);
+            return str;
+        }
     }
 }

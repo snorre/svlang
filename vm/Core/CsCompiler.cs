@@ -1,6 +1,9 @@
 ﻿using System;
 using System.CodeDom;
 using System.CodeDom.Compiler;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Reflection;
 using Microsoft.CSharp;
 
@@ -8,11 +11,15 @@ namespace SVLang.Core
 {
     internal class CsCompiler
     {
-        internal Type BuildType(CodeCompileUnit compilationUnit)
+        internal Type BuildType(List<FileInfo> dllsToReference, CodeCompileUnit compilationUnit)
         {
             CSharpCodeProvider provider = new CSharpCodeProvider();
             CompilerParameters cp = new CompilerParameters();
+
             cp.ReferencedAssemblies.Add("System.dll");
+            cp.ReferencedAssemblies.Add("SVLang.Basics.dll");
+            dllsToReference.ForEach(dll => cp.ReferencedAssemblies.Add(dll.Name));
+
             cp.GenerateExecutable = false;
             cp.GenerateInMemory = true;
             CompilerResults cr = provider.CompileAssemblyFromDom(cp, compilationUnit);
@@ -33,7 +40,7 @@ namespace SVLang.Core
             }
 
             Assembly asm = cr.CompiledAssembly;
-            var t = asm.GetType("Samples.Class1");
+            var t = asm.GetType(AstToCsDom.EntryNamespace + "." + AstToCsDom.EntryTypeName);
             return t;
         }
     }

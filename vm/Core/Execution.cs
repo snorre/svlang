@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Castle.Core.Internal;
 using SVLang.Basics;
 using SVLang.Basics.AST;
 
@@ -12,12 +13,13 @@ namespace SVLang.Core
     public class Execution
     {
         private bool _isPrepared;
-        private Dictionary<string, IBuiltIn> _builtins; 
+        private Dictionary<string, IBuiltIn> _builtins;
+        private List<FileInfo> _dllsToReference; 
 
 
         public Execution Prepare()
         {
-            _builtins = LoadBuiltins();
+            LoadBuiltins();
             _isPrepared = true;
             return this;
         }
@@ -33,7 +35,7 @@ namespace SVLang.Core
             var csDom = atc.BuildDom();
 
             var csc = new CsCompiler();
-            var t = csc.BuildType(csDom);
+            var t = csc.BuildType(_dllsToReference, csDom);
 
             var m = t.GetMethod(AstToCsDom.EntryMethodName);
             var ti = Activator.CreateInstance(t);
@@ -45,29 +47,56 @@ namespace SVLang.Core
         }
 
         [SuppressMessage("ReSharper", "PossibleNullReferenceException")]
-        private Dictionary<string, IBuiltIn> LoadBuiltins()
+        private void LoadBuiltins()
         {
+            _builtins = new Dictionary<string, IBuiltIn>();
+            _dllsToReference = new List<FileInfo>();
+
             var baseType = typeof(IBuiltIn);
             var currentFolder = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory;
-            var allBuiltins =
-                currentFolder
-                    .GetFiles("*.dll")
-                    .Select(LoadFile)
-                    .Where(a => a != null)
-                    .SelectMany(a => a.GetTypes())
-                    .Where(t => baseType.IsAssignableFrom(t) && t != baseType)
-                    .Select(t => (IBuiltIn) Activator.CreateInstance(t))
-                    .ToList();
+            var allDlls = currentFolder.GetFiles("*.dll");
+
+            foreach (var dll in allDlls)
+            {
+                var asm = LoadAssemblyFromFile(dll);
+                if (asm == null)
+                {
+                    continue;
+                }
+
+                var builtinsFound =
+                    asm
+                        .GetTypes()
+                        .FindAll(t => baseType.IsAssignableFrom(t) && t != baseType)
+                        .ConvertAll(t => (IBuiltIn)Activator.CreateInstance(t));
+
+                if (builtinsFound.Any())
+                {
+                    _dllsToReference.Add(dll);
+                    builtinsFound.ForEach(b => _builtins.Add(b.Name, b));
+                }
+            }
+
+            //var allBuiltins =
+            //    currentFolder
+            //        .GetFiles("*.dll")
+            //        .Select(LoadAssemblyFromFile)
+            //        .Where(a => a != null)
+            //        .SelectMany(a => a.GetTypes())
+            //        .Where(t => baseType.IsAssignableFrom(t) && t != baseType)
+            //        .Select(t => (IBuiltIn)Activator.CreateInstance(t))
+            //        .ToList();
 
             //allBuiltins.ForEach(b => b.SetExecutionEngine(this));
 
             //allBuiltins
             //    .ForEach(i => Memory.AddExpr(i.Name, i.ParameterNames, i));
 
-            return allBuiltins.ToDictionary(b => b.Name);
+            //_builtins = allBuiltins.ToDictionary(b => b.Name);
+
         }
 
-        private Assembly LoadFile(FileInfo file)
+        private Assembly LoadAssemblyFromFile(FileInfo file)
         {
             try
             {
