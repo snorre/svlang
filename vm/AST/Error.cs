@@ -33,13 +33,7 @@ namespace SVLang.Basics
                     relatedToString = string.Format("Related to:{0}\"{0}{1}{0}\"", nl, str.Substring(0, Math.Min(str.Length, 100)));
                 }
 
-                return
-                    string.Format(
-                        "{0}{1}{1}{2}",
-                        message,
-                        nl,
-                        relatedToString
-                    ).Trim();
+                return $"{message}{nl}-{relatedToString}".Trim();
             }
         }
     }

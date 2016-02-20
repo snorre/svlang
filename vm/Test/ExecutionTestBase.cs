@@ -27,9 +27,16 @@ namespace SVLang.Test
 
         protected Expr Run(Expr[] codelines)
         {
-            var cb = new Codeblock(codelines);
-            PrintSection("Running", cb.ToString());
-            var result = new Execution().Prepare().Run(cb);
+            var exe = new Execution().Prepare();
+            var code = new Codeblock(codelines);
+
+            PrintSection("Running", code.ToString());
+
+            var csCode = exe.GenerateCsCode(code);
+            PrintSection("Generated cs source", csCode);
+
+            var result = exe.Run(code);
+
             PrintSection("Return value", result?.ToString());
             return result;
         }
@@ -43,12 +50,12 @@ namespace SVLang.Test
             }
             catch (Error.SvlException x)
             {
-                Assert.AreEqual(expectedMessage, x.MessageBasic);
-                Console.WriteLine(x);
+                Assert.AreEqual(expectedMessage, x.MessageBasic.Trim());
+                PrintSection("Errors building", x.ToString());
             }
             catch (Exception x)
             {
-                Assert.AreEqual(expectedMessage, x.Message);
+                Assert.AreEqual(expectedMessage, x.Message.Trim());
                 Console.WriteLine(x);
             }
         }

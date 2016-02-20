@@ -3,7 +3,9 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Text;
 using Microsoft.CSharp;
+using SVLang.Basics;
 
 namespace SVLang.Core
 {
@@ -12,12 +14,7 @@ namespace SVLang.Core
         internal Type BuildType(List<FileInfo> dllsToReference, string csCode)
         {
             var provider = new CSharpCodeProvider();
-
-            Console.WriteLine("=== Generated source ===");
-            Console.WriteLine(csCode);
-            Console.WriteLine("------------------------");
-            Console.WriteLine();
-
+            
             CompilerParameters cp = 
                 new CompilerParameters
                 {
@@ -33,20 +30,14 @@ namespace SVLang.Core
 
             if (cr.Errors.Count > 0)
             {
-                // Display compilation errors.
-                Console.WriteLine("=== Errors building ===");
+                var sb = new StringBuilder();
+                sb.AppendLine("Compilation errors:");
                 foreach (CompilerError ce in cr.Errors)
                 {
-                    Console.WriteLine("  {0}", ce);
-                    Console.WriteLine();
+                    sb.AppendLine($"    * {ce.ErrorText}");
                 }
+                throw Error.Panic(sb.ToString());
             }
-            else
-            {
-                Console.WriteLine("Source built OK.");
-            }
-
-            Console.WriteLine();
 
             Assembly asm = cr.CompiledAssembly;
             var t = asm.GetType(AstToCsDom.EntryNamespace + "." + AstToCsDom.EntryTypeName);

@@ -31,8 +31,7 @@ namespace SVLang.Core
                 throw Error.Panic("Execution not prepared, prepare before run.");
             }
 
-            var atc = new AstToCsDom(code, _builtins);
-            var csCode = atc.GenerateCsCode();
+            var csCode = GenerateCsCode(code);
 
             var csc = new CsCompiler();
             var t = csc.BuildType(_dllsToReference, csCode);
@@ -44,6 +43,13 @@ namespace SVLang.Core
             //object result = t.GetMethod(AstToCsDom.EntryMethodName).Invoke(null, new string[] { null });
 
             return new ValueSingle(result);
+        }
+
+        public string GenerateCsCode(Expr code) // public because of debug in tests
+        {
+            var atc = new AstToCsDom(code, _builtins);
+            var csCode = atc.GenerateCsCode();
+            return csCode;
         }
 
         [SuppressMessage("ReSharper", "PossibleNullReferenceException")]

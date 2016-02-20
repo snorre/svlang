@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Castle.Components.DictionaryAdapter;
 using Castle.Core.Internal;
 using SVLang.Basics;
 using SVLang.Basics.AST;
@@ -95,14 +94,6 @@ namespace SVLang.Core
                         : BuildCode(new Codeblock(df.Code));
 
                 return $"{declarationString} {df.Name} = ({paramNames}) => {bodyCode}"; 
-                    //new CodeObject[]
-                    //{
-                    //    new CodeVariableDeclarationStatement(
-                    //        type: new CodeTypeReference(typeof(Func<object>)), 
-                    //        name: df.Name,
-                    //        initExpression: new CodeDelegateCreateExpression(new CodeTypeReference(typeof(Func<object>)), new CodeThisReferenceExpression(), "hei")
-                    //    )
-                    //};
             }
 
             return "UNKNOWN GENERATION FOR: " + code.GetType();
@@ -168,22 +159,8 @@ namespace SVLang.Core
         {
             return $"public object {methodName}(){NL}{{{NL}{content}{NL}}}";
         }
-
-        //private void AddHelloWorld(CodeMemberMethod entryMethod)
-        //{
-        //    var helloWorld = new CodePrimitiveExpression("Hello world!");
-
-        //    entryMethod.Statements.Add(
-        //        new CodeMethodInvokeExpression(
-        //            targetObject: new CodeTypeReferenceExpression("System.Console"),
-        //            methodName: "WriteLine",
-        //            parameters: helloWorld
-        //        )
-        //    );
-
-        //    entryMethod.Statements.Add(new CodeMethodReturnStatement(helloWorld));
-        //}
-
+        
+        
         private string TurnIntoReturnStatement(string line)
         {
             return "return " + line + ";";

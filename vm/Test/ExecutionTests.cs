@@ -52,7 +52,8 @@ namespace SVLang.Test
         public void define_function_twice_fails()
         {
             MustFail(
-                "Cannot re-define: name",
+@"Compilation errors:
+    * A local variable named 'name' is already defined in this scope",
                 DefF("name", V(123)),
                 DefF("name", V(456)),
                 CallF("name")
