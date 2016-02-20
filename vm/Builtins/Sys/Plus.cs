@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using SVLang.Basics;
 
 namespace SVLang.Builtins.Sys
@@ -7,19 +8,21 @@ namespace SVLang.Builtins.Sys
     {
         public string Name => "plus";
 
-        public object Call(params object[] parameterValues)
+        public object Call(params Func<object>[] parameterFuncs)
         {
-            if (parameterValues.Length <= 1)
+            if (parameterFuncs.Length <= 1)
             {
-                throw Error.Panic("Builtin function 'plus' must have more than one parameter. Got " + parameterValues.Length);
+                throw Error.Panic("Builtin function 'plus' must have more than one parameter. Got " + parameterFuncs.Length);
             }
 
-            if (!parameterValues.All(p => p is int))
+            var values = parameterFuncs.ToList().ConvertAll(pf => pf());
+
+            if (!values.All(p => p is int))
             {
                 throw Error.Panic("Builtin function 'plus' can only handle int-type parameters");
             }
 
-            var intParams = parameterValues.Cast<int>();
+            var intParams = values.Cast<int>();
 
             return intParams.Sum();
         }

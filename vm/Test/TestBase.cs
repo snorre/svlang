@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SVLang.Basics.AST;
-using SVLang.Builtins.sys;
+using SVLang.Builtins.Sys;
 
 namespace SVLang.Test
 {

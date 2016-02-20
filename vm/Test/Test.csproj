@@ -53,11 +53,26 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="BuiltinsTests\Count.cs" />
+    <Compile Include="BuiltinsTests\Empty.cs" />
+    <Compile Include="BuiltinsTests\Eq.cs" />
+    <Compile Include="BuiltinsTests\HasTail.cs" />
+    <Compile Include="BuiltinsTests\Head.cs" />
+    <Compile Include="BuiltinsTests\Map.cs" />
+    <Compile Include="BuiltinsTests\Minus.cs" />
+    <Compile Include="BuiltinsTests\Mod.cs" />
+    <Compile Include="BuiltinsTests\Plus.cs" />
+    <Compile Include="BuiltinsTests\Print.cs" />
+    <Compile Include="BuiltinsTests\Range.cs" />
+    <Compile Include="BuiltinsTests\Str.cs" />
+    <Compile Include="BuiltinsTests\Tail.cs" />
+    <Compile Include="ExecutionTestBase.cs" />
     <Compile Include="FileRunnerTests.cs" />
-    <Compile Include="ILLearning.cs" />
+    <Compile Include="CsGenerationLearningTests.cs" />
     <Compile Include="ParserTests.cs" />
     <Compile Include="ExecutionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Scratchpad.cs" />
     <Compile Include="TestBase.cs" />
   </ItemGroup>
   <ItemGroup>

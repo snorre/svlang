@@ -32,10 +32,10 @@ namespace SVLang.Core
             }
 
             var atc = new AstToCsDom(code, _builtins);
-            var csDom = atc.BuildDom();
+            var csCode = atc.GenerateCsCode();
 
             var csc = new CsCompiler();
-            var t = csc.BuildType(_dllsToReference, csDom);
+            var t = csc.BuildType(_dllsToReference, csCode);
 
             var m = t.GetMethod(AstToCsDom.EntryMethodName);
             var ti = Activator.CreateInstance(t);

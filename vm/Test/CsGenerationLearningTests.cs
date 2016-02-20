@@ -1,7 +1,6 @@
 ﻿using System;
 using System.CodeDom;
 using System.CodeDom.Compiler;
-using System.IO;
 using System.Reflection;
 using System.Reflection.Emit;
 using Microsoft.CSharp;
@@ -10,7 +9,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace SVLang.Test
 {
     [TestClass]
-    public class IlLearning
+    public class CsGenerationLearningTests
     {
         [TestMethod]
         public void msil_directly()
@@ -43,7 +42,7 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void via_cs()
+        public void via_codedom_to_cs()
         {
 
             CodeCompileUnit compilationUnit = new CodeCompileUnit();
@@ -88,6 +87,52 @@ namespace SVLang.Test
             Assembly asm = cr.CompiledAssembly;
             var t = asm.GetType("Samples.Class1");
             var m = t.GetMethod("Main");
+            var r = m.Invoke(null, new object[0]);
+            Console.WriteLine("Result: " + r);
+        }
+
+        [TestMethod]
+        public void via_cs_string()
+        {
+            var codeString = 
+                @"namespace SvlCompilation {
+                    using System;
+    
+                    public class SvlEntryType {
+                        public static object SvlEntryMethod() {
+                            object name = ""hello"";
+                            Console.WriteLine(name);
+                            return name;
+                        }
+                    }
+                }";
+
+            Console.WriteLine(codeString);
+            CSharpCodeProvider provider = new CSharpCodeProvider();
+            CompilerParameters cp = new CompilerParameters();
+            cp.ReferencedAssemblies.Add("System.dll");
+            cp.GenerateExecutable = false;
+            cp.GenerateInMemory = true;
+            CompilerResults cr = provider.CompileAssemblyFromSource(cp, codeString);
+
+            if (cr.Errors.Count > 0)
+            {
+                // Display compilation errors.
+                Console.WriteLine("Errors building.");
+                foreach (CompilerError ce in cr.Errors)
+                {
+                    Console.WriteLine("  {0}", ce);
+                    Console.WriteLine();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Source built OK.");
+            }
+
+            Assembly asm = cr.CompiledAssembly;
+            var t = asm.GetType("SvlCompilation.SvlEntryType");
+            var m = t.GetMethod("SvlEntryMethod");
             var r = m.Invoke(null, new object[0]);
             Console.WriteLine("Result: " + r);
         }

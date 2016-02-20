@@ -1,9 +1,7 @@
 ﻿using System;
-using System.CodeDom;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using Microsoft.CSharp;
 
@@ -11,12 +9,14 @@ namespace SVLang.Core
 {
     internal class CsCompiler
     {
-        internal Type BuildType(List<FileInfo> dllsToReference, CodeCompileUnit compilationUnit)
+        internal Type BuildType(List<FileInfo> dllsToReference, string csCode)
         {
             var provider = new CSharpCodeProvider();
 
             Console.WriteLine("=== Generated source ===");
-            provider.GenerateCodeFromCompileUnit(compilationUnit, Console.Out, new CodeGeneratorOptions());
+            Console.WriteLine(csCode);
+            Console.WriteLine("------------------------");
+            Console.WriteLine();
 
             CompilerParameters cp = 
                 new CompilerParameters
@@ -29,12 +29,12 @@ namespace SVLang.Core
 
             dllsToReference.ForEach(dll => cp.ReferencedAssemblies.Add(dll.Name));
 
-            CompilerResults cr = provider.CompileAssemblyFromDom(cp, compilationUnit);
+            CompilerResults cr = provider.CompileAssemblyFromSource(cp, csCode);
 
             if (cr.Errors.Count > 0)
             {
                 // Display compilation errors.
-                Console.WriteLine("Errors building.");
+                Console.WriteLine("=== Errors building ===");
                 foreach (CompilerError ce in cr.Errors)
                 {
                     Console.WriteLine("  {0}", ce);

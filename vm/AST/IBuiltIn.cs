@@ -1,9 +1,11 @@
-﻿namespace SVLang.Basics
+﻿using System;
+
+namespace SVLang.Basics
 {
     public interface IBuiltIn
     {
         string Name { get; }
 
-        object Call(params object[] parameterValues);
+        object Call(params Func<object>[] parameterValues);
     }
 }

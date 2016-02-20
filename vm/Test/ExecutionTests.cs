@@ -1,15 +1,13 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SVLang.Basics;
 using SVLang.Basics.AST;
-using SVLang.Core;
 
 namespace SVLang.Test
 {
     // ReSharper disable InconsistentNaming
 
     [TestClass]
-    public class ExecutionTests : TestBase
+    public class ExecutionTests : ExecutionTestBase
     {
         [TestMethod]
         public void value_returns_raw_values()
@@ -123,7 +121,7 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void can_define_function_in_inner_scope_many_times()
+        public void can_call_function_in_inner_scope_many_times()
         {
             EvaluatesTo(
                 123,
@@ -152,64 +150,6 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void call_builtin_print_with_list()
-        {
-            const string s = "1 True abc";
-            EvaluatesTo(
-                s,
-                CallF("print", VL(1, true, "abc"))
-            );
-            OutputMustBe(s);
-        }
-
-        [TestMethod]
-        public void call_builtin_print_with_single_value()
-        {
-            const string s = "hello";
-            EvaluatesTo(
-                s,
-                CallF("print", V("hello"))
-            );
-            OutputMustBe(s);
-        }
-
-        [TestMethod]
-        public void call_builtin_str_with_list()
-        {
-            EvaluatesTo(
-                "1TrueAbc",
-                CallF("str", VL(1, true, "Abc"))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_str_with_single_value_string()
-        {
-            EvaluatesTo(
-                "hello",
-                CallF("str", V("hello"))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_str_with_single_value_bool()
-        {
-            EvaluatesTo(
-                "True",
-                CallF("str", V(true))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_str_with_single_value_int()
-        {
-            EvaluatesTo(
-                "3",
-                CallF("str", V(3))
-            );
-        }
-
-        [TestMethod]
         public void call_multiple_functions_with_same_parameter_name()
         {
             EvaluatesTo(
@@ -229,15 +169,6 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void call_builtin_plus()
-        {
-            EvaluatesTo(
-                V(3),
-                CallF("plus", V(1), V(2))
-            );
-        }
-
-        [TestMethod]
         public void if_not_called_returns_void()
         {
             EvaluatesTo(
@@ -252,15 +183,6 @@ namespace SVLang.Test
             EvaluatesTo(
                 3,
                 If(CallF("eq", V(1), V(1)), V(3))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_minus()
-        {
-            EvaluatesTo(
-                1,
-                CallF("minus", V(3), V(2))
             );
         }
 
@@ -351,150 +273,6 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void call_builtin_minus_with_invalid_parametertype()
-        {
-            MustFail(
-                "Builtin function \"minus\" got invalid type in parameter. Type: System.String, ParameterName: i2. Supported types are: System.Int32",
-                CallF("minus", V(1), V("wrong"))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_head_with_list()
-        {
-            EvaluatesTo(
-                "first",
-                CallF("head", VL("first", "second", "third"))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_head_with_list_with_one_element()
-        {
-            EvaluatesTo(
-                "only",
-                CallF("head", VL("only"))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_head_with_list_with_no_element()
-        {
-            EvaluatesTo(
-                Value.Void,
-                CallF("head", VL())
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_head_with_single_element()
-        {
-            MustFail(
-                "Builtin function \"head\" failed: Cannot get parameters as type SVLang.Basics.AST.ValueList",
-                CallF("head", V("only"))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_empty_with_list()
-        {
-            EvaluatesTo(
-                false,
-                CallF("empty", VL(1))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_empty_with_empty_list()
-        {
-            EvaluatesTo(
-                true,
-                CallF("empty", VL())
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_empty_with_single_element()
-        {
-            EvaluatesTo(
-                false,
-                CallF("empty", V(1))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_tail_with_list()
-        {
-            EvaluatesTo(
-                VL(2, 3),
-                CallF("tail", VL(1, 2, 3))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_tail_with_single_element()
-        {
-            MustFail(
-                "Builtin function \"tail\" failed: Cannot get parameters as type SVLang.Basics.AST.ValueList",
-                CallF("tail", V(1))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_tail_with_list_with_one_element()
-        {
-            MustFail(
-                "Builtin function \"tail\" failed: List contains less than 2 elements.",
-                CallF("tail", VL(1))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_tail_with_empty_list()
-        {
-            MustFail(
-                "Builtin function \"tail\" failed: List contains less than 2 elements.",
-                CallF("tail", VL())
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_range_with_empty_range()
-        {
-            EvaluatesTo(
-                VL(3),
-                CallF("range", V(3), V(3))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_range_with_negative_range()
-        {
-            MustFail(
-                "Builtin function \"range\" failed: To parameter must be bigger than from parameter. From was 3, to was 2.",
-                CallF("range", V(3), V(2))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_range_with_negative_parameters()
-        {
-            MustFail(
-                "Builtin function \"range\" failed: Parameters must be positive. From was -3, to was -2.",
-                CallF("range", V(-3), V(-2))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_count_with_empty_list()
-        {
-            EvaluatesTo(
-                0,
-                CallF("count", VL())
-            );
-        }
-
-        [TestMethod]
         public void codeblock_with_no_content_returns_void()
         {
             EvaluatesTo(
@@ -509,42 +287,6 @@ namespace SVLang.Test
             EvaluatesTo(
                 Value.Void,
                 Cb(Value.Void)
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_mod()
-        {
-            EvaluatesTo(
-                V(3),
-                CallF("mod", V(10), V(3))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_has_tail_with_list()
-        {
-            EvaluatesTo(
-                V(true),
-                CallF("hastail", VL(1, 2))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_has_tail_with_list_with_one_element()
-        {
-            EvaluatesTo(
-                V(false),
-                CallF("hastail", VL(1))
-            );
-        }
-
-        [TestMethod]
-        public void call_builtin_has_tail_with_empty_list()
-        {
-            EvaluatesTo(
-                V(false),
-                CallF("hastail", VL())
             );
         }
 
@@ -657,64 +399,6 @@ namespace SVLang.Test
                 CallF("plus", FR("x"), FR("x"))
             );
         }
-
-        [TestMethod]
-        public void call_builtin_map_with_list_with_one_parameter()
-        {
-            EvaluatesTo(
-                VL(3),
-                DefF("add-one", CallF("plus", CallF("x"), V(1)), "x"),
-                CallF("map", VL(2), FR("add-one"))
-            );
-        }
-
-        #region Helpers
-
-        private void EvaluatesTo(object expected, params Expr[] codelines)
-        {
-            if (expected is int || expected is bool || expected is string)
-            {
-                expected = V(expected);
-            }
-
-            if (expected is object[])
-            {
-                expected = VL(expected);
-            }
-
-            var result = Run(codelines);
-            Assert.AreEqual(expected, result);
-        }
-
-        private void MustFail(string expectedMessage, params Expr[] codelines)
-        {
-            try
-            {
-                Run(codelines);
-                Assert.Fail("Code emitted no exception.");
-            }
-            catch (Error.SvlException x)
-            {
-                Assert.AreEqual(expectedMessage, x.MessageBasic);
-                Console.WriteLine(x);
-            }
-            catch (Exception x)
-            {
-                Assert.AreEqual(expectedMessage, x.Message);
-                Console.WriteLine(x);
-            }
-        }
-
-        private Expr Run(Expr[] codelines)
-        {
-            var cb = new Codeblock(codelines);
-            PrintSection("Running", cb.ToString());
-            var result = new Execution().Prepare().Run(cb);
-            PrintSection("Return value", result.ToString());
-            return result;
-        }
-
-        #endregion
     }
 
     // ReSharper restore InconsistentNaming
