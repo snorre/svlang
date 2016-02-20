@@ -10,15 +10,9 @@ namespace SVLang.Builtins.sys
 
         public string Name => "print";
 
-        public object Call(object[] parameterValues)
+        public object Call(params object[] parameterValues)
         {
             var str = string.Join(" ", parameterValues);
-            Output.Write(str + Environment.NewLine);
-            return str;
-        }
-
-        public object Call(string str)
-        {
             Output.Write(str + Environment.NewLine);
             return str;
         }

@@ -1,7 +1,7 @@
-﻿using System.CodeDom;
+﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
-using Castle.Components.DictionaryAdapter;
 using Castle.Core.Internal;
 using SVLang.Basics;
 using SVLang.Basics.AST;
@@ -29,45 +29,94 @@ namespace SVLang.Core
             var compilationUnit = new CodeCompileUnit();
             CodeMemberMethod entryMethod = AddEverythingDownToEntryMethod(compilationUnit);
 
-            var statements = BuildCode(_code);
-            statements.ForEach(s => entryMethod.Statements.Add(s));
+            var codeObjects = BuildCode(_code);
+            foreach (var co in codeObjects)
+            {
+                var ce = co as CodeExpression;
+                var cs = co as CodeStatement;
 
-            AddHelloWorld(entryMethod); // TODO Remove
+                if (ce != null)
+                {
+                    entryMethod.Statements.Add(ce);
+                }
+                else if (cs != null)
+                {
+                    entryMethod.Statements.Add(cs);
+                }
+                else
+                {
+                    throw Error.Panic("Built unexpected CodeObject type: " + co.GetType());
+                }
+            }
 
             return compilationUnit;
         }
 
-        private CodeExpression[] BuildCode(Expr expr)
+        private CodeObject[] BuildCode(Expr code)
         {
-            if (IsCallToBuiltin(expr))
+            if (IsFunctionCall(code))
             {
-                var bcf = (CallFunction)expr;
-                var b = _builtins[bcf.Name];
+                var cf = (CallFunction)code;
+                if (IsCallToBuiltin(cf))
+                {
+                    var b = _builtins[cf.Name];
+                    return new CodeObject[] { BuildBuiltinMethodCall(b, cf) };
+                }
 
-                return new CodeExpression[] { BuildMethodCall(b, bcf) };
+                return 
+                    new CodeObject[]
+                    {
+                        new CodeVariableReferenceExpression(cf.Name) // TODO
+                    };
             }
 
-            if (expr is Codeblock)
+            if (code is Codeblock)
             {
-                var cb = expr as Codeblock;
-                return cb.Codelines.ConvertAll(l => BuildCode(l).Single());
+                var cb = (Codeblock)code;
+                var csLines = cb.Codelines.ConvertAll(l => BuildCode(l).Single()).ToArray();
+                if (csLines.Any())
+                {
+                    csLines[csLines.Length - 1] = TurnIntoReturnStatement((CodeExpression)csLines.Last());
+                }
+                return csLines;
             }
 
-            if (expr is ValueSingle)
+            if (code is ValueSingle)
             {
-                var vs = expr as ValueSingle;
-                return new CodeExpression[] { new CodePrimitiveExpression(vs.RawValue()) };
+                var vs = (ValueSingle)code;
+                return new CodeObject[] { new CodePrimitiveExpression(vs.RawValue()) };
             }
 
-            return new CodeExpression[0];
+            if (code is DefineFunction)
+            {
+                var df = (DefineFunction)code;
+
+                if (df.ParameterNames.Any())
+                {
+                    throw new NotImplementedException();
+                }
+                return 
+                    new CodeObject[]
+                    {
+                        new CodeVariableDeclarationStatement(
+                            type: new CodeTypeReference(typeof(Func<object>)), 
+                            name: df.Name,
+                            initExpression: new CodeDelegateCreateExpression(new CodeTypeReference(typeof(Func<object>)), new CodeThisReferenceExpression(), "hei")
+                        )
+                    };
+            }
+
+            return new CodeObject[0];
         }
 
-        private bool IsCallToBuiltin(Expr code)
+        private bool IsFunctionCall(Expr code)
         {
-            var cf = code as CallFunction;
-            return
-                cf != null &&
-                _builtins.ContainsKey(cf.Name);
+            return code is CallFunction;
+        }
+
+        private bool IsCallToBuiltin(CallFunction cf)
+        {
+            return _builtins.ContainsKey(cf.Name);
         }
 
         private CodeMemberMethod AddEverythingDownToEntryMethod(CodeCompileUnit compilationUnit)
@@ -99,32 +148,38 @@ namespace SVLang.Core
             _builtins
                 .Select(b => b.Value.GetType().Namespace)
                 .Distinct()
+                .ToList()
                 .ForEach(tns => ns.Imports.Add(new CodeNamespaceImport(tns)));
         }
 
-        private void AddHelloWorld(CodeMemberMethod entryMethod)
+        //private void AddHelloWorld(CodeMemberMethod entryMethod)
+        //{
+        //    var helloWorld = new CodePrimitiveExpression("Hello world!");
+
+        //    entryMethod.Statements.Add(
+        //        new CodeMethodInvokeExpression(
+        //            targetObject: new CodeTypeReferenceExpression("System.Console"),
+        //            methodName: "WriteLine",
+        //            parameters: helloWorld
+        //        )
+        //    );
+
+        //    entryMethod.Statements.Add(new CodeMethodReturnStatement(helloWorld));
+        //}
+
+        private CodeMethodReturnStatement TurnIntoReturnStatement(CodeExpression ce)
         {
-            var helloWorld = new CodePrimitiveExpression("Hello world!");
-
-            entryMethod.Statements.Add(
-                new CodeMethodInvokeExpression(
-                    targetObject: new CodeTypeReferenceExpression("System.Console"),
-                    methodName: "WriteLine",
-                    parameters: helloWorld
-                )
-            );
-
-            entryMethod.Statements.Add(new CodeMethodReturnStatement(helloWorld));
+            return new CodeMethodReturnStatement(ce);
         }
 
-        private CodeMethodInvokeExpression BuildMethodCall(IBuiltIn builtin, CallFunction cf)
+        private CodeMethodInvokeExpression BuildBuiltinMethodCall(IBuiltIn builtin, CallFunction cf)
         {
             var t = builtin.GetType();
             return 
                 new CodeMethodInvokeExpression(
                     targetObject: new CodeObjectCreateExpression(t), 
                     methodName: "Call",
-                    parameters: cf.Parameters.ConvertAll(p => BuildCode(p).Single())
+                    parameters: cf.Parameters.Select(p => BuildCode(p).Single()).Cast<CodeExpression>().ToArray()
                 );
         }
     }

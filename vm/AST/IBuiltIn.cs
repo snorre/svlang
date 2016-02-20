@@ -4,6 +4,6 @@
     {
         string Name { get; }
 
-        object Call(object[] parameterValues);
+        object Call(params object[] parameterValues);
     }
 }

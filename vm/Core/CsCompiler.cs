@@ -13,21 +13,28 @@ namespace SVLang.Core
     {
         internal Type BuildType(List<FileInfo> dllsToReference, CodeCompileUnit compilationUnit)
         {
-            CSharpCodeProvider provider = new CSharpCodeProvider();
-            CompilerParameters cp = new CompilerParameters();
+            var provider = new CSharpCodeProvider();
 
+            Console.WriteLine("=== Generated source ===");
+            provider.GenerateCodeFromCompileUnit(compilationUnit, Console.Out, new CodeGeneratorOptions());
+
+            CompilerParameters cp = 
+                new CompilerParameters
+                {
+                    GenerateExecutable = false,
+                    GenerateInMemory = true
+                };
             cp.ReferencedAssemblies.Add("System.dll");
             cp.ReferencedAssemblies.Add("SVLang.Basics.dll");
+
             dllsToReference.ForEach(dll => cp.ReferencedAssemblies.Add(dll.Name));
 
-            cp.GenerateExecutable = false;
-            cp.GenerateInMemory = true;
             CompilerResults cr = provider.CompileAssemblyFromDom(cp, compilationUnit);
 
             if (cr.Errors.Count > 0)
             {
                 // Display compilation errors.
-                Console.WriteLine("Errors building {0} into {1}", compilationUnit, cr.PathToAssembly);
+                Console.WriteLine("Errors building.");
                 foreach (CompilerError ce in cr.Errors)
                 {
                     Console.WriteLine("  {0}", ce);
@@ -36,8 +43,10 @@ namespace SVLang.Core
             }
             else
             {
-                Console.WriteLine("Source {0} built into {1} successfully.", compilationUnit, cr.PathToAssembly);
+                Console.WriteLine("Source built OK.");
             }
+
+            Console.WriteLine();
 
             Assembly asm = cr.CompiledAssembly;
             var t = asm.GetType(AstToCsDom.EntryNamespace + "." + AstToCsDom.EntryTypeName);
