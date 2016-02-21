@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SVLang.Basics.AST;
 
@@ -109,24 +110,31 @@ namespace SVLang.Test.BuiltinsTests
             // Should there be more?
         }
 
+        [TestMethod]
+        public void can_compare_many_values()
+        {
+            AreEqual(1, 1, 1);
+            AreNotEqual(1, 1, 3);
+        }
+
         #region Helpers
 
-        private void AreEqual(object o1, object o2)
+        private void AreEqual(params object[] objs)
         {
-            Check(true, o1, o2);
+            Check(true, objs);
         }
 
-        private void AreNotEqual(object o1, object o2)
+        private void AreNotEqual(params object[] objs)
         {
-            Check(false, o1, o2);
+            Check(false, objs);
         }
 
-        private void Check(bool expectedEquality, object o1, object o2)
+        private void Check(bool expectedEquality, params object[] objs)
         {
             Func<object, Expr> toExpr = o => o is Expr ? (Expr)o : V(o);
             EvaluatesTo(
                 V(expectedEquality),
-                CallF("eq", toExpr(o1), toExpr(o2))
+                CallF("eq", objs.Select(toExpr).ToArray())
             );
         }
 
