@@ -6,6 +6,15 @@ namespace SVLang.Test.BuiltinsTests
     public class Range : ExecutionTestBase
     {
         [TestMethod]
+        public void call_builtin_range()
+        {
+            EvaluatesTo(
+                VL(2, 3, 4, 5),
+                CallF("range", V(2), V(5))
+            );
+        }
+
+        [TestMethod]
         public void call_builtin_range_with_empty_range()
         {
             EvaluatesTo(
@@ -18,7 +27,7 @@ namespace SVLang.Test.BuiltinsTests
         public void call_builtin_range_with_negative_range()
         {
             MustFail(
-                "Builtin function \"range\" failed: To parameter must be bigger than from parameter. From was 3, to was 2.",
+                "Builtin function 'range' failed. First parameter must be lower than second. Got from=3, to=2 -",
                 CallF("range", V(3), V(2))
             );
         }
@@ -26,9 +35,9 @@ namespace SVLang.Test.BuiltinsTests
         [TestMethod]
         public void call_builtin_range_with_negative_parameters()
         {
-            MustFail(
-                "Builtin function \"range\" failed: Parameters must be positive. From was -3, to was -2.",
-                CallF("range", V(-3), V(-2))
+            EvaluatesTo(
+                VL(-3, -2, -1),
+                CallF("range", V(-3), V(-1))
             );
         }
     }
