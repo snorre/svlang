@@ -36,18 +36,18 @@ namespace SVLang.Core
             var csc = new CsCompiler();
             var t = csc.BuildType(_dllsToReference, csCode);
 
-            var m = t.GetMethod(AstToCsDom.EntryMethodName);
+            var m = t.GetMethod(AstToCs.EntryMethodName);
             var ti = Activator.CreateInstance(t);
 
             object result = m.Invoke(ti, new object[0]);
-            //object result = t.GetMethod(AstToCsDom.EntryMethodName).Invoke(null, new string[] { null });
+            //object result = t.GetMethod(AstToCs.EntryMethodName).Invoke(null, new string[] { null });
 
             return new ValueSingle(result);
         }
 
         public string GenerateCsCode(Expr code) // public because of debug in tests
         {
-            var atc = new AstToCsDom(code, _builtins);
+            var atc = new AstToCs(code, _builtins);
             var csCode = atc.GenerateCsCode();
             return csCode;
         }

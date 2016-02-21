@@ -8,7 +8,7 @@ using SVLang.Basics.AST;
 
 namespace SVLang.Core
 {
-    internal class AstToCsDom
+    internal class AstToCs
     {
         // TODO Move?
         private static readonly string NL = Environment.NewLine;
@@ -20,7 +20,7 @@ namespace SVLang.Core
         private readonly Expr _code;
         private readonly Dictionary<string, IBuiltIn> _builtins;
 
-        internal AstToCsDom(Expr code, Dictionary<string, IBuiltIn> builtins)
+        internal AstToCs(Expr code, Dictionary<string, IBuiltIn> builtins)
         {
             _code = code;
             _builtins = builtins;
