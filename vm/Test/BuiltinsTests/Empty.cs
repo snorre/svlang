@@ -31,8 +31,8 @@ namespace SVLang.Test.BuiltinsTests
         [TestMethod]
         public void call_builtin_empty_with_single_element()
         {
-            EvaluatesTo(
-                false,
+            MustFail(
+                "Builtin function 'count' can only handle 'List`1'-type og functionref parameters. Got: System.Int32 -",
                 CallF("empty", V(1))
             );
         }
