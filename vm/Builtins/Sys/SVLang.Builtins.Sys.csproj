@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Eq.cs" />
+    <Compile Include="HasTail.cs" />
     <Compile Include="Head.cs" />
     <Compile Include="Plus.cs" />
     <Compile Include="Print.cs" />

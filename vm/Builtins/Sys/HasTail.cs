@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Linq;
 using SVLang.Basics;
-using SVLang.Basics.AST;
 
 namespace SVLang.Builtins.Sys
 {
-    public class Head : BuiltinBase
+    public class HasTail : BuiltinBase
     {
-        public override string Name => "head";
+        public override string Name => "hastail";
 
         public override object Call(params Func<dynamic>[] parameterFuncs)
         {
@@ -17,7 +16,7 @@ namespace SVLang.Builtins.Sys
             }
 
             var list = ReduceToValues(parameterFuncs.Single());
-            return list.FirstOrDefault() ?? Value.Void;
+            return list.Count > 1;
         }
     }
 }
