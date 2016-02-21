@@ -44,6 +44,7 @@
     <Compile Include="Eq.cs" />
     <Compile Include="HasTail.cs" />
     <Compile Include="Head.cs" />
+    <Compile Include="Mod.cs" />
     <Compile Include="Plus.cs" />
     <Compile Include="Print.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
