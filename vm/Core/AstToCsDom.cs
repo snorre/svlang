@@ -51,11 +51,21 @@ namespace SVLang.Core
             if (code is Codeblock)
             {
                 var cb = (Codeblock)code;
-                var csLines = cb.Codelines.ConvertAll(BuildCode).ToArray();
+                var csLines = cb.Codelines.ToList().ConvertAll(BuildCode);
                 if (csLines.Any())
                 {
-                    csLines[csLines.Length - 1] = TurnIntoReturnStatement(csLines.Last());
+                    var lastCode = cb.Codelines.Last();
+                    if (lastCode is DefineFunction)
+                    {
+                        var lastDf = (DefineFunction)lastCode;
+                        csLines.Add(TurnIntoReturnStatement(lastDf.Name));
+                    }
+                    else
+                    {
+                        csLines[csLines.Count - 1] = TurnIntoReturnStatement(csLines.Last());
+                    }
                 }
+
                 return $"{{{NL}{MergeLines(csLines)}{NL}}}";
             }
 
@@ -94,6 +104,12 @@ namespace SVLang.Core
                         : BuildCode(new Codeblock(df.Code));
 
                 return $"{declarationString} {df.Name} = ({paramNames}) => {bodyCode}"; 
+            }
+
+            if (code is FunctionRef)
+            {
+                var fr = (FunctionRef)code;
+                return fr.Name;
             }
 
             return "UNKNOWN GENERATION FOR: " + code.GetType();
@@ -177,7 +193,7 @@ namespace SVLang.Core
         {
             if (cf.Parameters.Any())
             {
-                var paramString = $"() => {string.Join(", ", cf.Parameters.ConvertAll(BuildCode))}";
+                var paramString = string.Join(", ", cf.Parameters.ConvertAll(p => "() => " + BuildCode(p)));
                 return paramString;
             }
             return "";

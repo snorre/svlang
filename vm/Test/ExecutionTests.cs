@@ -52,8 +52,7 @@ namespace SVLang.Test
         public void define_function_twice_fails()
         {
             MustFail(
-@"Compilation errors:
-    * A local variable named 'name' is already defined in this scope",
+                "Compilation errors: * A local variable named 'name' is already defined in this scope",
                 DefF("name", V(123)),
                 DefF("name", V(456)),
                 CallF("name")
@@ -85,7 +84,7 @@ namespace SVLang.Test
         public void define_function_with_parameter_twice_fails()
         {
             MustFail(
-                "Cannot re-define: name",
+                "Compilation errors: * A local variable named 'name' is already defined in this scope",
                 DefF("name", CallF("a"), "a"),
                 DefF("name", CallF("a"), "a"),
                 CallF("name", V(123))
@@ -96,7 +95,7 @@ namespace SVLang.Test
         public void call_function_in_outer_scope_fails()
         {
             MustFail(
-                "Cannot get: fun",
+                "Compilation errors: * The name 'fun' does not exist in the current context",
                 DefF(
                     "outer",
                     DefF("fun", V(123))
@@ -107,10 +106,10 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void can_overwrite_function_in_outer_scope()
+        public void cannot_overwrite_function_in_outer_scope()
         {
-            EvaluatesTo(
-                123,
+            MustFail(
+                "Compilation errors: * A local variable named 'fun' cannot be declared in this scope because it would give a different meaning to 'fun', which is already used in a 'parent or current' scope to denote something else",
                 DefF("fun", V(123)),
                 DefF(
                     "possibleOverwrite",
@@ -142,7 +141,7 @@ namespace SVLang.Test
         public void codeblock_exit_removes_inner_declarations_fails()
         {
             MustFail(
-                "Cannot get: fun",
+                "Compilation errors: * The name 'fun' does not exist in the current context",
                 Cb(
                     DefF("fun", V(1))
                 ),
@@ -242,7 +241,7 @@ namespace SVLang.Test
         public void call_outer_fun_which_references_inner_fun()
         {
             MustFail(
-                "Cannot get: inner",
+                "Compilation errors: * The name 'inner' does not exist in the current context",
                 DefF("outer", CallF("inner")),
                 DefF("call",
                     Cb(
@@ -382,7 +381,7 @@ namespace SVLang.Test
         }
 
         [TestMethod]
-        public void call_builtin_evaluates_parameters_to_values()
+        public void builtins_can_evaluate_functionref_to_value()
         {
             EvaluatesTo(
                 V(2),

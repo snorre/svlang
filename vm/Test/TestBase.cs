@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SVLang.Basics.AST;
 using SVLang.Builtins.Sys;
@@ -85,6 +86,15 @@ namespace SVLang.Test
         protected FunctionRef FR(string name)
         {
             return new FunctionRef(name);
+        }
+
+
+        protected void AssertMessageIsEqualExceptFormatting(string expected, string actual)
+        {
+            Func<string, string> clean = str => Regex.Replace(str, @"\s+", " ").Trim();
+            expected = clean(expected);
+            actual = clean(actual);
+            Assert.AreEqual(expected, actual);
         }
     }
     // ReSharper restore InconsistentNaming

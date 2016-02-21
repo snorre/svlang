@@ -15,16 +15,23 @@ namespace SVLang.Builtins.Sys
                 throw Error.Panic("Builtin function 'plus' must have more than one parameter. Got " + parameterFuncs.Length);
             }
 
-            var values = parameterFuncs.ToList().ConvertAll(pf => pf());
+            return parameterFuncs.Sum(pf => GetInt(pf));
+        }
 
-            if (!values.All(p => p is int))
+        private int GetInt(object o)
+        {
+            if (o is int)
             {
-                throw Error.Panic("Builtin function 'plus' can only handle int-type parameters");
+                return (int) o;
             }
 
-            var intParams = values.Cast<int>();
+            if (o is Func<object>)
+            {
+                var r = ((Func<object>)o)();
+                return GetInt(r);
+            }
 
-            return intParams.Sum();
+            throw Error.Panic("Builtin function 'plus' can only handle int-type og functionref parameters");
         }
     }
 }

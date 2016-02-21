@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SVLang.Basics;
 using SVLang.Basics.AST;
@@ -50,12 +51,13 @@ namespace SVLang.Test
             }
             catch (Error.SvlException x)
             {
-                Assert.AreEqual(expectedMessage, x.MessageBasic.Trim());
+                
+                AssertMessageIsEqualExceptFormatting(expectedMessage, x.MessageBasic);
                 PrintSection("Errors building", x.ToString());
             }
             catch (Exception x)
             {
-                Assert.AreEqual(expectedMessage, x.Message.Trim());
+                AssertMessageIsEqualExceptFormatting(expectedMessage, x.Message);
                 Console.WriteLine(x);
             }
         }
