@@ -6,6 +6,6 @@ namespace SVLang.Basics
     {
         string Name { get; }
 
-        object Call(params Func<object>[] parameterValues);
+        object Call(params Func<object>[] parameterFuncs);
     }
 }

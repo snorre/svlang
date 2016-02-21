@@ -42,7 +42,10 @@ namespace SVLang.Core
             object result = m.Invoke(ti, new object[0]);
             //object result = t.GetMethod(AstToCs.EntryMethodName).Invoke(null, new string[] { null });
 
-            return new ValueSingle(result);
+            return
+                result is ValueSingle
+                    ? (ValueSingle)result
+                    : new ValueSingle(result);
         }
 
         public string GenerateCsCode(Expr code) // public because of debug in tests

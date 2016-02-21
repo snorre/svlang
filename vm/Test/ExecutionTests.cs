@@ -338,9 +338,7 @@ namespace SVLang.Test
         {
             EvaluatesTo(
                 V(1),
-                First(
-                    If(V(true), V(1))
-                )
+                If(V(true), V(1))
             );
         }
 

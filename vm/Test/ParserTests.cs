@@ -392,9 +392,25 @@ namespace SVLang.Test
 
         private void ParsesTo(string code, Expr expr)
         {
+            PrintSection("Code", code);
+
             var actual = new StringParser(code).Run();
             Assert.AreEqual(expr, actual);
+
             PrintSection("Parsed to", actual.ToString());
+        }
+
+        private void DoesntParse(string code, string expectedErrorMessage)
+        {
+            try
+            {
+                new StringParser(code).Run();
+                throw new InvalidOperationException("Test emitted no exception.");
+            }
+            catch (Exception e)
+            {
+                AssertMessageIsEqualExceptFormatting(expectedErrorMessage, e.Message);
+            }
         }
 
         #endregion

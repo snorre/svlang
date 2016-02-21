@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Text.RegularExpressions;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SVLang.Basics;
 using SVLang.Basics.AST;
@@ -29,7 +29,12 @@ namespace SVLang.Test
         protected Expr Run(Expr[] codelines)
         {
             var exe = new Execution().Prepare();
-            var code = new Codeblock(codelines);
+
+            var onlyCodelineOrNull = codelines.Count() == 1 ? codelines.Single() : null;
+            var code =
+                onlyCodelineOrNull is Codeblock
+                    ? onlyCodelineOrNull
+                    : new Codeblock(codelines);
 
             PrintSection("Running", code.ToString());
 

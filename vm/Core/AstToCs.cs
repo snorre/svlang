@@ -12,6 +12,7 @@ namespace SVLang.Core
     {
         // TODO Move?
         private static readonly string NL = Environment.NewLine;
+        private const string Void = "____Svlang____internals____LanguageConstants.Void";
 
         internal const string EntryNamespace = "SvlCompilation";
         internal const string EntryTypeName = "SvlEntryType";
@@ -60,10 +61,15 @@ namespace SVLang.Core
                         var lastDf = (DefineFunction)lastCode;
                         csLines.Add(TurnIntoReturnStatement(lastDf.Name));
                     }
-                    else
+                    else if (!(lastCode is Codeblock))
                     {
                         csLines[csLines.Count - 1] = TurnIntoReturnStatement(csLines.Last());
                     }
+                }
+                else
+                {
+                    // Add void return if no statements
+                    csLines.Add(TurnIntoReturnStatement(Void));
                 }
 
                 return $"{{{NL}{MergeLines(csLines)}{NL}}}";
@@ -80,6 +86,15 @@ namespace SVLang.Core
                 {
                     return raw.ToString();
                 }
+                if (raw is bool)
+                {
+                    return raw.ToString().ToLowerInvariant();
+                }
+                if (raw is Value.RawVoid)
+                {
+                    return Void;
+                }
+
                 return "UNKNOWN VALUESINGLE: " + raw.GetType();
             }
 
@@ -112,6 +127,25 @@ namespace SVLang.Core
                 return fr.Name;
             }
 
+            if (code is IfLine) // TODO Turn single ifline into one-line first?
+            {
+                var il = (IfLine)code;
+                return $"((bool){BuildCode(il.Condition)}) ? {BuildCode(il.Action)} : (object){Void}";
+            }
+
+            if (code is First)
+            {
+                var fi = (First)code;
+                var sb = new StringBuilder();
+                foreach (var il in fi.IfLines)
+                {
+                    sb.AppendLine($"(((bool){BuildCode(il.Condition)}) ? {BuildCode(il.Action)} :");
+                }
+                sb.Append("(object)" + Void);
+                sb.Append(new string(')', fi.IfLines.Count()));
+                return sb.ToString();
+            }
+
             return "UNKNOWN GENERATION FOR: " + code.GetType();
         }
 
@@ -136,6 +170,7 @@ namespace SVLang.Core
                 Usings() +
                 Namespace(
                     EntryNamespace,
+                    LanguageConstants() +
                     Class(
                         EntryTypeName,
                         Method(
@@ -149,21 +184,24 @@ namespace SVLang.Core
         private string Usings()
         {
             var sb = new StringBuilder();
-
             sb.AppendLine("using System;");
-
-            _builtins
-                .Select(b => b.Value.GetType().Namespace)
-                .Distinct()
-                .ToList()
-                .ForEach(tns => sb.AppendLine("using " + tns + ";"));
-
             return sb.ToString();
         }
 
         private string Namespace(string ns, string content)
         {
             return $"namespace {ns}{NL}{{{NL}{content}{NL}}}";
+        }
+
+        private string LanguageConstants()
+        {
+            return 
+                NL +
+                @"public static class ____Svlang____internals____LanguageConstants
+                {
+                    public static readonly SVLang.Basics.AST.Value Void = SVLang.Basics.AST.Value.Void;
+                }" + 
+                NL;
         }
 
         private string Class(string className, string content)
