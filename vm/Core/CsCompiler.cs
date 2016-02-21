@@ -22,6 +22,8 @@ namespace SVLang.Core
                     GenerateInMemory = true
                 };
             cp.ReferencedAssemblies.Add("System.dll");
+            cp.ReferencedAssemblies.Add("System.Core.dll");
+            cp.ReferencedAssemblies.Add("Microsoft.CSharp.dll");
             cp.ReferencedAssemblies.Add("SVLang.Basics.dll");
 
             dllsToReference.ForEach(dll => cp.ReferencedAssemblies.Add(dll.Name));

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Castle.Core.Internal;
 using SVLang.Basics;
 using SVLang.Basics.AST;
 
@@ -46,6 +45,9 @@ namespace SVLang.Core
                 }
 
                 var paramsList = ParamsList(cf);
+
+                //var cast = BuildDeclaration(cf.Parameters.Length);
+
                 return $"{cf.Name}({paramsList})";
             }
 
@@ -102,23 +104,20 @@ namespace SVLang.Core
             {
                 var df = (DefineFunction)code;
 
-                var declarationString = "Func<object>";
                 var paramNames = "";
                 if (df.ParameterNames.Any())
                 {
-                    var objList = df.ParameterNames.ToList().ConvertAll(pn => "Func<object>");
-                    objList.Add("object"); // for return
-                    declarationString = "Func<" + string.Join(", ", objList) + ">";
-
                     paramNames = string.Join(", ", df.ParameterNames);
                 }
+
+                var declaration = BuildDeclaration(df.ParameterNames.Length);
 
                 var bodyCode =
                     df.Code is Codeblock
                         ? BuildCode(df.Code)
                         : BuildCode(new Codeblock(df.Code));
 
-                return $"{declarationString} {df.Name} = ({paramNames}) => {bodyCode}"; 
+                return $"{declaration} {df.Name} = ({paramNames}) => {bodyCode}"; 
             }
 
             if (code is FunctionRef)
@@ -147,6 +146,16 @@ namespace SVLang.Core
             }
 
             return "UNKNOWN GENERATION FOR: " + code.GetType();
+        }
+
+        private string BuildDeclaration(int numberOfParameters)
+        {
+            var sb = new StringBuilder();
+            for (int i = 0; i < numberOfParameters; i++)
+            {
+                sb.Append("dynamic,");
+            }
+            return $"Func<{sb}dynamic>";
         }
 
         private string MergeLines(IEnumerable<string> lines)
@@ -231,7 +240,20 @@ namespace SVLang.Core
         {
             if (cf.Parameters.Any())
             {
-                var paramString = string.Join(", ", cf.Parameters.ConvertAll(p => "() => " + BuildCode(p)));
+                var pList = new List<string>();
+                foreach (var p in cf.Parameters)
+                {
+                    if (p is Value || p is CallFunction)
+                    {
+                        pList.Add($"(Func<dynamic>)(() => {BuildCode(p)})");
+                    }
+                    else
+                    {
+                        pList.Add(BuildCode(p));
+                    }
+                }
+
+                var paramString = string.Join(", ", pList);
                 return paramString;
             }
             return "";

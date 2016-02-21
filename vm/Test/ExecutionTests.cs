@@ -373,7 +373,7 @@ namespace SVLang.Test
             EvaluatesTo(
                 V(1),
                 DefF("inner", CallF("x"), "x"),
-                DefF("outer", CallF("fr", V(1)), "fr"),
+                DefF("outer", CallF("inr", V(1)), "inr"),
                 CallF("outer", FR("inner"))
             );
         }
