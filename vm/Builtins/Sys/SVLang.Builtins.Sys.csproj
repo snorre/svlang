@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Count.cs" />
     <Compile Include="Eq.cs" />
     <Compile Include="HasTail.cs" />
     <Compile Include="Head.cs" />
