@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SVLang.Test.BuiltinsTests
 {
@@ -23,7 +18,7 @@ namespace SVLang.Test.BuiltinsTests
         public void call_builtin_tail_with_single_element()
         {
             MustFail(
-                "Builtin function \"tail\" failed: Cannot get parameters as type SVLang.Basics.AST.ValueList",
+                "Builtin function 'tail' can only handle 'List`1'-type og functionref parameters. Got: System.Int32 -",
                 CallF("tail", V(1))
             );
         }
@@ -32,7 +27,7 @@ namespace SVLang.Test.BuiltinsTests
         public void call_builtin_tail_with_list_with_one_element()
         {
             MustFail(
-                "Builtin function \"tail\" failed: List contains less than 2 elements.",
+                "Builtin function 'tail' failed: List contains less than 2 elements. -",
                 CallF("tail", VL(1))
             );
         }
@@ -41,7 +36,7 @@ namespace SVLang.Test.BuiltinsTests
         public void call_builtin_tail_with_empty_list()
         {
             MustFail(
-                "Builtin function \"tail\" failed: List contains less than 2 elements.",
+                "Builtin function 'tail' failed: List contains less than 2 elements. -",
                 CallF("tail", VL())
             );
         }

@@ -40,12 +40,24 @@ namespace SVLang.Core
             var ti = Activator.CreateInstance(t);
 
             object result = m.Invoke(ti, new object[0]);
-            //object result = t.GetMethod(AstToCs.EntryMethodName).Invoke(null, new string[] { null });
+            //object obj = t.GetMethod(AstToCs.EntryMethodName).Invoke(null, new string[] { null });
 
+            if (result is List<dynamic>) // TODO Find uses of List<dynamic> and move to a constant
+            {
+                var list = (List<dynamic>)result;
+                var values = list.ConvertAll(CreateValueSingleIfNeeded).ToArray();
+                return new ValueList(values);
+            }
+
+            return CreateValueSingleIfNeeded(result);
+        }
+
+        private ValueSingle CreateValueSingleIfNeeded(object obj)
+        {
             return
-                result is ValueSingle
-                    ? (ValueSingle)result
-                    : new ValueSingle(result);
+                obj is ValueSingle
+                    ? (ValueSingle)obj
+                    : new ValueSingle(obj);
         }
 
         public string GenerateCsCode(Expr code) // public because of debug in tests
