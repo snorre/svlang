@@ -18,7 +18,7 @@ namespace SVLang.Test.BuiltinsTests
         public void call_builtin_plus_with_invalid_parameters()
         {
             MustFail(
-                "Builtin function 'plus' can only handle 'Int32'-type og functionref parameters -",
+                "Builtin function 'plus' can only handle 'Int32'-type og functionref parameters. Got: System.String -",
                 CallF("plus", V(1), V("a"))
             );
         }
