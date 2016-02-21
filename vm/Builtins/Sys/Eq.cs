@@ -4,11 +4,11 @@ using SVLang.Basics;
 
 namespace SVLang.Builtins.Sys
 {
-    public class Eq : IBuiltIn
+    public class Eq : BuiltinBase
     {
-        public string Name => "eq";
+        public override string Name => "eq";
 
-        public object Call(params Func<object>[] parameterFuncs)
+        public override object Call(params Func<dynamic>[] parameterFuncs)
         {
             if (parameterFuncs.Length < 2)
             {

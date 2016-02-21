@@ -37,7 +37,7 @@ namespace SVLang.Test.BuiltinsTests
         public void call_builtin_head_with_single_element()
         {
             MustFail(
-                "Builtin function \"head\" failed: Cannot get parameters as type SVLang.Basics.AST.ValueList",
+                "Builtin function 'head' can only handle 'List`1'-type og functionref parameters. Got: System.String -",
                 CallF("head", V("only"))
             );
         }

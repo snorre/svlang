@@ -50,7 +50,7 @@
     <Compile Include="AST\First.cs" />
     <Compile Include="AST\IfLine.cs" />
     <Compile Include="Error.cs" />
-    <Compile Include="IBuiltIn.cs" />
+    <Compile Include="BuiltinBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AST\Value.cs" />
   </ItemGroup>

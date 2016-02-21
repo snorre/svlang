@@ -5,13 +5,13 @@ using SVLang.Basics;
 
 namespace SVLang.Builtins.Sys
 {
-    public class Print : IBuiltIn
+    public class Print : BuiltinBase
     {
         public static TextWriter Output = Console.Out;
 
-        public string Name => "print";
+        public override string Name => "print";
 
-        public object Call(params Func<object>[] parameterFuncs)
+        public override object Call(params Func<dynamic>[] parameterFuncs)
         {
             var str = string.Join(" ", parameterFuncs.ToList().ConvertAll(pv => pv()));
             Output.Write(str + Environment.NewLine);

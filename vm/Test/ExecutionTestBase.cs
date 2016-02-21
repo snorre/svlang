@@ -62,7 +62,7 @@ namespace SVLang.Test
             }
             catch (Exception x)
             {
-                AssertMessageIsEqualExceptFormatting(expectedMessage, x.Message);
+                AssertMessageIsEqualExceptFormatting(expectedMessage, x.InnerException?.Message ?? x.Message);
                 Console.WriteLine(x);
             }
         }

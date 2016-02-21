@@ -18,9 +18,9 @@ namespace SVLang.Core
         internal const string EntryMethodName = "SvlEntryMethod";
 
         private readonly Expr _code;
-        private readonly Dictionary<string, IBuiltIn> _builtins;
+        private readonly Dictionary<string, BuiltinBase> _builtins;
 
-        internal AstToCs(Expr code, Dictionary<string, IBuiltIn> builtins)
+        internal AstToCs(Expr code, Dictionary<string, BuiltinBase> builtins)
         {
             _code = code;
             _builtins = builtins;
@@ -98,6 +98,12 @@ namespace SVLang.Core
                 }
 
                 return "UNKNOWN VALUESINGLE: " + raw.GetType();
+            }
+
+            if (code is ValueList)
+            {
+                var vl = (ValueList)code;
+                return $"new List<dynamic> {{ {string.Join(", ", vl.Values.Select(BuildCode))} }}";
             }
 
             if (code is DefineFunction)
@@ -194,6 +200,7 @@ namespace SVLang.Core
         {
             var sb = new StringBuilder();
             sb.AppendLine("using System;");
+            sb.AppendLine("using System.Collections.Generic;");
             return sb.ToString();
         }
 
@@ -229,7 +236,7 @@ namespace SVLang.Core
             return "return " + line + ";";
         }
 
-        private string BuildBuiltinMethodCall(IBuiltIn builtin, CallFunction cf)
+        private string BuildBuiltinMethodCall(BuiltinBase builtin, CallFunction cf)
         {
             var paramString = ParamsList(cf);
             var t = builtin.GetType();

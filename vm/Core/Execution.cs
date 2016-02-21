@@ -13,7 +13,7 @@ namespace SVLang.Core
     public class Execution
     {
         private bool _isPrepared;
-        private Dictionary<string, IBuiltIn> _builtins;
+        private Dictionary<string, BuiltinBase> _builtins;
         private List<FileInfo> _dllsToReference; 
 
 
@@ -58,10 +58,10 @@ namespace SVLang.Core
         [SuppressMessage("ReSharper", "PossibleNullReferenceException")]
         private void LoadBuiltins()
         {
-            _builtins = new Dictionary<string, IBuiltIn>();
+            _builtins = new Dictionary<string, BuiltinBase>();
             _dllsToReference = new List<FileInfo>();
 
-            var baseType = typeof(IBuiltIn);
+            var baseType = typeof(BuiltinBase);
             var currentFolder = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory;
             var allDlls = currentFolder.GetFiles("*.dll");
 
@@ -77,7 +77,7 @@ namespace SVLang.Core
                     asm
                         .GetTypes()
                         .FindAll(t => baseType.IsAssignableFrom(t) && t != baseType)
-                        .ConvertAll(t => (IBuiltIn)Activator.CreateInstance(t));
+                        .ConvertAll(t => (BuiltinBase)Activator.CreateInstance(t));
 
                 if (builtinsFound.Any())
                 {
@@ -93,7 +93,7 @@ namespace SVLang.Core
             //        .Where(a => a != null)
             //        .SelectMany(a => a.GetTypes())
             //        .Where(t => baseType.IsAssignableFrom(t) && t != baseType)
-            //        .Select(t => (IBuiltIn)Activator.CreateInstance(t))
+            //        .Select(t => (BuiltinBase)Activator.CreateInstance(t))
             //        .ToList();
 
             //allBuiltins.ForEach(b => b.SetExecutionEngine(this));

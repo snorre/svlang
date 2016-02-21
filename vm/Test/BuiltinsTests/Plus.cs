@@ -13,5 +13,14 @@ namespace SVLang.Test.BuiltinsTests
                 CallF("plus", V(1), V(2))
             );
         }
+
+        [TestMethod]
+        public void call_builtin_plus_with_invalid_parameters()
+        {
+            MustFail(
+                "Builtin function 'plus' can only handle 'Int32'-type og functionref parameters -",
+                CallF("plus", V(1), V("a"))
+            );
+        }
     }
 }
