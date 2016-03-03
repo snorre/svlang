@@ -36,7 +36,7 @@ namespace SVLang.Core
             var csc = new CsCompiler();
             var t = csc.BuildType(_dllsToReference, csCode);
 
-            var m = t.GetMethod(AstToCs.EntryMethodName);
+            var m = t.GetMethod(CsGenerator.EntryMethodName);
             var ti = Activator.CreateInstance(t);
 
             object result = m.Invoke(ti, new object[0]);
@@ -62,7 +62,7 @@ namespace SVLang.Core
 
         public string GenerateCsCode(Expr code) // public because of debug in tests
         {
-            var atc = new AstToCs(code, _builtins);
+            var atc = new CsGenerator(code, _builtins);
             var csCode = atc.GenerateCsCode();
             return csCode;
         }
@@ -97,24 +97,6 @@ namespace SVLang.Core
                     builtinsFound.ForEach(b => _builtins.Add(b.Name, b));
                 }
             }
-
-            //var allBuiltins =
-            //    currentFolder
-            //        .GetFiles("*.dll")
-            //        .Select(LoadAssemblyFromFile)
-            //        .Where(a => a != null)
-            //        .SelectMany(a => a.GetTypes())
-            //        .Where(t => baseType.IsAssignableFrom(t) && t != baseType)
-            //        .Select(t => (BuiltinBase)Activator.CreateInstance(t))
-            //        .ToList();
-
-            //allBuiltins.ForEach(b => b.SetExecutionEngine(this));
-
-            //allBuiltins
-            //    .ForEach(i => Memory.AddExpr(i.Name, i.ParameterNames, i));
-
-            //_builtins = allBuiltins.ToDictionary(b => b.Name);
-
         }
 
         private Assembly LoadAssemblyFromFile(FileInfo file)

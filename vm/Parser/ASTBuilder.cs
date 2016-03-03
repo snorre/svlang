@@ -7,52 +7,69 @@ namespace SVLang.Parser
 {
     public class ASTBuilder
     {
-        public Expr BuildExpr(SVLangParser.ExprContext expr)
+        public Expr BuildExpr(SVLangParser.ExprContext exprContext)
+        {
+            var tree = CreateSimpleAST(exprContext);
+            SetLinksToParentNode(tree);
+            return tree;
+        }
+
+        private void SetLinksToParentNode(Expr parent)
+        {
+            var children = parent.GetChildExprs();
+            foreach (var child in children)
+            {
+                child.Parent = parent;
+                SetLinksToParentNode(child);
+            }
+        }
+
+        private Expr CreateSimpleAST(SVLangParser.ExprContext exprContext)
         {
             // TODO There has to be a better way than this..
-            var value = expr.value();
+            var value = exprContext.value();
             if (value != null)
             {
                 return BuildValue(value);
             }
 
-            var cf = expr.callFunction();
+            var cf = exprContext.callFunction();
             if (cf != null)
             {
                 return BuildCallFunction(cf);
             }
 
-            var df = expr.defineFunction();
+            var df = exprContext.defineFunction();
             if (df != null)
             {
                 return BuildDefineFunction(df);
             }
 
-            var cb = expr.codeblock();
+            var cb = exprContext.codeblock();
             if (cb != null)
             {
                 return BuildCodeblock(cb);
             }
 
-            var ifline = expr.ifLine();
+            var ifline = exprContext.ifLine();
             if (ifline != null)
             {
                 return BuildIfLine(ifline);
             }
 
-            var first = expr.first();
+            var first = exprContext.first();
             if (first != null)
             {
                 return BuildFirst(first);
             }
 
-            var fr = expr.functionRef();
+            var fr = exprContext.functionRef();
             if (fr != null)
             {
                 return BuildFunctionRef(fr);
             }
 
-            throw new InvalidOperationException("Cannot build expr, unknown type.", expr.exception);
+            throw new InvalidOperationException("Cannot build exprContext, unknown type.", exprContext.exception);
         }
 
         private FunctionRef BuildFunctionRef(SVLangParser.FunctionRefContext fr)
@@ -103,7 +120,7 @@ namespace SVLang.Parser
         private Codeblock BuildCodeblock(SVLangParser.CodeblockContext cb)
         {
             var lines = cb.codeblockline();
-            var exprList = lines.Select(l => BuildExpr(l.expr()));
+            var exprList = lines.Select(l => CreateSimpleAST(l.expr()));
             return new Codeblock(exprList.ToArray());
         }
 
@@ -222,7 +239,7 @@ namespace SVLang.Parser
             {
                 parameterExprList =
                     cfParameters
-                        .Select(BuildExpr)
+                        .Select(CreateSimpleAST)
                         .ToArray();
             }
 

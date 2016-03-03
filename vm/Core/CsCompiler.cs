@@ -42,7 +42,7 @@ namespace SVLang.Core
             }
 
             Assembly asm = cr.CompiledAssembly;
-            var t = asm.GetType(AstToCs.EntryNamespace + "." + AstToCs.EntryTypeName);
+            var t = asm.GetType(CsGenerator.EntryNamespace + "." + CsGenerator.EntryTypeName);
             return t;
         }
     }

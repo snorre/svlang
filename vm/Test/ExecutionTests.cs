@@ -238,6 +238,19 @@ namespace SVLang.Test
         }
 
         [TestMethod]
+        public void first_works_when_no_return_values_is_used()
+        {
+            EvaluatesTo(
+                V(1),
+                First(
+                    If(V(true), CallF("print", V("hello")))
+                ),
+                V(1)
+            );
+            OutputMustBe("hello");
+        }
+
+        [TestMethod]
         public void call_outer_fun_which_references_inner_fun()
         {
             MustFail(
@@ -340,6 +353,17 @@ namespace SVLang.Test
                 V(1),
                 If(V(true), V(1))
             );
+        }
+
+        [TestMethod]
+        public void ifline_works_when_not_returning_anything()
+        {
+            EvaluatesTo(
+                V(1),
+                If(V(true), CallF("print", V("works!"))),
+                V(1)
+            );
+            OutputMustBe("works!");
         }
 
         [TestMethod]
