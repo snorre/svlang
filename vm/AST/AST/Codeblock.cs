@@ -12,6 +12,11 @@ namespace SVLang.Basics.AST
             Codelines = codelines;
         }
 
+        public override Expr[] GetChildExprs()
+        {
+            return Codelines;
+        }
+
         public override int GetHashCode()
         {
             return Codelines.First().GetHashCode();

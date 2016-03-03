@@ -2,9 +2,9 @@
 {
     public abstract class Expr
     {
-        public Expr Parent { get; set; }
-
         internal const string OneLevelIndent = "    ";
+
+        public bool IsInCodeblockAndIsNotLast { get; set; }
 
         public abstract string ToString(string indent);
 
@@ -17,10 +17,7 @@
             throw Error.Panic("Only booleans is supported as condition checks.", this);
         }
 
-        public virtual Expr[] GetChildExprs()
-        {
-            return new Expr[0];
-        }
+        public abstract Expr[] GetChildExprs();
 
         public override string ToString()
         {
@@ -84,6 +81,11 @@
         public IfLine AsIfLine()
         {
             return (IfLine)this;
+        }
+
+        public bool IsValue()
+        {
+            return this is Value;
         }
 
         public bool IsValueList()

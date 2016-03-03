@@ -17,6 +17,11 @@ namespace SVLang.Basics.AST
             return IfLines.Sum(il => il.GetHashCode());
         }
 
+        public override Expr[] GetChildExprs()
+        {
+            return IfLines.Cast<Expr>().ToArray();
+        }
+
         public override bool Equals(object obj)
         {
             return

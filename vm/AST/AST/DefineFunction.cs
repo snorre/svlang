@@ -20,6 +20,11 @@ namespace SVLang.Basics.AST
             return Name.GetHashCode();
         }
 
+        public override Expr[] GetChildExprs()
+        {
+            return new[] { Code };
+        }
+
         public override bool Equals(object obj)
         {
             var other = obj as DefineFunction;

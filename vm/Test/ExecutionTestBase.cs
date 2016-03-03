@@ -28,8 +28,6 @@ namespace SVLang.Test
 
         protected Expr Run(Expr[] codelines)
         {
-            var exe = new Execution().Prepare();
-
             var onlyCodelineOrNull = codelines.Count() == 1 ? codelines.Single() : null;
             var code =
                 onlyCodelineOrNull is Codeblock
@@ -38,10 +36,11 @@ namespace SVLang.Test
 
             PrintSection("Running", code.ToString());
 
-            var csCode = exe.GenerateCsCode(code);
+            var exe = new Execution(code);
+            var csCode = exe.GenerateCsCode();
             PrintSection("Generated cs source", csCode);
 
-            var result = exe.Run(code);
+            var result = exe.Run();
 
             PrintSection("Return value", result?.ToString());
             return result;

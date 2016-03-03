@@ -241,13 +241,13 @@ namespace SVLang.Test
         public void first_works_when_no_return_values_is_used()
         {
             EvaluatesTo(
-                V(1),
+                V(14),
                 First(
-                    If(V(true), CallF("print", V("hello")))
+                    If(V(true), CallF("print", V("hello2")))
                 ),
-                V(1)
+                V(14)
             );
-            OutputMustBe("hello");
+            OutputMustBe("hello2");
         }
 
         [TestMethod]

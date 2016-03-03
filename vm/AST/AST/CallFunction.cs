@@ -18,6 +18,11 @@ namespace SVLang.Basics.AST
             return Name.GetHashCode();
         }
 
+        public override Expr[] GetChildExprs()
+        {
+            return Parameters;
+        }
+
         public override bool Equals(object obj)
         {
             var other = obj as CallFunction;

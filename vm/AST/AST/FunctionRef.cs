@@ -22,6 +22,11 @@
             return Name.GetHashCode();
         }
 
+        public override Expr[] GetChildExprs()
+        {
+            return new Expr[0];
+        }
+
         public override string ToString(string indent)
         {
             return indent + Name;

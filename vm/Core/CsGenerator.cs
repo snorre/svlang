@@ -9,7 +9,7 @@ namespace SVLang.Core
 {
     internal class CsGenerator
     {
-        private static readonly string InternalsClassName = CreateUniqueName();
+        private static readonly string InternalsClassName = CreateUniqueName("constants");
         private static readonly string NL = Environment.NewLine;
         private static readonly string Void = InternalsClassName + ".Void";
 
@@ -33,7 +33,7 @@ namespace SVLang.Core
             return csCode;
         }
 
-        private string BuildCode(Expr code, bool isLastLineInCodeblock = false)
+        private string BuildCode(Expr code)
         {
             // TODO Refactoring to classes?
 
@@ -69,12 +69,12 @@ namespace SVLang.Core
 
             if (code.IsIfLine()) // TODO Turn single ifline into one-line first?
             {
-                return BuildIfLine(code.AsIfLine(), isLastLineInCodeblock);
+                return BuildIfLine(code.AsIfLine());
             }
 
             if (code.IsFirst())
             {
-                return BuildFirst(code.AsFirst(), isLastLineInCodeblock);
+                return BuildFirst(code.AsFirst());
             }
 
             return "UNKNOWN GENERATION FOR: " + code.GetType();
@@ -95,22 +95,16 @@ namespace SVLang.Core
 
         private string BuildCodeblock(Codeblock cb)
         {
-            var csLines =
-                cb.Codelines
-                    .Select(
-                        (line, idx) => BuildCode(line, isLastLineInCodeblock: (idx == cb.Codelines.Length - 1))
-                    )
-                    .ToList();
-
+            var csLines = cb.Codelines.Select(BuildCode).ToList();
             if (csLines.Any())
             {
                 var lastCode = cb.Codelines.Last();
-                if (lastCode is DefineFunction)
+                if (lastCode.IsDefineFunction())
                 {
-                    var lastDf = (DefineFunction) lastCode;
+                    var lastDf = lastCode.AsDefineFunction();
                     csLines.Add(TurnIntoReturnStatement(lastDf.Name));
                 }
-                else if (!(lastCode is Codeblock))
+                else if (!(lastCode.IsCodeblock()))
                 {
                     csLines[csLines.Count - 1] = TurnIntoReturnStatement(csLines.Last());
                 }
@@ -149,7 +143,7 @@ namespace SVLang.Core
 
         private string BuildValueList(ValueList vl)
         {
-            return $"new List<dynamic> {{ {string.Join(", ", vl.Values.Select(v => BuildCode(v)))} }}";
+            return $"new List<dynamic> {{ {string.Join(", ", vl.Values.Select(BuildCode))} }}";
         }
 
         private string BuildDefineFunction(DefineFunction df)
@@ -163,7 +157,7 @@ namespace SVLang.Core
             var declaration = BuildDeclaration(df.ParameterNames.Length);
 
             var bodyCode =
-                df.Code is Codeblock
+                df.Code.IsCodeblock()
                     ? BuildCode(df.Code)
                     : BuildCode(new Codeblock(df.Code));
 
@@ -175,15 +169,15 @@ namespace SVLang.Core
             return fr.Name;
         }
 
-        private string BuildIfLine(IfLine il, bool isLastLineInCodeblock)
+        private string BuildIfLine(IfLine il)
         {
             return
-                isLastLineInCodeblock
-                    ? $"((bool){BuildCode(il.Condition)}) ? {BuildCode(il.Action)} : (object){Void}"
-                    : $"if ((bool){BuildCode(il.Condition)}) {{ {BuildCode(il.Action)}; }}";
+                il.IsInCodeblockAndIsNotLast
+                    ? $"if ((bool){BuildCode(il.Condition)}) {{ {BuildCode(il.Action)}; }}"
+                    : $"((bool){BuildCode(il.Condition)}) ? {BuildCode(il.Action)} : (object){Void}";
         }
 
-        private string BuildFirst(First fi, bool isLastLineInCodeblock) // TODO Refactor to Expr class
+        private string BuildFirst(First fi) // TODO Refactor to Expr class
         {
             var sb = new StringBuilder();
             foreach (var il in fi.IfLines)
@@ -195,9 +189,9 @@ namespace SVLang.Core
 
             var csLine = sb.ToString();
 
-            if (!isLastLineInCodeblock)
+            if (fi.IsInCodeblockAndIsNotLast)
             {
-                csLine = $"var {CreateUniqueName()} = {csLine}";
+                csLine = $"var {CreateUniqueName("unused")} = {csLine}";
             }
 
             return csLine;
@@ -294,7 +288,7 @@ namespace SVLang.Core
                 var pList = new List<string>();
                 foreach (var p in cf.Parameters)
                 {
-                    if (p is Value || p is CallFunction)
+                    if (p.IsValue() || p.IsCallFunction())
                     {
                         pList.Add($"(Func<dynamic>)(() => {BuildCode(p)})");
                     }
@@ -310,9 +304,10 @@ namespace SVLang.Core
             return "";
         }
 
-        private static string CreateUniqueName()
+        private static string CreateUniqueName(string baseName = "internal")
         {
-            return "svlang_internal_" + Guid.NewGuid().ToString().Replace('-', '_');
+            string uniqueId = Guid.NewGuid().ToString().Replace('-', '_');
+            return $"svlang_{baseName}_{uniqueId}";
         }
     }
 }

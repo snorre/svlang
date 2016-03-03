@@ -28,6 +28,11 @@ namespace SVLang.Basics.AST
                     : 1;
         }
 
+        public override Expr[] GetChildExprs()
+        {
+            return Values.Cast<Expr>().ToArray();
+        }
+
         public override object RawValue()
         {
             return Values.Select(v => v.RawValue()).ToArray();

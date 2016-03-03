@@ -12,26 +12,22 @@ namespace SVLang.Core
 {
     public class Execution
     {
-        private bool _isPrepared;
+        private readonly Expr _code;
         private Dictionary<string, BuiltinBase> _builtins;
-        private List<FileInfo> _dllsToReference; 
+        private List<FileInfo> _dllsToReference;
 
 
-        public Execution Prepare()
+        public Execution(Expr code)
         {
+            _code = code;
+
             LoadBuiltins();
-            _isPrepared = true;
-            return this;
+            SetFlagsOnAst(_code);
         }
 
-        public Expr Run(Expr code)
+        public Expr Run()
         {
-            if (!_isPrepared)
-            {
-                throw Error.Panic("Execution not prepared, prepare before run.");
-            }
-
-            var csCode = GenerateCsCode(code);
+            var csCode = GenerateCsCode();
 
             var csc = new CsCompiler();
             var t = csc.BuildType(_dllsToReference, csCode);
@@ -52,6 +48,19 @@ namespace SVLang.Core
             return CreateValueSingleIfNeeded(result);
         }
 
+        private void SetFlagsOnAst(Expr parent)
+        {
+            var children = parent.GetChildExprs();
+            for (int i = 0; i < children.Length; i++)
+            {
+                var child = children[i];
+
+                child.IsInCodeblockAndIsNotLast = parent.IsCodeblock() && (i < children.Length - 1);
+
+                SetFlagsOnAst(child);
+            }
+        }
+
         private ValueSingle CreateValueSingleIfNeeded(object obj)
         {
             return
@@ -60,9 +69,9 @@ namespace SVLang.Core
                     : new ValueSingle(obj);
         }
 
-        public string GenerateCsCode(Expr code) // public because of debug in tests
+        public string GenerateCsCode()
         {
-            var atc = new CsGenerator(code, _builtins);
+            var atc = new CsGenerator(_code, _builtins);
             var csCode = atc.GenerateCsCode();
             return csCode;
         }

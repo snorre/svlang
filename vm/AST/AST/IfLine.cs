@@ -16,6 +16,11 @@
             return Condition.GetHashCode() + Action.GetHashCode();
         }
 
+        public override Expr[] GetChildExprs()
+        {
+            return new [] { Condition, Action };
+        }
+
         public override bool Equals(object obj)
         {
             var other = obj as IfLine;

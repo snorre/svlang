@@ -27,10 +27,6 @@ namespace SVLang.Runner
             var sw = new Stopwatch();
             sw.Start();
 
-            var e = new Execution();
-            e.Prepare();
-            Log("Prepared execution engine", sw);
-
             string code = File.ReadAllText(_file.FullName);
             code = "{" + Environment.NewLine + code + Environment.NewLine + "}";
             Log("Read svl code", sw);
@@ -38,7 +34,10 @@ namespace SVLang.Runner
             var ast = new StringParser(code).Run();
             Log("Parsed code", sw);
 
-            var retVal = e.Run(ast);
+            var e = new Execution(ast);
+            Log("Prepared execution engine", sw);
+
+            var retVal = e.Run();
             Log("Executed code", sw);
 
             Console.WriteLine();

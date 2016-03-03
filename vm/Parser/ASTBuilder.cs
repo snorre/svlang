@@ -9,23 +9,6 @@ namespace SVLang.Parser
     {
         public Expr BuildExpr(SVLangParser.ExprContext exprContext)
         {
-            var tree = CreateSimpleAST(exprContext);
-            SetLinksToParentNode(tree);
-            return tree;
-        }
-
-        private void SetLinksToParentNode(Expr parent)
-        {
-            var children = parent.GetChildExprs();
-            foreach (var child in children)
-            {
-                child.Parent = parent;
-                SetLinksToParentNode(child);
-            }
-        }
-
-        private Expr CreateSimpleAST(SVLangParser.ExprContext exprContext)
-        {
             // TODO There has to be a better way than this..
             var value = exprContext.value();
             if (value != null)
@@ -120,7 +103,7 @@ namespace SVLang.Parser
         private Codeblock BuildCodeblock(SVLangParser.CodeblockContext cb)
         {
             var lines = cb.codeblockline();
-            var exprList = lines.Select(l => CreateSimpleAST(l.expr()));
+            var exprList = lines.Select(l => BuildExpr(l.expr()));
             return new Codeblock(exprList.ToArray());
         }
 
@@ -239,7 +222,7 @@ namespace SVLang.Parser
             {
                 parameterExprList =
                     cfParameters
-                        .Select(CreateSimpleAST)
+                        .Select(BuildExpr)
                         .ToArray();
             }
 

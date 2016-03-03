@@ -50,5 +50,10 @@
 
             throw Error.Panic("Only booleans is supported in IsTrue() method.", this);
         }
+
+        public override Expr[] GetChildExprs()
+        {
+            return new Expr[0];
+        }
     }
 }
