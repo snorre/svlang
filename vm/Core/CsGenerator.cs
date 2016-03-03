@@ -220,54 +220,27 @@ namespace SVLang.Core
         private string WrapWithEverythingDownToEntryMethod(string csCode)
         {
             return
-                Usings() +
-                Namespace(
-                    EntryNamespace,
-                    LanguageConstants() +
-                    Class(
-                        EntryTypeName,
-                        Method(
-                            EntryMethodName,
-                            csCode
-                        )
-                    )
-                );
-        }
+                $@"
+                    using System;
+                    using System.Collections.Generic;
 
-        private string Usings()
-        {
-            var sb = new StringBuilder();
-            sb.AppendLine("using System;");
-            sb.AppendLine("using System.Collections.Generic;");
-            return sb.ToString();
-        }
+                    namespace {EntryNamespace}
+                    {{
+                        public static class {InternalsClassName}
+                        {{
+                            public static readonly SVLang.Basics.AST.Value Void = SVLang.Basics.AST.Value.Void;
+                        }}
 
-        private string Namespace(string ns, string content)
-        {
-            return $"namespace {ns}{NL}{{{NL}{content}{NL}}}";
+                        public class {EntryTypeName}
+                        {{
+                            public object {EntryMethodName}()
+                            {{
+                                {csCode}
+                            }}
+                        }}
+                    }}
+                ";
         }
-
-        private string LanguageConstants()
-        {
-            return 
-                NL +
-                $@"public static class {InternalsClassName}
-                {{
-                    public static readonly SVLang.Basics.AST.Value Void = SVLang.Basics.AST.Value.Void;
-                }}" + 
-                NL;
-        }
-
-        private string Class(string className, string content)
-        {
-            return $"public class {className}{NL}{{{NL}{content}{NL}}}";
-        }
-
-        private string Method(string methodName, string content)
-        {
-            return $"public object {methodName}(){NL}{{{NL}{content}{NL}}}";
-        }
-        
         
         private string TurnIntoReturnStatement(string line)
         {
