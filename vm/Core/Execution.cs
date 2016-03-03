@@ -13,30 +13,38 @@ namespace SVLang.Core
     public class Execution
     {
         private readonly Expr _code;
+        private readonly Action<string> _logger;
         private Dictionary<string, BuiltinBase> _builtins;
         private List<FileInfo> _dllsToReference;
 
 
-        public Execution(Expr code)
+        public Execution(Expr code, Action<string> logger = null)
         {
             _code = code;
+            _logger = logger ?? (x => { });
 
             LoadBuiltins();
+            _logger("Loaded builtins");
+
             SetFlagsOnAst(_code);
+            _logger("Setting flags on AST");
         }
 
         public Expr Run()
         {
             var csCode = GenerateCsCode();
+            _logger("Generated cs code");
 
             var csc = new CsCompiler();
             var t = csc.BuildType(_dllsToReference, csCode);
+            _logger("Compiled to type");
 
             var m = t.GetMethod(CsGenerator.EntryMethodName);
             var ti = Activator.CreateInstance(t);
+            _logger("Created instance of type");
 
             object result = m.Invoke(ti, new object[0]);
-            //object obj = t.GetMethod(AstToCs.EntryMethodName).Invoke(null, new string[] { null });
+            _logger("Code executed");
 
             if (result is List<dynamic>) // TODO Find uses of List<dynamic> and move to a constant
             {

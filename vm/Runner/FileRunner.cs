@@ -25,6 +25,8 @@ namespace SVLang.Runner
         public Expr Run()
         {
             var sw = new Stopwatch();
+            
+
             sw.Start();
 
             string code = File.ReadAllText(_file.FullName);
@@ -34,11 +36,9 @@ namespace SVLang.Runner
             var ast = new StringParser(code).Run();
             Log("Parsed code", sw);
 
-            var e = new Execution(ast);
-            Log("Prepared execution engine", sw);
-
+            Action<string> exeLogger = str => Log("Execution: " + str, sw);
+            var e = new Execution(ast, exeLogger);
             var retVal = e.Run();
-            Log("Executed code", sw);
 
             Console.WriteLine();
             Console.WriteLine("===========");
