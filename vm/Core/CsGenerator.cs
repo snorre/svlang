@@ -255,7 +255,7 @@ namespace SVLang.Core
         {
             var paramString = ParamsList(cf);
             var t = builtin.GetType();
-            return $"new {t.FullName}().Call({paramString})";
+            return $"new {t.FullName}().Call({paramString})"; // TODO Cache builtin instance?
         }
 
         private string ParamsList(CallFunction cf)
