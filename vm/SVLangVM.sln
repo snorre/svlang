@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SVLang.Core", "Core\SVLang.Core.csproj", "{E6001124-F1EE-4EE6-A59F-48D4C85CFA4C}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Builtins", "Builtins", "{B4FA4E0E-3835-483E-9E9C-B8FD8EBEE4FC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SVLang.Builtins.Sys", "Builtins\Sys\SVLang.Builtins.Sys.csproj", "{5B8E8E93-B646-4E07-9058-350B62DDEF93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SVLang.Runtime", "SVLang.Runtime\SVLang.Runtime.csproj", "{3103880A-F187-4298-8E1A-8FE494F9D303}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{5B8E8E93-B646-4E07-9058-350B62DDEF93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5B8E8E93-B646-4E07-9058-350B62DDEF93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5B8E8E93-B646-4E07-9058-350B62DDEF93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3103880A-F187-4298-8E1A-8FE494F9D303}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3103880A-F187-4298-8E1A-8FE494F9D303}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3103880A-F187-4298-8E1A-8FE494F9D303}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3103880A-F187-4298-8E1A-8FE494F9D303}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -33,6 +33,7 @@ namespace SVLang.Core
             cp.ReferencedAssemblies.Add("System.Core.dll");
             cp.ReferencedAssemblies.Add("Microsoft.CSharp.dll");
             cp.ReferencedAssemblies.Add("SVLang.Basics.dll");
+            cp.ReferencedAssemblies.Add("SVLang.Runtime.dll");
 
             dllsToReference.ForEach(dll => cp.ReferencedAssemblies.Add(dll.Name));
             return cp;

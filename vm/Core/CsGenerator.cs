@@ -9,10 +9,10 @@ namespace SVLang.Core
 {
     internal class CsGenerator
     {
-        private static readonly string InternalsClassName = CreateUniqueName("constants");
-        private static readonly string HelperClassName = CreateUniqueName("helper");
+        private static readonly string ConstantsClassName = typeof(Runtime.Constants).FullName;
+        private static readonly string HelperClassName = typeof(Runtime.InvokeHelper).FullName;
         private static readonly string NL = Environment.NewLine;
-        private static readonly string Void = InternalsClassName + ".Void";
+        private static readonly string Void = ConstantsClassName + "." + nameof(Runtime.Constants.Void);
 
         internal const string EntryNamespace = "SvlCompilation";
         internal const string EntryTypeName = "SvlEntryType";
@@ -228,7 +228,6 @@ namespace SVLang.Core
 
         private string WrapWithEverythingDownToEntryMethod(string csCode)
         {
-            // TODO Move helpers to separate dll?
             return
                 $@"
                     using System;
@@ -236,25 +235,6 @@ namespace SVLang.Core
 
                     namespace {EntryNamespace}
                     {{
-                        public static class {InternalsClassName}
-                        {{
-                            public static readonly SVLang.Basics.AST.Value Void = SVLang.Basics.AST.Value.Void;
-                        }}
-
-                        public static class {HelperClassName}
-                        {{
-                            public static dynamic Invoke(object functionOrObject, dynamic caller)
-                            {{
-                                var t = functionOrObject.GetType();
-                                if (t.BaseType == typeof(MulticastDelegate))
-                                {{
-                                    return caller();
-                                }}
-
-                                return functionOrObject;
-                            }}
-                        }}
-
                         public class {EntryTypeName}
                         {{
                             public object {EntryMethodName}()
