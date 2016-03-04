@@ -6,15 +6,6 @@ namespace SVLang.Test.BuiltinsTests
     public class Str : ExecutionTestBase
     {
         [TestMethod]
-        public void call_builtin_str_with_list()
-        {
-            EvaluatesTo(
-                "1TrueAbc",
-                CallF("str", VL(1, true, "Abc"))
-            );
-        }
-
-        [TestMethod]
         public void call_builtin_str_with_single_value_string()
         {
             EvaluatesTo(
@@ -38,6 +29,24 @@ namespace SVLang.Test.BuiltinsTests
             EvaluatesTo(
                 "3",
                 CallF("str", V(3))
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_str_with_list()
+        {
+            EvaluatesTo(
+                "1TrueAbc",
+                CallF("str", VL(1, true, "Abc"))
+            );
+        }
+
+        [TestMethod]
+        public void call_builtin_str_with_nested_list()
+        {
+            EvaluatesTo(
+                "1TrueN1N2Abc",
+                CallF("str", VL(1, true, VL("N1", "N2"), "Abc"))
             );
         }
     }
