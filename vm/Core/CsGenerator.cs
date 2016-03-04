@@ -166,7 +166,7 @@ namespace SVLang.Core
 
         private static string BuildFunctionRef(FunctionRef fr)
         {
-            return fr.Name;
+            return "() => " + fr.Name;
         }
 
         private string BuildIfLine(IfLine il)
