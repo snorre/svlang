@@ -6,7 +6,7 @@
 
         public FunctionRef(string name)
         {
-            Name = name;
+            Name = CleanName(name);
         }
 
         public override bool Equals(object obj)

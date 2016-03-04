@@ -388,6 +388,49 @@ namespace SVLang.Test
             );
         }
 
+        [TestMethod]
+        public void can_define_functions_with_hyphen_in_name()
+        {
+            Action<string> test = name => 
+                ParsesTo(
+                    name + " = 1",
+                    DefF(name, V(1))
+                );
+
+            test("f-n");
+            test("fu-n");
+            test("f-un");
+            test("f-u-n");
+            test("fu-un-nn");
+        }
+
+        [TestMethod]
+        public void cannot_define_functions_with_hyphen_first_in_name()
+        {
+            DoesntParse(
+                "-fun = 1",
+                "Lexer error at symbol 0 line 1 position 0: token recognition error at: '-f'."
+            );
+        }
+
+        [TestMethod]
+        public void cannot_define_functions_with_hyphen_last_in_name()
+        {
+            DoesntParse(
+                "fun- = 1",
+                "Lexer error at symbol 0 line 1 position 3: token recognition error at: '- '."
+            );
+        }
+
+        [TestMethod]
+        public void cannot_define_functions_with_underscore_in_name()
+        {
+            DoesntParse(
+                "f_n = 1",
+                "Lexer error at symbol 0 line 1 position 1: token recognition error at: '_'."
+            );
+        }
+
         #region Helpers
 
         private void ParsesTo(string code, Expr expr)

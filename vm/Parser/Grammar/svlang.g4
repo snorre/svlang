@@ -78,7 +78,8 @@ VOID
 	;
 
 ID
-	: NONDIGIT ( NONDIGIT | DIGIT )*
+	: (NONDIGIT ( NONDIGIT | DIGIT )*) 
+	| (NONDIGIT+ HYPHEN (NONDIGIT|DIGIT)+ (HYPHEN (NONDIGIT|DIGIT)+)*)
 	;
 
 fragment
@@ -89,6 +90,11 @@ NONDIGIT
 fragment
 DIGIT
 	: [0-9]
+	;
+
+fragment
+HYPHEN
+	: '-'
 	;
 
 WS

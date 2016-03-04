@@ -1,4 +1,4 @@
-﻿fizzbuzz numbers = {
+﻿fizz-buzz numbers = {
 	num = (head numbers)
 	numIsMod x = (eq 0 (mod x num))
 	first {
@@ -8,7 +8,7 @@
 		(print num)
 	}
 
-	(hastail numbers) -> (fizzbuzz (tail numbers))
+	(hastail numbers) -> (fizz-buzz (tail numbers))
 }
 
-(fizzbuzz (range 1 15))
+(fizz-buzz (range 1 15))

@@ -27,7 +27,8 @@ namespace SVLang.Builtins.Sys
                 }
                 else
                 {
-                    strings.Add(parameterValue.ToString());
+                    var value = ReduceToValue<object>(parameterValue);
+                    strings.Add(value.ToString());
                 }
             }
 

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AST\FunctionRef.cs" />
+    <Compile Include="AST\CorrectedName.cs" />
     <Compile Include="AST\ValueList.cs" />
     <Compile Include="AST\ValueSingle.cs" />
     <Compile Include="AST\CallFunction.cs" />

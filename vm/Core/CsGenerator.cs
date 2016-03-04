@@ -164,9 +164,9 @@ namespace SVLang.Core
             return $"{declaration} {df.Name} = null; {df.Name} = ({paramNames}) => {bodyCode}";
         }
 
-        private static string BuildFunctionRef(FunctionRef fr)
+        private string BuildFunctionRef(FunctionRef fr)
         {
-            return "() => " + fr.Name;
+            return fr.Name;
         }
 
         private string BuildIfLine(IfLine il)
@@ -205,6 +205,11 @@ namespace SVLang.Core
                 sb.Append("dynamic,");
             }
             return $"Func<{sb}dynamic>";
+        }
+
+        private string BuildCast(string innerCsCode)
+        {
+            return $"({BuildDeclaration(0)})({innerCsCode})";
         }
 
         private string MergeLines(IEnumerable<string> lines)
@@ -263,7 +268,7 @@ namespace SVLang.Core
                 {
                     if (p.IsValue() || p.IsCallFunction())
                     {
-                        pList.Add($"(Func<dynamic>)(() => {BuildCode(p)})");
+                        pList.Add(BuildCast("() => " + BuildCode(p)));
                     }
                     else
                     {

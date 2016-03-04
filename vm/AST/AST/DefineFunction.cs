@@ -10,7 +10,7 @@ namespace SVLang.Basics.AST
 
         public DefineFunction(string name, Expr code, params string[] parameterNames)
         {
-            Name = name;
+            Name = CleanName(name);
             Code = code;
             ParameterNames = parameterNames;
         }

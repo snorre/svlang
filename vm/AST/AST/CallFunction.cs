@@ -9,7 +9,7 @@ namespace SVLang.Basics.AST
 
         public CallFunction(string name, params Expr[] parameters)
         {
-            Name = name;
+            Name = CleanName(name);
             Parameters = parameters;
         }
 

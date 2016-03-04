@@ -107,5 +107,10 @@
         {
             return (ValueSingle)this;
         }
+
+        protected string CleanName(string name)
+        {
+            return name.Replace('-', '_');
+        }
     }
 }

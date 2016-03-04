@@ -310,7 +310,7 @@ namespace SVLang.Test
                 Value.Void,
                 Cb(
                     DefF(
-                        "fizzbuzz",
+                        "fizz-buzz",
                         Cb(
                             DefF("num", Cb(CallF("head", CallF("numbers")))),
                             DefF("numIsMod", Cb(CallF("eq", V(0), CallF("mod", CallF("x"), CallF("num")))), "x"),
@@ -320,11 +320,11 @@ namespace SVLang.Test
                                 If(CallF("numIsMod", V(5)), CallF("print", V("Buzz"))),
                                 If(V(true), CallF("print", CallF("num")))
                             ),
-                            If(CallF("hastail", CallF("numbers")), CallF("fizzbuzz", CallF("tail", CallF("numbers"))))
+                            If(CallF("hastail", CallF("numbers")), CallF("fizz-buzz", CallF("tail", CallF("numbers"))))
                         ),
                         "numbers"
                     ),
-                    CallF("fizzbuzz", CallF("range", V(1), V(15)))
+                    CallF("fizz-buzz", CallF("range", V(1), V(15)))
                 )
             );
             OutputMustBe(
