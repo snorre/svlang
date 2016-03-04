@@ -10,9 +10,9 @@ namespace SVLang.Builtins.Sys
     {
         public override string Name => "str";
 
-        public override object Call(params Func<dynamic>[] parameterFuncs)
+        public override object Call(params object[] parameterFuncs)
         {
-            var parameterValues = parameterFuncs.Select(pf => pf()).ToList();
+            var parameterValues = parameterFuncs.Select(pf => ((Func<dynamic>)pf)()).ToList();
             return BuildStringFromList(parameterValues);
         }
 

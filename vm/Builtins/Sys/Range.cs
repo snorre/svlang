@@ -8,7 +8,7 @@ namespace SVLang.Builtins.Sys
     {
         public override string Name => "range";
 
-        public override object Call(params Func<dynamic>[] parameterFuncs)
+        public override object Call(params object[] parameterFuncs)
         {
             if (parameterFuncs.Length != 2) // TODO Move to base?
             {

@@ -12,12 +12,12 @@ namespace SVLang.Builtins.Sys
 
         public override string Name => "print";
 
-        public override object Call(params Func<dynamic>[] parameterFuncs)
+        public override object Call(params object[] parameterFuncs)
         {
             var strings = new List<string>();
             foreach (var parameterFunc in parameterFuncs)
             {
-                var parameterValue = parameterFunc();
+                var parameterValue = ((Func<dynamic>)parameterFunc)();
                 if (IsList(parameterValue))
                 {
                     List<object> list = AsList(parameterValue);

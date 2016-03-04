@@ -7,7 +7,7 @@ namespace SVLang.Builtins.Sys
     {
         public override string Name => "mod";
 
-        public override object Call(params Func<dynamic>[] parameterFuncs)
+        public override object Call(params object[] parameterFuncs)
         {
             if (parameterFuncs.Length != 2)
             {

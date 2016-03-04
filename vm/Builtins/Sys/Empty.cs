@@ -7,7 +7,7 @@ namespace SVLang.Builtins.Sys
     {
         public override string Name => "empty";
 
-        public override object Call(params Func<dynamic>[] parameterFuncs)
+        public override object Call(params object[] parameterFuncs)
         {
             return (int)new Count().Call(parameterFuncs) == 0;
         }

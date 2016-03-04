@@ -7,7 +7,7 @@ namespace SVLang.Builtins.Sys
     {
         public override string Name => "hastail";
 
-        public override object Call(params Func<dynamic>[] parameterFuncs)
+        public override object Call(params object[] parameterFuncs)
         {
             return (int)new Count().Call(parameterFuncs) > 1;
         }

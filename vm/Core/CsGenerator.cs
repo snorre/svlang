@@ -35,8 +35,6 @@ namespace SVLang.Core
 
         private string BuildCode(Expr code)
         {
-            // TODO Refactoring to classes?
-
             if (code.IsCallFunction())
             {
                 return BuildCallFunction(code.AsCallFunction());
@@ -67,7 +65,7 @@ namespace SVLang.Core
                 return BuildFunctionRef(code.AsFunctionRef());
             }
 
-            if (code.IsIfLine()) // TODO Turn single ifline into one-line first?
+            if (code.IsIfLine())
             {
                 return BuildIfLine(code.AsIfLine());
             }
@@ -177,7 +175,7 @@ namespace SVLang.Core
                     : $"((bool){BuildCode(il.Condition)}) ? {BuildCode(il.Action)} : (object){Void}";
         }
 
-        private string BuildFirst(First fi) // TODO Refactor to Expr class
+        private string BuildFirst(First fi)
         {
             var sb = new StringBuilder();
             foreach (var il in fi.IfLines)
@@ -185,7 +183,7 @@ namespace SVLang.Core
                 sb.AppendLine($"(((bool){BuildCode(il.Condition)}) ? {BuildCode(il.Action)} :");
             }
             sb.Append("(object)" + Void);
-            sb.Append(new string(')', fi.IfLines.Count()));
+            sb.Append(new string(')', fi.IfLines.Length));
 
             var csLine = sb.ToString();
 

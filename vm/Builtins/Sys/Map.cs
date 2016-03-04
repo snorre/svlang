@@ -11,7 +11,7 @@ namespace SVLang.Builtins.Sys
     {
         public override string Name => "map";
 
-        public override object Call(params Func<dynamic>[] parameterFuncs)
+        public override object Call(params object[] parameterFuncs)
         {
             throw new NotImplementedException();
         }

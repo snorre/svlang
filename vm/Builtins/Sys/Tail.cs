@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using SVLang.Basics;
 
 namespace SVLang.Builtins.Sys
@@ -8,7 +7,7 @@ namespace SVLang.Builtins.Sys
     {
         public override string Name => "tail";
 
-        public override object Call(params Func<dynamic>[] parameterFuncs)
+        public override object Call(params object[] parameterFuncs)
         {
             if (parameterFuncs.Length != 1)
             {
@@ -16,7 +15,7 @@ namespace SVLang.Builtins.Sys
             }
 
             var list = ReduceToValues(parameterFuncs.Single());
-            if (list.Count() < 2)
+            if (list.Count < 2)
             {
                 throw Error.Panic($"Builtin function '{Name}' failed: List contains less than 2 elements.");
             }
