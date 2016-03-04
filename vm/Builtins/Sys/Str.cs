@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Text;
 using SVLang.Basics;
 
@@ -12,8 +10,8 @@ namespace SVLang.Builtins.Sys
 
         public override object Call(params object[] parameterFuncs)
         {
-            var parameterValues = parameterFuncs.Select(pf => ((Func<dynamic>)pf)()).ToList();
-            return BuildStringFromList(parameterValues);
+            var values = ReduceListToValues<object>(parameterFuncs);
+            return BuildStringFromList(values);
         }
 
         private string BuildStringFromList(List<dynamic> values)

@@ -14,20 +14,20 @@ namespace SVLang.Builtins.Sys
 
         public override object Call(params object[] parameterFuncs)
         {
+            var values = ReduceListToValues<object>(parameterFuncs);
+
             var strings = new List<string>();
-            foreach (var parameterFunc in parameterFuncs)
+            foreach (var value in values)
             {
-                var parameterValue = ((Func<dynamic>)parameterFunc)();
-                if (IsList(parameterValue))
+                if (IsList(value))
                 {
-                    List<object> list = AsList(parameterValue);
+                    List<object> list = AsList(value);
                     strings.AddRange(
                         list.Select(p => p.ToString())
                     );
                 }
                 else
                 {
-                    var value = ReduceToValue<object>(parameterValue);
                     strings.Add(value.ToString());
                 }
             }

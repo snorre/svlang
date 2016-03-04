@@ -14,7 +14,7 @@ namespace SVLang.Builtins.Sys
                 throw Error.Panic($"Builtin function '{Name}' can only take 1 parameter.");
             }
 
-            var list = ReduceToValues(parameterFuncs.Single());
+            var list = ReduceToValueList(parameterFuncs.Single());
             if (list.Count < 2)
             {
                 throw Error.Panic($"Builtin function '{Name}' failed: List contains less than 2 elements.");

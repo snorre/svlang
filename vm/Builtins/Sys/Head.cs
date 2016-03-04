@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using SVLang.Basics;
 using SVLang.Basics.AST;
 
@@ -16,7 +15,7 @@ namespace SVLang.Builtins.Sys
                 throw Error.Panic($"Builtin function '{Name}' can only take 1 parameter.");
             }
 
-            var list = ReduceToValues(parameterFuncs.Single());
+            var list = ReduceToValueList(parameterFuncs.Single());
             return list.FirstOrDefault() ?? Value.Void;
         }
     }

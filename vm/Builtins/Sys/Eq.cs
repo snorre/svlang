@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using SVLang.Basics;
 
 namespace SVLang.Builtins.Sys
@@ -15,7 +14,7 @@ namespace SVLang.Builtins.Sys
                 throw Error.Panic("Builtin function 'eq' must have more than one parameter. Got " + parameterFuncs.Length);
             }
 
-            var values = parameterFuncs.ToList().ConvertAll(pf => ((Func<dynamic>)pf)());
+            var values = ReduceListToValues<object>(parameterFuncs);
             var firstValue = values.First();
             bool result = values.All(v => v.Equals(firstValue));
             return result;

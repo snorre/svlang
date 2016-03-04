@@ -10,6 +10,7 @@ namespace SVLang.Core
     internal class CsGenerator
     {
         private static readonly string InternalsClassName = CreateUniqueName("constants");
+        private static readonly string HelperClassName = CreateUniqueName("helper");
         private static readonly string NL = Environment.NewLine;
         private static readonly string Void = InternalsClassName + ".Void";
 
@@ -88,7 +89,12 @@ namespace SVLang.Core
 
             var paramsList = ParamsList(cf);
 
-            return $"{cf.Name}({paramsList})";
+            var callback =
+                cf.Parameters.Length == 0
+                    ? cf.Name
+                    : BuildCast($"() => {cf.Name}({paramsList})");
+
+            return $"{HelperClassName}.Invoke({cf.Name}, {callback})";
         }
 
         private string BuildCodeblock(Codeblock cb)
@@ -222,6 +228,7 @@ namespace SVLang.Core
 
         private string WrapWithEverythingDownToEntryMethod(string csCode)
         {
+            // TODO Move helpers to separate dll?
             return
                 $@"
                     using System;
@@ -232,6 +239,20 @@ namespace SVLang.Core
                         public static class {InternalsClassName}
                         {{
                             public static readonly SVLang.Basics.AST.Value Void = SVLang.Basics.AST.Value.Void;
+                        }}
+
+                        public static class {HelperClassName}
+                        {{
+                            public static dynamic Invoke(object functionOrObject, dynamic caller)
+                            {{
+                                var t = functionOrObject.GetType();
+                                if (t.BaseType == typeof(MulticastDelegate))
+                                {{
+                                    return caller();
+                                }}
+
+                                return functionOrObject;
+                            }}
                         }}
 
                         public class {EntryTypeName}
@@ -266,7 +287,7 @@ namespace SVLang.Core
                 {
                     if (p.IsValue() || p.IsCallFunction())
                     {
-                        pList.Add(BuildCast("() => " + BuildCode(p)));
+                        pList.Add(BuildCode(p));
                     }
                     else
                     {
