@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -53,9 +54,18 @@ namespace SVLang.Test
             return new ValueSingle(rawValue);
         }
 
-        protected ValueList VL(params object[] rawValues)
+        protected ValueList VL(params object[] values)
         {
-            return new ValueList(rawValues.Select(V).ToArray());
+            return 
+                new ValueList(
+                    values
+                        .Select(v => 
+                            v is ValueList || v is ValueSingle
+                                ? (Value)v
+                                : V(v)
+                        )
+                        .ToArray()
+            );
         }
 
         protected CallFunction CallF(string name, params Expr[] parameters)

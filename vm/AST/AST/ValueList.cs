@@ -4,9 +4,9 @@ namespace SVLang.Basics.AST
 {
     public class ValueList : Value
     {
-        public readonly ValueSingle[] Values;
+        public readonly Value[] Values;
 
-        public ValueList(params ValueSingle[] values)
+        public ValueList(params Value[] values)
         {
             Values = values;
         }
