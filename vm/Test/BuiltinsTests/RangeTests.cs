@@ -3,7 +3,7 @@
 namespace SVLang.Test.BuiltinsTests
 {
     [TestClass]
-    public class Range : ExecutionTestBase
+    public class RangeTests : ExecutionTestBase
     {
         [TestMethod]
         public void call_builtin_range()

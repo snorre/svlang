@@ -3,7 +3,7 @@
 namespace SVLang.Test.BuiltinsTests
 {
     [TestClass]
-    public class Str : ExecutionTestBase
+    public class StrTests : ExecutionTestBase
     {
         [TestMethod]
         public void call_builtin_str_with_single_value_string()

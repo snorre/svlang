@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace SVLang.Test.BuiltinsTests
 {
     [TestClass]
-    public class Empty : ExecutionTestBase
+    public class EmptyTests : ExecutionTestBase
     {
         [TestMethod]
         public void call_builtin_empty_with_list()

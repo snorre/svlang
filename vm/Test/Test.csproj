@@ -55,19 +55,19 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="BuiltinsTests\Count.cs" />
-    <Compile Include="BuiltinsTests\Empty.cs" />
-    <Compile Include="BuiltinsTests\Eq.cs" />
-    <Compile Include="BuiltinsTests\HasTail.cs" />
-    <Compile Include="BuiltinsTests\Head.cs" />
-    <Compile Include="BuiltinsTests\Map.cs" />
-    <Compile Include="BuiltinsTests\Minus.cs" />
-    <Compile Include="BuiltinsTests\Mod.cs" />
-    <Compile Include="BuiltinsTests\Plus.cs" />
-    <Compile Include="BuiltinsTests\Print.cs" />
-    <Compile Include="BuiltinsTests\Range.cs" />
-    <Compile Include="BuiltinsTests\Str.cs" />
-    <Compile Include="BuiltinsTests\Tail.cs" />
+    <Compile Include="BuiltinsTests\CountTests.cs" />
+    <Compile Include="BuiltinsTests\EmptyTests.cs" />
+    <Compile Include="BuiltinsTests\EqTests.cs" />
+    <Compile Include="BuiltinsTests\HasTailTests.cs" />
+    <Compile Include="BuiltinsTests\HeadTests.cs" />
+    <Compile Include="BuiltinsTests\MapTests.cs" />
+    <Compile Include="BuiltinsTests\MinusTests.cs" />
+    <Compile Include="BuiltinsTests\ModTests.cs" />
+    <Compile Include="BuiltinsTests\PlusTests.cs" />
+    <Compile Include="BuiltinsTests\PrintTests.cs" />
+    <Compile Include="BuiltinsTests\RangeTests.cs" />
+    <Compile Include="BuiltinsTests\StrTests.cs" />
+    <Compile Include="BuiltinsTests\TailTests.cs" />
     <Compile Include="ExecutionTestBase.cs" />
     <Compile Include="FileRunnerTests.cs" />
     <Compile Include="CsGenerationLearningTests.cs" />

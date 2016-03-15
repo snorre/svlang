@@ -4,7 +4,7 @@ using SVLang.Basics.AST;
 namespace SVLang.Test.BuiltinsTests
 {
     [TestClass]
-    public class Head : ExecutionTestBase
+    public class HeadTests : ExecutionTestBase
     {
         [TestMethod]
         public void call_builtin_head_with_list()

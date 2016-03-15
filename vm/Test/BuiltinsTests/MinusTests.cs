@@ -3,7 +3,7 @@
 namespace SVLang.Test.BuiltinsTests
 {
     [TestClass]
-    public class Minus : ExecutionTestBase
+    public class MinusTests : ExecutionTestBase
     {
         [TestMethod]
         public void call_builtin_minus()

@@ -3,7 +3,7 @@
 namespace SVLang.Test.BuiltinsTests
 {
     [TestClass]
-    public class Print : ExecutionTestBase
+    public class PrintTests : ExecutionTestBase
     {
         [TestMethod]
         public void call_builtin_print_with_list()

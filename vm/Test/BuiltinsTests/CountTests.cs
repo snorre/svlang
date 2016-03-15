@@ -3,7 +3,7 @@
 namespace SVLang.Test.BuiltinsTests
 {
     [TestClass]
-    public class Count : ExecutionTestBase
+    public class CountTests : ExecutionTestBase
     {
         [TestMethod]
         public void call_builtin_count_with_empty_list()

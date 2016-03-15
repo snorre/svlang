@@ -9,9 +9,7 @@ namespace SVLang.Runtime
             var t = functionOrObject.GetType();
             if (t.BaseType == typeof(MulticastDelegate))
             {
-                {
-                    return caller();
-                }
+                return caller();
             }
 
             return functionOrObject;

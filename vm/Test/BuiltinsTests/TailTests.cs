@@ -3,7 +3,7 @@
 namespace SVLang.Test.BuiltinsTests
 {
     [TestClass]
-    public class Tail : ExecutionTestBase
+    public class TailTests : ExecutionTestBase
     {
         [TestMethod]
         public void call_builtin_tail_with_list()

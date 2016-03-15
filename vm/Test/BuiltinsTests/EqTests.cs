@@ -6,7 +6,7 @@ using SVLang.Basics.AST;
 namespace SVLang.Test.BuiltinsTests
 {
     [TestClass]
-    public class Eq : ExecutionTestBase
+    public class EqTests : ExecutionTestBase
     {
         [TestMethod]
         public void ints_are_equal()

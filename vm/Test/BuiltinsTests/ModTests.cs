@@ -3,7 +3,7 @@
 namespace SVLang.Test.BuiltinsTests
 {
     [TestClass]
-    public class Mod : ExecutionTestBase
+    public class ModTests : ExecutionTestBase
     {
         [TestMethod]
         public void call_builtin_mod()
