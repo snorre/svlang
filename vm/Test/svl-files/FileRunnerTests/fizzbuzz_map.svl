@@ -1,0 +1,16 @@
+﻿fizz-buzz numbers = {
+	mapper num = {
+		numIsMod x = (eq 0 (mod x num))
+		first {
+			(numIsMod 15) -> (print "FizzBuzz")
+			(numIsMod 3) -> (print "Fizz")
+			(numIsMod 5) -> (print "Buzz")
+			(print num)
+		}
+	}
+	(map mapper numbers)
+}
+
+(fizz-buzz (range 1 15000))
+
+void
