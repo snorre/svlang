@@ -108,7 +108,7 @@ namespace SVLang.Core
                     var lastDf = lastCode.AsDefineFunction();
                     csLines.Add(TurnIntoReturnStatement(lastDf.Name));
                 }
-                else if (!(lastCode.IsCodeblock()))
+                else if (!lastCode.IsCodeblock())
                 {
                     csLines[csLines.Count - 1] = TurnIntoReturnStatement(csLines.Last());
                 }

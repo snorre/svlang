@@ -9,11 +9,7 @@ namespace SVLang.Builtins.Sys
 
         public override object Call(params object[] parameterFuncs)
         {
-            if (parameterFuncs.Length != 1)
-            {
-                throw Error.Panic($"Builtin function '{Name}' can only take 1 parameter.");
-            }
-
+            ValidateHasExactlyNumberOfParameters(parameterFuncs, 1);
             var list = ReduceToValueList(parameterFuncs.Single());
             return list.Count;
         }

@@ -27,7 +27,7 @@ namespace SVLang.Test.BuiltinsTests
         public void call_builtin_tail_with_list_with_one_element()
         {
             MustFail(
-                "Builtin function 'tail' failed: List contains less than 2 elements. -",
+                "Builtin function 'tail' failed: Parameter list contains less than 2 elements: 1. -",
                 CallF("tail", VL(1))
             );
         }
@@ -36,7 +36,7 @@ namespace SVLang.Test.BuiltinsTests
         public void call_builtin_tail_with_empty_list()
         {
             MustFail(
-                "Builtin function 'tail' failed: List contains less than 2 elements. -",
+                "Builtin function 'tail' failed: Parameter list contains less than 2 elements: 0. -",
                 CallF("tail", VL())
             );
         }

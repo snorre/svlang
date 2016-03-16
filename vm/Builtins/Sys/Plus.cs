@@ -9,10 +9,7 @@ namespace SVLang.Builtins.Sys
 
         public override object Call(params object[] parameterFuncs)
         {
-            if (parameterFuncs.Length <= 1)
-            {
-                throw Error.Panic($"Builtin function '{Name}' must have more than one parameter. Got " + parameterFuncs.Length);
-            }
+            ValidateHasAtLeastNumberOfParameters(parameterFuncs, 2);
 
             return parameterFuncs.Sum(pf => ReduceToValue<int>(pf));
         }

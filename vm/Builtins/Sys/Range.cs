@@ -9,17 +9,14 @@ namespace SVLang.Builtins.Sys
 
         public override object Call(params object[] parameterFuncs)
         {
-            if (parameterFuncs.Length != 2) // TODO Move to base?
-            {
-                throw Error.Panic($"Builtin function '{Name}' must have 2 parameter. Got " + parameterFuncs.Length);
-            }
+            ValidateHasExactlyNumberOfParameters(parameterFuncs, 2);
 
             var from = ReduceToValue<int>(parameterFuncs[0]);
             var to = ReduceToValue<int>(parameterFuncs[1]);
 
             if (to < from)
             {
-                throw Error.Panic($"Builtin function '{Name}' failed. First parameter must be lower than second. Got from={from}, to={to}");
+                throw Error.Panic($"{GetBaseErrorMessage()} failed. First parameter must be lower than second. Got from={from}, to={to}");
             }
 
             var result = new List<dynamic>();

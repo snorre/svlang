@@ -8,10 +8,7 @@ namespace SVLang.Builtins.Sys
 
         public override object Call(params object[] parameterFuncs)
         {
-            if (parameterFuncs.Length != 2)
-            {
-                throw Error.Panic($"Builtin function '{Name}' must have 2 parameter. Got " + parameterFuncs.Length);
-            }
+            ValidateHasExactlyNumberOfParameters(parameterFuncs, 2);
 
             var modNum = ReduceToValue<int>(parameterFuncs[0]);
             var num = ReduceToValue<int>(parameterFuncs[1]);

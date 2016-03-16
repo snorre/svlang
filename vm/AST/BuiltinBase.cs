@@ -45,5 +45,41 @@ namespace SVLang.Basics
         {
             return (List<object>)o;
         }
+
+        protected void ValidateHasExactlyNumberOfParameters(object[] parameterFuncs, int number)
+        {
+            if (parameterFuncs.Length != number)
+            {
+                throw Error.Panic($"Builtin function '{Name}' must have {number} parameter. Got " + parameterFuncs.Length);
+            }
+        }
+
+        protected void ValidateHasAtLeastNumberOfParameters(object[] parameterFuncs, int number)
+        {
+            if (parameterFuncs.Length < number)
+            {
+                throw Error.Panic($"Builtin function '{Name}' must have at least {number} parameter. Got " + parameterFuncs.Length);
+            }
+        }
+
+        protected T ValidateAndGetParameterInPositionAs<T>(object[] parameterFuncs, int idx)
+        {
+            if (parameterFuncs.Length < (idx + 1))
+            {
+                throw Error.Panic($"{GetBaseErrorMessage()} did not get a parameter in position {idx} (zero based). Got only {parameterFuncs.Length} parameters.");
+            }
+
+            var p = parameterFuncs[idx];
+            if (p is T)
+            {
+                return (T)p;
+            }
+            throw Error.Panic($"{GetBaseErrorMessage()} got an invalid parameter in position {idx}. Expected '{typeof(T)}' but got '{p.GetType()}'");
+        }
+
+        protected string GetBaseErrorMessage()
+        {
+            return $"Builtin function '{Name}'";
+        }
     }
 }
